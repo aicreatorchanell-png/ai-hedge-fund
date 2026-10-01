@@ -1,0 +1,45 @@
+{
+ "checked_at": "2026-10-01T20:41:34.945467+00:00",
+ "boot_time": "2026-10-01T19:04:51.775437+00:00",
+ "sources": {
+  "tiingo": {
+   "path_outside_repo": true,
+   "licence": "licensed",
+   "manifest_files": 70,
+   "manifest_written": "2026-10-01T20:41:00.507199+00:00",
+   "manifest_written_before_boot": false,
+   "files_since_manifest_intact": true,
+   "files_added_since": 0,
+   "files_rewritten_after_boot": 0,
+   "files_missing": 0,
+   "dir_mode": "0o700",
+   "other_users_can_enter": false,
+   "owner_uid": 0,
+   "process_uid": 0
+  },
+  "edgar": {
+   "path_outside_repo": true,
+   "licence": "public",
+   "manifest_files": 12484,
+   "manifest_written": "2026-10-01T20:41:01.141933+00:00",
+   "manifest_written_before_boot": false,
+   "files_since_manifest_intact": true,
+   "files_added_since": 0,
+   "files_rewritten_after_boot": 0,
+   "files_missing": 0,
+   "dir_mode": "0o700",
+   "other_users_can_enter": false,
+   "owner_uid": 0,
+   "process_uid": 0
+  }
+ },
+ "no_tiingo_file_tracked_in_git": true,
+ "survived_container_restart": false,
+ "cross_session_durability": "NOT PROVABLE: a new session starts on a fresh machine",
+ "tree_hashes": {
+  "tiingo": "4fb0c15c2370f9be096a030121ad64a6990d8ae8bebd87a0a4e3eed39452ca83",
+  "edgar": "ba739fcf9b92b2bac3edca10a195750c534f55cf767759feb7a9c16827fecb9c"
+ },
+ "restart_survival_recorded": true,
+ "integrity_now": true
+}

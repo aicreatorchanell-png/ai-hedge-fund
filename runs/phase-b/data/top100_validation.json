@@ -1,0 +1,1551 @@
+{
+ "summary": {
+  "pit": true,
+  "survivorship": true,
+  "lineage": true,
+  "identifiers": true,
+  "coverage": true
+ },
+ "checks": {
+  "pit": {
+   "pass": true,
+   "violations": [],
+   "last_date": "2026-07-01",
+   "nominated_after_as_of_excluded": 11287
+  },
+  "survivorship": {
+   "pass": true,
+   "pool_members_that_later_stop_filing": 86,
+   "kept_in_pools_while_alive": 86,
+   "reentries_after_filing_again": [
+    [
+     1592058,
+     "Party City Holdco Inc."
+    ],
+    [
+     1816017,
+     "SPIRE GLOBAL, INC."
+    ]
+   ],
+   "listed_after_stopping_without_new_filing (must be 0)": 0,
+   "note": "companies that later disappear are in the pools of their live dates: no survivorship bias from using today's lists"
+  },
+  "exits": {
+   "count": 86,
+   "per_year": 5.7,
+   "still_in_current_sec_ticker_map": 5,
+   "with_curated_outcome": 2,
+   "without_known_outcome_liquidated_at_last_close": 84,
+   "rows": [
+    {
+     "cik": 732485,
+     "name": "GENZYME CORP",
+     "first_pool": "2011-07-01",
+     "last_pool": "2011-07-01",
+     "first_stopped": "2011-10-03",
+     "symbols": [
+      "GENZ"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 885721,
+     "name": "EXPRESS SCRIPTS INC",
+     "first_pool": "2011-07-01",
+     "last_pool": "2012-07-02",
+     "first_stopped": "2012-10-01",
+     "symbols": [
+      "ESRX"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1170650,
+     "name": "MEDCO HEALTH SOLUTIONS INC",
+     "first_pool": "2011-07-01",
+     "last_pool": "2012-07-02",
+     "first_stopped": "2012-10-01",
+     "symbols": [
+      "MHS"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1066107,
+     "name": "EL PASO CORP/DE",
+     "first_pool": "2012-04-02",
+     "last_pool": "2012-07-02",
+     "first_stopped": "2013-01-02",
+     "symbols": [
+      "EP"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1441567,
+     "name": "MMODAL INC.",
+     "first_pool": "2012-07-02",
+     "last_pool": "2012-10-01",
+     "first_stopped": "2013-01-02",
+     "symbols": [
+      "CBAY",
+      "MEDH",
+      "MODL"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1410240,
+     "name": "HUGHES TELEMATICS, INC.",
+     "first_pool": "2012-07-02",
+     "last_pool": "2012-10-01",
+     "first_stopped": "2013-01-02",
+     "symbols": [
+      "HUTC"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 921691,
+     "name": "COLE KENNETH PRODUCTIONS INC",
+     "first_pool": "2012-07-02",
+     "last_pool": "2013-01-02",
+     "first_stopped": "2013-04-01",
+     "symbols": [
+      "KCP"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 912382,
+     "name": "NATIONAL BANK OF INDIANAPOLIS CORP",
+     "first_pool": "2012-07-02",
+     "last_pool": "2013-01-02",
+     "first_stopped": "2013-04-01",
+     "symbols": [],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1094093,
+     "name": "PROGRESS ENERGY, INC.",
+     "first_pool": "2011-07-01",
+     "last_pool": "2012-04-02",
+     "first_stopped": "2013-07-01",
+     "symbols": [
+      "PGN"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 31277,
+     "name": "EATON CORP",
+     "first_pool": "2011-07-01",
+     "last_pool": "2013-04-01",
+     "first_stopped": "2013-07-01",
+     "symbols": [],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 826083,
+     "name": "DELL INC",
+     "first_pool": "2011-07-01",
+     "last_pool": "2014-01-02",
+     "first_stopped": "2014-04-01",
+     "symbols": [
+      "DELL"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 723533,
+     "name": "LONGWEN GROUP CORP.",
+     "first_pool": "2012-07-02",
+     "last_pool": "2013-01-02",
+     "first_stopped": "2014-07-01",
+     "symbols": [
+      "WYGC"
+     ],
+     "in_current_sec_map": true,
+     "curated_outcome": false
+    },
+    {
+     "cik": 101830,
+     "name": "SPRINT CORP",
+     "first_pool": "2014-04-01",
+     "last_pool": "2014-04-01",
+     "first_stopped": "2014-07-01",
+     "symbols": [
+      "S"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 46640,
+     "name": "HEINZ H J CO",
+     "first_pool": "2011-07-01",
+     "last_pool": "2013-07-01",
+     "first_stopped": "2014-10-01",
+     "symbols": [
+      "HNZ"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1209821,
+     "name": "CROSSTEX ENERGY INC",
+     "first_pool": "2013-01-02",
+     "last_pool": "2014-01-02",
+     "first_stopped": "2014-10-01",
+     "symbols": [
+      "XTEX",
+      "XTXI"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 888228,
+     "name": "KINDER MORGAN ENERGY PARTNERS L P",
+     "first_pool": "2011-07-01",
+     "last_pool": "2015-01-02",
+     "first_stopped": "2015-07-01",
+     "symbols": [
+      "KMI",
+      "KMP",
+      "KMR"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1427030,
+     "name": "BIONEUTRAL GROUP, INC",
+     "first_pool": "2012-07-02",
+     "last_pool": "2013-01-02",
+     "first_stopped": "2015-07-01",
+     "symbols": [
+      "BONU"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 64670,
+     "name": "MEDTRONIC INC",
+     "first_pool": "2011-07-01",
+     "last_pool": "2015-01-02",
+     "first_stopped": "2015-10-01",
+     "symbols": [
+      "MDT"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 104207,
+     "name": "WALGREEN CO",
+     "first_pool": "2011-07-01",
+     "last_pool": "2015-07-01",
+     "first_stopped": "2015-10-01",
+     "symbols": [
+      "WAG"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1385187,
+     "name": "COVIDIEN PLC",
+     "first_pool": "2011-07-01",
+     "last_pool": "2015-07-01",
+     "first_stopped": "2015-10-01",
+     "symbols": [
+      "COV"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 850693,
+     "name": "ALLERGAN INC",
+     "first_pool": "2011-07-01",
+     "last_pool": "2015-07-01",
+     "first_stopped": "2015-10-01",
+     "symbols": [
+      "AGN"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1424847,
+     "name": "LORILLARD, INC.",
+     "first_pool": "2011-07-01",
+     "last_pool": "2015-07-01",
+     "first_stopped": "2016-01-04",
+     "symbols": [
+      "LO"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1545158,
+     "name": "KRAFT FOODS GROUP, INC.",
+     "first_pool": "2014-04-01",
+     "last_pool": "2015-10-01",
+     "first_stopped": "2016-01-04",
+     "symbols": [
+      "KRFT"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1277141,
+     "name": "Borderfree, Inc.",
+     "first_pool": "2015-04-01",
+     "last_pool": "2015-10-01",
+     "first_stopped": "2016-01-04",
+     "symbols": [
+      "BRDR"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1465112,
+     "name": "DIRECTV",
+     "first_pool": "2011-07-01",
+     "last_pool": "2016-01-04",
+     "first_stopped": "2016-04-01",
+     "symbols": [
+      "DTV"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1478484,
+     "name": "zulily, inc.",
+     "first_pool": "2015-04-01",
+     "last_pool": "2016-01-04",
+     "first_stopped": "2016-04-01",
+     "symbols": [
+      "ZU"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1054374,
+     "name": "BROADCOM CORP",
+     "first_pool": "2011-07-01",
+     "last_pool": "2014-01-02",
+     "first_stopped": "2016-07-01",
+     "symbols": [
+      "BRCM"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 20171,
+     "name": "CHUBB CORP",
+     "first_pool": "2011-07-01",
+     "last_pool": "2015-07-01",
+     "first_stopped": "2016-07-01",
+     "symbols": [
+      "CB"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 820738,
+     "name": "TIGERLOGIC CORP",
+     "first_pool": "2012-07-02",
+     "last_pool": "2013-07-01",
+     "first_stopped": "2016-10-03",
+     "symbols": [
+      "IHS",
+      "MDSI",
+      "TIGR"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1574300,
+     "name": "CONTENT CHECKED HOLDINGS, INC.",
+     "first_pool": "2015-10-01",
+     "last_pool": "2016-07-01",
+     "first_stopped": "2016-10-03",
+     "symbols": [
+      "CNCK"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1441634,
+     "name": "Avago Technologies LTD",
+     "first_pool": "2016-01-04",
+     "last_pool": "2016-07-01",
+     "first_stopped": "2016-10-03",
+     "symbols": [
+      "AVGO"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 79958,
+     "name": "PRECISION CASTPARTS CORP",
+     "first_pool": "2011-07-01",
+     "last_pool": "2016-04-01",
+     "first_stopped": "2017-01-03",
+     "symbols": [
+      "PCP"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1377013,
+     "name": "TIME WARNER CABLE INC.",
+     "first_pool": "2011-07-01",
+     "last_pool": "2016-10-03",
+     "first_stopped": "2017-01-03",
+     "symbols": [],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1504747,
+     "name": "SWISHER HYGIENE INC.",
+     "first_pool": "2015-04-01",
+     "last_pool": "2016-01-04",
+     "first_stopped": "2017-01-03",
+     "symbols": [
+      "SWSH"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 790070,
+     "name": "EMC CORP",
+     "first_pool": "2011-07-01",
+     "last_pool": "2017-01-03",
+     "first_stopped": "2017-04-03",
+     "symbols": [
+      "EMC"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 53669,
+     "name": "JOHNSON CONTROLS INC",
+     "first_pool": "2011-07-01",
+     "last_pool": "2017-04-03",
+     "first_stopped": "2017-07-03",
+     "symbols": [
+      "JCI"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 203077,
+     "name": "ST JUDE MEDICAL INC",
+     "first_pool": "2011-07-01",
+     "last_pool": "2013-01-02",
+     "first_stopped": "2017-07-03",
+     "symbols": [
+      "AGAM",
+      "EPMD"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1271024,
+     "name": "LINKEDIN CORP",
+     "first_pool": "2016-04-01",
+     "last_pool": "2017-04-03",
+     "first_stopped": "2017-07-03",
+     "symbols": [
+      "LNKD"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1373835,
+     "name": "SPECTRA ENERGY CORP.",
+     "first_pool": "2011-07-01",
+     "last_pool": "2017-07-03",
+     "first_stopped": "2017-10-02",
+     "symbols": [
+      "SE",
+      "SEP"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1011006,
+     "name": "YAHOO INC",
+     "first_pool": "2011-07-01",
+     "last_pool": "2017-10-02",
+     "first_stopped": "2018-01-02",
+     "symbols": [
+      "YHOO"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1452575,
+     "name": "Mead Johnson Nutrition Co",
+     "first_pool": "2012-04-02",
+     "last_pool": "2014-01-02",
+     "first_stopped": "2018-01-02",
+     "symbols": [
+      "MJN"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 30554,
+     "name": "DUPONT E I DE NEMOURS & CO",
+     "first_pool": "2011-07-01",
+     "last_pool": "2017-10-02",
+     "first_stopped": "2018-04-02",
+     "symbols": [],
+     "in_current_sec_map": true,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1275283,
+     "name": "REYNOLDS AMERICAN INC",
+     "first_pool": "2016-04-01",
+     "last_pool": "2018-01-02",
+     "first_stopped": "2018-04-02",
+     "symbols": [
+      "RAI"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 865436,
+     "name": "WHOLE FOODS MARKET INC",
+     "first_pool": "2013-04-01",
+     "last_pool": "2014-01-02",
+     "first_stopped": "2018-07-02",
+     "symbols": [
+      "WFM"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1012569,
+     "name": "Energy Transfer, LP",
+     "first_pool": "2016-04-01",
+     "last_pool": "2017-01-03",
+     "first_stopped": "2018-07-02",
+     "symbols": [
+      "ETP",
+      "RSPP"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 849399,
+     "name": "NortonLifeLock Inc.",
+     "first_pool": "2011-07-01",
+     "last_pool": "2012-01-03",
+     "first_stopped": "2018-10-01",
+     "symbols": [
+      "GEN",
+      "GENVR"
+     ],
+     "in_current_sec_map": true,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1110783,
+     "name": "MONSANTO CO /NEW/",
+     "first_pool": "2011-07-01",
+     "last_pool": "2018-10-01",
+     "first_stopped": "2019-01-02",
+     "symbols": [
+      "MON"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1105705,
+     "name": "TIME WARNER INC.",
+     "first_pool": "2011-07-01",
+     "last_pool": "2018-10-01",
+     "first_stopped": "2019-01-02",
+     "symbols": [
+      "TWX"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1649338,
+     "name": "Broadcom Ltd",
+     "first_pool": "2017-01-03",
+     "last_pool": "2018-10-01",
+     "first_stopped": "2019-01-02",
+     "symbols": [
+      "AVGO"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1483096,
+     "name": "Williams Partners L.P.",
+     "first_pool": "2016-04-01",
+     "last_pool": "2019-01-02",
+     "first_stopped": "2019-04-01",
+     "symbols": [
+      "WMB",
+      "WPZ"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 884905,
+     "name": "PRAXAIR INC",
+     "first_pool": "2011-07-01",
+     "last_pool": "2019-04-01",
+     "first_stopped": "2019-07-01",
+     "symbols": [
+      "PX"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1122304,
+     "name": "AETNA INC /PA/",
+     "first_pool": "2011-07-01",
+     "last_pool": "2019-04-01",
+     "first_stopped": "2019-07-01",
+     "symbols": [
+      "AET"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 936402,
+     "name": "SHIRE PLC",
+     "first_pool": "2011-07-01",
+     "last_pool": "2019-04-01",
+     "first_stopped": "2019-07-01",
+     "symbols": [
+      "SHP"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 701221,
+     "name": "CIGNA CORP",
+     "first_pool": "2011-10-03",
+     "last_pool": "2019-04-01",
+     "first_stopped": "2019-07-01",
+     "symbols": [
+      "CI"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1532063,
+     "name": "Express Scripts Holding Co.",
+     "first_pool": "2013-04-01",
+     "last_pool": "2019-04-01",
+     "first_stopped": "2019-07-01",
+     "symbols": [
+      "ESRX"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1001039,
+     "name": "WALT DISNEY CO/",
+     "first_pool": "2011-07-01",
+     "last_pool": "2019-07-01",
+     "first_stopped": "2019-10-01",
+     "symbols": [
+      "DIS"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1616314,
+     "name": "MEDEQUITIES REALTY TRUST, INC.",
+     "first_pool": "2019-04-01",
+     "last_pool": "2019-10-01",
+     "first_stopped": "2020-01-02",
+     "symbols": [
+      "MRT"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 773910,
+     "name": "Anadarko Petroleum Corp",
+     "first_pool": "2011-07-01",
+     "last_pool": "2020-01-02",
+     "first_stopped": "2020-04-01",
+     "symbols": [
+      "APC"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1690881,
+     "name": "ASV HOLDINGS, INC.",
+     "first_pool": "2018-04-02",
+     "last_pool": "2020-01-02",
+     "first_stopped": "2020-04-01",
+     "symbols": [
+      "ASV"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 816284,
+     "name": "CELGENE CORPORATION",
+     "first_pool": "2011-07-01",
+     "last_pool": "2020-04-01",
+     "first_stopped": "2020-07-01",
+     "symbols": [
+      "CELG",
+      "CELGZ"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 750556,
+     "name": "SunTrust Banks, Inc",
+     "first_pool": "2011-07-01",
+     "last_pool": "2020-04-01",
+     "first_stopped": "2020-07-01",
+     "symbols": [
+      "STI"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1047122,
+     "name": "RAYTHEON CO/",
+     "first_pool": "2011-07-01",
+     "last_pool": "2020-07-01",
+     "first_stopped": "2020-10-01",
+     "symbols": [
+      "RTN"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1578845,
+     "name": "ALLERGAN PLC",
+     "first_pool": "2015-04-01",
+     "last_pool": "2020-10-01",
+     "first_stopped": "2021-01-04",
+     "symbols": [
+      "ACT",
+      "AGN"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1001601,
+     "name": "MGT CAPITAL INVESTMENTS, INC.",
+     "first_pool": "2019-07-01",
+     "last_pool": "2020-01-02",
+     "first_stopped": "2021-01-04",
+     "symbols": [
+      "MGTI"
+     ],
+     "in_current_sec_map": true,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1626853,
+     "name": "MAJESCO",
+     "first_pool": "2016-07-01",
+     "last_pool": "2017-04-03",
+     "first_stopped": "2021-04-01",
+     "symbols": [
+      "MJCO"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1173431,
+     "name": "TD AMERITRADE HOLDING CORP",
+     "first_pool": "2019-01-02",
+     "last_pool": "2019-10-01",
+     "first_stopped": "2021-04-01",
+     "symbols": [
+      "AMTD"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1623613,
+     "name": "MYLAN II B.V.",
+     "first_pool": "2016-04-01",
+     "last_pool": "2017-01-03",
+     "first_stopped": "2021-07-01",
+     "symbols": [
+      "MYL"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 899866,
+     "name": "ALEXION PHARMACEUTICALS, INC.",
+     "first_pool": "2013-04-01",
+     "last_pool": "2019-01-02",
+     "first_stopped": "2022-01-03",
+     "symbols": [
+      "ALXN",
+      "MRNA"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1418091,
+     "name": "Twitter, Inc.",
+     "first_pool": "2019-04-01",
+     "last_pool": "2023-01-03",
+     "first_stopped": "2023-04-03",
+     "symbols": [
+      "FLAG",
+      "TWTR"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": true
+    },
+    {
+     "cik": 1659352,
+     "name": "Codiak BioSciences, Inc.",
+     "first_pool": "2021-10-01",
+     "last_pool": "2022-01-03",
+     "first_stopped": "2023-07-03",
+     "symbols": [
+      "CDAK"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1679082,
+     "name": "Myovant Sciences Ltd.",
+     "first_pool": "2017-10-02",
+     "last_pool": "2018-04-02",
+     "first_stopped": "2023-10-02",
+     "symbols": [
+      "MYOV"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1750019,
+     "name": "TCR2 Therapeutics Inc.",
+     "first_pool": "2023-04-03",
+     "last_pool": "2023-10-02",
+     "first_stopped": "2024-01-02",
+     "symbols": [
+      "TCRR"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 718877,
+     "name": "ACTIVISION BLIZZARD,\u00a0INC.",
+     "first_pool": "2017-04-03",
+     "last_pool": "2024-01-02",
+     "first_stopped": "2024-04-01",
+     "symbols": [
+      "ATVI"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": true
+    },
+    {
+     "cik": 1715768,
+     "name": "Transphorm, Inc.",
+     "first_pool": "2021-07-01",
+     "last_pool": "2022-04-01",
+     "first_stopped": "2024-10-01",
+     "symbols": [],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1038357,
+     "name": "PIONEER NATURAL RESOURCES CO",
+     "first_pool": "2014-04-01",
+     "last_pool": "2024-10-01",
+     "first_stopped": "2025-01-02",
+     "symbols": [
+      "PXD"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1364742,
+     "name": "BlackRock, Inc.",
+     "first_pool": "2012-04-02",
+     "last_pool": "2025-01-02",
+     "first_stopped": "2025-04-01",
+     "symbols": [
+      "BLK"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 101778,
+     "name": "Marathon Oil Corporation",
+     "first_pool": "2011-07-01",
+     "last_pool": "2016-01-04",
+     "first_stopped": "2025-07-01",
+     "symbols": [],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 4447,
+     "name": "Hess Corporation",
+     "first_pool": "2011-07-01",
+     "last_pool": "2016-01-04",
+     "first_stopped": "2026-01-02",
+     "symbols": [
+      "HES"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1412100,
+     "name": "MAIDEN HOLDINGS, LTD.",
+     "first_pool": "2012-07-02",
+     "last_pool": "2013-01-02",
+     "first_stopped": "2026-01-02",
+     "symbols": [
+      "MHLA",
+      "MHNC"
+     ],
+     "in_current_sec_map": true,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1393612,
+     "name": "DISCOVER FINANCIAL SERVICES",
+     "first_pool": "2013-04-01",
+     "last_pool": "2024-01-02",
+     "first_stopped": "2026-01-02",
+     "symbols": [],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1782754,
+     "name": "AZEK Co Inc.",
+     "first_pool": "2022-01-03",
+     "last_pool": "2024-10-01",
+     "first_stopped": "2026-01-02",
+     "symbols": [
+      "AZEK"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1693011,
+     "name": "INOZYME PHARMA, INC.",
+     "first_pool": "2025-04-01",
+     "last_pool": "2025-10-01",
+     "first_stopped": "2026-01-02",
+     "symbols": [
+      "INZY"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1618921,
+     "name": "WALGREENS BOOTS ALLIANCE, INC.",
+     "first_pool": "2016-01-04",
+     "last_pool": "2022-01-03",
+     "first_stopped": "2026-04-01",
+     "symbols": [
+      "WBA"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1800347,
+     "name": "E2open Parent Holdings, Inc.",
+     "first_pool": "2021-07-01",
+     "last_pool": "2022-04-01",
+     "first_stopped": "2026-04-01",
+     "symbols": [
+      "ETWO"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 55067,
+     "name": "KELLOGG COMPANY",
+     "first_pool": "2011-07-01",
+     "last_pool": "2014-10-01",
+     "first_stopped": "2026-07-01",
+     "symbols": [
+      "K"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    },
+    {
+     "cik": 1687221,
+     "name": "REV Group, Inc.",
+     "first_pool": "2018-01-02",
+     "last_pool": "2018-10-01",
+     "first_stopped": "2026-07-01",
+     "symbols": [
+      "REVG"
+     ],
+     "in_current_sec_map": false,
+     "curated_outcome": false
+    }
+   ]
+  },
+  "lineage": {
+   "pass": true,
+   "exclusions": {
+    "predecessor": 4
+   },
+   "registrant_and_lineage_twin_both_ranked": []
+  },
+  "identifiers": {
+   "pass": true,
+   "resolved_conflicts": [
+    [
+     "2011-07-01",
+     833444,
+     {
+      "symbol": "JCI",
+      "kept_by": 53669
+     },
+     [
+      "TYC"
+     ]
+    ],
+    [
+     "2011-07-01",
+     20171,
+     {
+      "symbol": "CB",
+      "kept_by": 896159
+     },
+     []
+    ],
+    [
+     "2011-10-03",
+     833444,
+     {
+      "symbol": "JCI",
+      "kept_by": 53669
+     },
+     [
+      "TYC"
+     ]
+    ],
+    [
+     "2011-10-03",
+     20171,
+     {
+      "symbol": "CB",
+      "kept_by": 896159
+     },
+     []
+    ],
+    [
+     "2012-01-03",
+     833444,
+     {
+      "symbol": "JCI",
+      "kept_by": 53669
+     },
+     [
+      "TYC"
+     ]
+    ],
+    [
+     "2012-01-03",
+     20171,
+     {
+      "symbol": "CB",
+      "kept_by": 896159
+     },
+     []
+    ],
+    [
+     "2012-04-02",
+     833444,
+     {
+      "symbol": "JCI",
+      "kept_by": 53669
+     },
+     [
+      "TYC"
+     ]
+    ],
+    [
+     "2012-04-02",
+     20171,
+     {
+      "symbol": "CB",
+      "kept_by": 896159
+     },
+     []
+    ],
+    [
+     "2012-07-02",
+     833444,
+     {
+      "symbol": "JCI",
+      "kept_by": 53669
+     },
+     [
+      "TYC"
+     ]
+    ],
+    [
+     "2012-07-02",
+     20171,
+     {
+      "symbol": "CB",
+      "kept_by": 896159
+     },
+     []
+    ],
+    [
+     "2012-10-01",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2012-10-01",
+     833444,
+     {
+      "symbol": "JCI",
+      "kept_by": 53669
+     },
+     [
+      "TYC"
+     ]
+    ],
+    [
+     "2013-01-02",
+     833444,
+     {
+      "symbol": "JCI",
+      "kept_by": 53669
+     },
+     [
+      "TYC"
+     ]
+    ],
+    [
+     "2013-01-02",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2013-04-01",
+     833444,
+     {
+      "symbol": "JCI",
+      "kept_by": 53669
+     },
+     [
+      "TYC"
+     ]
+    ],
+    [
+     "2013-04-01",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2013-07-01",
+     833444,
+     {
+      "symbol": "JCI",
+      "kept_by": 53669
+     },
+     [
+      "TYC"
+     ]
+    ],
+    [
+     "2013-07-01",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2013-10-01",
+     833444,
+     {
+      "symbol": "JCI",
+      "kept_by": 53669
+     },
+     [
+      "TYC"
+     ]
+    ],
+    [
+     "2013-10-01",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2014-01-02",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2014-04-01",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2014-07-01",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2014-10-01",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2015-01-02",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2015-01-02",
+     833444,
+     {
+      "symbol": "JCI",
+      "kept_by": 53669
+     },
+     [
+      "TYC"
+     ]
+    ],
+    [
+     "2015-04-01",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2015-07-01",
+     896159,
+     {
+      "symbol": "CB",
+      "kept_by": 20171
+     },
+     [
+      "ACE"
+     ]
+    ],
+    [
+     "2016-04-01",
+     1483096,
+     {
+      "symbol": "WMB",
+      "kept_by": 107263
+     },
+     [
+      "WPZ"
+     ]
+    ],
+    [
+     "2016-07-01",
+     1483096,
+     {
+      "symbol": "WMB",
+      "kept_by": 107263
+     },
+     [
+      "WPZ"
+     ]
+    ],
+    [
+     "2016-10-03",
+     1483096,
+     {
+      "symbol": "WMB",
+      "kept_by": 107263
+     },
+     [
+      "WPZ"
+     ]
+    ],
+    [
+     "2017-01-03",
+     1483096,
+     {
+      "symbol": "WMB",
+      "kept_by": 107263
+     },
+     [
+      "WPZ"
+     ]
+    ]
+   ],
+   "pre_2019_pool_rows_using_current_sec_map": 5127,
+   "first_symbol_source_counts": {
+    "current": 10583,
+    "history": 215,
+    "filing_text": 484,
+    "cover_page": 691,
+    "own_filing": 27
+   },
+   "ciks_whose_symbol_changes_across_dates": 6,
+   "examples": {
+    "833444": [
+     "JCI",
+     "TYC"
+    ],
+    "896159": [
+     "ACE",
+     "CB"
+    ],
+    "1373835": [
+     "SE",
+     "SEP"
+    ],
+    "1578845": [
+     "ACT",
+     "AGN"
+    ],
+    "1483096": [
+     "WMB",
+     "WPZ"
+    ],
+    "1846510": [
+     "MCG",
+     "SHCO"
+    ]
+   },
+   "same_symbol_two_ciks_same_date": [],
+   "note": "after conflict resolution no symbol may be claimed by two CIKs on one date; current-map symbols on pre-2019 dates are verified by sample against the companies' own filings (verify_symbols_sample.py)"
+  },
+  "coverage": {
+   "pass": true,
+   "pool_rows": 12200,
+   "pool_rows_without_symbol": 200,
+   "examples": [
+    [
+     "2011-07-01",
+     1105705,
+     "TIME WARNER INC."
+    ],
+    [
+     "2011-07-01",
+     30554,
+     "DUPONT E I DE NEMOURS & CO"
+    ],
+    [
+     "2011-07-01",
+     884905,
+     "PRAXAIR INC"
+    ],
+    [
+     "2011-07-01",
+     101778,
+     "Marathon Oil Corporation"
+    ],
+    [
+     "2011-07-01",
+     1377013,
+     "TIME WARNER CABLE INC."
+    ],
+    [
+     "2011-07-01",
+     808362,
+     "Baker Hughes Holdings LLC"
+    ],
+    [
+     "2011-07-01",
+     773910,
+     "ANADARKO PETROLEUM CORP"
+    ],
+    [
+     "2011-07-01",
+     20171,
+     "CHUBB CORP"
+    ],
+    [
+     "2011-07-01",
+     4447,
+     "HESS CORPORATION"
+    ],
+    [
+     "2011-07-01",
+     55067,
+     "KELLOGG COMPANY"
+    ],
+    [
+     "2011-07-01",
+     750556,
+     "SUNTRUST BANKS INC"
+    ],
+    [
+     "2011-07-01",
+     8868,
+     "AVON PRODUCTS, INC."
+    ],
+    [
+     "2011-07-01",
+     108772,
+     "XEROX CORP"
+    ],
+    [
+     "2011-07-01",
+     936402,
+     "SHIRE PLC"
+    ],
+    [
+     "2011-07-01",
+     31277,
+     "EATON CORP"
+    ]
+   ]
+  }
+ }
+}

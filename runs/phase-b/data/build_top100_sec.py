@@ -39,6 +39,7 @@ import time
 from pathlib import Path
 
 from hedge_fund.data.edgar import EdgarClient
+from hedge_fund.data.edgar.client import EdgarClientError
 from hedge_fund.data.tiingo import TiingoClient, tiingo_symbol
 from hedge_fund.universe.builder import UniverseBuilder, reconstitution_dates
 from hedge_fund.universe.models import UniverseConfig
@@ -63,29 +64,63 @@ def main() -> int:
         builder = UniverseBuilder(edgar, tiingo, config, max_price_downloads=0)
         log(f"{len(dates)} quarterly dates {dates[0]}..{dates[-1]}, pool {pool}, depth {depth}")
         snapshots = []
-        for d in dates:
+        def one_date(d: str) -> dict:
             n_canonical, excluded, screened = builder.screened(d)
             rows = []
             for rank, cand in enumerate(screened[:depth], start=1):
-                symbols = [t for t, _ in builder._symbols(cand, d)]
-                sources = [s for _, s in builder._symbols(cand, d)]
-                if not symbols:                                     # delisted names: the filing's own symbol
-                    cover = builder._cover_symbols(cand) or builder._text_symbols(cand)
-                    symbols, sources = [t for t, _ in cover], [s for _, s in cover]
+                resolved = builder._symbols(cand, d)
+                if not resolved:                                    # delisted names: the filing's own symbol
+                    resolved = builder._cover_symbols(cand) or builder._text_symbols(cand)
                 rows.append({"float_rank": rank, "cik": cand.cik, "name": cand.name,
                              "public_float": cand.public_float, "float_filed": cand.float_filed,
-                             "latest_filing": cand.latest.filed, "symbols": symbols, "sources": sources,
-                             "in_pool": rank <= pool})
+                             "latest_filing": cand.latest.filed, "symbols": [t for t, _ in resolved],
+                             "sources": [src for _, src in resolved], "in_pool": rank <= pool})
+            # Same rule as the pricing stage for two companies claiming one symbol on a date:
+            # with positive evidence from their own filings, the symbol goes to the company
+            # whose filings state it; the other is priced from its own filing-stated symbols.
+            cands = {c.cik: c for c in screened[:depth]}
+            claim: dict[str, dict] = {}
+            for r in rows:
+                if not r["in_pool"] or not r["symbols"]:
+                    continue
+                key = tiingo_symbol(r["symbols"][0])
+                holder = claim.get(key)
+                if holder is None:
+                    claim[key] = r
+                    continue
+                if "current" in (holder["sources"][0], r["sources"][0]):
+                    mine = {tiingo_symbol(t) for t, _ in builder._own_symbols(cands[r["cik"]])}
+                    theirs = {tiingo_symbol(t) for t, _ in builder._own_symbols(cands[holder["cik"]])}
+                    loser = r
+                    if key in mine and theirs and key not in theirs:
+                        claim[key], loser = r, holder
+                    alt = [t for t, _ in builder._own_symbols(cands[loser["cik"]]) if tiingo_symbol(t) not in claim]
+                    loser["conflict"] = {"symbol": key, "kept_by": claim[key]["cik"]}
+                    loser["symbols"], loser["sources"] = alt[:3], ["own_filing"] * len(alt[:3])
+                    if alt:
+                        claim[tiingo_symbol(alt[0])] = loser
             reasons: dict[str, int] = {}
             for e in excluded:
                 reasons[e.reason] = reasons.get(e.reason, 0) + 1
-            snapshots.append({"as_of": d, "candidates": n_canonical, "screened": len(screened),
-                              "exclusions": reasons, "ranked": rows,
-                              "excluded_detail": [e.model_dump() for e in excluded
-                                                  if e.reason in ("predecessor", "successor_not_yet",
-                                                                  "stopped_filing", "nominated_after_as_of")]})
-            log(f"{d}: candidates {n_canonical} screened {len(screened)} "
-                f"no-symbol {sum(1 for r in rows if not r['symbols'])} SEC requests {edgar.requests}")
+            return {"as_of": d, "candidates": n_canonical, "screened": len(screened),
+                    "exclusions": reasons, "ranked": rows,
+                    "excluded_detail": [e.model_dump() for e in excluded
+                                        if e.reason in ("predecessor", "successor_not_yet",
+                                                        "stopped_filing", "nominated_after_as_of")]}
+
+        for d in dates:
+            for attempt in range(6):                                # transient proxy/network drops
+                try:
+                    snap = one_date(d)
+                    break
+                except EdgarClientError as exc:
+                    if attempt == 5:
+                        raise
+                    log(f"{d}: network error, retrying in {30 * (attempt + 1)}s ({str(exc)[:80]})")
+                    time.sleep(30 * (attempt + 1))
+            snapshots.append(snap)
+            log(f"{d}: candidates {snap['candidates']} screened {snap['screened']} "
+                f"no-symbol {sum(1 for r in snap['ranked'] if not r['symbols'])} SEC requests {edgar.requests}")
 
         first_try, contingency = set(), set()
         for s in snapshots:

@@ -1,0 +1,797 @@
+{
+ "population_rows": 5127,
+ "seed": 20261001,
+ "sampled": 75,
+ "counts": {
+  "verified": 55,
+  "contradicted": 5,
+  "unverifiable": 15
+ },
+ "upper95_contradiction_rate_if_zero": null,
+ "pass": false,
+ "contradictions": [
+  {
+   "as_of": "2013-01-02",
+   "cik": 906107,
+   "name": "EQUITY RESIDENTIAL",
+   "current_map_symbol": "VMRK",
+   "own_filing_symbols": [
+    "EQR",
+    "TOL"
+   ],
+   "status": "contradicted"
+  },
+  {
+   "as_of": "2016-07-01",
+   "cik": 62709,
+   "name": "Marsh & McLennan Companies, Inc.",
+   "current_map_symbol": "MRSH",
+   "own_filing_symbols": [
+    "MMC"
+   ],
+   "status": "contradicted"
+  },
+  {
+   "as_of": "2013-10-01",
+   "cik": 92230,
+   "name": "Truist Financial Corporation",
+   "current_map_symbol": "TFC",
+   "own_filing_symbols": [
+    "BBT"
+   ],
+   "status": "contradicted"
+  },
+  {
+   "as_of": "2017-07-03",
+   "cik": 766704,
+   "name": "WELLTOWER INC.",
+   "current_map_symbol": "WELL",
+   "own_filing_symbols": [
+    "HCN"
+   ],
+   "status": "contradicted"
+  },
+  {
+   "as_of": "2014-01-02",
+   "cik": 1116132,
+   "name": "Tapestry, Inc.",
+   "current_map_symbol": "TPR",
+   "own_filing_symbols": [
+    "COH"
+   ],
+   "status": "contradicted"
+  }
+ ],
+ "rows": [
+  {
+   "as_of": "2014-07-01",
+   "cik": 1032208,
+   "name": "SEMPRA ENERGY",
+   "current_map_symbol": "SRE",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2015-10-01",
+   "cik": 12927,
+   "name": "BOEING CO",
+   "current_map_symbol": "BA",
+   "own_filing_symbols": [
+    "BA"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2016-04-01",
+   "cik": 318154,
+   "name": "Amgen Inc.",
+   "current_map_symbol": "AMGN",
+   "own_filing_symbols": [
+    "AMGN"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2018-04-02",
+   "cik": 313616,
+   "name": "DANAHER CORPORATION",
+   "current_map_symbol": "DHR",
+   "own_filing_symbols": [
+    "DHR"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2018-10-01",
+   "cik": 16918,
+   "name": "CONSTELLATION BRANDS,\u00a0INC.",
+   "current_map_symbol": "STZ",
+   "own_filing_symbols": [
+    "STZ"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2016-07-01",
+   "cik": 1510295,
+   "name": "Marathon Petroleum Corporation",
+   "current_map_symbol": "MPC",
+   "own_filing_symbols": [
+    "MPC"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2013-01-02",
+   "cik": 906107,
+   "name": "EQUITY RESIDENTIAL",
+   "current_map_symbol": "VMRK",
+   "own_filing_symbols": [
+    "EQR",
+    "TOL"
+   ],
+   "status": "contradicted"
+  },
+  {
+   "as_of": "2019-01-02",
+   "cik": 1035267,
+   "name": "Intuitive Surgical, Inc.",
+   "current_map_symbol": "ISRG",
+   "own_filing_symbols": [
+    "ISRG"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2013-07-01",
+   "cik": 1090727,
+   "name": "United Parcel Service, Inc.",
+   "current_map_symbol": "UPS",
+   "own_filing_symbols": [
+    "UPS"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2014-01-02",
+   "cik": 1065088,
+   "name": "eBay Inc.",
+   "current_map_symbol": "EBAY",
+   "own_filing_symbols": [
+    "EBAY"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2012-07-02",
+   "cik": 4962,
+   "name": "AMERICAN EXPRESS CO",
+   "current_map_symbol": "AXP",
+   "own_filing_symbols": [
+    "AXP"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2013-04-01",
+   "cik": 895421,
+   "name": "Morgan Stanley",
+   "current_map_symbol": "MS",
+   "own_filing_symbols": [
+    "MS"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2012-01-03",
+   "cik": 200406,
+   "name": "Johnson & Johnson",
+   "current_map_symbol": "JNJ",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2014-01-02",
+   "cik": 4962,
+   "name": "AMERICAN EXPRESS CO",
+   "current_map_symbol": "AXP",
+   "own_filing_symbols": [
+    "AXP"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2017-07-03",
+   "cik": 936468,
+   "name": "LOCKHEED MARTIN CORPORATION",
+   "current_map_symbol": "LMT",
+   "own_filing_symbols": [
+    "LMT"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2016-07-01",
+   "cik": 731766,
+   "name": "UnitedHealth Group Incorporated",
+   "current_map_symbol": "UNH",
+   "own_filing_symbols": [
+    "UNH"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2014-04-01",
+   "cik": 4977,
+   "name": "Aflac Incorporated",
+   "current_map_symbol": "AFL",
+   "own_filing_symbols": [
+    "AFL"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2016-01-04",
+   "cik": 1551152,
+   "name": "ABBVIE INC.",
+   "current_map_symbol": "ABBV",
+   "own_filing_symbols": [
+    "ABBV"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2014-01-02",
+   "cik": 927628,
+   "name": "CAPITAL\u00a0ONE\u00a0FINANCIAL\u00a0CORP",
+   "current_map_symbol": "COF",
+   "own_filing_symbols": [
+    "COF"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2018-10-01",
+   "cik": 1341439,
+   "name": "Oracle Corporation",
+   "current_map_symbol": "ORCL",
+   "own_filing_symbols": [
+    "ORCL"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2015-01-02",
+   "cik": 1467858,
+   "name": "General Motors Co",
+   "current_map_symbol": "GM",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2014-10-01",
+   "cik": 310764,
+   "name": "STRYKER CORP",
+   "current_map_symbol": "SYK",
+   "own_filing_symbols": [
+    "SYK"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2016-07-01",
+   "cik": 62709,
+   "name": "Marsh & McLennan Companies, Inc.",
+   "current_map_symbol": "MRSH",
+   "own_filing_symbols": [
+    "MMC"
+   ],
+   "status": "contradicted"
+  },
+  {
+   "as_of": "2014-04-01",
+   "cik": 1413329,
+   "name": "Philip Morris International Inc.",
+   "current_map_symbol": "PM",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2015-07-01",
+   "cik": 24741,
+   "name": "CORNING INC /NY",
+   "current_map_symbol": "GLW",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2011-10-03",
+   "cik": 713676,
+   "name": "PNC FINANCIAL SERVICES GROUP, INC.",
+   "current_map_symbol": "PNC",
+   "own_filing_symbols": [
+    "PNC"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2014-07-01",
+   "cik": 936468,
+   "name": "LOCKHEED MARTIN CORPORATION",
+   "current_map_symbol": "LMT",
+   "own_filing_symbols": [
+    "LMT"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2018-07-02",
+   "cik": 1065280,
+   "name": "Netflix, Inc.",
+   "current_map_symbol": "NFLX",
+   "own_filing_symbols": [
+    "NFLX"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2014-10-01",
+   "cik": 1048911,
+   "name": "FedEx Corporation",
+   "current_map_symbol": "FDX",
+   "own_filing_symbols": [
+    "FDX"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2015-01-02",
+   "cik": 4962,
+   "name": "AMERICAN EXPRESS CO",
+   "current_map_symbol": "AXP",
+   "own_filing_symbols": [
+    "AXP"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2017-10-02",
+   "cik": 77476,
+   "name": "PepsiCo, Inc.",
+   "current_map_symbol": "PEP",
+   "own_filing_symbols": [
+    "PEP"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2017-04-03",
+   "cik": 79879,
+   "name": "PPG INDUSTRIES INC",
+   "current_map_symbol": "PPG",
+   "own_filing_symbols": [
+    "PPG"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2014-01-02",
+   "cik": 63908,
+   "name": "MCDONALDS CORP",
+   "current_map_symbol": "MCD",
+   "own_filing_symbols": [
+    "MCD"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2016-04-01",
+   "cik": 875045,
+   "name": "BIOGEN INC.",
+   "current_map_symbol": "BIIB",
+   "own_filing_symbols": [
+    "BIIB"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2016-07-01",
+   "cik": 56873,
+   "name": "The Kroger Co.",
+   "current_map_symbol": "KR",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2018-01-02",
+   "cik": 1467373,
+   "name": "Accenture plc",
+   "current_map_symbol": "ACN",
+   "own_filing_symbols": [
+    "ACN"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2012-04-02",
+   "cik": 50863,
+   "name": "INTEL CORP",
+   "current_map_symbol": "INTC",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2017-04-03",
+   "cik": 1051470,
+   "name": "Crown Castle Inc.",
+   "current_map_symbol": "CCI",
+   "own_filing_symbols": [
+    "CCI"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2016-07-01",
+   "cik": 27904,
+   "name": "DELTA AIR LINES, INC.",
+   "current_map_symbol": "DAL",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2019-01-02",
+   "cik": 5272,
+   "name": "AMERICAN INTERNATIONAL GROUP, INC.",
+   "current_map_symbol": "AIG",
+   "own_filing_symbols": [
+    "AIG"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2017-10-02",
+   "cik": 1099219,
+   "name": "METLIFE INC",
+   "current_map_symbol": "MET",
+   "own_filing_symbols": [
+    "MET"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2013-01-02",
+   "cik": 1451505,
+   "name": "Transocean\u00a0Ltd",
+   "current_map_symbol": "RIG",
+   "own_filing_symbols": [
+    "RIG",
+    "RIGN"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2012-10-01",
+   "cik": 1393311,
+   "name": "PUBLIC STORAGE",
+   "current_map_symbol": "PSA",
+   "own_filing_symbols": [
+    "PSA",
+    "PSAA",
+    "TCH"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2017-10-02",
+   "cik": 865752,
+   "name": "Monster Beverage Corporation",
+   "current_map_symbol": "MNST",
+   "own_filing_symbols": [
+    "HANS",
+    "MNST"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2016-07-01",
+   "cik": 36104,
+   "name": "US BANCORP \\DE\\",
+   "current_map_symbol": "USB",
+   "own_filing_symbols": [
+    "USB"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2013-10-01",
+   "cik": 92230,
+   "name": "Truist Financial Corporation",
+   "current_map_symbol": "TFC",
+   "own_filing_symbols": [
+    "BBT"
+   ],
+   "status": "contradicted"
+  },
+  {
+   "as_of": "2017-01-03",
+   "cik": 60667,
+   "name": "LOWE\u2019S\u00a0COMPANIES, INC",
+   "current_map_symbol": "LOW",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2013-10-01",
+   "cik": 4904,
+   "name": "AMERICAN ELECTRIC POWER COMPANY, INC.",
+   "current_map_symbol": "AEP",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2018-04-02",
+   "cik": 1091667,
+   "name": "Charter Communications, Inc.",
+   "current_map_symbol": "CHTR",
+   "own_filing_symbols": [
+    "CHTR"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2015-04-01",
+   "cik": 18230,
+   "name": "CATERPILLAR INC",
+   "current_map_symbol": "CAT",
+   "own_filing_symbols": [
+    "CAT"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2012-01-03",
+   "cik": 1108524,
+   "name": "salesforce.com, inc.",
+   "current_map_symbol": "CRM",
+   "own_filing_symbols": [
+    "CRM"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2017-10-02",
+   "cik": 97745,
+   "name": "THERMO FISHER SCIENTIFIC INC.",
+   "current_map_symbol": "TMO",
+   "own_filing_symbols": [
+    "TMO"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2017-04-03",
+   "cik": 1326160,
+   "name": "DUKE ENERGY CORPORATION",
+   "current_map_symbol": "DUK",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2011-07-01",
+   "cik": 899689,
+   "name": "VORNADO REALTY TRUST",
+   "current_map_symbol": "VNO",
+   "own_filing_symbols": [
+    "ALX",
+    "VNO",
+    "JCP"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2018-10-01",
+   "cik": 831001,
+   "name": "Citigroup Inc.",
+   "current_map_symbol": "C",
+   "own_filing_symbols": [
+    "C"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2014-10-01",
+   "cik": 51143,
+   "name": "INTERNATIONAL BUSINESS MACHINES CORPORATION",
+   "current_map_symbol": "IBM",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2017-04-03",
+   "cik": 1166691,
+   "name": "Comcast Corporation",
+   "current_map_symbol": "CMCSA",
+   "own_filing_symbols": [
+    "CMCSA"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2018-10-01",
+   "cik": 1032208,
+   "name": "SEMPRA",
+   "current_map_symbol": "SRE",
+   "own_filing_symbols": [
+    "SRE"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2018-04-02",
+   "cik": 320187,
+   "name": "NIKE, Inc.",
+   "current_map_symbol": "NKE",
+   "own_filing_symbols": [
+    "NKE"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2017-04-03",
+   "cik": 1045810,
+   "name": "NVIDIA CORP",
+   "current_map_symbol": "NVDA",
+   "own_filing_symbols": [
+    "NVDA"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2013-04-01",
+   "cik": 59478,
+   "name": "ELI LILLY & Co",
+   "current_map_symbol": "LLY",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2017-07-03",
+   "cik": 766704,
+   "name": "WELLTOWER INC.",
+   "current_map_symbol": "WELL",
+   "own_filing_symbols": [
+    "HCN"
+   ],
+   "status": "contradicted"
+  },
+  {
+   "as_of": "2015-01-02",
+   "cik": 1061219,
+   "name": "ENTERPRISE PRODUCTS PARTNERS L.P.",
+   "current_map_symbol": "EPD",
+   "own_filing_symbols": [
+    "EPD",
+    "DEP"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2018-10-01",
+   "cik": 1385157,
+   "name": "TE CONNECTIVITY PLC",
+   "current_map_symbol": "TEL",
+   "own_filing_symbols": [
+    "TEL"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2014-07-01",
+   "cik": 310158,
+   "name": "Merck\u00a0& Co., Inc.",
+   "current_map_symbol": "MRK",
+   "own_filing_symbols": [
+    "MRK"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2014-10-01",
+   "cik": 1063761,
+   "name": "SIMON PROPERTY GROUP, INC.",
+   "current_map_symbol": "SPG",
+   "own_filing_symbols": [
+    "SPG"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2012-10-01",
+   "cik": 200406,
+   "name": "Johnson & Johnson",
+   "current_map_symbol": "JNJ",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2014-01-02",
+   "cik": 1116132,
+   "name": "Tapestry, Inc.",
+   "current_map_symbol": "TPR",
+   "own_filing_symbols": [
+    "COH"
+   ],
+   "status": "contradicted"
+  },
+  {
+   "as_of": "2014-04-01",
+   "cik": 1467858,
+   "name": "General Motors Co",
+   "current_map_symbol": "GM",
+   "own_filing_symbols": [],
+   "status": "unverifiable"
+  },
+  {
+   "as_of": "2012-01-03",
+   "cik": 815097,
+   "name": "Carnival Corporation",
+   "current_map_symbol": "CCL",
+   "own_filing_symbols": [
+    "CCL",
+    "CUK"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2018-10-01",
+   "cik": 97745,
+   "name": "THERMO FISHER SCIENTIFIC INC.",
+   "current_map_symbol": "TMO",
+   "own_filing_symbols": [
+    "TMO"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2015-10-01",
+   "cik": 872589,
+   "name": "REGENERON PHARMACEUTICALS, INC.",
+   "current_map_symbol": "REGN",
+   "own_filing_symbols": [
+    "REGN"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2014-04-01",
+   "cik": 731766,
+   "name": "UNITEDHEALTH GROUP INCORPORATED",
+   "current_map_symbol": "UNH",
+   "own_filing_symbols": [
+    "UNH"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2017-04-03",
+   "cik": 310158,
+   "name": "Merck\u00a0& Co., Inc.",
+   "current_map_symbol": "MRK",
+   "own_filing_symbols": [
+    "MRK"
+   ],
+   "status": "verified"
+  },
+  {
+   "as_of": "2013-01-02",
+   "cik": 831259,
+   "name": "Freeport-McMoRan Inc.",
+   "current_map_symbol": "FCX",
+   "own_filing_symbols": [
+    "FCX"
+   ],
+   "status": "verified"
+  }
+ ],
+ "sec_requests": 324
+}

@@ -1,0 +1,136 @@
+{
+ "universe": "quarterly PIT top-100, 2011-07-01..2026-07-01",
+ "gates": {
+  "G0_storage": {
+   "pass": true,
+   "evidence": "storage_check.json, storage_history.jsonl"
+  },
+  "G1_sec_frames": {
+   "pass": true,
+   "frames_needed": 70,
+   "missing": []
+  },
+  "G2_universe_sec": {
+   "pass": false,
+   "dates": 61,
+   "checks": {
+    "pit": true,
+    "survivorship": true,
+    "lineage": true,
+    "identifiers": true,
+    "coverage": true
+   },
+   "symbol_sample": {
+    "counts": {
+     "verified": 55,
+     "contradicted": 5,
+     "unverifiable": 15
+    },
+    "pass": false,
+    "contradictions": [
+     [
+      "2013-01-02",
+      "EQUITY RESIDENTIAL",
+      "VMRK",
+      [
+       "EQR",
+       "TOL"
+      ]
+     ],
+     [
+      "2016-07-01",
+      "Marsh & McLennan Companies, Inc.",
+      "MRSH",
+      [
+       "MMC"
+      ]
+     ],
+     [
+      "2013-10-01",
+      "Truist Financial Corporation",
+      "TFC",
+      [
+       "BBT"
+      ]
+     ],
+     [
+      "2017-07-03",
+      "WELLTOWER INC.",
+      "WELL",
+      [
+       "HCN"
+      ]
+     ],
+     [
+      "2014-01-02",
+      "Tapestry, Inc.",
+      "TPR",
+      [
+       "COH"
+      ]
+     ]
+    ]
+   }
+  },
+  "G3_universe_final": {
+   "pass": false,
+   "first_try_symbols": 494,
+   "cached": 64,
+   "missing": 430,
+   "contingency_symbols": 698,
+   "contingency_missing": 631
+  },
+  "G4_tiingo_verified": {
+   "pass": false,
+   "why": "NOT VERIFIABLE VIA API: Tiingo documents no usage/plan endpoint and returns no rate-limit headers",
+   "action": "a human logs in at https://www.tiingo.com/account/api/usage and records plan, unique symbols used this month and bandwidth used"
+  },
+  "G5_tiingo_fits": {
+   "pass": true,
+   "plan_assumed": "starter_free (the most restrictive published plan)",
+   "missing_first_try_symbols": 430,
+   "symbol_limit_with_headroom": 450,
+   "est_bandwidth_gb_full_history": 0.727,
+   "bandwidth_limit_with_headroom_gb": 0.9,
+   "est_requests": 430,
+   "hours_at_50_per_hour": 9.6
+  },
+  "G6_exits_quantified": {
+   "pass": true,
+   "pool_exits": 86,
+   "per_year": 5.7,
+   "with_known_outcome": 2,
+   "scenario_bias_25pct_perf": 0.0043,
+   "note": "rate per 100 members of a 200-name pool; no delisting return invented"
+  },
+  "G7_candidate_data": {
+   "pass": true,
+   "data_ready_definitions": [
+    "H-RESMOM",
+    "H-LOWVOL",
+    "H-GPROF",
+    "H-ISSUE"
+   ],
+   "data_not_ready": {
+    "H-PEAD": "no allowed announcement-time EPS source; 10-Q/10-K filing dates are not used as a substitute"
+   }
+  },
+  "G8_holdout_fence": {
+   "pass": true,
+   "visible_spy_range": [
+    "1993-01-29",
+    "2026-08-31"
+   ],
+   "last_universe_date": "2026-07-01"
+  },
+  "G9_runtime": {
+   "pass": true,
+   "est_hours": 0.75
+  }
+ },
+ "all_mandatory_pass": false,
+ "advisory": {
+  "cross_session_durability": "NOT PROVABLE: a new session starts on a fresh machine"
+ },
+ "decision": "NOT_READY \u2014 do not freeze; no strategy result may be produced"
+}

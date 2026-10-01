@@ -1,0 +1,20 @@
+{
+ "checked_on": "2026-10-01",
+ "api_key": "PRESENT (value never printed)",
+ "authenticated_calls_made": [
+  {"endpoint": "/api/test", "status": 200, "purpose": "auth check; no symbol"},
+  {"endpoint": "/tiingo/daily/spy/prices?startDate=2026-01-02&endDate=2026-03-31", "status": 200,
+   "purpose": "measure wire size and compression; 1 unique symbol (SPY, already needed); not written to the cache",
+   "rows": 61, "fields_per_row": 13, "content_encoding": null, "wire_bytes_per_row": 263.3}
+ ],
+ "account_plan": "NOT VERIFIABLE VIA API: Tiingo documents no usage/plan endpoint and returns no rate-limit headers",
+ "account_plan_check_required": "a human logs in at https://www.tiingo.com/account/api/usage and records plan, unique symbols used this month and bandwidth used",
+ "published_limits_fetched": "https://www.tiingo.com/about/pricing on 2026-10-01",
+ "published_limits": {
+  "starter_free": {"unique_symbols_per_month": 500, "requests_per_hour": 50, "requests_per_day": 1000, "bandwidth_per_month_gb": 1, "eod_history": "30+ years"},
+  "power_30_usd_month": {"unique_symbols_per_month": 110159, "requests_per_hour": 10000, "requests_per_day": 100000, "bandwidth_per_month_gb": 40}
+ },
+ "reset_rules": "hourly requests reset hourly; daily requests at midnight EST; monthly bandwidth on the 1st at midnight EST (Tiingo docs overview)",
+ "planning_assumption_until_verified": "starter_free (the most restrictive published plan)",
+ "no_plan_was_purchased_or_changed": true
+}
