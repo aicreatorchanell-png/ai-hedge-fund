@@ -14,6 +14,6 @@
  "notes": {
   "no_holdout_bars_exist_locally": "embargo bars (2026-09-01..09-29) exist in the raw cache; research reads of them are fenced since 037a19d (raw client) and the readiness scripts drop them",
   "secrets": "environment variables were only ever reported PRESENT/ABSENT",
-  "trials_pre_logged": "vacuous: no Phase B trial was started (NO_UNIVERSE_QUALIFIES)"
+  "trials_pre_logged": "vacuous: no Phase B trial was started (top-100 data readiness NOT_READY)"
  }
 }
