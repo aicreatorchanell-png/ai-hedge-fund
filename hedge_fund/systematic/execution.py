@@ -25,6 +25,7 @@ untradable bar (halt, delisting) or a missing price rejects the order.
 
 from __future__ import annotations
 
+import bisect
 import math
 from enum import Enum
 
@@ -69,22 +70,54 @@ class SimulatedExecution:
     """ExecutionModel over a MarketPanel. Deterministic: same inputs, same fills."""
 
     def __init__(self, panel, costs: CostModel, timing: FillTiming,
-                 instruments: InstrumentRegistry | None = None) -> None:
+                 instruments: InstrumentRegistry | None = None, *, memoize: bool = True) -> None:
         if not isinstance(timing, FillTiming):
             raise TypeError("timing must be an explicit FillTiming (next_open or next_close)")
         self.panel, self.costs, self.timing = panel, costs, timing
         self.instruments = instruments or InstrumentRegistry()
+        # Every order of one session reads the same as-of views. The panel is immutable,
+        # so views and all-ticker frames are memoized per day (a few days kept);
+        # memoize=False recomputes them per order (the equivalence tests compare both).
+        self._memoize = memoize
+        self._views: dict[str, object] = {}
+        self._frames: dict[tuple, object] = {}
 
     # ------------------------------------------------------------------
 
+    def _view(self, day: str):
+        if not self._memoize:
+            return self.panel.as_of(day)
+        if day not in self._views:
+            if len(self._views) >= 4:
+                self._views.clear()
+                self._frames.clear()
+            self._views[day] = self.panel.as_of(day)
+        return self._views[day]
+
+    def _column(self, day: str, field: str, symbol: str, lookback: int):
+        view = self._view(day)
+        if not self._memoize:
+            return view.bars(field, tickers=[symbol], lookback=lookback)
+        key = (day, field, lookback)
+        if key not in self._frames:
+            self._frames[key] = view.bars(field, lookback=lookback)
+        frame = self._frames[key]
+        if symbol not in frame.columns:
+            raise KeyError(f"not in panel: {symbol}")
+        return frame[[symbol]]
+
+    def _prior_session(self, session: str) -> str | None:
+        sessions = self.panel._sessions
+        i = bisect.bisect_left(sessions, session)
+        return sessions[i - 1] if i > 0 else None
+
     def liquidity(self, symbol: str, session: str) -> tuple[float, float]:
         """(ADV notional, daily vol) from sessions strictly before *session*."""
-        prior = [s for s in self.panel.sessions_through(session) if s < session]
-        if not prior:
+        prior = self._prior_session(session)
+        if prior is None:
             return 0.0, self.costs.default_daily_vol
-        view = self.panel.as_of(prior[-1])
-        close = view.bars("close", tickers=[symbol], lookback=max(self.costs.adv_lookback, self.costs.vol_lookback) + 1)[symbol]
-        volume = view.bars("volume", tickers=[symbol], lookback=len(close))[symbol]
+        close = self._column(prior, "close", symbol, max(self.costs.adv_lookback, self.costs.vol_lookback) + 1)[symbol]
+        volume = self._column(prior, "volume", symbol, len(close))[symbol]
         dollar = (close * volume).dropna().tail(self.costs.adv_lookback)
         adv = float(dollar.mean()) if len(dollar) else 0.0
         rets = np.log(close.dropna()).diff().dropna().tail(self.costs.vol_lookback)
@@ -94,11 +127,11 @@ class SimulatedExecution:
         return (adv if math.isfinite(adv) else 0.0), vol
 
     def reference_price(self, symbol: str, session: str) -> float:
-        view = self.panel.as_of(session)
+        view = self._view(session)
         if view.session != session:
             return float("nan")
         field = "open" if self.timing is FillTiming.NEXT_OPEN else "close"
-        frame = view.bars(field, tickers=[symbol], lookback=1)
+        frame = self._column(session, field, symbol, 1)
         return float(frame.iloc[-1, 0]) if len(frame) and frame.index[-1] == session else float("nan")
 
     def execute(self, order: OrderRequest, session: str) -> OrderState:
