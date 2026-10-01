@@ -1,0 +1,140 @@
+# Phase B CANDIDATE hypotheses — proposals only.
+#
+# Status: NOT pre-registered, NOT in any experiment ledger, NOT backtested, NOT
+# tuned. No market data was read to write them. Each entry validates against
+# hedge_fund.research.preregistration.Hypothesis (test: hedge_fund/research/
+# test_phase_b_candidates.py). A human picks which (if any) go into a locked
+# pre-registration; the grids below are the *only* values that may then be tried.
+#
+# Disclosure: the author has seen the Phase A results (top-10 megacaps,
+# 2016-2026): beta 0.85-0.91 to SPY, alpha ~0, SPY's development Sharpe
+# above every reference strategy. That knowledge shaped these choices
+# (benchmark-relative primary metric, beta awareness, broader universe), and is
+# a reason why none of the Phase A strategy families is re-proposed with new
+# parameters.
+#
+# Shared design choices, from Phase A's lessons:
+#   - long-only (the simulator charges no borrow fee; shorting is blocked)
+#   - primary metric is benchmark-relative (information ratio vs SPY total
+#     return, CAPM alpha t-stat reported alongside), so beta alone cannot pass
+#   - small grids: 10 parameter sets in total (2 per candidate)
+#   - every input dated by its publication (Tiingo session close, SEC `filed`)
+hypotheses:
+  - id: H-RESMOM
+    family: residual-momentum
+    statement: >-
+      Stocks with the highest 12-1 month cumulative residual return (after
+      removing exposure to SPY) earn positive returns in excess of SPY over the
+      next month, net of costs, within a point-in-time top-N US universe.
+    economic_rationale: >-
+      Investors under-react to firm-specific news; stripping out market beta
+      leaves the firm-specific part of momentum, which the literature (Blitz,
+      Huij and Martens 2011) reports to be less exposed to momentum crashes
+      than total-return momentum. It also addresses Phase A's finding that the
+      reference momentum strategies were mostly market beta.
+    null_hypothesis: "Information ratio vs SPY TR of the top residual-momentum quintile is <= 0."
+    expected_sign: positive
+    signal_definition: >-
+      Daily log returns over sessions t-252..t-21; regress each stock on SPY
+      over the trailing 36 months (rolling, sessions before t only); residual
+      momentum = sum of residuals over t-252..t-21 divided by their standard
+      deviation. Rank within universe members on t; hold the top quintile,
+      inverse-volatility weighted, rebalanced monthly.
+    parameter_grid: {formation_sessions: [252], skip_sessions: [21], regression_months: [36, 24], top_fraction: [0.2]}
+    falsified_if: >-
+      Development information ratio <= 0, any validation gate fails, the cost
+      stress at 2x drives the information ratio <= 0, or the sealed holdout fails.
+    known_risks: ["needs 36 months of history per name: recent listings drop out",
+                  "factor publication decay (post-2011 sample)", "turnover under monthly rebalance"]
+
+  - id: H-LOWVOL
+    family: low-volatility
+    statement: >-
+      The lowest-volatility quintile of a point-in-time top-N US universe earns a
+      positive CAPM alpha against SPY total return, net of costs.
+    economic_rationale: >-
+      Leverage-constrained and benchmark-bound investors overpay for high-beta
+      stocks, flattening the security market line (Frazzini and Pedersen 2014;
+      Baker, Bradley and Wurgler 2011). The claim is about risk-adjusted return,
+      not raw outperformance, which can lag SPY in strong bull markets.
+    null_hypothesis: "CAPM alpha of the low-volatility quintile vs SPY TR is <= 0."
+    expected_sign: positive
+    signal_definition: >-
+      Standard deviation of daily returns over the trailing N sessions (before
+      t); hold the lowest-volatility quintile of members, equal weight, capped
+      per name, rebalanced quarterly.
+    parameter_grid: {vol_sessions: [126, 252], bottom_fraction: [0.2]}
+    falsified_if: >-
+      Development CAPM alpha t-stat < 2, ex-post beta outside the pre-registered
+      band, any validation gate fails, or the sealed holdout fails.
+    known_risks: ["sector concentration (utilities, staples)", "interest-rate sensitivity",
+                  "raw Sharpe gate may fail even if alpha is positive: primary metric must be stated up front"]
+
+  - id: H-PEAD
+    family: earnings-drift
+    statement: >-
+      Stocks whose standardized unexpected earnings, measured at the first SEC
+      filing of the quarter, are in the top decile earn positive returns in
+      excess of SPY over the following 60 sessions, net of costs.
+    economic_rationale: >-
+      Post-earnings-announcement drift (Bernard and Thomas 1989) is attributed
+      to limited attention and anchoring. The platform already extracts
+      earnings from EDGAR with filing dates (hedge_fund/signals/pead.py,
+      8-K-first), so the signal is point-in-time by construction.
+    null_hypothesis: "Mean 60-session net excess return after a top-decile surprise is <= 0."
+    expected_sign: positive
+    signal_definition: >-
+      SUE = (EPS_q - EPS_{q-4}) / std of that difference over the prior 8
+      quarters, using only figures filed by t. Enter at the next session's open
+      after the filing; hold H sessions; equal weight across open positions.
+    parameter_grid: {holding_sessions: [20, 60], top_fraction: [0.1]}
+    falsified_if: >-
+      Development mean excess return <= 0 or its block-bootstrap lower bound <= 0,
+      fewer than the minimum number of events, any gate fails, or the holdout fails.
+    known_risks: ["documented decay of PEAD in large caps since the 2000s",
+                  "EDGAR EPS tagging errors and restatements (use as-filed values)",
+                  "event clustering in earnings season (overlapping holdings)"]
+
+  - id: H-GPROF
+    family: profitability
+    statement: >-
+      Stocks in the top quintile of gross profitability (gross profit / total
+      assets, as filed) earn positive returns in excess of SPY, net of costs.
+    economic_rationale: >-
+      Gross profitability predicts returns with roughly the power of
+      book-to-market and is largely uncorrelated with it (Novy-Marx 2013); it is
+      a slow signal, so turnover and costs stay low.
+    null_hypothesis: "Information ratio vs SPY TR of the top gross-profitability quintile is <= 0."
+    expected_sign: positive
+    signal_definition: >-
+      Trailing four-quarter gross profit (revenue - cost of revenue) divided by
+      latest total assets, both from 10-K/10-Q facts filed by t; financials
+      excluded (no gross profit); hold the top quintile, equal weight,
+      rebalanced quarterly.
+    parameter_grid: {top_fraction: [0.2, 0.3]}
+    falsified_if: >-
+      Development information ratio <= 0, any gate fails, or the sealed holdout fails.
+    known_risks: ["XBRL concept heterogeneity for revenue and cost of revenue",
+                  "overlap with quality/large-growth exposure of SPY itself"]
+
+  - id: H-ISSUE
+    family: net-issuance
+    statement: >-
+      Stocks in the lowest quintile of 12-month net share issuance (largest
+      buybacks) earn positive returns in excess of SPY, net of costs.
+    economic_rationale: >-
+      Managers issue equity when it is overvalued and repurchase when
+      undervalued; net issuance predicts returns negatively (Pontiff and
+      Woodgate 2008; Daniel and Titman 2006).
+    null_hypothesis: "Information ratio vs SPY TR of the lowest-issuance quintile is <= 0."
+    expected_sign: positive
+    signal_definition: >-
+      log(split-adjusted shares outstanding at t / at t-12 months), shares from
+      dei:EntityCommonStockSharesOutstanding as filed by t, adjusted for splits
+      between the two filing dates; hold the lowest quintile, equal weight,
+      rebalanced quarterly.
+    parameter_grid: {window_months: [12, 24], bottom_fraction: [0.2]}
+    falsified_if: >-
+      Development information ratio <= 0, any gate fails, or the sealed holdout fails.
+    known_risks: ["split-adjustment errors masquerade as issuance",
+                  "share-class mixing for multi-class firms", "crowded buyback trade"]
