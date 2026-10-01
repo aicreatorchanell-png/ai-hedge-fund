@@ -1,0 +1,93 @@
+# Phase B pre-registration TEMPLATE (schema: hedge_fund/research/preregistration.py).
+# Copy, fill every field, run validate_against_environment, then a human locks it
+# (protected action approve_preregistration). A locked document is never edited:
+# a change is a new version with a new hash. Values below are placeholders and
+# defaults proposed by the research tooling, not approved settings.
+schema_version: 1
+program: phase-b
+version: 1
+title: "TEMPLATE — replace with the program title"
+status: draft
+hypotheses:
+  - id: H-EXAMPLE
+    family: example-family
+    statement: "TEMPLATE: one falsifiable sentence about a return pattern in the universe."
+    economic_rationale: "TEMPLATE: why the pattern should exist (risk premium, behavioural, structural)."
+    null_hypothesis: "Net excess return of the signal portfolio is zero."
+    expected_sign: positive
+    signal_definition: "TEMPLATE: exact formula, inputs, look-back and publication lag of every input."
+    parameter_grid: {lookback: [126, 252]}
+    falsified_if: "Primary metric fails a gate on development, or the sealed holdout fails."
+    known_risks: ["TEMPLATE: crowding, capacity, regime dependence"]
+universe:
+  definition: "US common stocks listed on NYSE/NASDAQ/AMEX, point-in-time, survivorship-aware"
+  point_in_time_source: "Tiingo daily prices + SEC EDGAR shares outstanding as published"
+  selection_rule: "top N by point-in-time market cap among names passing price and ADV filters"
+  reconstitution: monthly
+  target_size: 500
+  min_price: 5.0
+  min_adv_usd: 5000000.0
+  survivorship: "delisted names stay in history until their last trading day; liquidated at last tradable close"
+  exclusions: ["ADRs", "closed-end funds", "ETFs (except the benchmark)"]
+periods:
+  development: ["2006-01-03", "2026-07-31"]
+  validation_scheme: "expanding walk-forward by calendar year plus purged CPCV (6 groups, k=2) inside development"
+  holdout_id: phase-b-prospective
+  embargo_days: 30
+benchmark:
+  primary: SPY
+  total_return: true
+  secondary: ["equal-weight universe (total return)", "beta-matched SPY"]
+  risk_free: "3-month T-bill (0 if no series is cached; stated in the report)"
+execution:
+  timing: next_open
+  order_type: market_on_open
+  decision_time: "after the close of session D on data published by D"
+  rebalance: monthly
+costs:
+  commission_per_share: 0.0
+  commission_bps: 1.0
+  commission_min: 0.0
+  half_spread_bps: 5.0
+  impact_coef: 0.1
+  max_participation: 0.05
+  stress_multipliers: [1.0, 1.5, 2.0, 3.0]
+borrow:
+  allow_short: false
+  borrow_fee_bps_annual: 0.0
+  hard_to_borrow_policy: "not applicable: long-only"
+  locate_required: true
+sizing:
+  method: "inverse-volatility of positive scores, capped per name"
+  capital: 100000.0
+  max_position: 0.05
+  vol_target_annual: null
+exposure:
+  max_gross: 1.0
+  max_net: 1.0
+  min_net: 0.0
+  beta_band: [0.0, 1.2]
+statistics:
+  primary_metric: "annualized net Sharpe of returns in excess of the primary benchmark (information ratio)"
+  secondary_metrics: ["net Sharpe", "CAPM alpha t-stat vs SPY TR", "max drawdown", "turnover", "cost share of gross P&L"]
+  min_daily_observations: 1260
+  min_round_trips: 100
+multiple_testing:
+  methods: [deflated_sharpe, pbo, holm]
+  family_alpha: 0.05
+  planned_trials: 2
+gates:
+  gates_file: configs/validation-gates.yaml
+  gates_hash: 2fc90f4ad972f482
+  phase_b_overrides: {}
+  holdout_pass: {information_ratio_min: 0.3, max_drawdown_max: 0.25, total_return_min: 0.0}
+budget:
+  max_trials_total: 10
+  max_trials_per_hypothesis: 4
+  max_llm_usd: 0.0
+  max_data_requests: 0
+  max_wall_clock_hours: 4.0
+  stop_rule: "stop at the first exhausted limit; no extension without a new human-approved version"
+approved_by: null
+approved_at: null
+preregistration_hash: null
