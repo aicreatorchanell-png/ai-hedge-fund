@@ -46,11 +46,11 @@ import requests
 
 from hedge_fund.data.models import Price
 from hedge_fund.data.sessions import NEW_YORK
-from hedge_fund.paths import CACHE_DIR
+from hedge_fund.paths import cache_dir as _cache_dir
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_CACHE_DIR = CACHE_DIR / "tiingo"
+DEFAULT_CACHE_DIR = _cache_dir("tiingo")
 API_KEY_ENV = "TIINGO_API_KEY"
 HISTORY_START = "1962-01-01"
 

@@ -11,12 +11,36 @@ anchors its paths here, and nothing here may import them back.
 
 from __future__ import annotations
 
+import os
 import shutil
 from pathlib import Path
 
 USER_DIR = Path.home() / ".hedge-fund"
 MANDATES_DIR = USER_DIR / "mandates"
-CACHE_DIR = USER_DIR / "cache"
+# Data caches. AIHF_CACHE_DIR moves the whole cache root (e.g. to a private
+# persistent volume); AIHF_TIINGO_CACHE_DIR / AIHF_SEC_CACHE_DIR move one source
+# so licensed vendor data and public SEC filings can live apart.
+CACHE_DIR = Path(os.environ.get("AIHF_CACHE_DIR") or USER_DIR / "cache").expanduser()
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+# source -> (env override, subdirectory, licence class)
+CACHE_SOURCES = {
+    "tiingo": ("AIHF_TIINGO_CACHE_DIR", "tiingo", "licensed"),     # Tiingo terms: no redistribution
+    "edgar": ("AIHF_SEC_CACHE_DIR", "edgar", "public"),             # SEC EDGAR public filings
+}
+
+
+class CacheLocationError(ValueError):
+    pass
+
+
+def cache_dir(source: str) -> Path:
+    """The cache directory for *source*; licensed data may never sit inside the git checkout."""
+    env, sub, licence = CACHE_SOURCES[source]
+    path = Path(os.environ.get(env) or CACHE_DIR / sub).expanduser().resolve()
+    if licence == "licensed" and (path == REPO_ROOT or REPO_ROOT in path.parents):
+        raise CacheLocationError(f"{source} cache {path} is inside the repository; licensed data must stay out of git")
+    return path
 ENV_PATH = USER_DIR / ".env"
 
 # The example mandate ships inside the package; it is copied out (never read

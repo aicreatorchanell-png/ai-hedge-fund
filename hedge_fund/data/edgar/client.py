@@ -49,11 +49,11 @@ from hedge_fund.data.edgar.metrics import FilingValues, flows, to_metrics
 from hedge_fund.data.edgar.prices import RawPriceSource
 from hedge_fund.data.models import CompanyFacts, FinancialMetrics
 from hedge_fund.data.sessions import NEW_YORK
-from hedge_fund.paths import CACHE_DIR
+from hedge_fund.paths import cache_dir as _cache_dir
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_CACHE_DIR = CACHE_DIR / "edgar"
+DEFAULT_CACHE_DIR = _cache_dir("edgar")
 USER_AGENT_ENV = "SEC_USER_AGENT"
 _ANNUAL_FORMS = frozenset({"10-K", "10-KT"})
 
