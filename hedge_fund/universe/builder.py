@@ -133,7 +133,7 @@ class UniverseBuilder:
         snap = self._build(as_of)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(snap.model_dump_json(indent=1))
-        discovered = {m.ticker: m.cik for m in snap.members if m.symbol_source == "cover_page"}
+        discovered = {m.ticker: m.cik for m in snap.members if m.symbol_source in ("cover_page", "filing_text")}
         if discovered:
             self.edgar.register_tickers(discovered)
         return snap
@@ -322,10 +322,23 @@ class UniverseBuilder:
                 return found
         return []
 
+    def _text_symbols(self, cand: _Candidate) -> list[tuple[str, str]]:
+        """Symbols stated in the text of the company's last two 10-Ks filed by its latest
+        filing (Item 5 listing sentence) — for pre-2019 filers that tagged none. A wrong
+        or recycled symbol is rejected by the float/market-cap check in pricing."""
+        tenks = [f for f in cand.store.filings() if f.form.startswith("10-K") and f.filed <= cand.latest.filed]
+        for filing in sorted(tenks, key=lambda f: (f.filed, f.accn), reverse=True)[:2]:
+            symbols = self.edgar.filing_text_symbols(filing.cik or cand.cik, filing.accn)
+            found = [(normalize_ticker(s), "filing_text") for s in symbols if _looks_common(normalize_ticker(s))][:3]
+            if found:
+                return found
+        return []
+
     def _price(self, cand: _Candidate, as_of: str) -> tuple[UniverseMember | None, str, str]:
-        reason, detail = "no_symbol", "no symbol in ticker history, current map or cover page"
+        reason, detail = "no_symbol", "no symbol in ticker history, current map, cover page or 10-K text"
         tried: set[str] = set()
-        for source_list in (lambda: self._symbols(cand, as_of), lambda: self._cover_symbols(cand)):
+        for source_list in (lambda: self._symbols(cand, as_of), lambda: self._cover_symbols(cand),
+                            lambda: self._text_symbols(cand)):
             for ticker, source in source_list():
                 if ticker in tried:
                     continue

@@ -59,7 +59,7 @@ class UniverseMember(BaseModel):
     public_float: float
     float_filed: str
     latest_filing: str               # filing date of the latest periodic report used
-    symbol_source: Literal["history", "current", "cover_page"]
+    symbol_source: Literal["history", "current", "cover_page", "filing_text"]
 
 
 class UniverseExclusion(BaseModel):

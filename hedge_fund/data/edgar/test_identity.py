@@ -122,3 +122,16 @@ def test_parse_cover_entity_wide_and_empty():
     doc = "<td>Entity Common Stock, Shares Outstanding</td><td>&#160;</td><td>687,725,164</td>"
     assert parse_cover_shares(doc) == {None: 687_725_164.0}
     assert parse_cover_shares("<html>no cover here</html>") == {}
+
+
+def test_text_symbols_and_primary_document():
+    from hedge_fund.data.edgar.cover import parse_text_symbols, primary_document
+    doc = ("<p>The Company&#8217;s common stock is listed on the New York Stock Exchange under the ticker "
+           "symbol &#8220;DIS&#8221;.</p><p>Our shares trade (NYSE: BRK.B) and (Nasdaq: XYZ).</p>"
+           "<p>under the symbol &#8220;THE&#8221;</p>")
+    assert parse_text_symbols(doc) == ["DIS", "BRK.B", "XYZ"]
+    assert parse_text_symbols("<p>no listing sentence here</p>") == []
+    index = ("<table><tr><th>Seq</th></tr><tr><td>1</td><td>FORM 10-K</td><td><a href='x'>d10k.htm</a></td>"
+             "<td>10-K</td><td>1</td></tr><tr><td>2</td><td>EX</td><td>dex21.htm</td><td>EX-21</td></tr></table>")
+    assert primary_document(index, ("10-K",)) == "d10k.htm"
+    assert primary_document(index, ("10-Q",)) is None

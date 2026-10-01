@@ -446,3 +446,23 @@ def test_cover_symbol_found_on_an_earlier_filing_when_the_latest_lacks_it(tmp_pa
     b = make(tmp_path)
     dead = next(m for m in b.snapshot("2019-07-01").members if m.cik == 103)
     assert (dead.ticker, dead.symbol_source) == ("DEAD", "cover_page")
+
+
+def test_symbol_from_10k_text_when_no_cover_page_tags_it(tmp_path, monkeypatch):
+    """Pre-2019: no dei:TradingSymbol anywhere; the 10-K text names the listing."""
+    import gzip as _gzip
+    import json as _json
+    cover = {**COVER, 103: lambda filed: []}
+    histories = build_world(tmp_path, COMPANIES, CURRENT, cover, PRICES)
+    dead = next(c for c in COMPANIES if c.cik == 103)
+    for start, end, form, filed, accn in dead.periods():
+        if form == "10-K":
+            path = tmp_path / "edgar" / f"textsymbols/103/{accn}.json.gz"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            with _gzip.open(path, "wt") as fh:
+                _json.dump({"fetched_at": "2026-09-30T00:00:00-04:00",
+                            "data": {"document": "d10k.htm", "symbols": ["DEAD"]}}, fh)
+    monkeypatch.setattr(tiingo_mod.requests, "Session", lambda: FakeTiingo(histories))
+    tiingo_mod.clear_process_cache()
+    member = next(m for m in make(tmp_path).snapshot("2019-07-01").members if m.cik == 103)
+    assert (member.ticker, member.symbol_source) == ("DEAD", "filing_text")

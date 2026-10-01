@@ -36,7 +36,9 @@ from pathlib import Path
 import requests
 
 from hedge_fund.data.edgar.concepts import TRIM_VERSION, trim_companyfacts, trim_submissions
-from hedge_fund.data.edgar.cover import parse_cover_shares, parse_trading_symbols
+from hedge_fund.data.edgar.cover import (
+    parse_cover_shares, parse_text_symbols, parse_trading_symbols, primary_document,
+)
 from hedge_fund.data.edgar.facts import Filing, FactStore
 from hedge_fund.data.edgar.identity import (
     SHARE_CLASSES,
@@ -324,6 +326,22 @@ class EdgarClient:
             return []
         url = f"{self.WWW_URL}/Archives/edgar/data/{cik}/{accn.replace('-', '')}/R1.htm"
         return self._cached(rel, lambda: self._get_text(url), trim=parse_trading_symbols, immutable=True) or []
+
+    def filing_text_symbols(self, cik: int, accn: str, forms: tuple[str, ...] = ("10-K", "10-K405", "10-KT")) -> list[str]:
+        """Ticker symbols stated in the text of a filing's primary document (pre-2019
+        filings rarely tag dei:TradingSymbol). Immutable per accession; cached."""
+        rel = f"textsymbols/{cik}/{accn}.json.gz"
+        if not (self._dir / rel).exists() and self._offline:
+            return []
+        base = f"{self.WWW_URL}/Archives/edgar/data/{cik}/{accn.replace('-', '')}"
+
+        def fetch():
+            index = self._get_text(f"{base}/{accn}-index.html")
+            name = primary_document(index, forms) if index else None
+            return {"document": name, "symbols": parse_text_symbols(self._get_text(f"{base}/{name}") or "") if name else []}
+
+        hit = self._cached(rel, fetch, trim=lambda raw: raw, immutable=True)
+        return (hit or {}).get("symbols", [])
 
     # ------------------------------------------------------------------
     # Row construction
