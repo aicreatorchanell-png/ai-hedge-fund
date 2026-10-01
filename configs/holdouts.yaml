@@ -10,6 +10,11 @@
 #   contaminated  results on this window have been seen; it may never be
 #                 declared or evaluated as a holdout again (development use only)
 #   consumed      a sealed holdout whose evaluations are finished
+#
+# evaluation_mode
+#   one_shot      (default) one human-opened read of the whole window per candidate
+#   forward       never read as a window: the forward paper evaluator observes one
+#                 session at a time as real calendar time reaches it
 holdouts:
   - id: phase-a-2023
     start: "2023-02-01"
@@ -26,6 +31,7 @@ holdouts:
     end: "2027-09-30"
     embargo_days: 30
     status: sealed
+    evaluation_mode: forward
     reason: >-
       Every completed session before 2026-10-01 has either been seen (Phase A
       holdout) or sits inside the development history, so the only
@@ -33,3 +39,7 @@ holdouts:
       any of its data existed. Data from 2026-09-01 (embargo) onward is
       fenced off from development, selection, optimization, dashboards and
       agents. Proposed by the research tooling; any change requires a human.
+      Access modes (dates unchanged, per human instruction of 2026-10-01):
+      research mode has zero access; forward paper evaluation reads one
+      session at a time as real time reaches it, for a configuration frozen
+      before its first observation (hedge_fund/validation/forward.py).

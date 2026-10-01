@@ -58,6 +58,12 @@ class Purpose(str, Enum):
     AGENT = "agent"
     PAPER_MONITORING = "paper_monitoring"
     HOLDOUT_EVALUATION = "holdout_evaluation"
+    FORWARD_PAPER_EVALUATION = "forward_paper_evaluation"
+
+
+class EvaluationMode(str, Enum):
+    ONE_SHOT = "one_shot"      # the whole window is evaluated once, after it has passed
+    FORWARD = "forward"        # sessions are evaluated one by one as real time reaches them
 
 
 class HoldoutDeclaration(BaseModel):
@@ -69,6 +75,7 @@ class HoldoutDeclaration(BaseModel):
     embargo_days: int = Field(0, ge=0)
     status: HoldoutStatus
     reason: str = Field(min_length=1)
+    evaluation_mode: EvaluationMode = EvaluationMode.ONE_SHOT
 
     @model_validator(mode="after")
     def _dates(self):
@@ -86,6 +93,8 @@ class HoldoutDeclaration(BaseModel):
 
 
 _open: ContextVar[str | None] = ContextVar("open_holdout", default=None)
+# (holdout id, last session the forward evaluator may read) while one forward step runs
+_forward: ContextVar[tuple[str, str] | None] = ContextVar("forward_step", default=None)
 
 
 class HoldoutBook:
@@ -113,7 +122,12 @@ class HoldoutBook:
         for d in self.with_status(HoldoutStatus.SEALED):
             if not d.overlaps(start, end):
                 continue
-            if purpose is Purpose.HOLDOUT_EVALUATION and _open.get() == d.id:
+            if purpose is Purpose.HOLDOUT_EVALUATION and _open.get() == d.id \
+                    and d.evaluation_mode is EvaluationMode.ONE_SHOT:
+                continue
+            fwd = _forward.get()
+            if purpose is Purpose.FORWARD_PAPER_EVALUATION and fwd is not None and fwd[0] == d.id \
+                    and d.evaluation_mode is EvaluationMode.FORWARD and end <= fwd[1]:
                 continue
             raise HoldoutAccessDenied(
                 f"{purpose.value} access to {start}..{end} reaches sealed holdout {d.id} "
@@ -131,6 +145,11 @@ class HoldoutBook:
     def check_trial_window(self, stage: str, start: str, end: str) -> None:
         """Ledger rule: a holdout trial runs on exactly one sealed holdout; no other stage touches one."""
         if stage == "holdout":
+            forward = [d for d in self.with_status(HoldoutStatus.SEALED)
+                       if d.evaluation_mode is EvaluationMode.FORWARD and d.start == start and d.end == end]
+            if forward:
+                raise HoldoutAccessDenied(f"{forward[0].id} is a forward holdout: it is evaluated session by "
+                                          f"session by the forward paper evaluator, never as a research trial")
             if not any(d.start == start and d.end == end for d in self.with_status(HoldoutStatus.SEALED)):
                 self.check_new_holdout(start, end)
                 raise HoldoutAccessDenied(f"holdout trial window {start}..{end} is not a sealed declared holdout")
@@ -148,6 +167,9 @@ class HoldoutBook:
         d = self.get(holdout_id)
         if d.status is not HoldoutStatus.SEALED:
             raise HoldoutAccessDenied(f"holdout {d.id} is {d.status.value}, not sealed")
+        if d.evaluation_mode is EvaluationMode.FORWARD:
+            raise HoldoutAccessDenied(f"{d.id} is a forward holdout: no one-shot historical read of its window; "
+                                      f"use the forward paper evaluator")
         if _open.get() is not None:
             raise HoldoutAccessDenied("another holdout evaluation is already open")
         holdout_trials = [t for t in ledger.trials(stage="holdout") if t["window"] == [d.start, d.end]]
@@ -217,5 +239,10 @@ def check_access(start: str, end: str, *, purpose: Purpose | str) -> None:
 
 def market_data_fence(start: str, end: str) -> None:
     """Called by MarketPanel: data reads are evaluations only inside an open evaluation."""
-    purpose = Purpose.HOLDOUT_EVALUATION if _open.get() else Purpose.DEVELOPMENT
+    if _forward.get() is not None:
+        purpose = Purpose.FORWARD_PAPER_EVALUATION
+    elif _open.get():
+        purpose = Purpose.HOLDOUT_EVALUATION
+    else:
+        purpose = Purpose.DEVELOPMENT
     active_book().check_access(start, end, purpose=purpose)
