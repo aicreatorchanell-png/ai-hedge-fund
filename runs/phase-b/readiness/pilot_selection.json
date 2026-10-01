@@ -1,0 +1,54 @@
+{
+ "rules": "PART 7 \u2014 mechanical pilot-universe selection (no strategy result is read or exists).\n\nRules fixed here, before evaluation; the largest universe passing ALL wins:\n\n  G1 reliable PIT membership   a survivorship-aware schedule can be built for the\n                               whole development period from available data:\n                               every quarterly date's discovery frames are cached\n                               AND the top-N schedule has been built\n  G2 delisting coverage        disappearances quantified (delisting_audit.json) and\n                               the scenario overstatement at a 25% performance-\n                               related share is <= 1.0% a year\n  G3 candidate data quality    at least one candidate is DATA_READY for the universe\n  G4 Tiingo free tier          missing symbols <= 90% of 500 unique symbols/month\n                               (one month, 10% headroom) and requests <= 90% of 1000/day\n                               spread over at most 2 days\n  G5 runtime                   estimated full pilot <= 12 hours\n  G0 persistent private storage for the licensed cache (Part 2) \u2014 required for\n                               any universe that needs new downloads\n",
+ "evaluation": {
+  "top100": {
+   "gates": {
+    "G0_persistent_storage": false,
+    "G1_pit_membership": false,
+    "G2_delisting_quantified_and_bounded": true,
+    "G3_candidate_data": true,
+    "G4_free_tier_headroom": false,
+    "G5_runtime": true
+   },
+   "passes_all": false,
+   "runtime_hours_est": 0.76,
+   "missing_symbols_est": 685,
+   "requests_est": 685
+  },
+  "top200": {
+   "gates": {
+    "G0_persistent_storage": false,
+    "G1_pit_membership": false,
+    "G2_delisting_quantified_and_bounded": true,
+    "G3_candidate_data": true,
+    "G4_free_tier_headroom": false,
+    "G5_runtime": true
+   },
+   "passes_all": false,
+   "runtime_hours_est": 1.51,
+   "missing_symbols_est": 1205,
+   "requests_est": 1205
+  },
+  "top500": {
+   "gates": {
+    "G0_persistent_storage": false,
+    "G1_pit_membership": false,
+    "G2_delisting_quantified_and_bounded": true,
+    "G3_candidate_data": true,
+    "G4_free_tier_headroom": false,
+    "G5_runtime": true
+   },
+   "passes_all": false,
+   "runtime_hours_est": 3.77,
+   "missing_symbols_est": 2896,
+   "requests_est": 2896
+  }
+ },
+ "selected": null,
+ "decision": "NO_UNIVERSE_QUALIFIES \u2014 stop before freezing and before any Phase B backtest",
+ "blocking_gates": [
+  "G0_persistent_storage",
+  "G1_pit_membership",
+  "G4_free_tier_headroom"
+ ]
+}

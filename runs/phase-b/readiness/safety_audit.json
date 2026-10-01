@@ -1,0 +1,19 @@
+{
+ "checks": {
+  "main_unchanged": true,
+  "financial_datasets_disabled": true,
+  "no_financial_datasets_cache_writes_today": true,
+  "live_trading_disabled": true,
+  "no_holdout_bars_exist_locally": true,
+  "phase_b_has_no_trials_or_results": true,
+  "no_tiingo_raw_data_in_git": true,
+  "working_tree_clean": false
+ },
+ "all_pass": false,
+ "tiingo_cache_last_bar": "2026-09-29",
+ "notes": {
+  "no_holdout_bars_exist_locally": "embargo bars (2026-09-01..09-29) exist in the raw cache; research reads of them are fenced since 037a19d (raw client) and the readiness scripts drop them",
+  "secrets": "environment variables were only ever reported PRESENT/ABSENT",
+  "trials_pre_logged": "vacuous: no Phase B trial was started (NO_UNIVERSE_QUALIFIES)"
+ }
+}
