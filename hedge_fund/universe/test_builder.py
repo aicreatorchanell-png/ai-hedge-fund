@@ -466,3 +466,17 @@ def test_symbol_from_10k_text_when_no_cover_page_tags_it(tmp_path, monkeypatch):
     tiingo_mod.clear_process_cache()
     member = next(m for m in make(tmp_path).snapshot("2019-07-01").members if m.cik == 103)
     assert (member.ticker, member.symbol_source) == ("DEAD", "filing_text")
+
+
+def test_reused_ticker_goes_to_the_company_whose_own_filings_state_it(tmp_path, monkeypatch):
+    """Today's SEC map gives JCX to BETA, but in 2019 ALPHA's filings state JCX and BETA's state BTA."""
+    alpha = Company(201, "ALPHA HOLDINGS", shares=1e9, price=50.0, last_period="2019-03-31")
+    beta = Company(202, "BETA INC", shares=1e9, price=50.0, float_multiplier=1.01)
+    cover = {201: lambda filed: ["JCX"], 202: lambda filed: ["BTA"] if filed < "2020-01-01" else ["JCX"]}
+    prices = {"JCX": flat(50.0), "BTA": flat(50.0, end="2019-12-31"), "SPY": flat(300.0)}
+    histories = build_world(tmp_path, [alpha, beta], {"JCX": 202}, cover, prices)
+    monkeypatch.setattr(tiingo_mod.requests, "Session", lambda: FakeTiingo(histories))
+    tiingo_mod.clear_process_cache()
+    snap = make(tmp_path).snapshot("2019-07-01")
+    got = {m.cik: (m.ticker, m.symbol_source) for m in snap.members}
+    assert got == {201: ("JCX", "cover_page"), 202: ("BTA", "cover_page")}

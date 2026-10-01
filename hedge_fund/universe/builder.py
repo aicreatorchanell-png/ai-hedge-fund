@@ -215,6 +215,7 @@ class UniverseBuilder:
         cfg = self.config
         priced: list[UniverseMember] = []
         seen_symbols: dict[str, int] = {}
+        by_cik: dict[int, _Candidate] = {}
         for cand in screened:
             if len(priced) >= cfg.pool_size:
                 excluded.append(UniverseExclusion(cik=cand.cik, name=cand.name, reason="outside_float_pool"))
@@ -223,10 +224,28 @@ class UniverseBuilder:
             if member is None:
                 excluded.append(UniverseExclusion(cik=cand.cik, name=cand.name, reason=reason, detail=detail))
                 continue
+            by_cik[cand.cik] = cand
             key = tiingo_symbol(member.ticker)
             if key in seen_symbols:
-                excluded.append(UniverseExclusion(cik=cand.cik, name=cand.name, reason="duplicate_symbol",
-                                                  detail=f"{member.ticker} already used by CIK {seen_symbols[key]}"))
+                # Two companies claim one symbol on this date. SEC's current map is today's
+                # assignment (tickers get reused: JCI, CB). If the holder's own filings,
+                # filed by this date, name a different symbol while the newcomer's name this
+                # one, the newcomer takes it; the other is then priced from the symbols its
+                # own filings state. Without such evidence the first claimant keeps it.
+                idx = next(i for i, m in enumerate(priced) if m.cik == seen_symbols[key])
+                holder, loser = priced[idx], cand
+                if "current" in (holder.symbol_source, member.symbol_source):
+                    mine = {tiingo_symbol(t) for t, _ in self._own_symbols(cand)}
+                    theirs = {tiingo_symbol(t) for t, _ in self._own_symbols(by_cik[holder.cik])}
+                    if key in mine and theirs and key not in theirs:     # holder's filings name another symbol
+                        priced[idx], seen_symbols[key], loser = member, cand.cik, by_cik[holder.cik]
+                    alt = self._price_own(loser, as_of, exclude=set(seen_symbols))
+                    if alt is not None:
+                        seen_symbols[tiingo_symbol(alt.ticker)] = loser.cik
+                        priced.append(alt)
+                        continue
+                excluded.append(UniverseExclusion(cik=loser.cik, name=loser.name, reason="duplicate_symbol",
+                                                  detail=f"{key} kept by CIK {seen_symbols[key]}"))
                 continue
             seen_symbols[key] = cand.cik
             priced.append(member)
@@ -333,6 +352,19 @@ class UniverseBuilder:
             if found:
                 return found
         return []
+
+    def _own_symbols(self, cand: _Candidate) -> list[tuple[str, str]]:
+        """Symbols the company's own filings (filed by its latest filing) state."""
+        return self._cover_symbols(cand) or self._text_symbols(cand)
+
+    def _price_own(self, cand: _Candidate, as_of: str, exclude: set[str]) -> UniverseMember | None:
+        for ticker, source in self._own_symbols(cand):
+            if tiingo_symbol(ticker) in exclude:
+                continue
+            member, _, _ = self._try_symbol(cand, ticker, source, as_of)
+            if member is not None:
+                return member
+        return None
 
     def _price(self, cand: _Candidate, as_of: str) -> tuple[UniverseMember | None, str, str]:
         reason, detail = "no_symbol", "no symbol in ticker history, current map, cover page or 10-K text"
