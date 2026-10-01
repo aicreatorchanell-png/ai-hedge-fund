@@ -1,0 +1,301 @@
+{
+ "frames": [
+  "CY2014Q1I",
+  "CY2025Q2I"
+ ],
+ "tail_rule_frames": 4,
+ "results": {
+  "top100": {
+   "quarterly_dates": 35,
+   "span": [
+    "2016-01-01",
+    "2024-07-01"
+   ],
+   "distinct_members": 272,
+   "disappeared": 73,
+   "disappeared_per_year": 8.3,
+   "annual_disappearance_rate_of_members": 0.0834,
+   "disappeared_still_in_current_sec_ticker_map": 3,
+   "disappeared_with_stored_tiingo_history": 0,
+   "disappeared_with_curated_outcome": 0,
+   "disappeared_without_any_known_outcome": 73,
+   "would_be_liquidated_at_last_close": 73,
+   "examples": {
+    "104207": {
+     "name": "WALGREEN CO",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q1I",
+     "current_sec_tickers": []
+    },
+    "890465": {
+     "name": "NPS PHARMACEUTICALS INC",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1478484": {
+     "name": "zulily, inc.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1288776": {
+     "name": "Google Inc.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1277141": {
+     "name": "Borderfree, Inc.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "880116": {
+     "name": "Southeastern Bank Financial CORP",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2015Q2I",
+     "current_sec_tickers": []
+    },
+    "1333141": {
+     "name": "FRESENIUS MEDICAL CARE AG",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2016Q1I",
+     "current_sec_tickers": [
+      "FMS",
+      "FMCQF"
+     ]
+    },
+    "29915": {
+     "name": "DOW CHEMICAL CO /DE/",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2016Q2I",
+     "current_sec_tickers": []
+    },
+    "6284": {
+     "name": "ANALOGIC CORP",
+     "first_member_date": "2017-01-01",
+     "last_frame": "CY2016Q4I",
+     "current_sec_tickers": []
+    },
+    "310568": {
+     "name": "MICROSEMI CORP",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2017Q1I",
+     "current_sec_tickers": []
+    },
+    "1649338": {
+     "name": "Broadcom Ltd",
+     "first_member_date": "2017-01-01",
+     "last_frame": "CY2017Q1I",
+     "current_sec_tickers": []
+    },
+    "93859": {
+     "name": "BIGLARI HOLDINGS INC.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2017Q2I",
+     "current_sec_tickers": []
+    }
+   }
+  },
+  "top200": {
+   "quarterly_dates": 35,
+   "span": [
+    "2016-01-01",
+    "2024-07-01"
+   ],
+   "distinct_members": 455,
+   "disappeared": 112,
+   "disappeared_per_year": 12.8,
+   "annual_disappearance_rate_of_members": 0.064,
+   "disappeared_still_in_current_sec_ticker_map": 3,
+   "disappeared_with_stored_tiingo_history": 0,
+   "disappeared_with_curated_outcome": 0,
+   "disappeared_without_any_known_outcome": 112,
+   "would_be_liquidated_at_last_close": 112,
+   "examples": {
+    "104207": {
+     "name": "WALGREEN CO",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q1I",
+     "current_sec_tickers": []
+    },
+    "1385187": {
+     "name": "COVIDIEN PLC",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q1I",
+     "current_sec_tickers": []
+    },
+    "890465": {
+     "name": "NPS PHARMACEUTICALS INC",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1478484": {
+     "name": "zulily, inc.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1288776": {
+     "name": "Google Inc.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1277141": {
+     "name": "Borderfree, Inc.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "850693": {
+     "name": "ALLERGAN INC.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1545158": {
+     "name": "KRAFT FOODS GROUP, INC.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1465112": {
+     "name": "DIRECTV",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1574300": {
+     "name": "CONTENT CHECKED HOLDINGS, INC.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q3I",
+     "current_sec_tickers": []
+    },
+    "53669": {
+     "name": "JOHNSON CONTROLS INC",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2015Q1I",
+     "current_sec_tickers": []
+    },
+    "1441634": {
+     "name": "Avago Technologies LTD",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2015Q1I",
+     "current_sec_tickers": []
+    }
+   }
+  },
+  "top500": {
+   "quarterly_dates": 35,
+   "span": [
+    "2016-01-01",
+    "2024-07-01"
+   ],
+   "distinct_members": 968,
+   "disappeared": 230,
+   "disappeared_per_year": 26.3,
+   "annual_disappearance_rate_of_members": 0.0526,
+   "disappeared_still_in_current_sec_ticker_map": 9,
+   "disappeared_with_stored_tiingo_history": 0,
+   "disappeared_with_curated_outcome": 0,
+   "disappeared_without_any_known_outcome": 230,
+   "would_be_liquidated_at_last_close": 230,
+   "examples": {
+    "104207": {
+     "name": "WALGREEN CO",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q1I",
+     "current_sec_tickers": []
+    },
+    "1385187": {
+     "name": "COVIDIEN PLC",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q1I",
+     "current_sec_tickers": []
+    },
+    "890465": {
+     "name": "NPS PHARMACEUTICALS INC",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1478484": {
+     "name": "zulily, inc.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1288776": {
+     "name": "Google Inc.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1277141": {
+     "name": "Borderfree, Inc.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "850693": {
+     "name": "ALLERGAN INC.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1545158": {
+     "name": "KRAFT FOODS GROUP, INC.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1465112": {
+     "name": "DIRECTV",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "20171": {
+     "name": "CHUBB CORP",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1424847": {
+     "name": "LORILLARD, INC.",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    },
+    "1054374": {
+     "name": "BROADCOM CORP",
+     "first_member_date": "2016-01-01",
+     "last_frame": "CY2014Q2I",
+     "current_sec_tickers": []
+    }
+   }
+  }
+ },
+ "bias_scenarios_annual_return_overstatement_equal_weight": {
+  "top100": {
+   "perf_share_10pct": 0.0025,
+   "perf_share_25pct": 0.00626,
+   "perf_share_50pct": 0.01251
+  },
+  "top200": {
+   "perf_share_10pct": 0.00192,
+   "perf_share_25pct": 0.0048,
+   "perf_share_50pct": 0.0096
+  },
+  "top500": {
+   "perf_share_10pct": 0.00158,
+   "perf_share_25pct": 0.00394,
+   "perf_share_50pct": 0.00789
+  }
+ },
+ "curated_security_events": 4,
+ "note": "scenario bounds only; no delisting return was estimated or invented"
+}

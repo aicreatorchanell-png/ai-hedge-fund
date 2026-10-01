@@ -1,0 +1,38 @@
+{
+ "sample": {
+  "companyfacts_files": 451,
+  "companies_with_facts": 450,
+  "note": "the cache holds the companies screened by the Phase A top-10 universe build (large caps); coverage for smaller names must be re-measured on the pilot universe"
+ },
+ "reporting_lag_days": {
+  "10-Q": {
+   "n": 16601,
+   "median": 36,
+   "p90": 41,
+   "max": 675
+  },
+  "10-K": {
+   "n": 5439,
+   "median": 55,
+   "p90": 74,
+   "max": 686
+  }
+ },
+ "restatement": {
+  "tag_periods": 73187,
+  "periods_with_more_than_one_reported_value": 5880,
+  "share": 0.0803
+ },
+ "gross_profitability_inputs_as_of_2020_06_30": {
+  "companies_with_a_filing": 403,
+  "gross_profit_tag": 197,
+  "derived_revenue_minus_cost_of_revenue": 82,
+  "not_available": 124,
+  "total_assets_available": 401
+ },
+ "share_count_measurement": {
+  "single_value_per_filing": 417,
+  "multiple_values_per_filing_ambiguous": 3,
+  "no_cover_shares": 30
+ }
+}
