@@ -23,14 +23,14 @@ universe:
   definition: "US common stocks listed on NYSE/NASDAQ/AMEX, point-in-time, survivorship-aware"
   point_in_time_source: "Tiingo daily prices + SEC EDGAR shares outstanding as published"
   selection_rule: "top N by point-in-time market cap among names passing price and ADV filters"
-  reconstitution: monthly
+  reconstitution: quarterly
   target_size: 500
   min_price: 5.0
   min_adv_usd: 5000000.0
   survivorship: "delisted names stay in history until their last trading day; liquidated at last tradable close"
   exclusions: ["ADRs", "closed-end funds", "ETFs (except the benchmark)"]
 periods:
-  development: ["2006-01-03", "2026-07-31"]
+  development: ["2011-07-01", "2026-07-31"]
   validation_scheme: "expanding walk-forward by calendar year plus purged CPCV (6 groups, k=2) inside development"
   holdout_id: phase-b-prospective
   embargo_days: 30

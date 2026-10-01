@@ -61,6 +61,8 @@ def test_lock_is_human_only_and_freezes_the_hash():
     ({"gates": {"phase_b_overrides": {"min_deflated_sharpe": 0.9}}}, "weaker"),
     ({"gates": {"phase_b_overrides": {"max_pbo": 0.6}}}, "weaker"),
     ({"execution": {"order_type": "market_on_close"}}, "order type"),
+    ({"universe": {"reconstitution": "monthly"}}, "not supported"),
+    ({"periods": {"development": ["2006-01-03", "2026-07-31"]}}, "XBRL"),
 ])
 def test_environment_problems_block_locking(change, match):
     pr = variant(**change)
@@ -110,7 +112,7 @@ def test_budget_guard_counts_every_ledger_trial(tmp_path):
                          config_hashes={"g": "g" * 64}, data_hashes={"p": "d" * 64})
     led.register_manifest(m)
     led.register_hypothesis("H-EXAMPLE", statement="s", family="f", manifest_hash=m.manifest_hash())
-    kw = dict(hypothesis_id="H-EXAMPLE", stage="development", window=("2006-01-03", "2020-12-31"),
+    kw = dict(hypothesis_id="H-EXAMPLE", stage="development", window=("2011-07-01", "2020-12-31"),
               manifest_hash=m.manifest_hash(), code_hash=m.code_hash, config_hash="c" * 64, data_hash="d" * 64)
     with pytest.raises(BudgetExceeded, match="outside the pre-registered grid"):
         guard.check_can_start(led, "H-EXAMPLE", {"lookback": 100})

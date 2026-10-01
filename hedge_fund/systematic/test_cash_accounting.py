@@ -270,3 +270,38 @@ def test_property_small_account_backtests_never_overdraw(seed, capital, commissi
     assert all(t["fill_session"] > t["decision_session"] for t in r.trades)
     for x in r.rejected:
         assert x["reason"]
+
+
+# -- marks: the windowed read equals the full-history definition ------------------------------
+
+
+def _reference_marks(view, symbols):
+    closes = view.bars("close", tickers=sorted(symbols), tradable_only=False)
+    tradable = view.tradable(tickers=sorted(symbols))
+    out = {}
+    for s in sorted(symbols):
+        good = closes[s].where(tradable[s]).dropna()
+        out[s] = float(good.iloc[-1]) if len(good) else float(closes[s].dropna().iloc[-1])
+    return out
+
+
+@pytest.mark.parametrize("seed", range(4))
+def test_marks_for_matches_full_history_definition_with_halts(seed):
+    from hedge_fund.systematic.decision import marks_for
+    from hedge_fund.systematic.testing import RawBar
+
+    rng = random.Random(seed)
+    days = weekdays("2022-01-03", "2022-09-30")
+    m = SyntheticMarket()
+    m.add_series("SPY", days, SyntheticMarket.random_walk(days, seed=seed, drift=0.0, vol=0.01), volume=1e7)
+    names = [f"H{i}" for i in range(6)]
+    for i, s in enumerate(names):
+        walk = SyntheticMarket.random_walk(days, seed=50 + 10 * seed + i, drift=0.0, vol=0.02)
+        halt_from = rng.randrange(20, len(days))
+        halt_len = rng.choice([1, 5, 30, 200])                 # includes halts longer than the window
+        m.add(s, [RawBar(d, p, p * 1.01, p * 0.99, p, 0 if halt_from <= k < halt_from + halt_len else 1e5)
+                  for k, (d, p) in enumerate(zip(days, walk))])
+    panel = MarketPanel.build(m, ["SPY"] + names, days[0], days[-1])
+    for d in days[1::7]:
+        view = panel.as_of(d)
+        assert marks_for(view, names) == _reference_marks(view, names)

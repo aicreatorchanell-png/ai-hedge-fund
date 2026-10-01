@@ -266,6 +266,11 @@ def load_preregistration(path: Path | str) -> PreRegistration:
 
 
 # Things the deterministic engine cannot simulate yet; a document needing them cannot be locked.
+SUPPORTED_RECONSTITUTION = frozenset({"annual", "quarterly"})   # hedge_fund.universe.builder.reconstitution_dates
+# SEC XBRL phase-in finished for all filers in mid-2011 and discovery reads two
+# years of public-float frames, so a survivorship-aware PIT universe needs D >= this.
+XBRL_DISCOVERY_FROM = "2011-07-01"
+
 SIMULATOR_LIMITS = {
     "borrow_fees": "the backtester charges no borrow fee on short positions",
 }
@@ -308,6 +313,12 @@ def validate_against_environment(pr: PreRegistration, *, holdouts=None, gates_pa
             problems.append(f"gate {k}={v} is weaker than the gates file ({current[k]})")
         elif k not in higher_is_stricter | lower_is_stricter:
             problems.append(f"unknown gate {k}")
+    if pr.universe.reconstitution not in SUPPORTED_RECONSTITUTION:
+        problems.append(f"universe reconstitution {pr.universe.reconstitution!r} is not supported by the "
+                        f"point-in-time universe builder ({', '.join(sorted(SUPPORTED_RECONSTITUTION))})")
+    if pr.periods.development[0] < XBRL_DISCOVERY_FROM:
+        problems.append(f"development starts {pr.periods.development[0]}, before point-in-time universe "
+                        f"discovery is possible (SEC XBRL public-float frames: from {XBRL_DISCOVERY_FROM})")
     if pr.borrow.allow_short:
         problems.append(f"shorting needs borrow fees in the simulator: {SIMULATOR_LIMITS['borrow_fees']}")
     if pr.execution.timing is FillTiming.NEXT_OPEN and pr.execution.order_type != "market_on_open" or \

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import math
 
+import pandas as pd
 
 from hedge_fund.core.instruments import InstrumentRegistry
 from hedge_fund.core.orders import OrderRequest
@@ -20,17 +21,32 @@ from hedge_fund.systematic.portfolio import target_weights
 from hedge_fund.systematic.risk import RiskEngine, RiskState
 
 
-def marks_for(view, symbols) -> dict[str, float]:
-    """Last tradable close on or before the view's session (else last print)."""
+def marks_for(view, symbols, *, window: int = 21) -> dict[str, float]:
+    """Last tradable close on or before the view's session (else last print).
+
+    Reads the last *window* sessions first, for all symbols at once, and goes
+    back through the full history only for symbols with no tradable close in
+    it (e.g. a halted or delisted holding) — same result, a fraction of the reads.
+    """
     symbols = sorted(symbols)
     if not symbols:
         return {}
-    closes = view.bars("close", tickers=symbols, tradable_only=False)
-    tradable = view.tradable(tickers=symbols)
-    out = {}
-    for s in symbols:
-        good = closes[s].where(tradable[s]).dropna()
-        out[s] = float(good.iloc[-1]) if len(good) else float(closes[s].dropna().iloc[-1])
+    out: dict[str, float] = {}
+    pending = symbols
+    for lookback in (window, None):
+        closes = view.bars("close", tickers=pending, tradable_only=False, lookback=lookback)
+        tradable = view.tradable(tickers=pending, lookback=lookback)
+        good = closes.where(tradable.astype(bool)).ffill()
+        last = good.iloc[-1] if len(good) else pd.Series(dtype=float)
+        for s in pending:
+            v = last.get(s, float("nan"))
+            if v == v:                                       # not NaN
+                out[s] = float(v)
+        pending = [s for s in pending if s not in out]
+        if not pending:
+            return out
+    for s in pending:                                        # never tradable: last print
+        out[s] = float(closes[s].dropna().iloc[-1])
     return out
 
 
