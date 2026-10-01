@@ -32,8 +32,14 @@ checks["live_trading_disabled"] = adapters.LIVE_TRADING_ENABLED is False
 tiingo_last = max((json.load(gzip.open(p, "rt"))["rows"] or [{"date": ""}])[-1]["date"]
                   for p in cache_dir("tiingo").glob("*.json.gz"))
 checks["no_holdout_bars_exist_locally"] = tiingo_last < "2026-10-01"
-checks["phase_b_has_no_trials_or_results"] = (not list((REPO / "runs" / "phase-b").rglob("*.jsonl"))
-                                              and not list((REPO / "runs" / "phase-b").rglob("results*.json")))
+def _has_trials(path: Path) -> bool:          # experiment-ledger trial entries, whatever the file is called
+    return any(json.loads(x).get("kind") in ("trial_start", "trial_result")
+               for x in path.read_text().splitlines() if x.strip())
+
+
+checks["phase_b_has_no_trials_or_results"] = (
+    not any(_has_trials(p) for p in (REPO / "runs" / "phase-b").rglob("*.jsonl"))
+    and not list((REPO / "runs" / "phase-b").rglob("results*.json")))
 tracked = git("ls-files").splitlines()
 checks["no_tiingo_raw_data_in_git"] = not [t for t in tracked if "/tiingo/" in t and t.endswith(".gz")]
 checks["working_tree_clean"] = not [line for line in git("status", "--porcelain").splitlines()
@@ -44,6 +50,6 @@ audit = {"checks": checks, "all_pass": all(checks.values()), "tiingo_cache_last_
                                               "reads of them are fenced since 037a19d (raw client) and the "
                                               "readiness scripts drop them",
              "secrets": "environment variables were only ever reported PRESENT/ABSENT",
-             "trials_pre_logged": "vacuous: no Phase B trial was started (NO_UNIVERSE_QUALIFIES)"}}
+             "trials_pre_logged": "vacuous: no Phase B trial was started (top-100 data readiness NOT_READY)"}}
 (HERE / "safety_audit.json").write_text(json.dumps(audit, indent=1))
 print(json.dumps(audit, indent=1))
