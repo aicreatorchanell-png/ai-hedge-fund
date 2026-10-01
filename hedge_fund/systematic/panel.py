@@ -47,6 +47,7 @@ import pandas as pd
 from hedge_fund.data.protocol import DataClient
 from hedge_fund.data.sessions import completed_through, session_closes
 from hedge_fund.data.tradability import tradable_closes
+from hedge_fund.validation.holdout_guard import market_data_fence
 
 PRICE_FIELDS = ("open", "high", "low", "close", "volume")
 FIELDS = (*PRICE_FIELDS, "dividend", "split")
@@ -118,6 +119,7 @@ class MarketPanel:
         sessions = list(session_closes(data_client, benchmark, start, end))
         if not sessions:
             raise ValueError(f"{benchmark} has no completed sessions in [{start}, {end}]")
+        market_data_fence(sessions[0], sessions[-1])          # sealed holdouts stay unread
         index = pd.Index(sessions, name="date")
         frames = {f: pd.DataFrame(np.nan, index=index, columns=tickers) for f in FIELDS}
         tradable = pd.DataFrame(False, index=index, columns=tickers)
@@ -194,6 +196,7 @@ class MarketPanel:
         if n == 0:
             raise ValueError(f"{day} is before the panel's first session {self._sessions[0]}")
         session = self._sessions[n - 1]
+        market_data_fence(self._sessions[0], session)
         basis = pd.Series({t: float(np.prod([f for d, f in self._splits.get(t, []) if d > session]))
                            for t in self._tradable.columns}, dtype=float)
         return AsOfView(

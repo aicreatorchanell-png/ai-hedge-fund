@@ -300,6 +300,9 @@ class ExperimentLedger:
 
     def start_trial(self, *, hypothesis_id: str, params: dict, stage: str, window: tuple[str, str],
                     manifest_hash: str, code_hash: str, config_hash: str, data_hash: str) -> str:
+        from hedge_fund.validation.holdout_guard import active_book
+
+        active_book().check_trial_window(stage, *window)
         trial_id = f"T{len(self.entries()):06d}"
         self._append("trial_start", {
             "trial_id": trial_id, "hypothesis_id": hypothesis_id, "params": params,

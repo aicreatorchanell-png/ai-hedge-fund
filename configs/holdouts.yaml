@@ -1,0 +1,35 @@
+# Holdout declarations — human-owned. Editing this file (adding, unsealing,
+# moving or re-dating a holdout) is the protected action "change_locked_holdout"
+# (hedge_fund/research/pipeline.py): a reviewed commit by a person, never an
+# automated or AI edit. The file hash is pinned in every Phase B research
+# manifest. Enforcement: hedge_fund/validation/holdout_guard.py.
+#
+# status
+#   sealed        nobody reads market data in [start - embargo, end] except one
+#                 human-opened holdout evaluation per candidate
+#   contaminated  results on this window have been seen; it may never be
+#                 declared or evaluated as a holdout again (development use only)
+#   consumed      a sealed holdout whose evaluations are finished
+holdouts:
+  - id: phase-a-2023
+    start: "2023-02-01"
+    end: "2026-06-30"
+    embargo_days: 30
+    status: contaminated
+    reason: >-
+      Phase A (runs/real-market-phase-a, preregistration b37d3f1b...) evaluated
+      tsmom, xsmom, meanrev and breakout on this window and the results were
+      read. It is in-sample knowledge from now on.
+
+  - id: phase-b-prospective
+    start: "2026-10-01"
+    end: "2027-09-30"
+    embargo_days: 30
+    status: sealed
+    reason: >-
+      Every completed session before 2026-10-01 has either been seen (Phase A
+      holdout) or sits inside the development history, so the only
+      uncontaminated time holdout is prospective. Sealed on 2026-10-01 before
+      any of its data existed. Data from 2026-09-01 (embargo) onward is
+      fenced off from development, selection, optimization, dashboards and
+      agents. Proposed by the research tooling; any change requires a human.

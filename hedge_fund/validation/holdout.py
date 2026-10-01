@@ -9,12 +9,16 @@ outcome in the experiment registry, and refuses:
   - a second evaluation of the same candidate (spec hash), and
   - any candidate whose declared parent failed the holdout — iterating on a
     failed configuration against the same holdout is tuning on the holdout.
+
+A window that overlaps a contaminated or consumed holdout declared in
+configs/holdouts.yaml (e.g. the Phase A holdout) is refused at construction.
 """
 
 from __future__ import annotations
 
 from typing import Callable
 
+from hedge_fund.validation.holdout_guard import HoldoutAccessDenied, active_book
 from hedge_fund.validation.registry import ExperimentRegistry, spec_hash
 
 STAGE = "locked_holdout"
@@ -29,6 +33,10 @@ class LockedHoldout:
                  embargo_days: int = 0) -> None:
         if start > end:
             raise ValueError("holdout start after end")
+        try:
+            active_book().check_new_holdout(start, end)
+        except HoldoutAccessDenied as exc:
+            raise HoldoutViolation(str(exc)) from exc
         self.start, self.end, self.registry, self.family = start, end, registry, family
         self.embargo_days = embargo_days
 

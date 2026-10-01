@@ -15,6 +15,7 @@ from hedge_fund.data.sessions import previous_day, session_closes
 from hedge_fund.fund import Fund, normalize_universe
 from hedge_fund.pipeline.models import CycleRecord, DecisionRecord, PendingRunResult
 from hedge_fund.universe.models import UniverseSchedule
+from hedge_fund.validation.holdout_guard import Purpose, check_access
 from hedge_fund.pipeline.run_cycle import assess_fund, exact_marks, execute_decision
 
 
@@ -99,6 +100,7 @@ def backtest_fund(
     Executed-cycle and valuation counts are independent; the final proposal
     can remain pending without extending the requested window.
     """
+    check_access(start, end, purpose=Purpose.AGENT)          # agents never read a sealed holdout
     spec = fund.spec
     pit = universe if isinstance(universe, UniverseSchedule) else None
     universe = pit.all_tickers() if pit is not None else normalize_universe(universe)

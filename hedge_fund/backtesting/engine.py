@@ -34,6 +34,7 @@ import numpy as np
 from hedge_fund.backtesting.models import BacktestResult, PerformanceMetrics, Trade
 from hedge_fund.data.protocol import DataClient
 from hedge_fund.signals.base import AlphaModel
+from hedge_fund.validation.holdout_guard import Purpose, check_access
 
 logger = logging.getLogger(__name__)
 
@@ -113,6 +114,7 @@ class BacktestEngine:
         today = date.today().isoformat()
         if end_padded > today:
             end_padded = today
+        check_access(start_date, end_padded, purpose=Purpose.AGENT)
 
         prices = data_client.get_prices(ticker, start_date, end_padded)
         if not prices:

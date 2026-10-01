@@ -46,7 +46,7 @@ ORDER = [Stage.CANDIDATE, Stage.BACKTESTED, Stage.VALIDATED, Stage.STRESS_TESTED
 
 PROTECTED_ACTIONS = frozenset({
     "change_risk_limits", "change_validation_gates", "change_locked_holdout", "promote_to_live",
-    "increase_leverage", "disable_kill_switch",
+    "increase_leverage", "disable_kill_switch", "open_locked_holdout",
 })
 
 AI_ALLOWED_ACTIONS = frozenset({"propose_candidate", "propose_hypothesis", "propose_features",

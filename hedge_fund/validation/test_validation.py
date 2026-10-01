@@ -105,7 +105,7 @@ def test_registry_is_append_only_and_tamper_evident(tmp_path):
 
 def test_holdout_is_single_use_and_blocks_derived_tuning(tmp_path):
     reg = ExperimentRegistry(tmp_path / "exp.jsonl")
-    hold = LockedHoldout("2025-01-01", "2025-12-31", reg, family="tsmom", embargo_days=10)
+    hold = LockedHoldout("2015-01-01", "2015-12-31", reg, family="tsmom", embargo_days=10)
     calls = []
 
     def run(start, end):
@@ -114,7 +114,7 @@ def test_holdout_is_single_use_and_blocks_derived_tuning(tmp_path):
 
     spec = {"strategy": "tsmom", "lookback": 252}
     out = hold.evaluate(spec, run, passed=lambda m: m["sharpe"] > 0.5)
-    assert out["passed"] is False and calls == [("2025-01-01", "2025-12-31")]
+    assert out["passed"] is False and calls == [("2015-01-01", "2015-12-31")]
     with pytest.raises(HoldoutViolation, match="already"):
         hold.evaluate(spec, run, passed=lambda m: True)
     with pytest.raises(HoldoutViolation, match="parent"):
@@ -123,10 +123,10 @@ def test_holdout_is_single_use_and_blocks_derived_tuning(tmp_path):
 
 
 def test_development_windows_cannot_touch_the_holdout(tmp_path):
-    hold = LockedHoldout("2025-01-01", "2025-12-31", ExperimentRegistry(tmp_path / "e"), family="x",
+    hold = LockedHoldout("2015-01-01", "2015-12-31", ExperimentRegistry(tmp_path / "e"), family="x",
                          embargo_days=10)
-    hold.check_development_window("2016-01-01", "2024-12-20")
-    for window in (("2016-01-01", "2024-12-25"), ("2016-01-01", "2025-03-01"), ("2025-02-01", "2025-06-01")):
+    hold.check_development_window("2006-01-01", "2014-12-20")
+    for window in (("2006-01-01", "2014-12-25"), ("2006-01-01", "2015-03-01"), ("2015-02-01", "2015-06-01")):
         with pytest.raises(HoldoutViolation):
             hold.check_development_window(*window)
 
