@@ -11,6 +11,13 @@ session they take effect, before that session's trading and valuation:
 Both come from the market panel's as-of view of that session, so nothing is
 known before its date. Every cash movement is kept as a `CashFlow` so NAV can
 be reconciled to fills + costs + dividends exactly.
+
+Cash rule: a fill whose trade amount *and* commission would leave cash below
+zero is refused before anything changes (`InsufficientCash`), unless the
+ledger is a margin account (`allow_negative_cash`). Commissions are reserved
+in that check, so a sell whose proceeds do not cover its own commission is
+refused on a cash-only account. `preview` runs the same checks without
+mutating, so callers can reject an order atomically.
 """
 
 from __future__ import annotations
@@ -31,6 +38,13 @@ class CashFlow:
     amount: float                 # + into cash, - out of cash
 
 
+class InsufficientCash(ValueError):
+    """A fill (trade amount plus commission) would overdraw a cash-only account."""
+
+
+CASH_TOLERANCE = 1e-9
+
+
 @dataclass
 class Ledger:
     cash: float
@@ -39,6 +53,7 @@ class Ledger:
     flows: list[CashFlow] = field(default_factory=list)
     fills: list[FillEvent] = field(default_factory=list)
     allow_short: bool = False
+    allow_negative_cash: bool = False      # margin account; cash-only accounts may never overdraw
 
     def __post_init__(self) -> None:
         self.initial_cash = self.cash
@@ -49,11 +64,32 @@ class Ledger:
     def quantity(self, symbol: str) -> float:
         return self.positions.get(symbol, 0.0)
 
+    def cash_delta(self, fill: FillEvent) -> float:
+        """Cash change of a fill: trade amount minus its commission (reserved up front)."""
+        gross = self.instruments.get(fill.symbol).notional(fill.quantity, fill.price)
+        return (-gross if fill.side == "buy" else gross) - fill.commission
+
+    def preview(self, fills: list[FillEvent]) -> str | None:
+        """Why applying `fills` in order would be refused, or None. Never mutates."""
+        cash, qty = self.cash, dict(self.positions)
+        for f in fills:
+            inst = self.instruments.get(f.symbol)
+            new_qty = qty.get(f.symbol, 0.0) + f.signed_quantity
+            if new_qty < -1e-9 and not (self.allow_short and inst.shortable):
+                return f"{f.symbol}: fill would open a short position; shorting is not allowed"
+            cash += self.cash_delta(f)
+            if cash < -CASH_TOLERANCE and not self.allow_negative_cash:
+                return (f"{f.symbol}: insufficient cash — {f.side} of {f.quantity:g} with commission "
+                        f"{f.commission:g} would leave cash at {cash:.6f}")
+            qty[f.symbol] = new_qty
+        return None
+
     def apply_fill(self, fill: FillEvent) -> None:
+        reason = self.preview([fill])
+        if reason:
+            raise (InsufficientCash if "insufficient cash" in reason else ValueError)(reason)
         inst = self.instruments.get(fill.symbol)
         new_qty = self.quantity(fill.symbol) + fill.signed_quantity
-        if new_qty < -1e-9 and not (self.allow_short and inst.shortable):
-            raise ValueError(f"{fill.symbol}: fill would open a short position; shorting is not allowed")
         gross = inst.notional(fill.quantity, fill.price)
         trade_amount = -gross if fill.side == "buy" else gross
         self.cash += trade_amount - fill.commission

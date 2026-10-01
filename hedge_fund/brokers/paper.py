@@ -38,7 +38,9 @@ class PaperBroker:
 
     def __init__(self, cash: float, execution, *, allow_short: bool = False) -> None:
         self.execution = execution
-        self.book = Ledger(cash=cash, instruments=execution.instruments, allow_short=allow_short)
+        # Shorting needs a margin account; a long-only paper account may never overdraw its cash.
+        self.book = Ledger(cash=cash, instruments=execution.instruments, allow_short=allow_short,
+                           allow_negative_cash=allow_short)
         self.orders: dict[str, OrderState] = {}
 
     # -- TradingVenue ------------------------------------------------------
@@ -98,8 +100,8 @@ class PaperBroker:
                 touched.append(state)
                 continue
             for f in sim.fills:
-                inst = self.book.instruments.get(f.symbol)
-                if f.side == "buy" and inst.notional(f.quantity, f.price) + f.commission > self.book.cash + 1e-9:
+                # Commission is reserved with the trade amount, for buys and sells alike.
+                if self.book.preview([f]):
                     state.transition(OrderStatus.EXPIRED if state.filled_quantity else OrderStatus.CANCELLED,
                                      "insufficient cash at execution")
                     break
@@ -115,10 +117,15 @@ class PaperBroker:
             return f"order type {order.order_type} not supported by the paper broker"
         if order.side == "sell" and not self.book.allow_short and self.book.quantity(order.symbol) <= 0:
             return "short selling is not allowed"
-        if order.side == "buy":
-            inst = self.book.instruments.get(order.symbol)
-            if inst.notional(order.quantity, order.reference_price) > self.book.cash * 1.10:
-                return "insufficient cash"
+        inst = self.book.instruments.get(order.symbol)
+        notional = inst.notional(order.quantity, order.reference_price)
+        costs = getattr(self.execution, "costs", None)
+        commission = costs.commission(order.quantity, notional) if costs is not None else 0.0
+        if order.side == "buy" and notional + commission > self.book.cash * 1.10:
+            return "insufficient cash"
+        if (order.side == "sell" and not self.book.allow_negative_cash
+                and self.book.cash + notional - commission < -1e-9):
+            return "insufficient cash for commission"
         return None
 
     # -- reconciliation -------------------------------------------------------

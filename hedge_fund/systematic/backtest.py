@@ -7,7 +7,11 @@ One loop over the benchmark's sessions. At each session S, in this order:
 
     1. corporate actions effective on S (splits, then ex-date dividends)
     2. orders decided at the previous decision session fill at S's open or
-       close (explicit FillTiming) — sells first, buys limited by cash
+       close (explicit FillTiming) — sells first, buys limited by cash.
+       Commission is reserved before any fill: an order whose trade amount
+       plus commission would overdraw a cash-only account (no shorting) is
+       rejected whole and changes nothing — including a sell whose proceeds
+       do not cover its own commission
     3. held names that have stopped trading are liquidated at their last
        tradable close once untradable for `delist_grace` sessions
     4. mark to market at S's close; update drawdown / daily-loss state
@@ -83,6 +87,7 @@ class BacktestResult:
     net_exposure: pd.Series | None = None
     pnl_by_symbol: dict[str, float] = field(default_factory=dict)
     final_positions: dict[str, float] = field(default_factory=dict)
+    cash: pd.Series | None = None
 
     def to_dict(self) -> dict:
         return {
@@ -96,6 +101,7 @@ class BacktestResult:
             "reconciliation_error": self.reconciliation_error, "halted": self.halted,
             "net_exposure": [round(x, 6) for x in self.net_exposure] if self.net_exposure is not None else None,
             "pnl_by_symbol": self.pnl_by_symbol, "final_positions": self.final_positions,
+            "cash": [round(x, 6) for x in self.cash] if self.cash is not None else None,
         }
 
 
@@ -120,12 +126,15 @@ class SystematicBacktester:
         if len(all_sessions) < 2:
             raise ValueError("backtest window needs at least two sessions")
         rebalance_days = set(rebalance_grid(all_sessions, c.rebalance))
-        ledger = Ledger(cash=c.capital, instruments=self.instruments, allow_short=c.risk.allow_short)
+        # Shorting needs a margin account; a long-only account may never overdraw its cash.
+        ledger = Ledger(cash=c.capital, instruments=self.instruments, allow_short=c.risk.allow_short,
+                        allow_negative_cash=c.risk.allow_short)
         state = RiskState(peak_equity=c.capital, day_start_equity=c.capital)
         pending: list[OrderRequest] = []
         untradable_run: dict[str, int] = {}
         equity, exposure, decisions, trades, rejected, liquidations = [], [], [], [], [], []
         net_exposure: list[float] = []
+        cash: list[float] = []
         last_equity = c.capital
 
         for session in all_sessions:
@@ -154,6 +163,7 @@ class SystematicBacktester:
             if self.kill_switch_on and session >= self.kill_switch_on:
                 state.kill_switch = True
             equity.append(eq)
+            cash.append(ledger.cash)
             exposure.append(sum(abs(self.instruments.get(s).notional(q, marks[s])) for s, q in ledger.positions.items()) / eq
                             if eq > 0 else 0.0)
             net_exposure.append(sum(self.instruments.get(s).notional(q, marks[s]) for s, q in ledger.positions.items()) / eq
@@ -188,7 +198,7 @@ class SystematicBacktester:
             reconciliation_error=ledger.reconcile(), halted=state.halted_reason or (
                 "kill switch engaged" if state.kill_switch else None),
             net_exposure=pd.Series(net_exposure, index=sessions), pnl_by_symbol=pnl,
-            final_positions=dict(ledger.positions),
+            final_positions=dict(ledger.positions), cash=pd.Series(cash, index=sessions, name="cash"),
         )
 
     # ------------------------------------------------------------------
@@ -213,6 +223,11 @@ class SystematicBacktester:
             state = self.execution.execute(order, session)
             if order.side == "buy" and state.fills:
                 state = self._fit_cash(order, state, session, ledger)
+            if state.status is not OrderStatus.REJECTED and state.fills:
+                reason = ledger.preview(state.fills)          # reserve commission before anything fills
+                if reason:
+                    state.fills.clear()
+                    state.status, state.reject_reason = OrderStatus.REJECTED, reason
             if state.status is OrderStatus.REJECTED or not state.fills:
                 rejected.append({"session": session, "order": order.client_order_id, "symbol": order.symbol,
                                  "side": order.side, "quantity": order.quantity, "reason": state.reject_reason})
@@ -222,20 +237,29 @@ class SystematicBacktester:
                 trades.append(self._audit(order, f, state.status.value, state.reject_reason))
         return trades, rejected
 
-    def _fit_cash(self, order, state, session, ledger):
-        f = state.fills[0]
+    def _fit_cash(self, order, state, session, ledger, max_attempts: int = 5):
+        """Shrink a buy until notional + commission fits the cash; reject if nothing fits.
+
+        The re-priced smaller order is checked again (its price and commission
+        can differ), so the result is affordable or rejected — never assumed.
+        """
         inst = self.instruments.get(order.symbol)
-        need = inst.notional(f.quantity, f.price) + f.commission
-        if need <= ledger.cash + 1e-9:
-            return state
-        per_unit = inst.notional(1.0, f.price) * (1 + 1e-9)
-        affordable = inst.round_quantity(max(ledger.cash - f.commission, 0.0) / per_unit)
-        if affordable <= 0:
-            state.fills.clear()
-            state.status = OrderStatus.REJECTED
-            state.reject_reason = "insufficient cash"
-            return state
-        return self.execution.execute(order.model_copy(update={"quantity": affordable}), session)
+        for _ in range(max_attempts):
+            f = state.fills[0]
+            need = inst.notional(f.quantity, f.price) + f.commission
+            if need <= ledger.cash + 1e-9:
+                return state
+            per_unit = inst.notional(1.0, f.price) * (1 + 1e-9)
+            affordable = inst.round_quantity(max(ledger.cash - f.commission, 0.0) / per_unit)
+            if affordable <= 0 or affordable >= f.quantity:
+                break
+            state = self.execution.execute(order.model_copy(update={"quantity": affordable}), session)
+            if state.status is OrderStatus.REJECTED or not state.fills:
+                return state
+        state.fills.clear()
+        state.status = OrderStatus.REJECTED
+        state.reject_reason = "insufficient cash"
+        return state
 
     @staticmethod
     def _audit(order: OrderRequest, fill: FillEvent, status: str, note: str | None) -> dict:
