@@ -26,6 +26,7 @@ import json
 from pathlib import Path
 
 from hedge_fund.paths import cache_dir
+from hedge_fund.validation.holdout_guard import visible
 
 OUT = Path(__file__).resolve().parent
 EDGAR, TIINGO = cache_dir("edgar"), cache_dir("tiingo")
@@ -35,7 +36,10 @@ EVENTS = Path(__file__).resolve().parents[3] / "hedge_fund" / "data" / "security
 
 def load(p):
     with gzip.open(p, "rt") as fh:
-        return json.load(fh)
+        doc = json.load(fh)
+    if isinstance(doc, dict) and "rows" in doc:                  # Tiingo: never look inside a sealed window
+        doc["rows"] = [r for r in doc["rows"] if visible(r["date"])]
+    return doc
 
 
 keys = sorted(p.name.split(".")[0] for p in FRAMES.glob("CY*.json.gz"))

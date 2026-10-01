@@ -38,6 +38,7 @@ from datetime import date
 from pathlib import Path
 
 from hedge_fund.paths import cache_dir
+from hedge_fund.validation.holdout_guard import visible
 
 OUT = Path(__file__).resolve().parent
 EDGAR, TIINGO = cache_dir("edgar"), cache_dir("tiingo")
@@ -51,7 +52,10 @@ HEADROOM = 0.10
 
 def load(p: Path):
     with gzip.open(p, "rt") as fh:
-        return json.load(fh)
+        doc = json.load(fh)
+    if isinstance(doc, dict) and "rows" in doc:                  # Tiingo: never look inside a sealed window
+        doc["rows"] = [r for r in doc["rows"] if visible(r["date"])]
+    return doc
 
 
 def quarterly_dates(start: str, end: str) -> list[str]:

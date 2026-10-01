@@ -49,6 +49,7 @@ from hedge_fund.data.edgar.metrics import FilingValues, flows, to_metrics
 from hedge_fund.data.edgar.prices import RawPriceSource
 from hedge_fund.data.models import CompanyFacts, FinancialMetrics
 from hedge_fund.data.sessions import NEW_YORK
+from hedge_fund.validation.holdout_guard import market_data_fence
 from hedge_fund.paths import cache_dir as _cache_dir
 
 logger = logging.getLogger(__name__)
@@ -176,6 +177,7 @@ class EdgarClient:
         period="annual": 10-K rows only (TTM at a fiscal year end = the year).
         Unknown tickers and registrants without SEC fundamentals return [].
         """
+        market_data_fence("1900-01-01", end_date[:10])   # filings inside a sealed window stay unread
         if period not in ("ttm", "annual"):
             raise ValueError(f"EdgarClient supports period='ttm' or 'annual', not {period!r}")
         ident = self.resolve(ticker, end_date)
@@ -226,6 +228,7 @@ class EdgarClient:
         )
 
     def get_market_cap(self, ticker: str, end_date: str) -> float | None:
+        market_data_fence("1900-01-01", end_date[:10])
         """Market cap of the latest report filed by *end_date* (point-in-time)."""
         rows = self.get_financial_metrics(ticker, end_date, limit=1)
         return rows[0].market_cap if rows else None

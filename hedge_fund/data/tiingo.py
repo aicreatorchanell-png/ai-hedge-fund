@@ -46,6 +46,7 @@ import requests
 
 from hedge_fund.data.models import Price
 from hedge_fund.data.sessions import NEW_YORK
+from hedge_fund.validation.holdout_guard import market_data_fence, sealed_windows_in_force, visible
 from hedge_fund.paths import cache_dir as _cache_dir
 
 logger = logging.getLogger(__name__)
@@ -137,7 +138,8 @@ class TiingoClient:
         """Split-adjusted daily OHLCV bars in [start_date, end_date]."""
         if interval != "day" or interval_multiplier != 1:
             raise ValueError("TiingoClient serves daily bars only")
-        rows = self._rows(ticker)
+        market_data_fence(start_date[:10], end_date[:10])
+        rows = self._visible_rows(ticker)
         if not rows:
             return []
         factors = _forward_split_factors(rows)
@@ -156,15 +158,19 @@ class TiingoClient:
     # ------------------------------------------------------------------
 
     def raw_closes(self, ticker: str, start_date: str, end_date: str) -> dict[str, float]:
-        return {r["date"]: r["close"] for r in self._rows(ticker) if start_date <= r["date"] <= end_date}
+        market_data_fence(start_date[:10], end_date[:10])
+        return {r["date"]: r["close"] for r in self._visible_rows(ticker) if start_date <= r["date"] <= end_date}
 
     def split_events(self, ticker: str, start_date: str, end_date: str) -> dict[str, float]:
-        return {r["date"]: r["splitFactor"] for r in self._rows(ticker)
+        # Not fenced by range: the panel reads splits "through the end of stored history"
+        # for its split basis. Rows inside sealed windows are simply not visible.
+        return {r["date"]: r["splitFactor"] for r in self._visible_rows(ticker)
                 if start_date <= r["date"] <= end_date and r["splitFactor"] != 1.0}
 
     def dividends(self, ticker: str, start_date: str, end_date: str) -> dict[str, float]:
         """{ex-date: cash per share, as traded (not split-adjusted)}."""
-        return {r["date"]: r["divCash"] for r in self._rows(ticker)
+        market_data_fence(start_date[:10], end_date[:10])
+        return {r["date"]: r["divCash"] for r in self._visible_rows(ticker)
                 if start_date <= r["date"] <= end_date and r["divCash"]}
 
     def is_stored(self, ticker: str) -> bool:
@@ -174,12 +180,20 @@ class TiingoClient:
         return (str(self._dir.resolve()), symbol) in _HISTORIES or self._path(symbol).exists()
 
     def history_range(self, ticker: str) -> tuple[str, str] | None:
-        rows = self._rows(ticker)
+        rows = self._visible_rows(ticker)
         return (rows[0]["date"], rows[-1]["date"]) if rows else None
 
     # ------------------------------------------------------------------
     # History store
     # ------------------------------------------------------------------
+
+    def _visible_rows(self, ticker: str) -> list[dict]:
+        """Stored rows minus any inside a sealed holdout window (holdout_guard)."""
+        windows = sealed_windows_in_force()
+        rows = self._rows(ticker)
+        if not windows:
+            return rows
+        return [r for r in rows if visible(r["date"], windows)]
 
     def _rows(self, ticker: str) -> list[dict]:
         symbol = tiingo_symbol(ticker)

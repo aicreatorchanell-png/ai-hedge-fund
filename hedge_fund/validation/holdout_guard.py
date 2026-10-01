@@ -246,3 +246,30 @@ def market_data_fence(start: str, end: str) -> None:
     else:
         purpose = Purpose.DEVELOPMENT
     active_book().check_access(start, end, purpose=purpose)
+
+
+def sealed_windows_in_force() -> list[tuple[str, str]]:
+    """[fence_start, end] of every sealed holdout not opened in this context.
+
+    An open forward step admits its holdout through the step's session; an
+    open one-shot evaluation admits its whole window. Data clients hide
+    rows inside the returned windows, so research code cannot see them even
+    through raw vendor reads.
+    """
+    out = []
+    fwd, one_shot = _forward.get(), _open.get()
+    for d in active_book().with_status(HoldoutStatus.SEALED):
+        if one_shot == d.id and d.evaluation_mode is EvaluationMode.ONE_SHOT:
+            continue
+        if fwd is not None and fwd[0] == d.id and d.evaluation_mode is EvaluationMode.FORWARD:
+            after = (date.fromisoformat(fwd[1]) + timedelta(days=1)).isoformat()
+            if after <= d.end:
+                out.append((after, d.end))
+            continue
+        out.append((d.fence_start, d.end))
+    return out
+
+
+def visible(day: str, windows: list[tuple[str, str]] | None = None) -> bool:
+    windows = sealed_windows_in_force() if windows is None else windows
+    return not any(lo <= day <= hi for lo, hi in windows)

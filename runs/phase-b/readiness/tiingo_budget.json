@@ -68,7 +68,7 @@
  "results": {
   "top100": {
    "already_cached": 50,
-   "bandwidth_download_mb_est": 1004.3,
+   "bandwidth_download_mb_est": 1001.6,
    "bandwidth_stored_mb_est": 80.5,
    "companies_reached_per_quarter": 298,
    "dates_exact_from_cached_frames": 39,
@@ -95,7 +95,7 @@
   },
   "top200": {
    "already_cached": 50,
-   "bandwidth_download_mb_est": 1766.6,
+   "bandwidth_download_mb_est": 1761.9,
    "bandwidth_stored_mb_est": 137.5,
    "companies_reached_per_quarter": 596,
    "dates_exact_from_cached_frames": 39,
@@ -122,7 +122,7 @@
   },
   "top500": {
    "already_cached": 50,
-   "bandwidth_download_mb_est": 4245.7,
+   "bandwidth_download_mb_est": 4234.4,
    "bandwidth_stored_mb_est": 322.8,
    "companies_reached_per_quarter": 1490,
    "dates_exact_from_cached_frames": 39,
@@ -149,9 +149,9 @@
   }
  },
  "tiingo_cache": {
-  "avg_rows": 6436,
+  "avg_rows": 6419,
   "avg_stored_kb": 109.6,
-  "est_response_kb": 1466.1,
+  "est_response_kb": 1462.2,
   "files": 70
  }
 }

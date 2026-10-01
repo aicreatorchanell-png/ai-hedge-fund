@@ -293,3 +293,45 @@ def test_no_research_code_imports_the_forward_evaluator_or_guard_internals():
             if isinstance(node, ast.Attribute) and node.attr in ("_forward", "_open", "_book", "_default"):
                 offenders.append(f"{rel}: touches {node.attr}")
     assert offenders == []
+
+
+# -- raw vendor reads are fenced too ------------------------------------------------------------
+
+
+def _tiingo_cache(tmp_path):
+    import gzip as _gz
+
+    from hedge_fund.data.tiingo import TiingoClient, clear_process_cache
+    clear_process_cache()
+    rows = [{"date": d, "open": 10.0, "high": 10.0, "low": 10.0, "close": 10.0, "volume": 1000,
+             "divCash": 0.5 if d == "2022-08-01" else 0.0, "splitFactor": 2.0 if d == "2022-09-01" else 1.0}
+            for d in DAYS]
+    with _gz.open(tmp_path / "ZZZ.json.gz", "wt") as fh:
+        json.dump({"symbol": "ZZZ", "found": True, "fetched_at": "2099-01-01T00:00:00-05:00", "rows": rows}, fh)
+    return TiingoClient(cache_dir=tmp_path, offline=True)
+
+
+def test_raw_tiingo_reads_cannot_see_a_sealed_window(env, tmp_path):
+    tc = _tiingo_cache(tmp_path)
+    assert tc.get_prices("ZZZ", "2021-01-04", "2022-06-16")                       # before the fence
+    for call in (lambda: tc.get_prices("ZZZ", "2021-01-04", "2022-07-15"),
+                 lambda: tc.raw_closes("ZZZ", "2022-06-20", "2022-06-20"),           # embargo
+                 lambda: tc.dividends("ZZZ", "2022-01-01", "2022-12-31")):
+        with pytest.raises(HoldoutAccessDenied):
+            call()
+    assert tc.split_events("ZZZ", "2021-01-04", "9999-12-31") == {}                 # split inside the window hidden
+    assert tc.history_range("ZZZ") == ("2021-01-04", "2022-06-16")
+
+
+def test_forward_step_sees_raw_rows_only_through_its_session(env, tmp_path):
+    from hedge_fund.validation.holdout_guard import _forward
+    tc = _tiingo_cache(tmp_path)
+    token = _forward.set(("fwd-test", "2022-08-15"))
+    try:
+        assert tc.history_range("ZZZ") == ("2021-01-04", "2022-08-15")
+        assert "2022-08-01" in tc.dividends("ZZZ", "2022-07-01", "2022-08-15")
+        assert tc.split_events("ZZZ", "2021-01-04", "9999-12-31") == {}             # 09-01 still in the future
+        with pytest.raises(HoldoutAccessDenied):
+            tc.get_prices("ZZZ", "2022-08-01", "2022-08-16")
+    finally:
+        _forward.reset(token)
