@@ -7,9 +7,12 @@ prices, never from today's ticker list or market caps.
 1. Discovery (candidates only). SEC XBRL frames list every filer's public
    float for a calendar quarter; the top filers of each quarterly frame
    that ended on or before D (over `discovery_years`) are candidates. Frame
-   values are "latest filed", so they only nominate — every decision below
-   uses point-in-time data. Companies that later delisted are in the frames
-   of the years they filed, so they are discovered like any other.
+   values are "latest filed", so a nominating row counts only if that float
+   was itself filed on or before D (same accession, else same period end,
+   in the company's own filings) — a later filing can never decide who is
+   considered on D. Every decision below uses point-in-time data. Companies
+   that later delisted are in the frames of the years they filed, so they
+   are discovered like any other.
 2. Point-in-time screen, SEC facts filed on or before D only:
    - a periodic report (10-K/10-Q) filed within `max_filing_age_days`
      (stopped filing = delisted, acquired, or reorganized);
@@ -47,7 +50,7 @@ from math import prod
 from pathlib import Path
 
 from hedge_fund.data.edgar.client import EdgarClient
-from hedge_fund.data.edgar.concepts import COVER_SHARES_TAG
+from hedge_fund.data.edgar.concepts import COVER_SHARES_TAG, PUBLIC_FLOAT_TAG
 from hedge_fund.data.edgar.facts import FactStore, Filing
 from hedge_fund.data.edgar.identity import SHARE_CLASSES, Identity, load_history, normalize_ticker
 from hedge_fund.data.factory import CompositeDataClient
@@ -140,9 +143,11 @@ class UniverseBuilder:
 
     def discover(self, as_of: str) -> dict[int, str | None]:
         """CIK -> name for the top public-float filers of each quarterly frame
-        that ended on or before *as_of*."""
+        that ended on or before *as_of* (rows not yet checked against filing
+        dates; `nominations` keeps them for `_nominated_in_time`)."""
         year = _d(as_of).year
         found: dict[int, str | None] = {}
+        self.nominations: dict[int, list[tuple[str | None, str | None]]] = {}
         for y in range(year - self.config.discovery_years, year + 1):
             for q in (1, 2, 3, 4):
                 if _quarter_end(y, q) >= as_of:
@@ -152,10 +157,27 @@ class UniverseBuilder:
                 rows.sort(key=lambda r: (-r["val"], r["cik"]))
                 for r in rows[:self.config.per_frame]:
                     found.setdefault(int(r["cik"]), r.get("entityName"))
+                    self.nominations.setdefault(int(r["cik"]), []).append((r.get("accn"), r.get("end")))
         return found
 
+    def _nominated_in_time(self, cik: int, as_of: str) -> bool:
+        """At least one nominating frame row was public by *as_of*."""
+        store = self._store(cik)                          # lineage-merged, as the screen sees it
+        if store is None:
+            return True                                   # screened out later as no_sec_facts
+        known = [f for f in store.facts if f.tag == PUBLIC_FLOAT_TAG and f.filed <= as_of]
+        accns, ends = {f.accn for f in known}, {f.end for f in known}
+        return any(a in accns or e in ends for a, e in self.nominations.get(cik, []))
+
     def _build(self, as_of: str) -> UniverseSnapshot:
-        cfg = self.config
+        n_canonical, excluded, screened = self.screened(as_of)
+        return self._price_pool(as_of, n_canonical, excluded, screened)
+
+    def screened(self, as_of: str) -> tuple[int, list[UniverseExclusion], list[_Candidate]]:
+        """SEC-only stages (discovery, lineage, point-in-time screen): no price is read.
+
+        Returns (candidates, exclusions so far, screened candidates by public float).
+        """
         discovered = self.discover(as_of)
         excluded: list[UniverseExclusion] = []
         canonical: dict[int, str | None] = {}
@@ -171,6 +193,9 @@ class UniverseBuilder:
                 canonical.setdefault(pred[0], name)
                 excluded.append(UniverseExclusion(cik=cik, name=name, reason="successor_not_yet",
                                                   detail=f"represented by CIK {pred[0]} until {pred[1]}"))
+            elif not self._nominated_in_time(cik, as_of):
+                excluded.append(UniverseExclusion(cik=cik, name=name, reason="nominated_after_as_of",
+                                                  detail="only frame values filed after this date nominate it"))
             else:
                 canonical.setdefault(cik, name)
 
@@ -182,7 +207,11 @@ class UniverseBuilder:
             else:
                 screened.append(cand)
         screened.sort(key=lambda c: (-c.public_float, c.cik))
+        return len(canonical), excluded, screened
 
+    def _price_pool(self, as_of: str, n_canonical: int, excluded: list[UniverseExclusion],
+                    screened: list[_Candidate]) -> UniverseSnapshot:
+        cfg = self.config
         priced: list[UniverseMember] = []
         seen_symbols: dict[str, int] = {}
         for cand in screened:
@@ -206,7 +235,7 @@ class UniverseBuilder:
         for m in priced[cfg.top_n:]:
             excluded.append(UniverseExclusion(cik=m.cik, name=m.name, reason="below_top_n",
                                               detail=f"{m.ticker} market cap {m.market_cap:,.0f}"))
-        return UniverseSnapshot(as_of=as_of, config_digest=cfg.digest(), candidates=len(canonical),
+        return UniverseSnapshot(as_of=as_of, config_digest=cfg.digest(), candidates=n_canonical,
                                 members=members, excluded=sorted(excluded, key=lambda e: (e.reason, e.cik)))
 
     def _store(self, cik: int) -> FactStore | None:

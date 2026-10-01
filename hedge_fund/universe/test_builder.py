@@ -184,7 +184,9 @@ def test_members_ranked_by_point_in_time_market_cap(world):
 def test_newly_listed_company_is_not_eligible_before_it_has_history(world):
     b = make(world[0])
     assert 104 not in {m.cik for m in b.snapshot("2019-07-01").members}
-    assert reasons(b.snapshot("2019-07-01"))[104] in ("insufficient_filings", "not_yet_filing")
+    # nominated only by a 2019 float that was not yet filed on 2019-07-01 (or not enough history)
+    assert reasons(b.snapshot("2019-07-01"))[104] in ("insufficient_filings", "not_yet_filing",
+                                                      "nominated_after_as_of")
     assert reasons(b.snapshot("2018-07-02")).get(104) is None     # not even discovered: no frames yet
     later = make(world[0], UniverseConfig(top_n=8)).snapshot("2020-07-01")
     assert 104 in {m.cik for m in later.members}
@@ -421,3 +423,15 @@ def test_backtest_follows_the_schedule(world, monkeypatch):
     for r in result.records:
         assert set(r.universe) <= set(schedule.members_on(r.as_of))
     assert all("DEAD" not in r.positions for r in result.records if r.execution_as_of > "2020-07-01")
+
+
+def test_frame_rows_filed_after_the_date_cannot_nominate(world):
+    """Frames hold latest-filed values; a nomination must have been public on the date."""
+    b = make(world[0])
+    snap = b.snapshot("2019-07-01")
+    late = [e for e in snap.excluded if e.reason == "nominated_after_as_of"]
+    assert late and all(e.cik not in {m.cik for m in snap.members} for e in late)
+    for e in late:                       # every such company really had no float filed by the date
+        store = b._store(e.cik)
+        assert not [f for f in store.facts if f.tag == "EntityPublicFloat" and f.filed <= "2019-07-01"
+                    and any(f.end == end for _, end in b.nominations.get(e.cik, []))]
