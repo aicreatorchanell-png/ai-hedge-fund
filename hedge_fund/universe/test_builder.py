@@ -435,3 +435,14 @@ def test_frame_rows_filed_after_the_date_cannot_nominate(world):
         store = b._store(e.cik)
         assert not [f for f in store.facts if f.tag == "EntityPublicFloat" and f.filed <= "2019-07-01"
                     and any(f.end == end for _, end in b.nominations.get(e.cik, []))]
+
+
+def test_cover_symbol_found_on_an_earlier_filing_when_the_latest_lacks_it(tmp_path, monkeypatch):
+    """Before 2019 dei:TradingSymbol was optional: DEAD's last 10-Q has none, earlier ones do."""
+    cover = {**COVER, 103: lambda filed: [] if filed >= "2019-01-01" else ["DEAD"]}
+    histories = build_world(tmp_path, COMPANIES, CURRENT, cover, PRICES)
+    monkeypatch.setattr(tiingo_mod.requests, "Session", lambda: FakeTiingo(histories))
+    tiingo_mod.clear_process_cache()
+    b = make(tmp_path)
+    dead = next(m for m in b.snapshot("2019-07-01").members if m.cik == 103)
+    assert (dead.ticker, dead.symbol_source) == ("DEAD", "cover_page")

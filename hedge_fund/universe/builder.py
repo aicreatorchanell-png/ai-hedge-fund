@@ -67,6 +67,7 @@ from hedge_fund.universe.models import (
 
 DEFAULT_CACHE_DIR = CACHE_DIR / "universe"
 _ABSURD_FLOAT = 1e13   # > $10T: a tagging error, not a company
+COVER_FILINGS_TRIED = 4   # latest periodic filing plus three earlier ones
 
 
 class PriceBudgetExceeded(RuntimeError):
@@ -306,8 +307,20 @@ class UniverseBuilder:
         return unique
 
     def _cover_symbols(self, cand: _Candidate) -> list[tuple[str, str]]:
-        symbols = self.edgar.trading_symbols(cand.latest.cik or cand.cik, cand.latest.accn)
-        return [(normalize_ticker(s), "cover_page") for s in symbols if _looks_common(normalize_ticker(s))][:3]
+        """Trading symbols on the company's own cover pages: the latest periodic filing
+        first, then up to COVER_FILINGS_TRIED - 1 earlier ones (dei:TradingSymbol was
+        optional before 2019, so one filing often lacks it). Only filings filed on or
+        before the candidate's latest filing (hence before the date) are read."""
+        filings = [f for f in cand.store.filings() if f.filed <= cand.latest.filed]
+        filings = sorted(filings, key=lambda f: (f.filed, f.accn), reverse=True)[:COVER_FILINGS_TRIED]
+        if cand.latest.accn not in {f.accn for f in filings}:
+            filings = [cand.latest] + filings[:COVER_FILINGS_TRIED - 1]
+        for filing in filings:
+            symbols = self.edgar.trading_symbols(filing.cik or cand.cik, filing.accn)
+            found = [(normalize_ticker(s), "cover_page") for s in symbols if _looks_common(normalize_ticker(s))][:3]
+            if found:
+                return found
+        return []
 
     def _price(self, cand: _Candidate, as_of: str) -> tuple[UniverseMember | None, str, str]:
         reason, detail = "no_symbol", "no symbol in ticker history, current map or cover page"
