@@ -7,9 +7,9 @@
   "no_holdout_bars_exist_locally": true,
   "phase_b_has_no_trials_or_results": true,
   "no_tiingo_raw_data_in_git": true,
-  "working_tree_clean": false
+  "working_tree_clean": true
  },
- "all_pass": false,
+ "all_pass": true,
  "tiingo_cache_last_bar": "2026-09-29",
  "notes": {
   "no_holdout_bars_exist_locally": "embargo bars (2026-09-01..09-29) exist in the raw cache; research reads of them are fenced since 037a19d (raw client) and the readiness scripts drop them",
