@@ -105,8 +105,15 @@ class TiingoClient:
         offline: bool = False,
         max_age_hours: float | None = 20.0,
         timeout: float = 60.0,
+        history_start: str = HISTORY_START,
+        history_end: str | None = None,
+        budget=None,
     ) -> None:
+        """*history_start*/*history_end* bound what a new download requests (the
+        stored file then covers only that range); *budget* is a RequestBudget
+        that every HTTP attempt must pass (hedge_fund.data.request_budget)."""
         self._api_key = api_key
+        self._history_start, self._history_end, self._budget = history_start, history_end, budget
         self._dir = Path(cache_dir)
         self._offline = offline
         self._max_age = None if max_age_hours is None else timedelta(hours=max_age_hours)
@@ -215,6 +222,9 @@ class TiingoClient:
             return cached if cached.get("found", True) else None
         if self._offline:
             raise TiingoClientError(f"offline and no cached history for {symbol}")
+        if cached is not None and self._history_end is not None:
+            # a bounded download is complete by construction: never extend it past history_end
+            return cached if cached.get("found", True) and cached.get("rows") else None
         if cached is not None and cached.get("found", True) and cached["rows"]:
             last = cached["rows"][-1]
             new = self._download(symbol, last["date"])  # overlap one day to verify continuity
@@ -228,10 +238,11 @@ class TiingoClient:
             else:
                 rows = _merge(cached["rows"], new or [])
         else:
-            new = self._download(symbol, HISTORY_START)
+            new = self._download(symbol, self._history_start)
             rows = _merge([], new or [])
         hist = {"symbol": symbol, "found": bool(rows) or new is not None,
-                "fetched_at": datetime.now(NEW_YORK).isoformat(), "rows": rows}
+                "fetched_at": datetime.now(NEW_YORK).isoformat(), "rows": rows,
+                "requested": {"start": self._history_start, "end": self._history_end}}
         _write(path, hist)
         return hist if rows else None
 
@@ -245,7 +256,10 @@ class TiingoClient:
 
     def _download(self, symbol: str, start: str) -> list[dict] | None:
         """Raw daily rows from *start*; None if Tiingo does not know the symbol."""
-        body = self._request(f"/tiingo/daily/{symbol.lower()}/prices", {"startDate": start, "format": "json"})
+        params = {"startDate": start, "format": "json"}
+        if self._history_end is not None:
+            params["endDate"] = self._history_end
+        body = self._request(f"/tiingo/daily/{symbol.lower()}/prices", params)
         if body is None:
             return None
         if not isinstance(body, list):
@@ -260,12 +274,19 @@ class TiingoClient:
             self._session = requests.Session()
             self._session.headers.update({"Authorization": f"Token {key}", "Content-Type": "application/json"})
         key = self._session.headers["Authorization"].split(" ", 1)[-1]
+        symbol = path.split("/")[3].upper() if path.startswith("/tiingo/daily/") else None
         for attempt, delay in enumerate((*self._RETRY_DELAYS, None)):
+            if self._budget is not None:
+                self._budget.before(symbol)                    # may sleep (rate) or raise BudgetExhausted
             self.requests += 1
             try:
                 resp = self._session.get(self.BASE_URL + path, params=params, timeout=self._timeout)
             except requests.RequestException as exc:
+                if self._budget is not None:
+                    self._budget.record(symbol, 0, "error")
                 raise TiingoClientError(f"GET {path} failed: {_redact(str(exc), key)}") from exc
+            if self._budget is not None:
+                self._budget.record(symbol, len(getattr(resp, "content", None) or b""), resp.status_code)
             if resp.status_code == 404:
                 return None
             if resp.status_code in (429, 500, 502, 503, 504):
