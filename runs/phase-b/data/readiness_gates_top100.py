@@ -3,12 +3,13 @@
 Mandatory gates (all must PASS before pre-registration/freeze):
   G0 storage            private, outside git, integrity-hashed, survived a container restart
   G1 sec_frames         every SEC public-float frame the 61 quarterly discovery windows need is cached
-  G2 universe_sec       SEC stages built for every date and validated (PIT, survivorship, lineage,
-                        coverage, identifiers) and today's-map symbols verified by sample (0 contradictions)
-  G3 universe_final     market-cap membership complete: every first-try pricing symbol is cached
-  G4 tiingo_verified    the account's actual plan/usage has been verified
-  G5 tiingo_fits        missing symbols and bandwidth fit the (verified, else most restrictive
-                        published) plan with 10% headroom, within one month
+  G2 universe_identifiers SEC stages validated (PIT, survivorship, lineage, coverage) and every
+                        member-date's symbol priced with float/market-cap ratio in [0.2, 5], no
+                        symbol shared (validate_identifiers_priced.py)
+  G3 universe_final     market-cap membership built for all 61 dates, 100 members each
+  G4 tiingo_verified    the account's plan has been verified (manually, by the account owner)
+  G5 tiingo_within_limits actual October usage from the request ledger within the 90% caps (symbols,
+                        bytes, per hour, per day); downloads bounded to 2008-01-01..2026-08-31
   G6 exits_quantified   pool exits counted and bounded (scenario bias <= 1%/yr at a 25%
                         performance-related share); no delisting return invented
   G7 candidate_data     at least one candidate DATA_READY; H-PEAD stays DATA_NOT_READY
@@ -54,33 +55,56 @@ missing_frames = sorted(f for f in need if not (frames_dir / f"{f}.json.gz").exi
 gates["G1_sec_frames"] = {"pass": not missing_frames, "frames_needed": len(need), "missing": missing_frames}
 
 sample = json.loads((HERE / "symbol_verification_sample.json").read_text())
-gates["G2_universe_sec"] = {"pass": len(sec["dates"]) == 61 and all(val["summary"].values()) and sample["pass"],
-                            "dates": len(sec["dates"]), "checks": val["summary"],
-                            "symbol_sample": {"counts": sample["counts"], "pass": sample["pass"],
-                                              "contradictions": [(c["as_of"], c["name"], c["current_map_symbol"],
-                                                                  c["own_filing_symbols"])
-                                                                 for c in sample["contradictions"]]}}
+priced_path = HERE / "identifier_validation_priced.json"
+priced = json.loads(priced_path.read_text()) if priced_path.exists() else {"pass": False, "missing": True}
+gates["G2_universe_identifiers"] = {
+    "pass": len(sec["dates"]) == 61 and all(val["summary"].values()) and priced["pass"],
+    "sec_stage_checks": val["summary"],
+    "priced_identifier_validation": {k: priced.get(k) for k in ("pass", "band", "member_dates", "ratio_quantiles")}
+    | {"out_of_band": len(priced.get("out_of_band", [])), "shared_symbols": len(priced.get("shared_symbols", []))},
+    "sec_only_sample_superseded": {"counts": sample["counts"], "pass": sample["pass"]}}
 
-first = sec["first_try"]
-gates["G3_universe_final"] = {"pass": not first["missing"], "first_try_symbols": first["n"],
-                              "cached": len(first["cached"]), "missing": len(first["missing"]),
-                              "contingency_symbols": sec["contingency"]["n"],
-                              "contingency_missing": len(sec["contingency"]["missing"])}
+membership_path = HERE / "top100_membership.json"
+membership = json.loads(membership_path.read_text()) if membership_path.exists() else {"snapshots": []}
+sizes = [len(s["members"]) for s in membership["snapshots"]]
+gates["G3_universe_final"] = {"pass": len(sizes) == 61 and all(n == 100 for n in sizes),
+                              "dates_built": len(sizes), "members_per_date_min": min(sizes, default=0),
+                              "unique_members": len({m["cik"] for s in membership["snapshots"] for m in s["members"]})}
 
-gates["G4_tiingo_verified"] = {"pass": False, "why": tv["account_plan"], "action": tv["account_plan_check_required"]}
+gates["G4_tiingo_verified"] = {"pass": tv.get("manual_verification", {}).get("plan") == "Starter",
+                               "manual_verification": tv.get("manual_verification")}
 
-plan = tv["published_limits"]["starter_free"]
-rows = budget["tiingo_cache"]["avg_rows"]
-bytes_per_row = tv["authenticated_calls_made"][1]["wire_bytes_per_row"]
-need_sym = len(first["missing"])
-need_gb = need_sym * rows * bytes_per_row / 1e9
-gates["G5_tiingo_fits"] = {
-    "pass": need_sym <= 0.9 * plan["unique_symbols_per_month"] and need_gb <= 0.9 * plan["bandwidth_per_month_gb"],
-    "plan_assumed": tv["planning_assumption_until_verified"], "missing_first_try_symbols": need_sym,
-    "symbol_limit_with_headroom": int(0.9 * plan["unique_symbols_per_month"]),
-    "est_bandwidth_gb_full_history": round(need_gb, 3),
-    "bandwidth_limit_with_headroom_gb": 0.9 * plan["bandwidth_per_month_gb"],
-    "est_requests": need_sym, "hours_at_50_per_hour": round(need_sym / 45, 1)}
+# Actual usage from the request ledger (every attempt), against the 90% caps
+from datetime import datetime  # noqa: E402
+
+from hedge_fund.paths import CACHE_DIR  # noqa: E402
+
+ledger = [json.loads(x) for x in (CACHE_DIR / "ledgers" / "tiingo_requests.jsonl").read_text().splitlines() if x]
+month = [r for r in ledger if r["month"] == "2026-10"]
+epochs = sorted(r["epoch"] for r in ledger)
+max_hour = max((sum(1 for e in epochs if 0 <= e - x < 3600) for x in epochs), default=0)
+per_day: dict[str, int] = {}
+for r in ledger:
+    per_day[r["day"]] = per_day.get(r["day"], 0) + 1
+tfiles = list(cache_dir("tiingo").glob("*.json.gz"))
+import gzip  # noqa: E402
+
+bounded = past_fence = 0
+for f in tfiles:
+    doc = json.load(gzip.open(f, "rt"))
+    req = doc.get("requested") or {}
+    if req.get("end"):
+        bounded += 1
+        past_fence += any(r["date"] >= "2026-09-01" for r in doc["rows"])
+usage = {"unique_symbols": len({r["symbol"] for r in month if r["symbol"]}), "bytes": sum(r["bytes"] for r in month),
+         "max_requests_rolling_hour": max_hour, "max_requests_per_day": max(per_day.values(), default=0)}
+gates["G5_tiingo_within_limits"] = {
+    "pass": usage["unique_symbols"] <= 450 and usage["bytes"] <= 0.9e9 and max_hour <= 45
+    and usage["max_requests_per_day"] <= 900 and past_fence == 0,
+    "caps": {"unique_symbols": 450, "bytes": 0.9e9, "per_hour": 45, "per_day": 900},
+    "plan_limits": {"unique_symbols": 500, "per_hour": 50, "per_day": 1000, "bandwidth": "2 GB shown available"},
+    "usage_october": usage, "bounded_downloads": bounded, "bounded_files_with_bars_past_fence": past_fence,
+    "window": ["2008-01-01", "2026-08-31"], "checked_at": datetime.utcnow().isoformat()}
 
 ex = val["checks"]["exits"]
 rate = ex["count"] / ((len(sec["dates"]) - 1) / 4) / 100

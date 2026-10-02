@@ -302,6 +302,11 @@ class UniverseBuilder:
                             key=lambda f: (f.filed, f.end))
             if covers and current.val / covers[-1].val > cfg.max_implied_price:
                 return "implausible_float", f"implies ${current.val / covers[-1].val:,.0f} per share", None
+        # Mis-scaled floats (tagged 1,000x too large) otherwise rank small companies among the
+        # largest and each costs a metered price download before pricing rejects it.
+        assets = store.view(as_of).instant("total_assets", latest.report_period)
+        if assets and assets > 0 and current.val > cfg.max_float_to_assets * assets:
+            return "implausible_float", f"{current.val:,.0f} vs total assets {assets:,.0f}", None
         name = name or profile.get("name")
         return "", "", _Candidate(cik, name, store, latest, current.val, current.filed)
 

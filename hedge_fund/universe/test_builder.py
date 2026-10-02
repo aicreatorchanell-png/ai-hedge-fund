@@ -491,3 +491,22 @@ def test_current_map_variants_and_extra_tickers_are_not_tried(tmp_path, monkeypa
     b = make(tmp_path)
     cand = next(c for c in b.screened("2019-07-01")[2] if c.cik == 101)
     assert [t for t, _ in b._symbols(cand, "2019-07-01")] == ["BIG"]
+
+
+def test_float_far_above_total_assets_is_a_scale_error(tmp_path, monkeypatch):
+    """A small company tagging its float 1,000x too large must not take a pool slot."""
+    import gzip as _gzip
+    import json as _json
+    tiny = Company(110, "TINY SCALE ERROR", shares=1e6, price=5.0, float_multiplier=1e4)
+    histories = build_world(tmp_path, COMPANIES + [tiny], CURRENT, COVER, PRICES)
+    path = tmp_path / "edgar" / "companyfacts" / f"CIK{110:010d}.json.gz"
+    with _gzip.open(path, "rt") as fh:
+        doc = _json.load(fh)
+    eq = doc["data"]["facts"]["us-gaap"]["StockholdersEquity"]["units"]["USD"]
+    doc["data"]["facts"]["us-gaap"]["Assets"] = {"units": {"USD": [{**r, "val": 1e7} for r in eq]}}
+    with _gzip.open(path, "wt") as fh:
+        _json.dump(doc, fh)
+    monkeypatch.setattr(tiingo_mod.requests, "Session", lambda: FakeTiingo(histories))
+    tiingo_mod.clear_process_cache()
+    snap = make(tmp_path).snapshot("2019-07-01")
+    assert reasons(snap)[110] == "implausible_float"

@@ -11,7 +11,8 @@ from pydantic import BaseModel, Field
 from hedge_fund.features.snapshot import MIN_PERIODS
 
 # Bumped whenever selection logic changes, so cached snapshots are rebuilt.
-UNIVERSE_VERSION = 4   # 3: frame nominations filed by the date; 4: no preferred/class variants from SEC's map
+UNIVERSE_VERSION = 5   # 3: frame nominations filed by the date; 4: no preferred/class variants from SEC's map;
+                       # 5: float vs filed total assets plausibility check
 
 # SIC codes of registrants that file 10-Ks but are not operating companies'
 # common stock: commodity/currency trusts (GLD, SLV, UUP), investment
@@ -31,6 +32,7 @@ class UniverseConfig(BaseModel):
     max_implied_price: float = 10_000.0             # float / cover shares above this = scale error
     max_float_jump: float = 20.0                    # vs the previous year's float
     float_to_market_cap: tuple[float, float] = (0.05, 20.0)
+    max_float_to_assets: float = 50.0               # float > 50x filed total assets = scale error (SEC-only check)
     excluded_sic: dict[int, str] = Field(default_factory=lambda: dict(EXCLUDED_SIC))
 
     @property
