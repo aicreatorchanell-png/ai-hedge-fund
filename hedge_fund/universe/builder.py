@@ -68,7 +68,7 @@ from hedge_fund.universe.models import (
 DEFAULT_CACHE_DIR = CACHE_DIR / "universe"
 _ABSURD_FLOAT = 1e13   # > $10T: a tagging error, not a company
 COVER_FILINGS_TRIED = 4   # latest periodic filing plus three earlier ones
-CURRENT_MAP_TRIES = 2     # tickers tried from SEC's current map per company (vendor symbols are metered)
+CURRENT_MAP_TRIES = 1     # SEC lists the primary listing first; the rest are ETNs, preferreds, classes
 
 
 class PriceBudgetExceeded(RuntimeError):
@@ -317,7 +317,9 @@ class UniverseBuilder:
             units = classing.units(as_of)
             rows.sort(key=lambda r: units.get(classing.ticker_class.get(r.ticker, ""), 1e9))
         out += [(r.ticker, "history") for r in rows]
-        current = sorted({normalize_ticker(t) for t, c in self.edgar.current_tickers().items() if int(c) == cand.cik})
+        # SEC's order: the primary listing first (JPM before an ETN it issues, e.g. AMJB)
+        current = list(dict.fromkeys(normalize_ticker(t) for t, c in self.edgar.current_tickers().items()
+                                     if int(c) == cand.cik))
         curated = {t for t, _ in out}
         # SEC's map lists every listed security of a company: HBAN, HBANL, HBANM, HBANP...
         # A ticker that is another of its tickers plus one letter is a class or preferred
