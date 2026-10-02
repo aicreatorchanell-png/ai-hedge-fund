@@ -3,10 +3,12 @@
 Reads the private full schedule (members with market cap = PIT filed shares x the
 symbol's raw close, and the PIT public float) and checks, per member-date:
 
-  ratio      public float / market cap in [0.2, 5]. Float is the non-affiliate value at a
-             past date (up to ~15 months stale), so it differs from market cap by price
-             moves and insider holdings, but a symbol pointing at another company's price
-             series is normally far outside this band. (The builder accepts [0.05, 20].)
+  ratio      public float / market cap *at the float's own measurement date*, in [0.2, 5].
+             The filed float values the non-affiliate shares at a past date (up to ~15
+             months before the reconstitution date); the market cap at the reconstitution
+             date is rolled back to that date with the same symbol's split-adjusted
+             closes, so a genuine price move (Tesla 2020) cancels out while a symbol that
+             points at another company's series does not. Raw ratios are reported too.
   unique     no symbol held by two companies on one date
   changes    a company whose symbol changes between dates: listed for review with the
              ratio on both sides (renames such as BBT->TFC should keep a sane ratio)
@@ -29,15 +31,44 @@ HERE = Path(__file__).resolve().parent
 full = json.loads((CACHE_DIR / "universe_runs" / "top100_schedule_full.json").read_text())
 LO, HI = 0.2, 5.0
 
-out_of_band, shared, by_cik = [], [], defaultdict(list)
+from hedge_fund.data.edgar import EdgarClient  # noqa: E402
+from hedge_fund.data.tiingo import TiingoClient  # noqa: E402
+
+tiingo = TiingoClient(offline=True)
+edgar = EdgarClient(offline=True, price_source=tiingo, max_age_hours=None)
+_float_end: dict[tuple[int, str], str | None] = {}
+
+
+def float_end(cik: int, as_of: str, filed: str) -> str | None:
+    key = (cik, as_of)
+    if key not in _float_end:
+        store = edgar.store_for_cik(cik)
+        fl = [f for f in store.public_floats(as_of) if f.filed == filed] if store else []
+        _float_end[key] = max(f.end for f in fl) if fl else None
+    return _float_end[key]
+
+
+def adj_close(ticker: str, day: str) -> float | None:
+    from datetime import date, timedelta
+    start = (date.fromisoformat(day) - timedelta(days=10)).isoformat()
+    bars = [b for b in tiingo.get_prices(ticker, start, day) if b.time[:10] <= day]
+    return bars[-1].close if bars else None
+
+
+out_of_band, shared, by_cik, raw_ratios = [], [], defaultdict(list), []
 for snap in full["snapshots"]:
     seen = {}
     for m in snap["members"]:
-        ratio = m["public_float"] / m["market_cap"] if m["market_cap"] else float("inf")
+        raw = m["public_float"] / m["market_cap"] if m["market_cap"] else float("inf")
+        raw_ratios.append(raw)
+        end = float_end(m["cik"], snap["as_of"], m["float_filed"])
+        then, now = (adj_close(m["ticker"], end) if end else None), adj_close(m["ticker"], m["price_date"])
+        ratio = m["public_float"] / (m["market_cap"] * then / now) if then and now else raw
         by_cik[m["cik"]].append((snap["as_of"], m["ticker"], round(ratio, 3), m["symbol_source"]))
         if not LO <= ratio <= HI:
             out_of_band.append({"as_of": snap["as_of"], "cik": m["cik"], "name": m["name"], "ticker": m["ticker"],
-                                "ratio": round(ratio, 3), "source": m["symbol_source"]})
+                                "ratio_at_float_date": round(ratio, 3), "raw_ratio": round(raw, 3),
+                                "float_end": end, "source": m["symbol_source"]})
         if m["ticker"] in seen:
             shared.append((snap["as_of"], m["ticker"], seen[m["ticker"]], m["cik"]))
         seen[m["ticker"]] = m["cik"]
@@ -58,6 +89,7 @@ result = {
     "pass": not out_of_band and not shared, "band": [LO, HI],
     "member_dates": len(ratios), "ratio_quantiles": {q: ratios[int(q * (len(ratios) - 1))] for q in (0.01, 0.5, 0.99)}
     if ratios else {},
+    "raw_ratio_quantiles": {q: sorted(raw_ratios)[int(q * (len(raw_ratios) - 1))] for q in (0.01, 0.5, 0.99)},
     "out_of_band": out_of_band, "shared_symbols": shared,
     "symbol_changes": {str(k): v for k, v in changes.items()}, "n_companies_with_symbol_change": len(changes),
     "sample_contradictions_now": sample_check,

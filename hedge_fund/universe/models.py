@@ -11,8 +11,9 @@ from pydantic import BaseModel, Field
 from hedge_fund.features.snapshot import MIN_PERIODS
 
 # Bumped whenever selection logic changes, so cached snapshots are rebuilt.
-UNIVERSE_VERSION = 5   # 3: frame nominations filed by the date; 4: no preferred/class variants from SEC's map;
-                       # 5: float vs filed total assets plausibility check
+UNIVERSE_VERSION = 6   # 3: frame nominations filed by the date; 4: no preferred/class variants from SEC's map;
+                       # 5: float vs filed total assets plausibility check; 6: vendor listing intervals,
+                       # one-sided own-filing evidence decides reused tickers
 
 # SIC codes of registrants that file 10-Ks but are not operating companies'
 # common stock: commodity/currency trusts (GLD, SLV, UUP), investment

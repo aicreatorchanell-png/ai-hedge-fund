@@ -1,0 +1,80 @@
+{
+ "pass": true,
+ "band": [
+  0.2,
+  5.0
+ ],
+ "member_dates": 6100,
+ "ratio_quantiles": {
+  "0.01": 0.494,
+  "0.5": 0.998,
+  "0.99": 1.208
+ },
+ "raw_ratio_quantiles": {
+  "0.01": 0.32032137047242787,
+  "0.5": 0.8435742274930087,
+  "0.99": 1.7393796858753103
+ },
+ "out_of_band": [],
+ "shared_symbols": [],
+ "symbol_changes": {},
+ "n_companies_with_symbol_change": 0,
+ "sample_contradictions_now": [
+  {
+   "as_of": "2013-01-02",
+   "name": "EQUITY RESIDENTIAL",
+   "sec_current_map": "VMRK",
+   "own_filings": [
+    "EQR",
+    "TOL"
+   ],
+   "member_with": null,
+   "ratio": null,
+   "status": "not a top-100 member that date"
+  },
+  {
+   "as_of": "2016-07-01",
+   "name": "Marsh & McLennan Companies, Inc.",
+   "sec_current_map": "MRSH",
+   "own_filings": [
+    "MMC"
+   ],
+   "member_with": null,
+   "ratio": null,
+   "status": "not a top-100 member that date"
+  },
+  {
+   "as_of": "2013-10-01",
+   "name": "Truist Financial Corporation",
+   "sec_current_map": "TFC",
+   "own_filings": [
+    "BBT"
+   ],
+   "member_with": null,
+   "ratio": null,
+   "status": "not a top-100 member that date"
+  },
+  {
+   "as_of": "2017-07-03",
+   "name": "WELLTOWER INC.",
+   "sec_current_map": "WELL",
+   "own_filings": [
+    "HCN"
+   ],
+   "member_with": null,
+   "ratio": null,
+   "status": "not a top-100 member that date"
+  },
+  {
+   "as_of": "2014-01-02",
+   "name": "Tapestry, Inc.",
+   "sec_current_map": "TPR",
+   "own_filings": [
+    "COH"
+   ],
+   "member_with": null,
+   "ratio": null,
+   "status": "not a top-100 member that date"
+  }
+ ]
+}

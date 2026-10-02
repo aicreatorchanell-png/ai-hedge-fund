@@ -315,7 +315,7 @@ def test_recycled_symbol_is_rejected_or_deduplicated(tmp_path, monkeypatch):
     ghost = Company(108, "OLD BIG CO", shares=1e9, price=99.0, last_period="2019-03-31")
     tiny = Company(109, "TINY CO", shares=1e6, price=1.0, float_multiplier=2e4)   # cover symbol MID: mismatch
     companies = COMPANIES + [ghost, tiny]
-    cover = {**COVER, 108: lambda filed: ["BIG"], 109: lambda filed: ["MID"]}
+    cover = {**COVER, 101: lambda filed: ["BIG"], 108: lambda filed: ["BIG"], 109: lambda filed: ["MID"]}
     histories = build_world(tmp_path, companies, CURRENT, cover, PRICES)
     monkeypatch.setattr(tiingo_mod.requests, "Session", lambda: FakeTiingo(histories))
     tiingo_mod.clear_process_cache()
@@ -510,3 +510,45 @@ def test_float_far_above_total_assets_is_a_scale_error(tmp_path, monkeypatch):
     tiingo_mod.clear_process_cache()
     snap = make(tmp_path).snapshot("2019-07-01")
     assert reasons(snap)[110] == "implausible_float"
+
+
+def test_vendor_listing_gates_pricing_and_deferral_records_needs(tmp_path, monkeypatch):
+    from hedge_fund.data.tiingo_listings import Listing, TiingoListings
+    histories = build_world(tmp_path, COMPANIES, CURRENT, COVER, PRICES)
+    server = FakeTiingo(histories)
+    monkeypatch.setattr(tiingo_mod.requests, "Session", lambda: server)
+    tiingo_mod.clear_process_cache()
+    # MID's served listing starts in 2020: on 2019-07-01 its ticker belonged to an older listing
+    known = {s: [Listing(s, "NYSE", "Stock", "2000-01-01", "2026-10-01")] for s in PRICES}
+    known["MID"] = [Listing("MID", "NYSE", "Stock", "2000-01-01", "2019-12-31"),
+                    Listing("MID", "NYSE", "Stock", "2020-01-02", "2026-10-01")]
+    b = make(tmp_path, listings=TiingoListings(known))
+    snap = b.snapshot("2019-07-01")
+    assert reasons(snap)[102] == "vendor_history_unavailable"
+    assert not any("/mid/" in url for url, _ in server.calls)              # no request spent on it
+
+
+def test_defer_downloads_never_requests(tmp_path, monkeypatch):
+    histories = build_world(tmp_path, COMPANIES, CURRENT, COVER, PRICES)
+    server = FakeTiingo(histories)
+    monkeypatch.setattr(tiingo_mod.requests, "Session", lambda: server)
+    tiingo_mod.clear_process_cache()
+    b = make(tmp_path, defer_downloads=True)
+    snap = b.snapshot("2019-07-01")
+    assert server.calls == []                                             # nothing downloaded
+    assert "BIG" in b.deferred and snap.members == []
+    assert reasons(snap)[101] == "price_download_deferred"
+
+
+def test_one_sided_own_filing_evidence_takes_a_reused_ticker(tmp_path, monkeypatch):
+    """Today's map gives CBX to ACEY; on the date only CHUBBY's own filings state CBX."""
+    chubb = Company(301, "CHUBBY CORP", shares=1e9, price=50.0, last_period="2019-03-31")
+    ace = Company(302, "ACEY LTD", shares=1e9, price=50.0, float_multiplier=1.01)
+    cover = {301: lambda filed: ["CBX"], 302: lambda filed: []}
+    prices = {"CBX": flat(50.0), "SPY": flat(300.0)}
+    histories = build_world(tmp_path, [chubb, ace], {"CBX": 302}, cover, prices)
+    monkeypatch.setattr(tiingo_mod.requests, "Session", lambda: FakeTiingo(histories))
+    tiingo_mod.clear_process_cache()
+    snap = make(tmp_path).snapshot("2019-07-01")
+    assert {m.cik: m.ticker for m in snap.members} == {301: "CBX"}
+    assert reasons(snap)[302] == "duplicate_symbol"

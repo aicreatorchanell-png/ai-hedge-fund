@@ -1,0 +1,385 @@
+{
+ "pass": false,
+ "max_gap_allowed": 3,
+ "gap_per_date": {
+  "2011-07-01": 12,
+  "2011-10-03": 11,
+  "2012-01-03": 10,
+  "2012-04-02": 9,
+  "2012-07-02": 10,
+  "2012-10-01": 12,
+  "2013-01-02": 10,
+  "2013-04-01": 10,
+  "2013-07-01": 9,
+  "2013-10-01": 9,
+  "2014-01-02": 9,
+  "2014-04-01": 8,
+  "2014-07-01": 8,
+  "2014-10-01": 9,
+  "2015-01-02": 8,
+  "2015-04-01": 8,
+  "2015-07-01": 8,
+  "2015-10-01": 7,
+  "2016-01-04": 6,
+  "2016-04-01": 6,
+  "2016-07-01": 7,
+  "2016-10-03": 6,
+  "2017-01-03": 4,
+  "2017-04-03": 3,
+  "2017-07-03": 3,
+  "2017-10-02": 4,
+  "2018-01-02": 3,
+  "2018-04-02": 2,
+  "2018-07-02": 3,
+  "2018-10-01": 2,
+  "2019-01-02": 1,
+  "2019-04-01": 2,
+  "2019-07-01": 2,
+  "2019-10-01": 2,
+  "2020-01-02": 3,
+  "2020-04-01": 2,
+  "2020-07-01": 1,
+  "2020-10-01": 1,
+  "2021-01-04": 0,
+  "2021-04-01": 0,
+  "2021-07-01": 0,
+  "2021-10-01": 1,
+  "2022-01-03": 0,
+  "2022-04-01": 0,
+  "2022-07-01": 0,
+  "2022-10-03": 0,
+  "2023-01-03": 0,
+  "2023-04-03": 1,
+  "2023-07-03": 2,
+  "2023-10-02": 3,
+  "2024-01-02": 3,
+  "2024-04-01": 0,
+  "2024-07-01": 0,
+  "2024-10-01": 0,
+  "2025-01-02": 0,
+  "2025-04-01": 1,
+  "2025-07-01": 1,
+  "2025-10-01": 1,
+  "2026-01-02": 1,
+  "2026-04-01": 0,
+  "2026-07-01": 0
+ },
+ "deferred_per_date": {
+  "2011-07-01": 0,
+  "2011-10-03": 0,
+  "2012-01-03": 0,
+  "2012-04-02": 0,
+  "2012-07-02": 0,
+  "2012-10-01": 0,
+  "2013-01-02": 0,
+  "2013-04-01": 0,
+  "2013-07-01": 0,
+  "2013-10-01": 0,
+  "2014-01-02": 0,
+  "2014-04-01": 0,
+  "2014-07-01": 0,
+  "2014-10-01": 0,
+  "2015-01-02": 0,
+  "2015-04-01": 0,
+  "2015-07-01": 0,
+  "2015-10-01": 0,
+  "2016-01-04": 0,
+  "2016-04-01": 0,
+  "2016-07-01": 0,
+  "2016-10-03": 0,
+  "2017-01-03": 0,
+  "2017-04-03": 0,
+  "2017-07-03": 0,
+  "2017-10-02": 0,
+  "2018-01-02": 0,
+  "2018-04-02": 0,
+  "2018-07-02": 0,
+  "2018-10-01": 0,
+  "2019-01-02": 0,
+  "2019-04-01": 0,
+  "2019-07-01": 0,
+  "2019-10-01": 0,
+  "2020-01-02": 0,
+  "2020-04-01": 0,
+  "2020-07-01": 0,
+  "2020-10-01": 0,
+  "2021-01-04": 0,
+  "2021-04-01": 0,
+  "2021-07-01": 0,
+  "2021-10-01": 0,
+  "2022-01-03": 0,
+  "2022-04-01": 0,
+  "2022-07-01": 0,
+  "2022-10-03": 0,
+  "2023-01-03": 0,
+  "2023-04-03": 0,
+  "2023-07-03": 0,
+  "2023-10-02": 0,
+  "2024-01-02": 0,
+  "2024-04-01": 0,
+  "2024-07-01": 0,
+  "2024-10-01": 0,
+  "2025-01-02": 0,
+  "2025-04-01": 0,
+  "2025-07-01": 0,
+  "2025-10-01": 0,
+  "2026-01-02": 0,
+  "2026-04-01": 0,
+  "2026-07-01": 0
+ },
+ "causes_total_member_dates": {
+  "other": 28,
+  "vendor_history_unavailable": 78,
+  "no_symbol": 77,
+  "not_listed_at_vendor": 61
+ },
+ "most_frequent": [
+  {
+   "cik": 30554,
+   "name": "DUPONT E I DE NEMOURS & CO",
+   "cause": "no_symbol",
+   "dates": 26
+  },
+  {
+   "cik": 29915,
+   "name": "DOW CHEMICAL CO /DE/",
+   "cause": "vendor_history_unavailable",
+   "dates": 25
+  },
+  {
+   "cik": 1110783,
+   "name": "MONSANTO CO /NEW/",
+   "cause": "vendor_history_unavailable",
+   "dates": 24
+  },
+  {
+   "cik": 790070,
+   "name": "EMC CORP",
+   "cause": "vendor_history_unavailable",
+   "dates": 21
+  },
+  {
+   "cik": 1105705,
+   "name": "TIME WARNER INC.",
+   "cause": "no_symbol",
+   "dates": 17
+  },
+  {
+   "cik": 773910,
+   "name": "ANADARKO PETROLEUM CORP",
+   "cause": "no_symbol",
+   "dates": 14
+  },
+  {
+   "cik": 1067983,
+   "name": "BERKSHIRE HATHAWAY INC",
+   "cause": "not_listed_at_vendor",
+   "dates": 13
+  },
+  {
+   "cik": 1465112,
+   "name": "DIRECTV",
+   "cause": "not_listed_at_vendor",
+   "dates": 11
+  },
+  {
+   "cik": 1308161,
+   "name": "TWENTY-FIRST CENTURY FOX, INC.",
+   "cause": "not_listed_at_vendor",
+   "dates": 8
+  },
+  {
+   "cik": 936402,
+   "name": "SHIRE PLC",
+   "cause": "not_listed_at_vendor",
+   "dates": 8
+  },
+  {
+   "cik": 936402,
+   "name": "Shire plc",
+   "cause": "not_listed_at_vendor",
+   "dates": 8
+  },
+  {
+   "cik": 889609,
+   "name": "CONSUMER PORTFOLIO SERVICES, INC.",
+   "cause": "other",
+   "dates": 7
+  },
+  {
+   "cik": 1000209,
+   "name": "MEDALLION FINANCIAL CORP",
+   "cause": "other",
+   "dates": 6
+  },
+  {
+   "cik": 808362,
+   "name": "Baker Hughes Holdings LLC",
+   "cause": "no_symbol",
+   "dates": 4
+  },
+  {
+   "cik": 1377013,
+   "name": "TIME WARNER CABLE INC.",
+   "cause": "no_symbol",
+   "dates": 4
+  },
+  {
+   "cik": 1393612,
+   "name": "DISCOVER FINANCIAL SERVICES",
+   "cause": "no_symbol",
+   "dates": 4
+  },
+  {
+   "cik": 884905,
+   "name": "PRAXAIR INC",
+   "cause": "no_symbol",
+   "dates": 3
+  },
+  {
+   "cik": 1063761,
+   "name": "SIMON PROPERTY GROUP, INC.",
+   "cause": "other",
+   "dates": 3
+  },
+  {
+   "cik": 912382,
+   "name": "NATIONAL BANK OF INDIANAPOLIS CORP",
+   "cause": "no_symbol",
+   "dates": 3
+  },
+  {
+   "cik": 773910,
+   "name": "ANADARKO PETROLEUM CORP",
+   "cause": "vendor_history_unavailable",
+   "dates": 3
+  },
+  {
+   "cik": 1666700,
+   "name": "DuPont de Nemours, Inc.",
+   "cause": "vendor_history_unavailable",
+   "dates": 3
+  },
+  {
+   "cik": 1403161,
+   "name": "VISA INC.",
+   "cause": "other",
+   "dates": 2
+  },
+  {
+   "cik": 1137774,
+   "name": "PRUDENTIAL FINANCIAL INC",
+   "cause": "other",
+   "dates": 2
+  },
+  {
+   "cik": 936402,
+   "name": "SHIRE PLC",
+   "cause": "no_symbol",
+   "dates": 2
+  },
+  {
+   "cik": 104207,
+   "name": "WALGREEN CO",
+   "cause": "other",
+   "dates": 2
+  },
+  {
+   "cik": 790070,
+   "name": "EMC CORP",
+   "cause": "not_listed_at_vendor",
+   "dates": 2
+  },
+  {
+   "cik": 1275283,
+   "name": "REYNOLDS AMERICAN INC",
+   "cause": "not_listed_at_vendor",
+   "dates": 2
+  },
+  {
+   "cik": 1105705,
+   "name": "TIME WARNER INC.",
+   "cause": "not_listed_at_vendor",
+   "dates": 2
+  },
+  {
+   "cik": 1726173,
+   "name": "BIGLARI HOLDINGS INC.",
+   "cause": "other",
+   "dates": 2
+  },
+  {
+   "cik": 816284,
+   "name": "CELGENE CORPORATION",
+   "cause": "not_listed_at_vendor",
+   "dates": 2
+  }
+ ],
+ "worst_date": {
+  "as_of": "2011-07-01",
+  "unpriced_in_top100_by_float": 12,
+  "deferred": 0,
+  "unpriced": [
+   [
+    1067983,
+    "BERKSHIRE HATHAWAY INC",
+    "other"
+   ],
+   [
+    804328,
+    "QUALCOMM INC/DE",
+    "other"
+   ],
+   [
+    1403161,
+    "VISA INC.",
+    "other"
+   ],
+   [
+    1110783,
+    "MONSANTO CO /NEW/",
+    "vendor_history_unavailable"
+   ],
+   [
+    790070,
+    "EMC CORP",
+    "vendor_history_unavailable"
+   ],
+   [
+    1105705,
+    "TIME WARNER INC.",
+    "no_symbol"
+   ],
+   [
+    30554,
+    "DUPONT E I DE NEMOURS & CO",
+    "no_symbol"
+   ],
+   [
+    1465112,
+    "DIRECTV",
+    "not_listed_at_vendor"
+   ],
+   [
+    29915,
+    "DOW CHEMICAL CO /DE/",
+    "vendor_history_unavailable"
+   ],
+   [
+    1137774,
+    "PRUDENTIAL FINANCIAL INC",
+    "other"
+   ],
+   [
+    884905,
+    "PRAXAIR INC",
+    "no_symbol"
+   ],
+   [
+    826083,
+    "DELL INC",
+    "vendor_history_unavailable"
+   ]
+  ]
+ }
+}

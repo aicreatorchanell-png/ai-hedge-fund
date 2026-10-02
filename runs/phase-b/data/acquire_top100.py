@@ -16,6 +16,11 @@ Pricing downloads each missing symbol once through a budget-gated TiingoClient:
              ledger persists. Rerun after a stop continues where it left off.
 
 Exit 0 = all dates built; 3 = a budget cap stopped it (resume next window/month).
+
+--defer: rebuild without any download, using Tiingo's listing intervals
+(supported_tickers.zip in the private cache): a ticker prices a company only if the
+listing the API serves spans the date; any symbol not yet stored is recorded in
+top100_deferred_symbols.json (the exact list a later, budgeted run must fetch).
 Licensed data stays in the cache directory (outside git); the repo gets membership only.
 """
 
@@ -56,6 +61,7 @@ def seed(budget: RequestBudget) -> None:
 
 
 def main() -> int:
+    defer = "--defer" in sys.argv[1:]
     budget = RequestBudget(LEDGER, LIMITS)
     seed(budget)
     log(f"budget at start: {json.dumps({k: v for k, v in budget.usage().items() if k != 'symbols'})}")
@@ -64,7 +70,8 @@ def main() -> int:
             EdgarClient(price_source=tiingo, max_age_hours=None) as edgar:
         sessions = [p.time[:10] for p in tiingo.get_prices("SPY", START, "2026-07-31")]
         dates = reconstitution_dates(sessions, START, END, "quarterly")
-        builder = UniverseBuilder(edgar, tiingo, config)
+        from hedge_fund.data.tiingo_listings import TiingoListings
+        builder = UniverseBuilder(edgar, tiingo, config, listings=TiingoListings.load(), defer_downloads=defer)
         snapshots = []
         for d in dates:
             for attempt in range(6):
@@ -94,6 +101,9 @@ def main() -> int:
                                                   "symbol_source": m.symbol_source} for m in s.members],
                                      "excluded_reasons": _reasons(s)} for s in snapshots]}
         (OUT / "top100_membership.json").write_text(json.dumps(membership, indent=1))
+        (OUT / "top100_deferred_symbols.json").write_text(json.dumps(
+            {"n": len(builder.deferred), "symbols": {k: sorted(set(v)) for k, v in sorted(builder.deferred.items())}},
+            indent=1))
     log(f"done: {len(dates)} dates; budget {json.dumps({k: v for k, v in budget.usage().items() if k != 'symbols'})}")
     return 0
 

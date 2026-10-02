@@ -98,9 +98,16 @@ class _Candidate:
 class UniverseBuilder:
     def __init__(self, edgar: EdgarClient, tiingo: TiingoClient, config: UniverseConfig | None = None, *,
                  cache_dir: Path | str = DEFAULT_CACHE_DIR, max_price_downloads: int | None = None,
-                 refresh: bool = False) -> None:
+                 refresh: bool = False, listings=None, defer_downloads: bool = False) -> None:
+        """*listings* (TiingoListings): a ticker is priced only if the listing the vendor
+        serves for it spans the date — reused tickers' old histories are unreachable and
+        a later listing must never price an earlier company. *defer_downloads*: never
+        download; record the ticker in `deferred` and treat the candidate as unpriced."""
         self.edgar = edgar
         self.tiingo = tiingo
+        self.listings = listings
+        self._defer = defer_downloads
+        self.deferred: dict[str, list[str]] = {}
         self.config = config or UniverseConfig()
         self.data = CompositeDataClient(tiingo, edgar)
         self._dir = Path(cache_dir) / self.config.digest()
@@ -238,7 +245,11 @@ class UniverseBuilder:
                 if "current" in (holder.symbol_source, member.symbol_source):
                     mine = {tiingo_symbol(t) for t, _ in self._own_symbols(cand)}
                     theirs = {tiingo_symbol(t) for t, _ in self._own_symbols(by_cik[holder.cik])}
-                    if key in mine and theirs and key not in theirs:     # holder's filings name another symbol
+                    # Swap on one-sided evidence: the newcomer's own filings state the symbol on
+                    # this date, while the holder's claim rests on today's map alone (CB: Chubb
+                    # Corp's 10-K states CB; ACE's filings state none; the vendor's CB listing
+                    # is continuous from 1984, i.e. Chubb Corp's until 2016).
+                    if key in mine and key not in theirs and holder.symbol_source == "current":
                         priced[idx], seen_symbols[key], loser = member, cand.cik, by_cik[holder.cik]
                     alt = self._price_own(loser, as_of, exclude=set(seen_symbols))
                     if alt is not None:
@@ -397,6 +408,14 @@ class UniverseBuilder:
 
     def _try_symbol(self, cand: _Candidate, ticker: str, source: str, as_of: str):
         cfg = self.config
+        if self.listings is not None:
+            status = self.listings.status(ticker, as_of)
+            if status != "served":
+                reason = "vendor_history_unavailable" if status == "reused" else "not_listed_at_vendor"
+                return None, reason, f"{ticker}: the vendor serves no listing of this ticker on {as_of} ({status})"
+        if not self.tiingo.is_stored(ticker) and self._defer:
+            self.deferred.setdefault(tiingo_symbol(ticker), []).append(as_of)
+            return None, "price_download_deferred", f"{ticker}: download deferred"
         if not self.tiingo.is_stored(ticker):
             if self._budget is not None and self.price_downloads >= self._budget:
                 raise PriceBudgetExceeded(
