@@ -538,6 +538,7 @@ def test_defer_downloads_never_requests(tmp_path, monkeypatch):
     assert server.calls == []                                             # nothing downloaded
     assert "BIG" in b.deferred and snap.members == []
     assert reasons(snap)[101] == "price_download_deferred"
+    assert not list((tmp_path / "universe").rglob("2019-07-01.json"))     # provisional: not cached
 
 
 def test_one_sided_own_filing_evidence_takes_a_reused_ticker(tmp_path, monkeypatch):

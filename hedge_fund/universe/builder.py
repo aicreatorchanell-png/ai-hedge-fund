@@ -139,6 +139,8 @@ class UniverseBuilder:
         if path.exists() and not self._refresh:
             return UniverseSnapshot.model_validate_json(path.read_text())
         snap = self._build(as_of)
+        if any(e.reason == "price_download_deferred" for e in snap.excluded):
+            return snap                    # provisional: never cached as a final snapshot
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(snap.model_dump_json(indent=1))
         discovered = {m.ticker: m.cik for m in snap.members if m.symbol_source in ("cover_page", "filing_text")}
