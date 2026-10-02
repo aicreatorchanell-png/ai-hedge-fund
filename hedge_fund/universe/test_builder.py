@@ -480,3 +480,14 @@ def test_reused_ticker_goes_to_the_company_whose_own_filings_state_it(tmp_path, 
     snap = make(tmp_path).snapshot("2019-07-01")
     got = {m.cik: (m.ticker, m.symbol_source) for m in snap.members}
     assert got == {201: ("JCX", "cover_page"), 202: ("BTA", "cover_page")}
+
+
+def test_current_map_variants_and_extra_tickers_are_not_tried(tmp_path, monkeypatch):
+    """HBAN, HBANL, HBANM, HBANP: only the base ticker is tried (each try may cost a vendor symbol)."""
+    current = {**CURRENT, "BIGL": 101, "BIGP": 101, "BIGZ": 101}
+    histories = build_world(tmp_path, COMPANIES, current, COVER, PRICES)
+    monkeypatch.setattr(tiingo_mod.requests, "Session", lambda: FakeTiingo(histories))
+    tiingo_mod.clear_process_cache()
+    b = make(tmp_path)
+    cand = next(c for c in b.screened("2019-07-01")[2] if c.cik == 101)
+    assert [t for t, _ in b._symbols(cand, "2019-07-01")] == ["BIG"]
