@@ -16,6 +16,7 @@ Mandatory gates (all must PASS before pre-registration/freeze):
   G8 holdout_fence      research reads into the embargo/holdout are refused (checked live) and
                         every universe date precedes the fence
   G9 runtime            estimated full pilot <= 12 hours
+  G10 completeness      at most 3 of the top 100 by PIT float unpriced on any date; nothing deferred
 Advisory (reported, not gating here): cross-session durability of the cache.
 """
 
@@ -135,6 +136,14 @@ gates["G8_holdout_fence"] = {
     and refused(lambda: tc.get_prices("SPY", "2026-10-01", "2026-10-01"))
     and tc.history_range("SPY")[1] < "2026-09-01" and max(sec["dates"]) < "2026-09-01",
     "visible_spy_range": tc.history_range("SPY"), "last_universe_date": max(sec["dates"])}
+
+comp_path = HERE / "top100_completeness.json"
+comp = json.loads(comp_path.read_text()) if comp_path.exists() else {"pass": False}
+g = list(comp.get("gap_per_date", {}).values())
+gates["G10_completeness"] = {"pass": comp["pass"], "rule": "<= 3 of the top 100 by PIT float unpriced on every date",
+                             "gap_min_median_max": [min(g), sorted(g)[len(g) // 2], max(g)] if g else None,
+                             "causes_member_dates": comp.get("causes_total_member_dates"),
+                             "deferred_downloads": sum(comp.get("deferred_per_date", {}).values())}
 
 sec_per_100_per_year, years, runs = 4.5, (date(2026, 7, 31) - date(2011, 7, 1)).days / 365.25, 40
 hours = sec_per_100_per_year * years * runs / 3600

@@ -22,7 +22,7 @@
    "6770": "blank check (SPAC)"
   }
  },
- "config_digest": "79b90621347dc364",
+ "config_digest": "39a04077ac00eeca",
  "window": [
   "2008-01-01",
   "2026-08-31"
@@ -743,11 +743,11 @@
     "no_shares": 3,
     "no_symbol": 15,
     "nominated_after_as_of": 568,
-    "not_listed_at_vendor": 9,
+    "not_listed_at_vendor": 8,
     "not_yet_filing": 5,
-    "outside_float_pool": 390,
+    "outside_float_pool": 392,
     "stopped_filing": 17,
-    "vendor_history_unavailable": 7
+    "vendor_history_unavailable": 6
    }
   },
   {
@@ -1466,9 +1466,9 @@
     "nominated_after_as_of": 595,
     "not_listed_at_vendor": 7,
     "not_yet_filing": 32,
-    "outside_float_pool": 483,
+    "outside_float_pool": 484,
     "stopped_filing": 20,
-    "vendor_history_unavailable": 8
+    "vendor_history_unavailable": 7
    }
   },
   {
@@ -2142,38 +2142,38 @@
     },
     {
      "rank": 96,
-     "ticker": "EL",
-     "cik": 1001250,
-     "name": "The Estee Lauder Companies Inc.",
-     "symbol_source": "current"
-    },
-    {
-     "rank": 97,
      "ticker": "ELV",
      "cik": 1156039,
      "name": "ANTHEM, INC.",
      "symbol_source": "current"
     },
     {
-     "rank": 98,
+     "rank": 97,
      "ticker": "ITW",
      "cik": 49826,
      "name": "ILLINOIS TOOL WORKS INC.",
      "symbol_source": "current"
     },
     {
-     "rank": 99,
+     "rank": 98,
      "ticker": "PSA",
      "cik": 1393311,
      "name": "PUBLIC STORAGE",
      "symbol_source": "current"
     },
     {
-     "rank": 100,
+     "rank": 99,
      "ticker": "AMT",
      "cik": 1053507,
      "name": "AMERICAN TOWER CORP /MA/",
      "symbol_source": "current"
+    },
+    {
+     "rank": 100,
+     "ticker": "ESRX",
+     "cik": 885721,
+     "name": "EXPRESS SCRIPTS INC",
+     "symbol_source": "filing_text"
     }
    ],
    "excluded_reasons": {
@@ -2187,9 +2187,9 @@
     "nominated_after_as_of": 491,
     "not_listed_at_vendor": 7,
     "not_yet_filing": 28,
-    "outside_float_pool": 454,
+    "outside_float_pool": 455,
     "stopped_filing": 17,
-    "vendor_history_unavailable": 8
+    "vendor_history_unavailable": 7
    }
   },
   {
@@ -2901,15 +2901,16 @@
     "below_top_n": 100,
     "duplicate_symbol": 2,
     "excluded_security_type": 5,
+    "float_market_cap_mismatch": 1,
     "implausible_float": 28,
     "insufficient_filings": 639,
     "no_symbol": 11,
     "nominated_after_as_of": 368,
     "not_listed_at_vendor": 7,
     "not_yet_filing": 14,
-    "outside_float_pool": 509,
+    "outside_float_pool": 510,
     "stopped_filing": 24,
-    "vendor_history_unavailable": 8
+    "vendor_history_unavailable": 6
    }
   },
   {
@@ -3621,6 +3622,7 @@
     "below_top_n": 100,
     "duplicate_symbol": 2,
     "excluded_security_type": 24,
+    "float_market_cap_mismatch": 1,
     "implausible_float": 81,
     "insufficient_filings": 298,
     "no_price": 1,
@@ -3628,9 +3630,9 @@
     "nominated_after_as_of": 266,
     "not_listed_at_vendor": 9,
     "not_yet_filing": 7,
-    "outside_float_pool": 917,
+    "outside_float_pool": 918,
     "stopped_filing": 42,
-    "vendor_history_unavailable": 8
+    "vendor_history_unavailable": 6
    }
   },
   {
@@ -4342,16 +4344,16 @@
     "below_top_n": 100,
     "duplicate_symbol": 2,
     "excluded_security_type": 26,
-    "float_market_cap_mismatch": 1,
+    "float_market_cap_mismatch": 2,
     "implausible_float": 113,
     "insufficient_filings": 142,
     "no_symbol": 13,
     "nominated_after_as_of": 240,
     "not_listed_at_vendor": 9,
     "not_yet_filing": 8,
-    "outside_float_pool": 1156,
+    "outside_float_pool": 1157,
     "stopped_filing": 72,
-    "vendor_history_unavailable": 7
+    "vendor_history_unavailable": 5
    }
   },
   {
@@ -5069,9 +5071,9 @@
     "nominated_after_as_of": 249,
     "not_listed_at_vendor": 7,
     "not_yet_filing": 7,
-    "outside_float_pool": 1131,
+    "outside_float_pool": 1132,
     "stopped_filing": 93,
-    "vendor_history_unavailable": 6
+    "vendor_history_unavailable": 5
    }
   },
   {
@@ -5790,9 +5792,9 @@
     "nominated_after_as_of": 179,
     "not_listed_at_vendor": 7,
     "not_yet_filing": 7,
-    "outside_float_pool": 1231,
+    "outside_float_pool": 1232,
     "stopped_filing": 118,
-    "vendor_history_unavailable": 5
+    "vendor_history_unavailable": 4
    }
   },
   {
@@ -6512,10 +6514,10 @@
     "nominated_after_as_of": 132,
     "not_listed_at_vendor": 6,
     "not_yet_filing": 7,
-    "outside_float_pool": 1270,
+    "outside_float_pool": 1271,
     "recently_listed": 1,
     "stopped_filing": 136,
-    "vendor_history_unavailable": 5
+    "vendor_history_unavailable": 4
    }
   },
   {
@@ -23776,9 +23778,9 @@
     },
     {
      "rank": 100,
-     "ticker": "ECL",
-     "cik": 31462,
-     "name": "ECOLAB INC.",
+     "ticker": "DD",
+     "cik": 1666700,
+     "name": "DuPont de Nemours, Inc.",
      "symbol_source": "current"
     }
    ],
@@ -23791,9 +23793,9 @@
     "no_symbol": 1,
     "nominated_after_as_of": 120,
     "not_yet_filing": 1,
-    "outside_float_pool": 1207,
+    "outside_float_pool": 1208,
     "stopped_filing": 104,
-    "vendor_history_unavailable": 3
+    "vendor_history_unavailable": 2
    }
   },
   {
@@ -24510,10 +24512,10 @@
     "nominated_after_as_of": 140,
     "not_listed_at_vendor": 1,
     "not_yet_filing": 1,
-    "outside_float_pool": 1208,
+    "outside_float_pool": 1209,
     "recently_listed": 1,
     "stopped_filing": 132,
-    "vendor_history_unavailable": 2
+    "vendor_history_unavailable": 1
    }
   },
   {
@@ -25230,10 +25232,9 @@
     "nominated_after_as_of": 234,
     "not_listed_at_vendor": 3,
     "not_yet_filing": 1,
-    "outside_float_pool": 1091,
-    "price_download_deferred": 1,
+    "outside_float_pool": 1093,
     "stopped_filing": 45,
-    "vendor_history_unavailable": 2
+    "vendor_history_unavailable": 1
    }
   },
   {
@@ -31683,9 +31684,8 @@
     "insufficient_filings": 106,
     "nominated_after_as_of": 129,
     "not_yet_filing": 4,
-    "outside_float_pool": 1143,
-    "stopped_filing": 51,
-    "vendor_history_unavailable": 1
+    "outside_float_pool": 1144,
+    "stopped_filing": 51
    }
   },
   {
@@ -32401,9 +32401,8 @@
     "insufficient_filings": 98,
     "nominated_after_as_of": 120,
     "not_yet_filing": 3,
-    "outside_float_pool": 1171,
-    "stopped_filing": 74,
-    "vendor_history_unavailable": 1
+    "outside_float_pool": 1172,
+    "stopped_filing": 74
    }
   },
   {
@@ -43163,9 +43162,8 @@
     "implausible_float": 108,
     "insufficient_filings": 38,
     "nominated_after_as_of": 53,
-    "not_listed_at_vendor": 1,
     "not_yet_filing": 3,
-    "outside_float_pool": 1012,
+    "outside_float_pool": 1013,
     "stopped_filing": 62
    }
   },
@@ -43880,9 +43878,8 @@
     "implausible_float": 105,
     "insufficient_filings": 29,
     "nominated_after_as_of": 26,
-    "not_listed_at_vendor": 1,
     "not_yet_filing": 3,
-    "outside_float_pool": 1025,
+    "outside_float_pool": 1026,
     "stopped_filing": 96
    }
   }

@@ -10,90 +10,85 @@
    "frames_needed": 70,
    "missing": []
   },
-  "G2_universe_sec": {
-   "pass": false,
-   "dates": 61,
-   "checks": {
+  "G2_universe_identifiers": {
+   "pass": true,
+   "sec_stage_checks": {
     "pit": true,
     "survivorship": true,
     "lineage": true,
     "identifiers": true,
     "coverage": true
    },
-   "symbol_sample": {
+   "priced_identifier_validation": {
+    "pass": true,
+    "band": [
+     0.2,
+     5.0
+    ],
+    "member_dates": 6100,
+    "ratio_quantiles": {
+     "0.01": 0.494,
+     "0.5": 0.998,
+     "0.99": 1.218
+    },
+    "out_of_band": 0,
+    "shared_symbols": 0
+   },
+   "sec_only_sample_superseded": {
     "counts": {
      "verified": 55,
      "contradicted": 5,
      "unverifiable": 15
     },
-    "pass": false,
-    "contradictions": [
-     [
-      "2013-01-02",
-      "EQUITY RESIDENTIAL",
-      "VMRK",
-      [
-       "EQR",
-       "TOL"
-      ]
-     ],
-     [
-      "2016-07-01",
-      "Marsh & McLennan Companies, Inc.",
-      "MRSH",
-      [
-       "MMC"
-      ]
-     ],
-     [
-      "2013-10-01",
-      "Truist Financial Corporation",
-      "TFC",
-      [
-       "BBT"
-      ]
-     ],
-     [
-      "2017-07-03",
-      "WELLTOWER INC.",
-      "WELL",
-      [
-       "HCN"
-      ]
-     ],
-     [
-      "2014-01-02",
-      "Tapestry, Inc.",
-      "TPR",
-      [
-       "COH"
-      ]
-     ]
-    ]
+    "pass": false
    }
   },
   "G3_universe_final": {
-   "pass": false,
-   "first_try_symbols": 494,
-   "cached": 64,
-   "missing": 430,
-   "contingency_symbols": 698,
-   "contingency_missing": 631
+   "pass": true,
+   "dates_built": 61,
+   "members_per_date_min": 100,
+   "unique_members": 219
   },
   "G4_tiingo_verified": {
-   "pass": false,
-   "why": "NOT VERIFIABLE VIA API: Tiingo documents no usage/plan endpoint and returns no rate-limit headers",
-   "action": "a human logs in at https://www.tiingo.com/account/api/usage and records plan, unique symbols used this month and bandwidth used"
-  },
-  "G5_tiingo_fits": {
    "pass": true,
-   "plan_assumed": "starter_free (the most restrictive published plan)",
-   "missing_first_try_symbols": 430,
-   "symbol_limit_with_headroom": 450,
-   "est_bandwidth_gb_full_history": 0.727,
-   "bandwidth_limit_with_headroom_gb": 0.9,
-   "est_requests": 430,
-   "hours_at_50_per_hour": 9.6
+   "manual_verification": {
+    "by": "account owner (human)",
+    "on": "2026-10-02",
+    "plan": "Starter",
+    "price_usd_month": 0,
+    "unique_symbols_per_month": 500,
+    "requests_per_hour": 50,
+    "requests_per_day": 1000,
+    "bandwidth_shown_available": "2 GB"
+   }
+  },
+  "G5_tiingo_within_limits": {
+   "pass": true,
+   "caps": {
+    "unique_symbols": 450,
+    "bytes": 900000000.0,
+    "per_hour": 45,
+    "per_day": 900
+   },
+   "plan_limits": {
+    "unique_symbols": 500,
+    "per_hour": 50,
+    "per_day": 1000,
+    "bandwidth": "2 GB shown available"
+   },
+   "usage_october": {
+    "unique_symbols": 444,
+    "bytes": 410240705,
+    "max_requests_rolling_hour": 45,
+    "max_requests_per_day": 444
+   },
+   "bounded_downloads": 443,
+   "bounded_files_with_bars_past_fence": 0,
+   "window": [
+    "2008-01-01",
+    "2026-08-31"
+   ],
+   "checked_at": "2026-10-02T15:45:50.269663"
   },
   "G6_exits_quantified": {
    "pass": true,
@@ -122,6 +117,22 @@
     "2026-08-31"
    ],
    "last_universe_date": "2026-07-01"
+  },
+  "G10_completeness": {
+   "pass": false,
+   "rule": "<= 3 of the top 100 by PIT float unpriced on every date",
+   "gap_min_median_max": [
+    0,
+    2,
+    12
+   ],
+   "causes_member_dates": {
+    "other": 28,
+    "vendor_history_unavailable": 75,
+    "no_symbol": 77,
+    "not_listed_at_vendor": 61
+   },
+   "deferred_downloads": 0
   },
   "G9_runtime": {
    "pass": true,

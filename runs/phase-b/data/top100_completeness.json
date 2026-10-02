@@ -34,9 +34,9 @@
   "2018-10-01": 2,
   "2019-01-02": 1,
   "2019-04-01": 2,
-  "2019-07-01": 2,
-  "2019-10-01": 2,
-  "2020-01-02": 3,
+  "2019-07-01": 1,
+  "2019-10-01": 1,
+  "2020-01-02": 2,
   "2020-04-01": 2,
   "2020-07-01": 1,
   "2020-10-01": 1,
@@ -129,7 +129,7 @@
  },
  "causes_total_member_dates": {
   "other": 28,
-  "vendor_history_unavailable": 78,
+  "vendor_history_unavailable": 75,
   "no_symbol": 77,
   "not_listed_at_vendor": 61
  },
@@ -255,12 +255,6 @@
    "dates": 3
   },
   {
-   "cik": 1666700,
-   "name": "DuPont de Nemours, Inc.",
-   "cause": "vendor_history_unavailable",
-   "dates": 3
-  },
-  {
    "cik": 1403161,
    "name": "VISA INC.",
    "cause": "other",
@@ -311,6 +305,12 @@
   {
    "cik": 816284,
    "name": "CELGENE CORPORATION",
+   "cause": "not_listed_at_vendor",
+   "dates": 2
+  },
+  {
+   "cik": 1578845,
+   "name": "ALLERGAN PLC",
    "cause": "not_listed_at_vendor",
    "dates": 2
   }

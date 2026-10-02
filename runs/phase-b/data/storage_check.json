@@ -1,12 +1,12 @@
 {
- "checked_at": "2026-10-01T20:41:34.945467+00:00",
- "boot_time": "2026-10-01T19:04:51.775437+00:00",
+ "checked_at": "2026-10-02T15:45:43.046196+00:00",
+ "boot_time": "2026-10-02T05:45:02.706172+00:00",
  "sources": {
   "tiingo": {
    "path_outside_repo": true,
    "licence": "licensed",
-   "manifest_files": 70,
-   "manifest_written": "2026-10-01T20:41:00.507199+00:00",
+   "manifest_files": 513,
+   "manifest_written": "2026-10-02T15:45:40.540139+00:00",
    "manifest_written_before_boot": false,
    "files_since_manifest_intact": true,
    "files_added_since": 0,
@@ -20,8 +20,8 @@
   "edgar": {
    "path_outside_repo": true,
    "licence": "public",
-   "manifest_files": 12484,
-   "manifest_written": "2026-10-01T20:41:01.141933+00:00",
+   "manifest_files": 13561,
+   "manifest_written": "2026-10-02T15:45:41.421032+00:00",
    "manifest_written_before_boot": false,
    "files_since_manifest_intact": true,
    "files_added_since": 0,
@@ -37,8 +37,8 @@
  "survived_container_restart": false,
  "cross_session_durability": "NOT PROVABLE: a new session starts on a fresh machine",
  "tree_hashes": {
-  "tiingo": "4fb0c15c2370f9be096a030121ad64a6990d8ae8bebd87a0a4e3eed39452ca83",
-  "edgar": "ba739fcf9b92b2bac3edca10a195750c534f55cf767759feb7a9c16827fecb9c"
+  "tiingo": "5fd8a93203c16700fab3f36e7ff459aadd78e045510ed90b38bd420c132704e9",
+  "edgar": "1e88b2d1b05812523f927b5bfc7ba1af64157f0c296caac2a61872cd72483c7a"
  },
  "restart_survival_recorded": true,
  "integrity_now": true
