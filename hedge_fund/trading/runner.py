@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import time
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
@@ -69,18 +70,31 @@ def _load_or_run(plan: ResearchPlan, tasks: list[tuple], out_dir: Path, catalog_
     pj = plan.model_dump_json()
     jobs = [(pj, catalog_path, *t[2:]) for t, _ in todo]
     files = {json.dumps({"f": j[3], "p": j[4], "i": j[2], "c": j[5]}, sort_keys=True): f for j, (_, f) in zip(jobs, todo)}
-    mapper = map if workers <= 1 else ProcessPoolExecutor(workers).map
-    for res in mapper(_task, jobs):
-        run = ConfigRun(res["key"], res["family"], res["params"], res["instrument"], res["cost"], res["daily"],
-                        res["trades"], res["audit"])
-        registry.record(family=f"active/{run.family}", spec={"params": run.params, "instrument": run.instrument,
-                                                             "cost_multiplier": run.cost_multiplier,
-                                                             "plan": plan.plan_hash()},
-                        stage="development", window=(plan.dev_start, plan.dev_end), code_commit=code_commit,
-                        metrics={"n_trades": len(run.trades), "ambiguous_exits": run.audit.get("ambiguous_exits")})
-        files[run.key].write_text(json.dumps(_to_json(run)))
-        done[run.key] = run
+    if not jobs:
+        return done
+    pool = ProcessPoolExecutor(min(workers, len(jobs))) if workers > 1 else None
+    try:
+        for n, res in enumerate((pool.map if pool else map)(_task, jobs), 1):
+            _store(res, plan, registry, code_commit, files, done)
+            print(f"{time.strftime('%H:%M:%S')} {n}/{len(jobs)} {res['family']} {res['instrument']} "
+                  f"cost x{res['cost']}", flush=True)
+    finally:
+        if pool:
+            pool.shutdown()
     return done
+
+
+def _store(res: dict, plan: ResearchPlan, registry: ExperimentRegistry, code_commit: str, files: dict,
+           done: dict) -> None:
+    run = ConfigRun(res["key"], res["family"], res["params"], res["instrument"], res["cost"], res["daily"],
+                    res["trades"], res["audit"])
+    registry.record(family=f"active/{run.family}", spec={"params": run.params, "instrument": run.instrument,
+                                                         "cost_multiplier": run.cost_multiplier,
+                                                         "plan": plan.plan_hash()},
+                    stage="development", window=(plan.dev_start, plan.dev_end), code_commit=code_commit,
+                    metrics={"n_trades": len(run.trades), "ambiguous_exits": run.audit.get("ambiguous_exits")})
+    files[run.key].write_text(json.dumps(_to_json(run)))
+    done[run.key] = run
 
 
 def count_trials(registry: ExperimentRegistry) -> int:
