@@ -1,0 +1,219 @@
+{
+ "plan": {
+  "plan_id": "crypto-v1",
+  "families": [
+   "donchian_breakout",
+   "ema_trend",
+   "tsmom",
+   "volatility_breakout",
+   "bollinger_reversion",
+   "opening_range"
+  ],
+  "instruments": [
+   "BTCUSDT.BINANCE",
+   "ETHUSDT.BINANCE",
+   "XRPUSDT.BINANCE",
+   "LTCUSDT.BINANCE",
+   "ADAUSDT.BINANCE",
+   "BNBUSDT.BINANCE"
+  ],
+  "dev_start": "2018-07-01",
+  "dev_end": "2025-08-31",
+  "reserve_start": "2025-09-01",
+  "walk_forward": {
+   "train_months": 24,
+   "test_months": 6,
+   "step_months": 6
+  },
+  "cost_multipliers": [
+   1.0,
+   2.0
+  ],
+  "starting_cash": 10000.0,
+  "periods_per_year": 365,
+  "min_train_trades": 20,
+  "risk": {
+   "risk_per_trade": 0.005,
+   "max_notional_fraction": 0.9,
+   "max_daily_loss": 0.03,
+   "max_drawdown": 0.2,
+   "max_open_positions": 1,
+   "max_entries_per_day": 20
+  }
+ },
+ "plan_hash": "252051415d0c2228",
+ "n_configs": 504,
+ "folds": [
+  [
+   "2018-07-01",
+   "2020-06-30",
+   "2020-07-01",
+   "2020-12-31"
+  ],
+  [
+   "2019-01-01",
+   "2020-12-31",
+   "2021-01-01",
+   "2021-06-30"
+  ],
+  [
+   "2019-07-01",
+   "2021-06-30",
+   "2021-07-01",
+   "2021-12-31"
+  ],
+  [
+   "2020-01-01",
+   "2021-12-31",
+   "2022-01-01",
+   "2022-06-30"
+  ],
+  [
+   "2020-07-01",
+   "2022-06-30",
+   "2022-07-01",
+   "2022-12-31"
+  ],
+  [
+   "2021-01-01",
+   "2022-12-31",
+   "2023-01-01",
+   "2023-06-30"
+  ],
+  [
+   "2021-07-01",
+   "2023-06-30",
+   "2023-07-01",
+   "2023-12-31"
+  ],
+  [
+   "2022-01-01",
+   "2023-12-31",
+   "2024-01-01",
+   "2024-06-30"
+  ],
+  [
+   "2022-07-01",
+   "2024-06-30",
+   "2024-07-01",
+   "2024-12-31"
+  ],
+  [
+   "2023-01-01",
+   "2024-12-31",
+   "2025-01-01",
+   "2025-06-30"
+  ]
+ ],
+ "grids": {
+  "donchian_breakout": {
+   "channel": [
+    20,
+    55
+   ],
+   "atr_stop": [
+    1.5,
+    3.0
+   ],
+   "reward_risk": [
+    1.5,
+    3.0
+   ],
+   "signal_minutes": [
+    15,
+    60
+   ]
+  },
+  "ema_trend": {
+   "fast": [
+    12,
+    24
+   ],
+   "slow": [
+    48,
+    96
+   ],
+   "reward_risk": [
+    2.0,
+    4.0
+   ],
+   "signal_minutes": [
+    15,
+    60
+   ]
+  },
+  "tsmom": {
+   "lookback": [
+    24,
+    72,
+    168
+   ],
+   "atr_stop": [
+    2.0,
+    4.0
+   ],
+   "max_hold_bars": [
+    24,
+    72
+   ],
+   "signal_minutes": [
+    60
+   ]
+  },
+  "volatility_breakout": {
+   "range_mult": [
+    1.5,
+    2.5
+   ],
+   "atr_stop": [
+    1.0,
+    2.0
+   ],
+   "reward_risk": [
+    1.5,
+    3.0
+   ],
+   "signal_minutes": [
+    15,
+    60
+   ]
+  },
+  "bollinger_reversion": {
+   "period": [
+    20,
+    50
+   ],
+   "k": [
+    2.0,
+    2.5
+   ],
+   "atr_stop": [
+    1.5,
+    3.0
+   ],
+   "signal_minutes": [
+    5,
+    15
+   ]
+  },
+  "opening_range": {
+   "session_open_utc": [
+    "00:00",
+    "13:30"
+   ],
+   "range_minutes": [
+    30,
+    60
+   ],
+   "reward_risk": [
+    1.0,
+    2.0
+   ],
+   "signal_minutes": [
+    5
+   ]
+  }
+ },
+ "frozen_on": "2026-10-03",
+ "status": "frozen, not run"
+}

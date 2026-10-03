@@ -1,6 +1,15 @@
 """GuardedStrategy: the base for every strategy on the Nautilus engine.
 
 A subclass implements `on_signal(bar)` and calls `enter(side, stop, take_profit, bar)`.
+
+Two bar streams: `bar_type` is the execution stream (1-minute external bars; fills,
+stops and targets are simulated on it) and `signal_minutes` > 1 adds a signal stream
+aggregated inside Nautilus from it (`{n}-MINUTE-LAST-INTERNAL@1-MINUTE-EXTERNAL`).
+A signal bar closing at T contains exactly the execution bars closing in (T - n, T]
+and arrives after the execution bar closing at T (tested), so decisions never see
+an unfinished bar. Indicators registered in `register_indicators` should use
+`self.signal_bar_type`.
+
 The base class:
 
     - marks equity on every bar and feeds the RiskGovernor; once the kill switch is
@@ -29,7 +38,11 @@ from hedge_fund.trading.sizing import size_for_stop
 class GuardedConfig(StrategyConfig, frozen=True):
     instrument_id: InstrumentId
     bar_type: BarType
+    signal_minutes: int = 1
     allow_short: bool = False
+    max_hold_bars: int = 0                  # time stop in signal bars; 0 = exits only by stop/target
+    segment_starts_ns: tuple[int, ...] = ()  # research: walk-forward segment starts (risk state resets)
+    mark_every_minutes: int = 60
 
 
 class GuardedStrategy(Strategy):
@@ -42,7 +55,18 @@ class GuardedStrategy(Strategy):
         self.brackets: list[dict] = []
         self.refusals: list[dict] = []
         self.equity_curve: list[tuple[int, float]] = []
+        self.last_exec_ts: int | None = None
+        self.exits: list[dict] = []
+        self._held = 0
         self._flattened = False
+        self._mark_ns = config.mark_every_minutes * 60_000_000_000
+        n = config.signal_minutes
+        if n < 1:
+            raise ValueError("signal_minutes must be >= 1")
+        spec = f"{n // 60}-HOUR" if n % 60 == 0 else f"{n}-MINUTE"     # Nautilus wants 1-HOUR, not 60-MINUTE
+        self.signal_bar_type = (config.bar_type if n == 1 else
+                                BarType.from_str(f"{config.instrument_id}-{spec}-LAST-INTERNAL@"
+                                                 f"{config.bar_type.spec.step}-MINUTE-EXTERNAL"))
 
     # -- lifecycle --------------------------------------------------------
 
@@ -52,23 +76,61 @@ class GuardedStrategy(Strategy):
             raise RuntimeError(f"instrument {self.config.instrument_id} not in cache")
         self.register_indicators()
         self.subscribe_bars(self.config.bar_type)
+        if self.signal_bar_type != self.config.bar_type:
+            self.subscribe_bars(self.signal_bar_type)
 
     def on_stop(self) -> None:
         self.cancel_all_orders(self.config.instrument_id)
+        if self.last_exec_ts is not None and self.equity_curve[-1][0] != self.last_exec_ts:
+            self.equity_curve.append((self.last_exec_ts, self._last_equity))
 
     def on_bar(self, bar: Bar) -> None:
+        if bar.bar_type.is_internally_aggregated():
+            if self.governor is not None and not self.governor.killed:
+                self._signal(bar)
+            return
+        self._on_exec_bar(bar)
+        if self.config.signal_minutes == 1 and not self.governor.killed:
+            self._signal(bar)
+
+    def _signal(self, bar: Bar) -> None:
+        iid = self.config.instrument_id
+        if self.config.max_hold_bars and self.cache.positions_open(instrument_id=iid):
+            self._held += 1
+            if self._held >= self.config.max_hold_bars:
+                self.flatten("time stop")
+                return
+        else:
+            self._held = 0
+        self.on_signal(bar)
+
+    def flatten(self, reason: str) -> None:
+        """Cancel working orders and close the position at the next execution bar."""
+        iid = self.config.instrument_id
+        self.cancel_all_orders(iid)
+        self.close_all_positions(iid)
+        self.exits.append({"ts": self.clock.timestamp_ns(), "reason": reason})
+
+    def _on_exec_bar(self, bar: Bar) -> None:
         equity = self.equity(float(bar.close))
         if self.governor is None:
             self.governor = RiskGovernor(self.risk, equity, kill_dir=self.kill_dir)
-        self.governor.update(bar.ts_event, equity)
-        self.equity_curve.append((bar.ts_event, equity))
-        if self.governor.killed:
-            if not self._flattened:
-                self.cancel_all_orders(self.config.instrument_id)
-                self.close_all_positions(self.config.instrument_id)
-                self._flattened = True
-            return
-        self.on_signal(bar)
+            self._segments = sorted(self.config.segment_starts_ns)
+        if self._segments and bar.ts_event >= self._segments[0]:
+            while self._segments and bar.ts_event >= self._segments[0]:
+                self._segments.pop(0)
+            self.governor.start_segment(bar.ts_event, equity)
+            self._flattened = False
+        else:
+            self.governor.update(bar.ts_event, equity)
+        if not self.equity_curve or bar.ts_event // self._mark_ns != self.equity_curve[-1][0] // self._mark_ns:
+            self.equity_curve.append((bar.ts_event, equity))
+        self.last_exec_ts = bar.ts_event
+        self._last_equity = equity
+        if self.governor.killed and not self._flattened:
+            self.cancel_all_orders(self.config.instrument_id)
+            self.close_all_positions(self.config.instrument_id)
+            self._flattened = True
 
     # -- subclass hooks ---------------------------------------------------
 

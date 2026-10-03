@@ -8,12 +8,17 @@ Educational research only: no profitability claims, no real-money trading.
 - Never force-push or rewrite pushed history. Checkpoint-commit each finished phase.
 
 ## Data
-- Prices: Tiingo. Fundamentals: SEC EDGAR point-in-time. Nothing else by default.
+- Prices: Tiingo. Fundamentals: SEC EDGAR point-in-time. Approved by the owner on
+  2026-10-03 for research: Binance public bulk data (data.binance.vision), CCXT public
+  market-data endpoints, Dukascopy historical data. Nothing else by default.
+- Paid data (Databento, Tardis, ...) is OFF unless the owner approves it.
+- Market data is raw in the private cache (`hedge_fund.paths.CACHE_DIR`), never in git.
 - Financial Datasets is forbidden. It is blocked in code (`hedge_fund/data/policy.py`)
   unless `AIHF_ALLOW_FINANCIAL_DATASETS=1`; never set that. Also run commands with
   `env -u FINANCIAL_DATASETS_API_KEY`.
 - Strict point-in-time: a decision at session D may use only data published by D.
-  Market data for strategies goes through `hedge_fund.systematic` `AsOfView`.
+  Market data for strategies goes through `hedge_fund.systematic` `AsOfView` (daily engine)
+  or `hedge_fund.trading.data.catalog.Catalog.load_bars` (active engine; close-stamped bars).
 - Fills happen at the next eligible execution event, never the observation session.
 
 ## Research discipline
@@ -26,6 +31,10 @@ Educational research only: no profitability claims, no real-money trading.
   and backtest via `run_backtest` (holdout fence, next-bar fills, ambiguity audit).
   The daily `hedge_fund.systematic` engine and the stock/SEC universe are kept as is.
 - Backtest only for now: no live trading node, no live broker adapter (`test_safety.py`).
+  Paper trading (IBKR paper, crypto testnet) is approved for preparation only; real-money
+  and live trading stay disabled.
+- Research runs use a frozen `ResearchPlan` (`hedge_fund.trading.research`); every run is a
+  registry trial; selection is on training windows only.
 - AI output (Claude, Kimi, ...) is a proposal or critique only. Promotion needs the
   Python validation gates to PASS, then paper trading, then explicit human approval.
 - AI must never change risk limits, validation thresholds, the locked holdout, or the

@@ -1,0 +1,543 @@
+{
+ "BTCUSDT": {
+  "windows": [
+   {
+    "window_start": "2018-04-02 11:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 7.045302848588397,
+     "return_corr": 0.583489152167461,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2019-10-16 10:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.4184318619159253,
+     "return_corr": 0.9643575388172713,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2020-04-18 06:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.6626862287395507,
+     "return_corr": 0.9538310207328679,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2021-10-30 12:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.9002869080282361,
+     "return_corr": 0.9886249719099078,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2022-01-13 18:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.887758469394484,
+     "return_corr": 0.9829746377780273,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2023-09-26 07:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.4188026135759637,
+     "return_corr": 0.9564208623261972,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2024-11-14 05:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.4782676606540637,
+     "return_corr": 0.9957663391962784,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2025-01-19 12:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.5334872342532826,
+     "return_corr": 0.9943266303148173,
+     "ok": true
+    }
+   }
+  ],
+  "checked": 8,
+  "ok": 8,
+  "median_diff_bps": 0.7752223490670174,
+  "median_return_corr": 0.9736660882976493
+ },
+ "ETHUSDT": {
+  "windows": [
+   {
+    "window_start": "2018-02-15 08:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 18.615071314598275,
+     "return_corr": 0.48685834480116597,
+     "ok": false
+    }
+   },
+   {
+    "window_start": "2019-04-27 13:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.894303268173414,
+     "return_corr": 0.9097667898725171,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2020-03-14 01:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 3.005033447955885,
+     "return_corr": 0.9504159526664233,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2021-06-26 05:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.3782066727374698,
+     "return_corr": 0.9912079855502876,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2022-10-21 01:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.6212241402631102,
+     "return_corr": 0.9531144390660827,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2023-07-16 18:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.6213978624380889,
+     "return_corr": 0.949747101917045,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2024-06-04 15:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.759886383968067,
+     "return_corr": 0.9910008712339872,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2025-07-19 00:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.6593753190237139,
+     "return_corr": 0.9951187646898408,
+     "ok": true
+    }
+   }
+  ],
+  "checked": 8,
+  "ok": 7,
+  "median_diff_bps": 1.0690465283527684,
+  "median_return_corr": 0.951765195866253
+ },
+ "XRPUSDT": {
+  "windows": [
+   {
+    "window_start": "2018-04-06 05:00:00+00:00",
+    "ours": 0,
+    "okx": {
+     "overlap": 0,
+     "ok": false
+    }
+   },
+   {
+    "window_start": "2019-04-01 16:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 2.562501290838126,
+     "return_corr": 0.544141063088811,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2020-09-23 18:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 3.0381944444435316,
+     "return_corr": 0.9053116951078097,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2021-09-07 03:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.4164082923817656,
+     "return_corr": 0.9677746962573806,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2022-07-13 13:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.6061680568257852,
+     "return_corr": 0.9726340238668152,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2023-07-24 18:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.419648184818323,
+     "return_corr": 0.9632923422040619,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2024-10-30 03:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.9015021867274662,
+     "return_corr": 0.8344977653850698,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2025-01-20 11:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.2076389202175797,
+     "return_corr": 0.9954301254116252,
+     "ok": true
+    }
+   }
+  ],
+  "checked": 7,
+  "ok": 7,
+  "median_diff_bps": 1.6061680568257852,
+  "median_return_corr": 0.9632923422040619
+ },
+ "LTCUSDT": {
+  "windows": [
+   {
+    "window_start": "2018-04-06 16:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 8.838217845959505,
+     "return_corr": 0.3157933240056203,
+     "ok": false
+    }
+   },
+   {
+    "window_start": "2019-04-06 09:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 2.3218017181325656,
+     "return_corr": 0.8582700177560034,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2020-08-24 04:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.6325198051797551,
+     "return_corr": 0.952531506421606,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2021-02-15 03:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 3.553663576355559,
+     "return_corr": 0.9789484928784541,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2022-05-16 00:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 6.461816650977226,
+     "return_corr": 0.7402058037735736,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2023-04-01 12:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.0837305935584851,
+     "return_corr": 0.9609329671918155,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2024-04-01 08:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.9590486237648355,
+     "return_corr": 0.9864752447774281,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2025-02-20 13:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 0.7908270120537964,
+     "return_corr": 0.98778853877206,
+     "ok": true
+    }
+   }
+  ],
+  "checked": 8,
+  "ok": 7,
+  "median_diff_bps": 1.9771607616561604,
+  "median_return_corr": 0.9567322368067108
+ },
+ "ADAUSDT": {
+  "windows": [
+   {
+    "window_start": "2018-08-12 18:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 46.636771300447855,
+     "return_corr": 0.11324932340545706,
+     "ok": false
+    }
+   },
+   {
+    "window_start": "2019-05-27 03:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 10.496243166333574,
+     "return_corr": 0.3112986213263518,
+     "ok": false
+    }
+   },
+   {
+    "window_start": "2020-09-03 01:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 2.625131437468675,
+     "return_corr": 0.9181863549381374,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2021-01-10 01:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 5.406541935228937,
+     "return_corr": 0.8326545974340748,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2022-06-20 01:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.498865986798159,
+     "return_corr": 0.9833690898338515,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2023-03-04 17:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.4788524428721583,
+     "return_corr": 0.9623370281946722,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2024-11-12 10:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.75131353882918,
+     "return_corr": 0.9930443345143467,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2025-01-09 04:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 2.1348134767551485,
+     "return_corr": 0.9490017904722768,
+     "ok": true
+    }
+   }
+  ],
+  "checked": 8,
+  "ok": 6,
+  "median_diff_bps": 2.379972457111912,
+  "median_return_corr": 0.9335940727052071
+ },
+ "BNBUSDT": {
+  "windows": [
+   {
+    "window_start": "2018-04-25 13:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 0
+    },
+    "kraken": {
+     "overlap": 0
+    },
+    "coinbase": {
+     "overlap": 0
+    }
+   },
+   {
+    "window_start": "2019-08-14 02:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 0
+    },
+    "kraken": {
+     "overlap": 0
+    },
+    "coinbase": {
+     "overlap": 0
+    }
+   },
+   {
+    "window_start": "2020-02-13 14:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 0
+    },
+    "kraken": {
+     "overlap": 0
+    },
+    "coinbase": {
+     "overlap": 0
+    }
+   },
+   {
+    "window_start": "2021-03-20 14:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 0
+    },
+    "kraken": {
+     "overlap": 0
+    },
+    "coinbase": {
+     "overlap": 0
+    }
+   },
+   {
+    "window_start": "2022-06-30 13:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 0
+    },
+    "kraken": {
+     "overlap": 0
+    },
+    "coinbase": {
+     "overlap": 0
+    }
+   },
+   {
+    "window_start": "2023-04-21 06:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 3.139720211004504,
+     "return_corr": 0.98217221312439,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2024-03-03 15:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 2.4131274131278246,
+     "return_corr": 0.8044471315179548,
+     "ok": true
+    }
+   },
+   {
+    "window_start": "2025-05-18 04:00:00+00:00",
+    "ours": 300,
+    "okx": {
+     "overlap": 300,
+     "median_abs_diff_bps": 1.8648018648015352,
+     "return_corr": 0.7458757737572005,
+     "ok": true
+    }
+   }
+  ],
+  "checked": 3,
+  "ok": 3,
+  "median_diff_bps": 2.4131274131278246,
+  "median_return_corr": 0.8044471315179548
+ }
+}

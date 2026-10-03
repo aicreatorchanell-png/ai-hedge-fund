@@ -85,7 +85,7 @@ def run_backtest(instrument, bars, strategy: GuardedStrategy, venue: VenueSpec) 
         positions = engine.trader.generate_positions_report()
     finally:
         engine.dispose()
-    seen = strategy.equity_curve[-1][0] if strategy.equity_curve else None
+    seen = strategy.last_exec_ts
     if seen != bars[-1].ts_event:
         raise BacktestAborted(f"engine stopped at {seen} before the last bar {bars[-1].ts_event}")
     eq = pd.Series({pd.Timestamp(t, unit="ns", tz="UTC"): v for t, v in strategy.equity_curve}, dtype=float)

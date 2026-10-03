@@ -32,7 +32,7 @@ class BreakoutConfig(GuardedConfig, frozen=True):
 class DonchianBreakout(GuardedStrategy):
     def register_indicators(self) -> None:
         self.atr = AverageTrueRange(self.config.atr_period)
-        self.register_indicator_for_bars(self.config.bar_type, self.atr)
+        self.register_indicator_for_bars(self.signal_bar_type, self.atr)
         self.highs: deque[float] = deque(maxlen=self.config.channel)
         self.lows: deque[float] = deque(maxlen=self.config.channel)
 

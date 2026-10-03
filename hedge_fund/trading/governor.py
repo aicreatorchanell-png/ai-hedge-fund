@@ -59,6 +59,15 @@ class RiskGovernor:
         elif self.peak > 0 and equity / self.peak - 1 <= -self.config.max_drawdown:
             self.engage(ts_ns, f"drawdown {equity / self.peak - 1:.2%} breached {self.config.max_drawdown:.0%}")
 
+    def start_segment(self, ts_ns: int, equity: float) -> None:
+        """Research only: a walk-forward segment starts like a fresh deployment (new peak,
+        kill latch cleared). Limits are unchanged; a KILL_SWITCH file still wins."""
+        self.peak = float(equity)
+        if self.killed:
+            self.events.append({"ts": ts_ns, "event": "segment_reset", "cleared": self.killed})
+        self.killed = None
+        self.update(ts_ns, equity)
+
     def engage(self, ts_ns: int, reason: str) -> None:
         if not self.killed:
             self.killed = reason

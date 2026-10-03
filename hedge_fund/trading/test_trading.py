@@ -239,7 +239,7 @@ def test_breakout_decisions_do_not_depend_on_future_bars():
 
 def test_returns_feed_the_validation_stack():
     r = run_backtest(INST, synthetic_bars(INST, BT, 1500, price=30_000, seed=5), _breakout(), VENUE)
-    assert len(r.returns()) == 1499 and math.isfinite(sharpe(r.returns().to_numpy()))
+    assert len(r.returns()) == 25 and math.isfinite(sharpe(r.returns().to_numpy()))   # hourly marks over 1500 min
     assert r.meta["risk_config_hash"] == TradeRiskConfig().config_hash()
 
 
