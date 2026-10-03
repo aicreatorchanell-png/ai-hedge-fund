@@ -73,7 +73,7 @@ class ResearchPlan(BaseModel):
             raise ValueError(f"unknown families {sorted(unknown)}")
         if not self.dev_start < self.dev_end < self.reserve_start:
             raise ValueError("need dev_start < dev_end < reserve_start")
-        if self.dev_end > last_research_day():
+        if self.dev_end > last_research_day("*"):
             raise ValueError("development window reaches into a sealed holdout")
         if min(self.cost_multipliers) < 1.0:
             raise ValueError("cost multipliers must be >= 1")
@@ -137,7 +137,7 @@ def run_config(plan: ResearchPlan, spec, bars, family: str, params: dict, *, cos
     venue = VenueSpec(name=spec.venue, account_type="CASH" if spec.asset_class == "crypto" else "MARGIN",
                       starting_balances=({spec.quote: plan.starting_cash, spec.base: 0} if spec.asset_class == "crypto"
                                          else {spec.quote: plan.starting_cash}))
-    res = run_backtest(inst, bars, strategy, venue)
+    res = run_backtest(inst, bars, strategy, venue, market=spec.asset_class)
     pos = res.positions
     if pos.empty:
         trades = pd.Series(dtype=float)

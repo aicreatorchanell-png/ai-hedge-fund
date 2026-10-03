@@ -29,6 +29,14 @@ def bar_type(instrument_id: str, minutes: int = 1) -> BarType:
     return BarType.from_str(f"{instrument_id}-{minutes}-MINUTE-LAST-EXTERNAL")
 
 
+def _market_of(instrument_id: str) -> str:
+    from hedge_fund.trading.data.markets import market
+    try:
+        return market(instrument_id.split(".")[0]).asset_class
+    except KeyError:
+        return "*"
+
+
 class Catalog:
     def __init__(self, path: Path | str = CATALOG_DIR) -> None:
         self.path = Path(path)
@@ -61,15 +69,18 @@ class Catalog:
                            **(source or {})})
         return len(bars)
 
-    def load_bars(self, instrument_id: str, start: str, end: str, *, minutes: int = 1) -> list[Bar]:
-        """Bars whose close lies in [start, end] (ISO dates, end inclusive), fence enforced."""
-        market_data_fence(start, end)
+    def load_bars(self, instrument_id: str, start: str, end: str, *, minutes: int = 1,
+                  market: str | None = None) -> list[Bar]:
+        """Bars whose close lies in [start, end] (ISO dates, end inclusive), fence enforced
+        for the instrument's market (from markets.py; "*" = every holdout if unknown)."""
+        market = market or _market_of(instrument_id)
+        market_data_fence(start, end, market)
         bt = bar_type(instrument_id, minutes)
         lo = pd.Timestamp(start, tz="UTC")
         hi = pd.Timestamp(end, tz="UTC") + pd.Timedelta(days=1) - pd.Timedelta(1, "ns")
         bars = self.catalog.query(Bar, identifiers=[str(bt)], start=lo, end=hi)
         windows = [(pd.Timestamp(a, tz="UTC").value, (pd.Timestamp(b, tz="UTC") + pd.Timedelta(days=1)).value)
-                   for a, b in sealed_windows_in_force()]
+                   for a, b in sealed_windows_in_force(market)]
         return [b for b in bars if lo.value <= b.ts_event <= hi.value
                 and not any(a <= b.ts_event < z for a, z in windows)]
 

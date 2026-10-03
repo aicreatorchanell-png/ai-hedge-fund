@@ -70,9 +70,11 @@ def check_bars(bars) -> None:
         prev = b.ts_event
 
 
-def run_backtest(instrument, bars, strategy: GuardedStrategy, venue: VenueSpec) -> BacktestResult:
+def run_backtest(instrument, bars, strategy: GuardedStrategy, venue: VenueSpec, *,
+                 market: str = "*") -> BacktestResult:
+    """market: the asset class for scoped holdouts ("*" = every holdout applies)."""
     check_bars(bars)
-    market_data_fence(_day(bars[0].ts_event), _day(bars[-1].ts_event))
+    market_data_fence(_day(bars[0].ts_event), _day(bars[-1].ts_event), market)
     engine = BacktestEngine(BacktestEngineConfig(trader_id=TraderId("AIHF-001"),
                                                  logging=LoggingConfig(log_level="ERROR")))
     try:

@@ -41,7 +41,7 @@ def months(start: str, end: str) -> list[str]:
 
 def month_allowed(month: str, last_day: str | None = None) -> bool:
     """A month may be downloaded only if it ends on or before the last research day."""
-    last_day = last_day or last_research_day()
+    last_day = last_day or last_research_day("crypto")
     end = (pd.Period(month, freq="M").end_time.date()).isoformat()
     return end <= last_day
 

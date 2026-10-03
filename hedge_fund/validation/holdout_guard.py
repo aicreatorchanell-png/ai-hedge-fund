@@ -1,7 +1,12 @@
 """Holdout access protection: declared holdouts, a data fence, one human-opened evaluation.
 
 Declarations live in `configs/holdouts.yaml` (human-owned, hashed into every
-research manifest). Each holdout is
+research manifest). A declaration may name the `markets` it covers (e.g.
+[crypto]); without that field it covers every market. Readers pass the market
+they read: a scoped holdout fences only readers of its markets and readers
+that pass "*" (market unknown: every holdout applies). Readers that pass no
+market (the daily stock engine, Tiingo, EDGAR, agents) see the unscoped
+holdouts only. Each holdout is
 
     sealed        its window [start - embargo, end] is fenced: no market data
                   in it reaches development, selection, optimization,
@@ -76,6 +81,13 @@ class HoldoutDeclaration(BaseModel):
     status: HoldoutStatus
     reason: str = Field(min_length=1)
     evaluation_mode: EvaluationMode = EvaluationMode.ONE_SHOT
+    markets: tuple[str, ...] | None = None
+
+    def applies_to(self, market: str | None) -> bool:
+        """None (legacy reader) -> unscoped holdouts only; "*" -> every holdout."""
+        if self.markets is None or market == "*":
+            return True
+        return market is not None and market in self.markets
 
     @model_validator(mode="after")
     def _dates(self):
@@ -116,11 +128,11 @@ class HoldoutBook:
 
     # -- the fence ------------------------------------------------------------
 
-    def check_access(self, start: str, end: str, *, purpose: Purpose | str) -> None:
+    def check_access(self, start: str, end: str, *, purpose: Purpose | str, market: str | None = None) -> None:
         """Refuse reading market data dated in [start, end] if it touches a sealed holdout."""
         purpose = Purpose(purpose)
         for d in self.with_status(HoldoutStatus.SEALED):
-            if not d.overlaps(start, end):
+            if not d.applies_to(market) or not d.overlaps(start, end):
                 continue
             if purpose is Purpose.HOLDOUT_EVALUATION and _open.get() == d.id \
                     and d.evaluation_mode is EvaluationMode.ONE_SHOT:
@@ -233,11 +245,11 @@ def use_holdouts(book: HoldoutBook) -> Iterator[HoldoutBook]:
         _book.reset(token)
 
 
-def check_access(start: str, end: str, *, purpose: Purpose | str) -> None:
-    active_book().check_access(start, end, purpose=purpose)
+def check_access(start: str, end: str, *, purpose: Purpose | str, market: str | None = None) -> None:
+    active_book().check_access(start, end, purpose=purpose, market=market)
 
 
-def market_data_fence(start: str, end: str) -> None:
+def market_data_fence(start: str, end: str, market: str | None = None) -> None:
     """Called by MarketPanel: data reads are evaluations only inside an open evaluation."""
     if _forward.get() is not None:
         purpose = Purpose.FORWARD_PAPER_EVALUATION
@@ -245,10 +257,10 @@ def market_data_fence(start: str, end: str) -> None:
         purpose = Purpose.HOLDOUT_EVALUATION
     else:
         purpose = Purpose.DEVELOPMENT
-    active_book().check_access(start, end, purpose=purpose)
+    active_book().check_access(start, end, purpose=purpose, market=market)
 
 
-def sealed_windows_in_force() -> list[tuple[str, str]]:
+def sealed_windows_in_force(market: str | None = None) -> list[tuple[str, str]]:
     """[fence_start, end] of every sealed holdout not opened in this context.
 
     An open forward step admits its holdout through the step's session; an
@@ -259,6 +271,8 @@ def sealed_windows_in_force() -> list[tuple[str, str]]:
     out = []
     fwd, one_shot = _forward.get(), _open.get()
     for d in active_book().with_status(HoldoutStatus.SEALED):
+        if not d.applies_to(market):
+            continue
         if one_shot == d.id and d.evaluation_mode is EvaluationMode.ONE_SHOT:
             continue
         if fwd is not None and fwd[0] == d.id and d.evaluation_mode is EvaluationMode.FORWARD:
@@ -270,6 +284,6 @@ def sealed_windows_in_force() -> list[tuple[str, str]]:
     return out
 
 
-def visible(day: str, windows: list[tuple[str, str]] | None = None) -> bool:
-    windows = sealed_windows_in_force() if windows is None else windows
+def visible(day: str, windows: list[tuple[str, str]] | None = None, market: str | None = None) -> bool:
+    windows = sealed_windows_in_force(market) if windows is None else windows
     return not any(lo <= day <= hi for lo, hi in windows)

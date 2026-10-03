@@ -47,10 +47,12 @@ def test_parse_skips_header_row(tmp_path):
 
 def test_months_and_fence():
     assert binance.months("2025-11", "2026-02") == ["2025-11", "2025-12", "2026-01", "2026-02"]
-    assert last_research_day() == "2026-08-31"                       # phase-b-prospective fence 2026-09-01
-    assert binance.month_allowed("2026-08") and not binance.month_allowed("2026-09")
+    assert last_research_day("crypto") == "2025-08-31"               # active-crypto-final, sealed 2025-09-01
+    assert last_research_day("equity") == "2026-08-31"               # crypto scope does not fence stocks
+    assert last_research_day("*") == "2025-08-31"
+    assert binance.month_allowed("2025-08") and not binance.month_allowed("2025-09")
     with pytest.raises(PermissionError):
-        binance.download_month("BTCUSDT", "2026-09")
+        binance.download_month("BTCUSDT", "2025-09")
 
 
 def test_download_verifies_checksum(tmp_path):
@@ -107,6 +109,10 @@ def test_catalog_round_trip_close_stamps_and_fence(tmp_path):
     assert cat.summary()[str(bar_type("BTCUSDT.BINANCE"))]["rows"] == 10
     with pytest.raises(HoldoutAccessDenied):
         cat.load_bars("BTCUSDT.BINANCE", "2026-09-01", "2026-09-30")
+    with pytest.raises(HoldoutAccessDenied):                                  # crypto final holdout
+        cat.load_bars("BTCUSDT.BINANCE", "2025-08-31", "2025-09-01")
+    with pytest.raises(HoldoutAccessDenied):                                  # unknown market: every holdout
+        cat.load_bars("NOTLISTED.X", "2025-09-01", "2025-09-02")
 
 
 def test_dukascopy_codec_round_trip_and_fence():

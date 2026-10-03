@@ -76,7 +76,8 @@ class DukascopyClient:
         return self.root / symbol / f"{day:%Y}" / f"{day:%m}" / f"{day:%d}_{side}.bi5"
 
     def fetch_day(self, symbol: str, day: date, side: str = "BID", *, retries: int = 8) -> bytes:
-        if day.isoformat() > last_research_day():
+        from hedge_fund.trading.data.markets import market
+        if day.isoformat() > last_research_day(market(symbol).asset_class):
             raise PermissionError(f"{day} is inside a sealed holdout window")
         p = self.path(symbol, day, side)
         if p.exists():

@@ -173,3 +173,35 @@ def test_ledger_refuses_trials_that_touch_or_misdeclare_holdouts(tmp_path):
         with pytest.raises(HoldoutAccessDenied, match="not a sealed"):   # an undeclared ad-hoc holdout
             led.start_trial(stage="holdout", window=("2019-01-01", "2019-12-31"), **kw)
         assert led.n_trials("f") == 1
+
+
+def test_market_scoped_holdout_fences_only_its_market_and_unknown_readers():
+    from hedge_fund.validation.holdout_guard import (HoldoutBook, HoldoutDeclaration, market_data_fence,
+                                                     sealed_windows_in_force, use_holdouts, visible)
+    from hedge_fund.validation.holdout_guard import _default_book
+    scoped = HoldoutDeclaration(id="t-crypto", start="2030-01-01", end="2030-12-31", status="sealed",
+                                reason="test", markets=("crypto",))
+    with use_holdouts(HoldoutBook([*_default_book().declarations, scoped])):
+        with pytest.raises(HoldoutAccessDenied):
+            market_data_fence("2030-02-01", "2030-02-02", "crypto")
+        with pytest.raises(HoldoutAccessDenied):
+            market_data_fence("2030-02-01", "2030-02-02", "*")
+        market_data_fence("2030-02-01", "2030-02-02", "equity")             # other market: not fenced
+        market_data_fence("2030-02-01", "2030-02-02")                       # legacy reader: unscoped only
+        assert ("2030-01-01", "2030-12-31") in sealed_windows_in_force("crypto")
+        assert ("2030-01-01", "2030-12-31") not in sealed_windows_in_force()
+        assert not visible("2030-05-01", market="crypto") and visible("2030-05-01")
+
+
+def test_unscoped_holdouts_still_fence_every_market():
+    from hedge_fund.validation.holdout_guard import market_data_fence
+    for market in (None, "crypto", "fx", "*"):
+        with pytest.raises(HoldoutAccessDenied):
+            market_data_fence("2026-09-15", "2026-09-16", market)          # phase-b-prospective is unscoped
+
+
+def test_crypto_final_holdout_is_declared_sealed_and_scoped():
+    from hedge_fund.validation.holdout_guard import load_holdouts
+    d = load_holdouts().get("active-crypto-final")
+    assert (d.start, d.end, d.status.value, d.evaluation_mode.value, d.markets) == \
+        ("2025-09-01", "2026-08-31", "sealed", "one_shot", ("crypto",))

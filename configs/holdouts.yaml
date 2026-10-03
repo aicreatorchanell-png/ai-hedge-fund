@@ -43,3 +43,19 @@ holdouts:
       research mode has zero access; forward paper evaluation reads one
       session at a time as real time reaches it, for a configuration frozen
       before its first observation (hedge_fund/validation/forward.py).
+
+  - id: active-crypto-final
+    start: "2025-09-01"
+    end: "2026-08-31"
+    embargo_days: 0
+    status: sealed
+    evaluation_mode: one_shot
+    markets: [crypto]
+    reason: >-
+      Final out-of-sample year for the active-trading crypto plan (plan_crypto_v1,
+      hash 252051415d0c2228). Sealed on 2026-10-03 by explicit owner instruction,
+      before any research run read it. Development stops at 2025-08-31. The window
+      overlaps the contaminated phase-a-2023 window by date only: Phase A evaluated
+      US equities, and no crypto data or crypto result from this window has been seen.
+      Scoped to crypto: it fences every crypto read (and any reader whose market is
+      unknown); stock/SEC readers are unaffected.
