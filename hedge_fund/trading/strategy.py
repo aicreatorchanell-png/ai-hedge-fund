@@ -1,0 +1,151 @@
+"""GuardedStrategy: the base for every strategy on the Nautilus engine.
+
+A subclass implements `on_signal(bar)` and calls `enter(side, stop, take_profit, bar)`.
+The base class:
+
+    - marks equity on every bar and feeds the RiskGovernor; once the kill switch is
+      engaged it cancels open orders, closes positions and ignores further signals
+    - refuses an entry the governor does not approve (daily loss, caps, kill switch)
+    - sizes it from the stop distance (sizing.size_for_stop) and the venue minimums
+    - submits it as a bracket: market entry + stop-market stop-loss + limit take-profit
+      (one cancels the other), so every position has its exits at the venue from the start
+    - records every bracket and every refusal for the audit
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+from nautilus_trader.config import StrategyConfig
+from nautilus_trader.model.data import Bar, BarType
+from nautilus_trader.model.enums import AccountType, OrderSide, OrderType
+from nautilus_trader.model.identifiers import InstrumentId
+from nautilus_trader.trading.strategy import Strategy
+
+from hedge_fund.trading.governor import RiskGovernor, TradeRiskConfig
+from hedge_fund.trading.sizing import size_for_stop
+
+
+class GuardedConfig(StrategyConfig, frozen=True):
+    instrument_id: InstrumentId
+    bar_type: BarType
+    allow_short: bool = False
+
+
+class GuardedStrategy(Strategy):
+    def __init__(self, config: GuardedConfig, risk: TradeRiskConfig, *, kill_dir: Path | str | None = None) -> None:
+        super().__init__(config)
+        self.risk = risk
+        self.kill_dir = kill_dir
+        self.governor: RiskGovernor | None = None
+        self.instrument = None
+        self.brackets: list[dict] = []
+        self.refusals: list[dict] = []
+        self.equity_curve: list[tuple[int, float]] = []
+        self._flattened = False
+
+    # -- lifecycle --------------------------------------------------------
+
+    def on_start(self) -> None:
+        self.instrument = self.cache.instrument(self.config.instrument_id)
+        if self.instrument is None:
+            raise RuntimeError(f"instrument {self.config.instrument_id} not in cache")
+        self.register_indicators()
+        self.subscribe_bars(self.config.bar_type)
+
+    def on_stop(self) -> None:
+        self.cancel_all_orders(self.config.instrument_id)
+
+    def on_bar(self, bar: Bar) -> None:
+        equity = self.equity(float(bar.close))
+        if self.governor is None:
+            self.governor = RiskGovernor(self.risk, equity, kill_dir=self.kill_dir)
+        self.governor.update(bar.ts_event, equity)
+        self.equity_curve.append((bar.ts_event, equity))
+        if self.governor.killed:
+            if not self._flattened:
+                self.cancel_all_orders(self.config.instrument_id)
+                self.close_all_positions(self.config.instrument_id)
+                self._flattened = True
+            return
+        self.on_signal(bar)
+
+    # -- subclass hooks ---------------------------------------------------
+
+    def register_indicators(self) -> None:
+        """Register indicators with self.register_indicator_for_bars (optional)."""
+
+    def on_signal(self, bar: Bar) -> None:
+        raise NotImplementedError
+
+    # -- helpers ----------------------------------------------------------
+
+    def equity(self, mark: float) -> float:
+        """Account equity in the quote currency, marking any base holdings at *mark*."""
+        account = self.portfolio.account(self.config.instrument_id.venue)
+        quote = self.instrument.quote_currency
+        cash = account.balance_total(quote)
+        total = float(cash) if cash is not None else 0.0
+        if account.type == AccountType.CASH:
+            base = getattr(self.instrument, "base_currency", None)
+            held = account.balance_total(base) if base is not None else None
+            total += float(held) * mark if held is not None else 0.0
+        else:
+            pnl = self.portfolio.unrealized_pnl(self.config.instrument_id)
+            total += float(pnl) if pnl is not None else 0.0
+        return total
+
+    def is_flat(self) -> bool:
+        """No open position and no order that is not closed (in-flight orders count:
+        a just-filled entry's stop and target are in flight before they are open)."""
+        iid = self.config.instrument_id
+        return not self.cache.positions_open(instrument_id=iid) and self._live_orders() == 0
+
+    def _live_orders(self) -> int:
+        return sum(1 for o in self.cache.orders(instrument_id=self.config.instrument_id) if not o.is_closed)
+
+    def enter(self, side: OrderSide, stop: float, take_profit: float, bar: Bar) -> bool:
+        ref = float(bar.close)
+        if side == OrderSide.BUY and not stop < ref < take_profit:
+            raise ValueError(f"long bracket needs stop < {ref} < take_profit, got {stop}, {take_profit}")
+        if side == OrderSide.SELL:
+            if not self.config.allow_short:
+                return self._refuse(bar, "short selling disabled")
+            if self.portfolio.account(self.config.instrument_id.venue).type == AccountType.CASH:
+                return self._refuse(bar, "cash account cannot short")
+            if not take_profit < ref < stop:
+                raise ValueError(f"short bracket needs take_profit < {ref} < stop, got {take_profit}, {stop}")
+        equity = self.equity(ref)
+        iid = self.config.instrument_id
+        ok, why = self.governor.can_enter(equity, len(self.cache.positions_open(instrument_id=iid)))
+        if not ok:
+            return self._refuse(bar, why)
+        if self._live_orders():
+            return self._refuse(bar, "orders pending")
+        inst = self.instrument
+        qty = size_for_stop(
+            equity, ref, stop, risk_fraction=self.risk.risk_per_trade,
+            max_notional_fraction=self.risk.max_notional_fraction,
+            size_increment=float(inst.size_increment),
+            min_quantity=float(inst.min_quantity) if inst.min_quantity is not None else 0.0,
+            min_notional=float(inst.min_notional) if inst.min_notional is not None else 0.0,
+            multiplier=float(inst.multiplier), fee_rate=float(inst.taker_fee))
+        if qty <= 0:
+            return self._refuse(bar, "size below venue minimum")
+        orders = self.order_factory.bracket(
+            iid, side, inst.make_qty(qty),
+            sl_trigger_price=inst.make_price(stop), tp_price=inst.make_price(take_profit))
+        entry = orders.first
+        sl = next(o for o in orders.orders if o.order_type == OrderType.STOP_MARKET)
+        tp = next(o for o in orders.orders if o.order_type == OrderType.LIMIT)
+        self.brackets.append({
+            "ts": bar.ts_event, "side": side.name, "quantity": qty, "reference": ref,
+            "stop": float(inst.make_price(stop)), "take_profit": float(inst.make_price(take_profit)),
+            "entry_id": entry.client_order_id.value, "sl_id": sl.client_order_id.value, "tp_id": tp.client_order_id.value})
+        self.governor.record_entry()
+        self.submit_order_list(orders)
+        return True
+
+    def _refuse(self, bar: Bar, reason: str) -> bool:
+        self.refusals.append({"ts": bar.ts_event, "reason": reason})
+        return False

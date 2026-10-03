@@ -1,6 +1,6 @@
 # ai-hedge-fund — working rules for Claude
 
-Systematic trading research platform. Python 3.11 + Poetry, package `hedge_fund/`.
+Systematic trading research platform. Python 3.12 + Poetry, package `hedge_fund/`.
 Educational research only: no profitability claims, no real-money trading.
 
 ## Git
@@ -21,6 +21,11 @@ Educational research only: no profitability claims, no real-money trading.
   do not iterate on the same holdout.
 - Record every experiment in the registry; count trials for multiple-testing adjustments.
 - The quantitative engine (signals → portfolio → risk → execution) is deterministic Python.
+- Active trading runs on NautilusTrader (pinned in pyproject) through `hedge_fund.trading`:
+  strategies subclass `GuardedStrategy` (bracket entries, risk sizing, governor, kill switch)
+  and backtest via `run_backtest` (holdout fence, next-bar fills, ambiguity audit).
+  The daily `hedge_fund.systematic` engine and the stock/SEC universe are kept as is.
+- Backtest only for now: no live trading node, no live broker adapter (`test_safety.py`).
 - AI output (Claude, Kimi, ...) is a proposal or critique only. Promotion needs the
   Python validation gates to PASS, then paper trading, then explicit human approval.
 - AI must never change risk limits, validation thresholds, the locked holdout, or the
