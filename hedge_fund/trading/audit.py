@@ -111,6 +111,49 @@ def _mirror(inst, bars, pivot: float) -> list:
     return out
 
 
+def probe_extras(family: str) -> dict:
+    """Synthetic external inputs a family needs on probe data (its real inputs are dated)."""
+    if family == "funding_crowding":
+        from hedge_fund.trading.synthetic import synthetic_funding
+        return {"funding_series": synthetic_funding(n=420, seed=5), "min_history": 30}
+    return {}
+
+
+def probe_auxiliary_lookahead(family: str, params: dict, report: AuditReport, *, risk=None) -> None:
+    """Families reading non-bar data (funding settlements): decisions up to T must not change
+    when every settlement after T is replaced by its negative x 3."""
+    extras = probe_extras(family)
+    if "funding_series" not in extras:
+        return
+    from hedge_fund.trading.backtest import run_backtest
+    from hedge_fund.trading.families import build
+    from hedge_fund.trading.governor import TradeRiskConfig
+
+    risk = risk or TradeRiskConfig()
+    inst, bt, bars, margin = _probe_setup(max(4000, 300 * int(params.get("signal_minutes", 1))), 7)
+    tag = f"{family} {json.dumps(params, sort_keys=True)}"
+
+    def run(series):
+        s = build(family, {**params, **extras, "funding_series": series}, instrument_id=inst.id, bar_type=bt,
+                  risk=risk, allow_short=True)
+        return run_backtest(inst, bars, s, margin)
+
+    full = run(extras["funding_series"])
+    leaks = []
+    for frac in (0.3, 0.5, 0.7, 0.9):
+        cut = bars[int(len(bars) * frac)].ts_event
+        alt = run(tuple((t, -3 * r if t > cut else r) for t, r in extras["funding_series"]))
+        if _decisions(full, cut) != _decisions(alt, cut):
+            leaks.append(frac)
+    if leaks:
+        report.add("look_ahead_auxiliary", FAIL, f"{tag}: decisions before T depend on funding after T ({leaks})")
+    elif not full.brackets:
+        report.add("look_ahead_auxiliary", WARNING, f"{tag}: no trades on probe funding; check not exercised")
+    else:
+        report.add("look_ahead_auxiliary", PASS, f"{tag}: decisions up to T unchanged when funding after T is "
+                                                 f"scrambled (4 cuts)")
+
+
 def probe_family(family: str, params: dict, report: AuditReport, *, n: int | None = None, seed: int = 101,
                  risk=None) -> None:
     from hedge_fund.trading.backtest import run_backtest
@@ -118,6 +161,7 @@ def probe_family(family: str, params: dict, report: AuditReport, *, n: int | Non
     from hedge_fund.trading.governor import TradeRiskConfig
 
     risk = risk or TradeRiskConfig()
+    params = {**params, **probe_extras(family)}
     n = n or max(4000, 300 * int(params.get("signal_minutes", 1)))   # enough signal bars to warm up and trade
 
     def run(data):
@@ -270,11 +314,18 @@ def check_costs(plan, report: AuditReport) -> None:
                "every instrument charges commission; taker fee includes spread and slippage")
     report.add("spread_slippage", FAIL if bad_spread else PASS,
                f"no spread/slippage: {bad_spread}" if bad_spread else "half-spread + slippage > 0 for all")
-    unfinanced = [iid for iid in plan.instruments if market(iid.split(".")[0]).asset_class != "crypto"
+    unfinanced = [iid for iid in plan.instruments if market(iid.split(".")[0]).margin
+                  and not market(iid.split(".")[0]).perpetual
                   and market(iid.split(".")[0]).financing_long_bps_day + market(iid.split(".")[0]).financing_short_bps_day <= 0]
+    from hedge_fund.trading.data import binance, funding
+    for iid in plan.instruments:
+        spec = market(iid.split(".")[0])
+        if spec.perpetual and funding.load(spec.funding_symbol, binance.months(plan.dev_start, plan.dev_end)).empty:
+            unfinanced.append(f"{iid} (no funding settlements cached)")
     report.add("financing", FAIL if unfinanced else PASS,
                f"margin instruments without financing costs: {unfinanced}" if unfinanced else
-               "margin instruments carry swap/borrow costs; spot crypto is cash-only and long-only")
+               "margin instruments carry swap/borrow costs, perpetuals their actual funding settlements; "
+               "spot crypto is cash-only and long-only")
     stress = max(plan.cost_multipliers)
     report.add("cost_stress", PASS if stress >= 2.0 else FAIL,
                f"cost multipliers {list(plan.cost_multipliers)} (needs >= 2.0)")
@@ -346,15 +397,22 @@ def check_catalog(plan, report: AuditReport, catalog, *, participation: float | 
         report.add("timezone", WARNING, "no catalog supplied; not checked")
         report.add("liquidity", WARNING, "no catalog supplied; not checked")
         return
+    minutes = getattr(plan, "bar_minutes", 1)
     day = (pd.Timestamp(plan.dev_start) + pd.Timedelta(days=200)).date().isoformat()
+    last = day if minutes == 1 else (pd.Timestamp(day) + pd.Timedelta(days=20)).date().isoformat()
     conv, tz, liq = [], [], []
     for iid in plan.instruments:
-        bars = catalog.load_bars(iid, day, day)
+        bars = catalog.load_bars(iid, day, last, minutes=minutes)
         if not bars:
             conv.append(f"{iid}: no bars on {day}")
             continue
-        if any(b.ts_event % 60_000_000_000 or b.ts_init < b.ts_event for b in bars):
-            conv.append(f"{iid}: bars not minute-aligned or visible before close")
+        if any(b.ts_event % (minutes * 60_000_000_000) or b.ts_init < b.ts_event for b in bars):
+            conv.append(f"{iid}: bars not aligned to their {minutes}-minute close or visible before close")
+        if minutes != 1:
+            value = np.median([float(b.close) * float(b.volume) for b in bars])
+            liq.append((iid, min(plan.starting_cash * plan.risk.max_notional_fraction / value, participation)
+                        if value > 0 else float("inf")))
+            continue
         start = pd.Timestamp(day, tz="UTC")
         after = [b for b in bars if b.ts_event > start.value]   # the 00:00 close belongs to the previous day
         first = pd.Timestamp(after[0].ts_event, unit="ns", tz="UTC") if after else None
@@ -364,11 +422,13 @@ def check_catalog(plan, report: AuditReport, catalog, *, participation: float | 
         cap = plan.starting_cash * plan.risk.max_notional_fraction
         liq.append((iid, min(cap / value, participation) if value > 0 else float("inf")))
     report.add("bar_close_convention", FAIL if conv else PASS,
-               "; ".join(conv) if conv else f"close-stamped, minute-aligned bars (sampled {day})")
-    report.add("timezone", FAIL if tz else PASS, "; ".join(tz) if tz else "first bar of the day closes 00:01 UTC")
+               "; ".join(conv) if conv else f"close-stamped bars aligned to {minutes}-minute closes (sampled {day})")
+    report.add("timezone", FAIL if tz else PASS, "; ".join(tz) if tz else
+               "first bar of the day closes 00:01 UTC" if minutes == 1 else "daily bars close at 00:00 UTC")
     worst = max(liq, key=lambda x: x[1]) if liq else (None, 0.0)
     status = FAIL if worst[1] > 0.10 else WARNING if worst[1] > 0.01 else PASS
-    report.add("liquidity", status, f"max position / median 1-minute traded value: {worst[1]:.2%} ({worst[0]}); "
+    report.add("liquidity", status, f"max position / median {'1-minute' if minutes == 1 else 'daily'} traded value: "
+                                    f"{worst[1]:.2%} ({worst[0]}); "
                                     f"entries capped at {participation:.0%} of median bar volume")
 
 
@@ -384,6 +444,7 @@ def audit_plan(plan, *, catalog=None, run_audits: list[dict] | None = None, prob
         pts = (probe_params or {}).get(f) or [fams[f].configs()[0], fams[f].configs()[-1]]
         for p in pts:
             probe_family(f, p, report, risk=plan.risk)
+            probe_auxiliary_lookahead(f, p, report, risk=plan.risk)
     for m in sorted({p["signal_minutes"] for f in plan.families for p in fams[f].configs()
                      if p.get("signal_minutes", 1) > 1}):
         probe_resampling(m, report)

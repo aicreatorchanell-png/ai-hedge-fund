@@ -119,3 +119,72 @@ class DukascopyClient:
         out["volume"] = both["volume_b"]
         out["spread"] = both["close_a"] - both["close_b"]
         return out[out["volume"] > 0]                      # Dukascopy pads closed minutes with flat zero-volume bars
+
+
+# -- hourly candles (one file per month and side) -> daily bars ------------------
+
+def hour_path(root: Path, symbol: str, month: str, side: str) -> Path:
+    return Path(root) / symbol / "hourly" / f"{month}_{side}.bi5"
+
+
+def fetch_month_hours(client: DukascopyClient, symbol: str, month: str, side: str = "BID", *,
+                      retries: int = 10) -> bytes:
+    """One month of 1-hour candles (`{SYM}/{YYYY}/{MM-1}/{side}_candles_hour_1.bi5`), cached.
+    Months reaching into a sealed holdout of the symbol's market are refused."""
+    from hedge_fund.trading.data.markets import market
+    end = pd.Period(month, freq="M").end_time.date().isoformat()
+    if end > last_research_day(market(symbol).asset_class):
+        raise PermissionError(f"{month} reaches into a sealed holdout window")
+    p = hour_path(client.root, symbol, month, side)
+    if p.exists():
+        return p.read_bytes()
+    y, m = int(month[:4]), int(month[5:7])
+    url = f"{BASE}/{symbol}/{y}/{m - 1:02d}/{side}_candles_hour_1.bi5"
+    wait = 20.0
+    for _ in range(retries):
+        time.sleep(max(0.0, client._last + client.min_interval - time.monotonic()))
+        client._last = time.monotonic()
+        try:
+            r = client.session.get(url, timeout=60)
+        except requests.RequestException:
+            time.sleep(wait)
+            wait = min(wait * 2, client.max_backoff)
+            continue
+        if r.status_code == 200:
+            p.parent.mkdir(parents=True, exist_ok=True)
+            tmp = p.with_suffix(".tmp")
+            tmp.write_bytes(r.content)
+            os.replace(tmp, p)
+            return r.content
+        if r.status_code == 404:
+            return b""
+        if r.status_code in (429, 503):
+            time.sleep(wait)
+            wait = min(wait * 2, client.max_backoff)
+            continue
+        r.raise_for_status()
+    raise RateLimited(f"{symbol} {month} {side}: still rate-limited after {retries} attempts")
+
+
+def decode_hours(raw: bytes, month: str, point: float) -> pd.DataFrame:
+    """Monthly hour-candle file: record times are seconds from the month start."""
+    start = pd.Period(month, freq="M").start_time.date()
+    return decode(raw, start, point)
+
+
+def daily_from_hours(hours: pd.DataFrame) -> pd.DataFrame:
+    """Hourly candles (open-time index, UTC) -> one bar per UTC weekday. Zero-volume padding
+    hours are dropped; hours dated Saturday/Sunday (the Sunday-evening open) are merged into
+    the following Monday, so every bar is a trading day. Index = day open time (00:00 UTC)."""
+    h = hours[hours["volume"] > 0]
+    if h.empty:
+        return h
+    day = h.index.normalize()
+    wd = day.weekday
+    shift = pd.to_timedelta(((7 - wd) % 7).where(wd >= 5, 0), unit="D")
+    key = day + shift
+    g = h.groupby(key)
+    out = pd.DataFrame({"open": g["open"].first(), "high": g["high"].max(), "low": g["low"].min(),
+                        "close": g["close"].last(), "volume": g["volume"].sum()})
+    out.index.name = "open_time"
+    return out

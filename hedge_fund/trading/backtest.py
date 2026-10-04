@@ -161,6 +161,33 @@ def financing_costs(positions: pd.DataFrame, spec, end_ns: int) -> pd.Series:
     return pd.Series(out, dtype=float).sort_index()
 
 
+def funding_costs(positions: pd.DataFrame, rates: pd.Series, end_ns: int, cost_multiplier: float = 1.0) -> pd.Series:
+    """Perpetual funding: at every settlement inside a position's life (opened < t <= closed;
+    open positions up to *end_ns*) a long pays notional x rate and a short receives it
+    (negative rates reverse that). Notional = quantity x average entry price. Payments are
+    scaled by *cost_multiplier* (stress); receipts never are. Returns the net cost per
+    position (negative = income), booked when the position closes."""
+    if positions.empty:
+        return pd.Series(dtype=float)
+    rates = rates.sort_index()
+    t = rates.index
+    out = {}
+    for p in positions.itertuples():
+        opened = pd.Timestamp(p.ts_opened)
+        opened = opened.tz_localize("UTC") if opened.tzinfo is None else opened
+        closed = pd.Timestamp(p.ts_closed) if pd.notna(p.ts_closed) else pd.Timestamp(end_ns, unit="ns", tz="UTC")
+        closed = closed.tz_localize("UTC") if closed.tzinfo is None else closed
+        r = rates[(t > opened) & (t <= closed)].to_numpy()
+        if not len(r):
+            continue
+        qty = float(p.peak_qty) if hasattr(p, "peak_qty") else float(p.quantity)
+        sign = 1.0 if str(p.entry) == "BUY" else -1.0
+        flows = sign * r * qty * float(p.avg_px_open)            # > 0: paid
+        cost = float(flows[flows > 0].sum() * cost_multiplier + flows[flows < 0].sum())
+        out[closed] = out.get(closed, 0.0) + cost
+    return pd.Series(out, dtype=float).sort_index()
+
+
 def apply_financing(equity: pd.Series, costs: pd.Series) -> pd.Series:
     """Equity net of financing: each cost is deducted from the first mark at or after it."""
     if costs.empty:

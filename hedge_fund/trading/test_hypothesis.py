@@ -128,4 +128,5 @@ def test_hypothesis_files_load_and_must_match_their_name(tmp_path):
     with pytest.raises(HypothesisRejected):
         load_hypotheses(tmp_path)
     repo = load_hypotheses()                                               # the AI drafts in research/hypotheses
-    assert repo and all(h.status == "draft" and h.approval is None for h in repo.values())  # none approved by AI
+    assert repo and all((h.status == "draft" and h.approval is None) or h.approval.by.startswith("human:")
+                        for h in repo.values())                     # only humans approve

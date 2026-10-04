@@ -1,39 +1,43 @@
 id: H-FUNDING-CROWDING
 title: Extreme funding signals crowded leverage that tends to unwind
-families: [funding_crowding]
-markets: [crypto]
+families:
+- funding_crowding
+markets:
+- crypto
 edge_type: behavioral
-why_edge_exists: >-
-  When funding becomes extreme, leveraged positioning is one-sided. Crowded leverage is
-  fragile: small adverse moves force liquidations and deleveraging, which push price
-  against the crowd. Taking the other side of extreme crowding is paid for absorbing that
-  risk, and for the liquidity provided when the crowd is forced to exit.
+why_edge_exists: 'When funding becomes extreme, leveraged positioning is one-sided. Crowded leverage is
+  fragile: small adverse moves force liquidations and deleveraging, which push price against the crowd.
+  Taking the other side of extreme crowding is paid for absorbing that risk, and for the liquidity provided
+  when the crowd is forced to exit.'
 counterparty_type: forced_sellers
-counterparty: >-
-  Over-leveraged perpetual traders on the crowded side whose positions are liquidated or
-  de-risked when the price moves against them.
-why_they_pay: >-
-  Liquidation is price-insensitive forced flow: margin calls sell (or buy back) at any price,
-  conceding liquidity to whoever takes the other side, and herding makes the crowding
-  self-reinforcing until it breaks.
-why_it_persists: >-
-  Leverage demand is behavioural and cyclical, and fading crowds is risky in the short run
-  because extremes can extend; capital and drawdown constraints limit how much contrarian
-  liquidity is supplied.
+counterparty: Over-leveraged perpetual traders on the crowded side whose positions are liquidated or de-risked
+  when the price moves against them.
+why_they_pay: 'Liquidation is price-insensitive forced flow: margin calls sell (or buy back) at any price,
+  conceding liquidity to whoever takes the other side, and herding makes the crowding self-reinforcing
+  until it breaks.'
+why_it_persists: Leverage demand is behavioural and cyclical, and fading crowds is risky in the short
+  run because extremes can extend; capital and drawdown constraints limit how much contrarian liquidity
+  is supplied.
 disappears_when:
-  - Exchanges cut maximum leverage so that liquidation cascades become rare.
-  - Funding extremes stop being followed by reversals in out-of-sample data.
+- Exchanges cut maximum leverage so that liquidation cascades become rare.
+- Funding extremes stop being followed by reversals in out-of-sample data.
 predictions:
-  - Returns after extreme positive funding are below unconditional returns over the next one to three days.
-  - The effect is concentrated in high-volatility regimes and around liquidation clusters.
-signal_sketch: >-
-  Single-instrument perpetual strategy: when funding is in an extreme percentile of its own
-  past distribution (causal, expanding window), take a small position against the crowd
-  with a volatility-scaled stop and a time stop; funding known only at its settlement time.
+- Returns after extreme positive funding are below unconditional returns over the next one to three days.
+- The effect is concentrated in high-volatility regimes and around liquidation clusters.
+references: []
+signal_sketch: 'Single-instrument perpetual strategy: when funding is in an extreme percentile of its
+  own past distribution (causal, expanding window), take a small position against the crowd with a volatility-scaled
+  stop and a time stop; funding known only at its settlement time.'
 data_required:
-  - "funding rate history: Binance USD-M public archive - available"
-  - "perpetual 1-minute klines: Binance USD-M public archive - available"
-  - "paper venue: Binance futures testnet (reachable from this environment)"
+- 'funding rate history: Binance USD-M public archive - available'
+- 'perpetual 1-minute klines: Binance USD-M public archive - available'
+- 'paper venue: Binance futures testnet (reachable from this environment)'
 feasibility: ready
 drafted_by: ai:claude-opus-5-5
-status: draft
+status: approved
+approval:
+  by: human:owner
+  'on': '2026-10-04'
+  note: 'Approved by the owner in the Claude Code session on 2026-10-04: ''H-FUNDING-CROWDING and H-VOL-SCALED-TREND
+    are BOTH explicitly approved for research and validation.'' Recorded by the AI on the owner''s instruction;
+    approval covers research and validation only, not deployment.'

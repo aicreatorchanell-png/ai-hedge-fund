@@ -34,3 +34,19 @@ def synthetic_bars(instrument, bar_type: BarType, n: int, *, start: str = "2020-
         lo = min(lo, o, c)
         out.append(Bar(bar_type, o, h, lo, c, instrument.make_qty(vols[i]), ts, ts))
     return out
+
+
+def synthetic_funding(start: str = "2020-01-01", n: int = 400, *, every_minutes: int = 60, seed: int = 0,
+                      lead: int = 60) -> tuple[tuple[int, float], ...]:
+    """((settlement_ns, rate), ...) for tests and audit probes: mostly small positive rates with
+    occasional positive and negative extremes. `lead` settlements fall before *start* so a
+    strategy has history at the first bar. Settlements land 1 ms after the interval boundary,
+    like Binance's calc_time."""
+    rng = np.random.default_rng(seed)
+    rates = rng.normal(1e-4, 5e-5, size=n)
+    spikes = rng.random(n)
+    rates[spikes > 0.95] += 2e-3
+    rates[spikes < 0.05] -= 2e-3
+    t0 = int(datetime.fromisoformat(start).replace(tzinfo=timezone.utc).timestamp() * 1e9)
+    step = every_minutes * 60 * 1_000_000_000
+    return tuple((t0 + (i - lead) * step + 1_000_000, float(r)) for i, r in enumerate(rates))

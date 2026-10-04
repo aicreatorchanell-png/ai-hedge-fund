@@ -44,6 +44,14 @@ class MarketSpec(BaseModel):
     # borrow / funding). Spot crypto on a cash account borrows nothing and cannot short.
     financing_long_bps_day: float = Field(0.0, ge=0)
     financing_short_bps_day: float = Field(0.0, ge=0)
+    # Perpetual futures: margin account (shorts allowed, no leverage beyond the risk limits),
+    # financed by the venue's actual funding settlements (hedge_fund.trading.data.funding).
+    perpetual: bool = False
+    funding_symbol: str | None = None
+
+    @property
+    def margin(self) -> bool:
+        return self.asset_class != "crypto" or self.perpetual
 
     @property
     def instrument_id(self) -> str:
@@ -110,6 +118,49 @@ UNIVERSES = {
     },
 }
 
+def _perp(symbol, base, pp, step, half_spread, slip):
+    return MarketSpec(venue="BINANCE", symbol=f"{symbol}-PERP", asset_class="crypto", source="binance_public_um",
+                      base=base, quote="USDT", price_precision=pp, size_increment=step, min_notional=5.0,
+                      commission_bps=5.0, half_spread_bps=half_spread, slippage_bps=slip, calendar="24/7",
+                      perpetual=True, funding_symbol=symbol,
+                      note="Binance USD-M perpetual, VIP0 taker 0.05% (charged on every fill, maker too); "
+                           "funding from the actual 8-hourly settlements")
+
+
+# Perpetual sets, fixed before any backtest by written rules:
+#   funding-crowding  the perpetuals of the crypto research set above (same selection rule)
+#   vol-trend         every USD-M perpetual with archive data in 2020-01, minus the coins of
+#                     the crypto research set (plan_crypto_v1); EOS was delisted in 2025
+PERPS = {s.symbol: s for s in [
+    _perp("BTCUSDT", "BTC", 2, "0.001", 1.0, 2.0),
+    _perp("ETHUSDT", "ETH", 2, "0.001", 1.0, 2.0),
+    _perp("XRPUSDT", "XRP", 4, "0.1", 2.0, 3.0),
+    _perp("LTCUSDT", "LTC", 2, "0.001", 2.0, 3.0),
+    _perp("ADAUSDT", "ADA", 5, "1", 2.0, 3.0),
+    _perp("BNBUSDT", "BNB", 3, "0.01", 2.0, 3.0),
+    _perp("BCHUSDT", "BCH", 2, "0.001", 2.0, 3.0),
+    _perp("EOSUSDT", "EOS", 3, "0.1", 2.0, 3.0),
+    _perp("TRXUSDT", "TRX", 5, "1", 2.0, 3.0),
+    _perp("ETCUSDT", "ETC", 3, "0.01", 2.0, 3.0),
+    _perp("LINKUSDT", "LINK", 3, "0.01", 2.0, 3.0),
+    _perp("XLMUSDT", "XLM", 5, "1", 2.0, 3.0),
+]}
+FUNDING_CROWDING_SET = tuple(f"{s}-PERP" for s in CRYPTO)
+VOL_TREND_CRYPTO_SET = ("BCHUSDT-PERP", "EOSUSDT-PERP", "TRXUSDT-PERP", "ETCUSDT-PERP", "LINKUSDT-PERP",
+                        "XLMUSDT-PERP")
+
+UNIVERSES["crypto-perp-research-6"] = {
+    "instruments": tuple(f"{s}.BINANCE" for s in FUNDING_CROWDING_SET),
+    "survivorship_free": False,
+    "note": "perpetuals of the crypto-binance-6 set (same selection rule and the same caveat)",
+}
+UNIVERSES["crypto-perp-early-ex-v1"] = {
+    "instruments": tuple(f"{s}.BINANCE" for s in VOL_TREND_CRYPTO_SET),
+    "survivorship_free": False,
+    "note": ("every USD-M perpetual with data in 2020-01 except the crypto-v1 coins; includes EOS, delisted "
+             "in 2025, but the rule only sees perpetuals Binance listed early, which is itself a selection"),
+}
+
 FX = {s.symbol: s for s in [
     MarketSpec(venue="DUKASCOPY", symbol=f"{b}{q}", asset_class="fx", source="dukascopy", base=b, quote=q,
                price_precision=pp, size_increment="1000", commission_bps=0.2, half_spread_bps=0.5,
@@ -128,7 +179,7 @@ INDICES = {s.symbol: s for s in [
 
 
 def market(symbol: str) -> MarketSpec:
-    for book in (CRYPTO, FX, INDICES):
+    for book in (CRYPTO, PERPS, FX, INDICES):
         if symbol in book:
             return book[symbol]
     raise KeyError(symbol)

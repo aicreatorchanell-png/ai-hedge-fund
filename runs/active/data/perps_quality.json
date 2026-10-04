@@ -1,0 +1,7346 @@
+{
+ "ADAUSDT:1m": {
+  "2020-01": {
+   "expected": 959,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 959,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-02": {
+   "expected": 41760,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 41760,
+   "status": "ok",
+   "zero_volume": 199
+  },
+  "2020-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 1919
+  },
+  "2020-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 2967
+  },
+  "2020-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 1476
+  },
+  "2020-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 14
+  },
+  "2020-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 17
+  },
+  "2020-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 1
+  },
+  "2020-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 59
+  },
+  "2021-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 44640,
+   "extreme_moves": 4,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 64
+  },
+  "2022-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 19
+  },
+  "2023-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 3
+  },
+  "2023-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 41760,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 41760,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 89
+  },
+  "2024-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 20
+  },
+  "2025-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 18
+  }
+ },
+ "BCHUSDT:1d": {
+  "2020-01": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-02": {
+   "expected": 29,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-03": {
+   "expected": 31,
+   "extreme_moves": 4,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-09": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-11": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 31,
+   "extreme_moves": 4,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 28,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-04": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 31,
+   "extreme_moves": 7,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-06": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 30,
+   "extreme_moves": 4,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 29,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-03": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  }
+ },
+ "BNBUSDT:1m": {
+  "2020-01": {
+   "status": "not_listed"
+  },
+  "2020-02": {
+   "expected": 28319,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28319,
+   "status": "ok",
+   "zero_volume": 9
+  },
+  "2020-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 32
+  },
+  "2020-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 91
+  },
+  "2020-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 388
+  },
+  "2020-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 89
+  },
+  "2020-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 50
+  },
+  "2020-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 1
+  },
+  "2020-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 10
+  },
+  "2020-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 59
+  },
+  "2021-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 44640,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 64
+  },
+  "2022-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 19
+  },
+  "2023-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 3
+  },
+  "2023-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 41760,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 41760,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 89
+  },
+  "2024-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 20
+  },
+  "2025-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 19
+  }
+ },
+ "BTCUSDT:1m": {
+  "2020-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-02": {
+   "expected": 41760,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 41760,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 2
+  },
+  "2020-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 59
+  },
+  "2021-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 64
+  },
+  "2022-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 19
+  },
+  "2023-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 99
+  },
+  "2023-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 41760,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 41760,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 89
+  },
+  "2024-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 19
+  },
+  "2025-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 18
+  }
+ },
+ "EOSUSDT:1d": {
+  "2020-01": {
+   "expected": 24,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 24,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-02": {
+   "expected": 29,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-03": {
+   "expected": 31,
+   "extreme_moves": 3,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-04": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-09": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-11": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 31,
+   "extreme_moves": 3,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 28,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-04": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 31,
+   "extreme_moves": 9,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 29,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-03": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-11": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 10,
+   "rows": 21,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "status": "missing"
+  },
+  "2025-07": {
+   "status": "missing"
+  },
+  "2025-08": {
+   "status": "missing"
+  }
+ },
+ "ETCUSDT:1d": {
+  "2020-01": {
+   "expected": 16,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 16,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-02": {
+   "expected": 29,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-03": {
+   "expected": 31,
+   "extreme_moves": 3,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 28,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-04": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 31,
+   "extreme_moves": 8,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 31,
+   "extreme_moves": 3,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 29,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-11": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-08": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  }
+ },
+ "ETHUSDT:1m": {
+  "2020-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 22
+  },
+  "2020-02": {
+   "expected": 41760,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 41760,
+   "status": "ok",
+   "zero_volume": 4
+  },
+  "2020-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 4
+  },
+  "2020-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 59
+  },
+  "2021-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 44640,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 64
+  },
+  "2022-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 19
+  },
+  "2023-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 3
+  },
+  "2023-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 41760,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 41760,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 89
+  },
+  "2024-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 20
+  },
+  "2025-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 18
+  }
+ },
+ "LINKUSDT:1d": {
+  "2020-01": {
+   "expected": 15,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 15,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-02": {
+   "expected": 29,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-03": {
+   "expected": 31,
+   "extreme_moves": 3,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-04": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-07": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-08": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-09": {
+   "expected": 30,
+   "extreme_moves": 4,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 31,
+   "extreme_moves": 3,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 28,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-04": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 31,
+   "extreme_moves": 8,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-10": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 29,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 31,
+   "extreme_moves": 3,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  }
+ },
+ "LTCUSDT:1m": {
+  "2020-01": {
+   "expected": 32631,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 32631,
+   "status": "ok",
+   "zero_volume": 3
+  },
+  "2020-02": {
+   "expected": 41760,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 41760,
+   "status": "ok",
+   "zero_volume": 9
+  },
+  "2020-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 72
+  },
+  "2020-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 196
+  },
+  "2020-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 2
+  },
+  "2020-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 19
+  },
+  "2020-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 59
+  },
+  "2021-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 44640,
+   "extreme_moves": 5,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 4320,
+   "rows": 36000,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 2880,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 64
+  },
+  "2022-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 19
+  },
+  "2023-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 3
+  },
+  "2023-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 41760,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 41760,
+   "status": "ok",
+   "zero_volume": 1
+  },
+  "2024-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 89
+  },
+  "2024-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 20
+  },
+  "2025-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 19
+  }
+ },
+ "TRXUSDT:1d": {
+  "2020-01": {
+   "expected": 17,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 17,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-02": {
+   "expected": 29,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-03": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-09": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-11": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 28,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-04": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 31,
+   "extreme_moves": 5,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 3,
+   "rows": 25,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 2,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-06": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 29,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 31,
+   "extreme_moves": 3,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  }
+ },
+ "XLMUSDT:1d": {
+  "2020-01": {
+   "expected": 12,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 12,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-02": {
+   "expected": 29,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-03": {
+   "expected": 31,
+   "extreme_moves": 3,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-09": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-11": {
+   "expected": 30,
+   "extreme_moves": 4,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 31,
+   "extreme_moves": 3,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 31,
+   "extreme_moves": 5,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 28,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-04": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 31,
+   "extreme_moves": 5,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 30,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 3,
+   "rows": 25,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 2,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 30,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-12": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 29,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 29,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-03": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-11": {
+   "expected": 30,
+   "extreme_moves": 5,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-02": {
+   "expected": 28,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 28,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 31,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "expected": 30,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 30,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-07": {
+   "expected": 31,
+   "extreme_moves": 2,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-08": {
+   "expected": 31,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 31,
+   "status": "ok",
+   "zero_volume": 0
+  }
+ },
+ "XRPUSDT:1m": {
+  "2020-01": {
+   "expected": 36939,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 36939,
+   "status": "ok",
+   "zero_volume": 189
+  },
+  "2020-02": {
+   "expected": 41760,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 41760,
+   "status": "ok",
+   "zero_volume": 14
+  },
+  "2020-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 19
+  },
+  "2020-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 2
+  },
+  "2020-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 1
+  },
+  "2020-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 17
+  },
+  "2020-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2020-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-02": {
+   "expected": 40320,
+   "extreme_moves": 1,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 59
+  },
+  "2021-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2021-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 4320,
+   "rows": 36000,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 2880,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 64
+  },
+  "2022-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2022-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 19
+  },
+  "2023-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2023-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 3
+  },
+  "2023-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-02": {
+   "expected": 41760,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 41760,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-09": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-10": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 89
+  },
+  "2024-11": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2024-12": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-01": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 20
+  },
+  "2025-02": {
+   "expected": 40320,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 40320,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-03": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-04": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-05": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-06": {
+   "expected": 43200,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 43200,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-07": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 0
+  },
+  "2025-08": {
+   "expected": 44640,
+   "extreme_moves": 0,
+   "longest_gap_bars": 0,
+   "missing": 0,
+   "rows": 44640,
+   "status": "ok",
+   "zero_volume": 18
+  }
+ }
+}

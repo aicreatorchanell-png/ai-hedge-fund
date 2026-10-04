@@ -26,6 +26,8 @@ from hedge_fund.trading.data.fence import last_research_day
 
 BASE = "https://data.binance.vision/data/spot/monthly/klines"
 RAW_DIR = CACHE_DIR / "market" / "binance" / "spot"
+FUTURES_BASE = "https://data.binance.vision/data/futures/um/monthly/klines"
+FUTURES_DIR = CACHE_DIR / "market" / "binance" / "futures_um" / "klines"
 COLUMNS = ["open_time", "open", "high", "low", "close", "volume", "close_time", "quote_volume", "trades",
            "taker_buy_base", "taker_buy_quote", "ignore"]
 
@@ -87,6 +89,15 @@ def fetch_verified(url: str, dest: Path, *, session=None, retries: int = 4) -> P
                 raise
             time.sleep(2 ** (attempt + 1))
     return None
+
+
+def download_futures_month(symbol: str, month: str, tf: str = "1m", *, root: Path = FUTURES_DIR, session=None,
+                           retries: int = 4) -> Path | None:
+    """USD-M perpetual klines (same CSV layout as spot, with a header row); fenced like spot."""
+    if not month_allowed(month):
+        raise PermissionError(f"{month} reaches into a sealed holdout window")
+    dest = archive_path(symbol, month, tf, root)
+    return fetch_verified(f"{FUTURES_BASE}/{symbol}/{tf}/{dest.name}", dest, session=session, retries=retries)
 
 
 def parse(path: Path) -> pd.DataFrame:

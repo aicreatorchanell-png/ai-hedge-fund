@@ -13,20 +13,24 @@ from hedge_fund.trading.backtest import run_backtest
 from hedge_fund.trading.families import FAMILIES, build, n_trials
 from hedge_fund.trading.governor import RiskGovernor, TradeRiskConfig
 from hedge_fund.trading.strategy import GuardedConfig, GuardedStrategy
-from hedge_fund.trading.synthetic import synthetic_bars
+from hedge_fund.trading.synthetic import synthetic_bars, synthetic_funding
 from hedge_fund.trading.test_trading import BT, INST, MARGIN, VENUE, bar
 from hedge_fund.trading.venue import add_venue
 
 BARS = synthetic_bars(INST, BT, 6000, price=30_000, seed=11)
+FUNDING = synthetic_funding(n=200, seed=3)            # hourly settlements across the synthetic bars
 
 
 def _strategy(name, params, allow_short=False):
+    if name == "funding_crowding":                    # external data: a synthetic settlement series
+        params = {"funding_series": FUNDING, "min_history": 30, **params}
     return build(name, params, instrument_id=INST.id, bar_type=BT, risk=TradeRiskConfig(), allow_short=allow_short)
 
 
 def test_grids_are_fixed_and_counted():
-    assert n_trials() == 84
-    assert {f.style for f in FAMILIES.values()} == {"trend", "momentum", "expansion", "mean_reversion", "session"}
+    assert n_trials() == 84 + 8 + 6                   # plan_crypto_v1 families + funding_crowding + vol_managed_trend
+    assert {f.style for f in FAMILIES.values()} == {"trend", "momentum", "expansion", "mean_reversion", "session",
+                                                    "crowding", "trend_premium"}
 
 
 @pytest.mark.parametrize("name", sorted(FAMILIES))

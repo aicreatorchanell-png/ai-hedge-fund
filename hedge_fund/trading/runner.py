@@ -36,11 +36,11 @@ from hedge_fund.validation.registry import ExperimentRegistry
 _BARS: dict[tuple, list] = {}
 
 
-def _bars(catalog_path: str, instrument: str, start: str, end: str) -> list:
-    key = (catalog_path, instrument, start, end)
+def _bars(catalog_path: str, instrument: str, start: str, end: str, minutes: int = 1) -> list:
+    key = (catalog_path, instrument, start, end, minutes)
     if key not in _BARS:
         _BARS.clear()
-        _BARS[key] = Catalog(catalog_path).load_bars(instrument, start, end)
+        _BARS[key] = Catalog(catalog_path).load_bars(instrument, start, end, minutes=minutes)
     return _BARS[key]
 
 
@@ -48,7 +48,8 @@ def _task(args) -> dict:
     plan_json, catalog_path, instrument, family, params, cost = args
     plan = ResearchPlan.model_validate_json(plan_json)
     spec = market(instrument.split(".")[0])
-    run = run_config(plan, spec, _bars(catalog_path, instrument, plan.dev_start, plan.dev_end), family, params,
+    run = run_config(plan, spec, _bars(catalog_path, instrument, plan.dev_start, plan.dev_end, plan.bar_minutes),
+                     family, params,
                      cost_multiplier=cost)
     return {"key": run.key, "family": family, "params": params, "instrument": instrument, "cost": cost,
             "daily": run.daily, "trades": run.trades, "audit": run.audit}
@@ -163,6 +164,7 @@ def run_plan(plan: ResearchPlan, out_dir: Path | str, *, catalog_path: str | Non
     runs = _load_or_run(plan, base, out_dir, catalog_path, workers, registry, code_commit)
     n_trials = count_trials(registry, prior)
     lines, wfs_all, by_family = [], [], {}
+    stressed: dict[str, dict[str, list]] = {}           # cost -> group -> replayed walk-forwards
     for f in plan.families:
         for i in plan.instruments:
             group = [r for r in runs.values() if r.family == f and r.instrument == i and r.cost_multiplier == 1.0]
@@ -178,6 +180,8 @@ def run_plan(plan: ResearchPlan, out_dir: Path | str, *, catalog_path: str | Non
                 swf = _replay(plan, wf, remap)
                 sres = evaluate_gates(evidence(plan, swf, group, n_trials=n_trials), gates)
                 stress[str(cost)] = {"passed": sres.passed, "checks": sres.checks, "values": sres.values}
+                for g in (f"family:{f}", "all"):
+                    stressed.setdefault(str(cost), {}).setdefault(g, []).append(swf)
             passed = res.passed and all(s["passed"] for s in stress.values())
             lines.append({"family": f, "instrument": i, "passed": passed, "checks": res.checks, "values": res.values,
                           "cost_stress": stress, "choices": wf.choices})
@@ -191,9 +195,19 @@ def run_plan(plan: ResearchPlan, out_dir: Path | str, *, catalog_path: str | Non
         folds = [sharpe(_slice(oos, te_s, te_e).to_numpy()) for _, _, te_s, te_e in plan.folds()]
         cwf = WalkForwardResult(oos, [], folds, sum(m.n_oos_trades for m in members))
         res = evaluate_gates(evidence(plan, cwf, base_runs, n_trials=n_trials), gates)
-        combos[name] = {"passed": res.passed, "checks": res.checks, "values": res.values, "members": len(members)}
+        cstress = {}
+        for cost, groups in stressed.items():              # the same members, cost-stressed
+            soos = combine([m.oos for m in groups.get(name, [])])
+            sfolds = [sharpe(_slice(soos, te_s, te_e).to_numpy()) for _, _, te_s, te_e in plan.folds()]
+            sres = evaluate_gates(evidence(plan, WalkForwardResult(soos, [], sfolds, sum(m.n_oos_trades for m in groups.get(name, []))),
+                                           base_runs, n_trials=n_trials), gates)
+            cstress[cost] = {"passed": sres.passed, "checks": sres.checks, "values": sres.values}
+        combos[name] = {"passed": res.passed and all(v["passed"] for v in cstress.values()),
+                        "base_passed": res.passed, "checks": res.checks, "values": res.values,
+                        "cost_stress": cstress, "members": len(members)}
     summary = {"plan": plan.model_dump(mode="json"), "plan_hash": plan.plan_hash(), "n_trials": n_trials,
                "gates_hash": gates.config_hash(), "lines": lines, "combinations": combos,
-               "any_passed": any(x["passed"] for x in lines)}
+               "any_passed": any(x["passed"] for x in lines),
+               "any_combination_passed": any(c["passed"] for c in combos.values())}
     (out_dir / "summary.json").write_text(json.dumps(summary, indent=1, default=str))
     return summary

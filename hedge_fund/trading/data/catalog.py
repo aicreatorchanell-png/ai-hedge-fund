@@ -26,6 +26,8 @@ CATALOG_DIR = CACHE_DIR / "catalog"
 
 
 def bar_type(instrument_id: str, minutes: int = 1) -> BarType:
+    if minutes == 1440:
+        return BarType.from_str(f"{instrument_id}-1-DAY-LAST-EXTERNAL")
     return BarType.from_str(f"{instrument_id}-{minutes}-MINUTE-LAST-EXTERNAL")
 
 

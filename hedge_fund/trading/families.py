@@ -11,6 +11,8 @@ Sharpe ratio and PBO, so a wider grid raises the bar a result must clear.
     volatility_breakout   bar range > k * ATR, close in the bar's outer quarter   (expansion)
     bollinger_reversion   close outside k-sigma bands, target the middle band     (mean reversion)
     opening_range         break of the first M minutes after a session open       (session)
+    funding_crowding      fade extreme perpetual funding (H-FUNDING-CROWDING)    (crowding)
+    vol_managed_trend     daily trend, volatility-scaled risk (H-VOL-SCALED-TREND) (trend premium)
 
 Signals use bars that have closed; entries fill at the next 1-minute bar's open.
 Spot crypto is long-only (a cash account cannot short); short sides are used on
@@ -214,6 +216,110 @@ class OpeningRange(GuardedStrategy):
             _bracket(self, False, close, self.hi - close, c.reward_risk, bar)
 
 
+# -- crowding: extreme perpetual funding (H-FUNDING-CROWDING) ------------------
+
+class FundingCrowdingConfig(GuardedConfig, frozen=True):
+    quantile: float = 0.95                  # extreme = strictly above this quantile of all *earlier* settlements
+    min_history: int = 270                  # settlements (~90 days at 8h) before any decision
+    atr_period: int = 24
+    atr_stop: float = 3.0
+    reward_risk: float = 3.0
+    funding_symbol: str = ""                # "" = the instrument symbol without "-PERP"
+    funding_series: tuple = ()              # ((calc_time_ns, rate), ...) for tests/probes; () = private cache
+
+
+class FundingCrowding(GuardedStrategy):
+    """At each newly *settled* funding rate (visible on the first signal bar closing at or after
+    its settlement time), compare it with the distribution of all earlier settlements: if it is
+    positive and strictly above the `quantile`, short (crowded longs); if negative and strictly
+    below the 1 - quantile, long (crowded shorts). ATR stop, target reward_risk x stop, time stop
+    `max_hold_bars` signal bars. Funding is paid/received through the backtest's funding flows."""
+
+    def register_indicators(self) -> None:
+        import bisect
+
+        import numpy as np
+        self._bisect, self._np = bisect, np
+        self.atr = _atr(self, self.config.atr_period)
+        self.f_ts, self.f_rate = self._load_funding()
+        self.f_next = 0
+        self.history: list[float] = []                  # sorted earlier settlements
+
+    def _load_funding(self):
+        c = self.config
+        if c.funding_series:
+            ts, rate = zip(*c.funding_series)
+            return list(ts), list(rate)
+        from hedge_fund.trading.data import binance, funding
+        from hedge_fund.trading.data.fence import last_research_day
+        sym = c.funding_symbol or str(c.instrument_id.symbol).split("-")[0]
+        df = funding.load(sym, binance.months("2019-09", last_research_day("crypto")))
+        return list(df.index.as_unit("ns").asi8), list(df["rate"].astype(float))
+
+    def on_signal(self, bar: Bar) -> None:
+        c = self.config
+        latest = None
+        while self.f_next < len(self.f_ts) and self.f_ts[self.f_next] <= bar.ts_event:
+            r = self.f_rate[self.f_next]
+            latest = None
+            if len(self.history) >= c.min_history:
+                h = self._np.asarray(self.history)
+                latest = (r, float(self._np.quantile(h, c.quantile)), float(self._np.quantile(h, 1 - c.quantile)))
+            self._bisect.insort(self.history, r)
+            self.f_next += 1
+        if latest is None or not self.atr.initialized or not self.is_flat():
+            return
+        r, hi, lo = latest
+        dist = c.atr_stop * self.atr.value
+        if r > 0 and r > hi:                  # strictly beyond: funding often sits exactly at the 0.01% default
+            _bracket(self, False, float(bar.close), dist, c.reward_risk, bar)
+        elif r < 0 and r < lo:
+            _bracket(self, True, float(bar.close), dist, c.reward_risk, bar)
+
+
+# -- trend premium: daily, volatility-scaled (H-VOL-SCALED-TREND) ---------------
+
+class VolTrendConfig(GuardedConfig, frozen=True):
+    lookback: int = 60                      # signal bars (days on daily bars)
+    vol_window: int = 20
+    vol_stop: float = 3.0                   # stop = vol_stop x trailing bar volatility; size = risk / stop,
+    reward_risk: float = 10.0               # so exposure scales inversely with volatility; target far away
+
+
+class VolManagedTrend(GuardedStrategy):
+    """Direction = sign of the `lookback`-bar return. Flat -> enter in that direction with a
+    volatility stop; position against the current direction -> flatten (re-entered on a later
+    bar). Risk per trade is fixed, so position size is inversely proportional to volatility."""
+
+    def register_indicators(self) -> None:
+        import numpy as np
+        self._np = np
+        self.closes: deque[float] = deque(maxlen=max(self.config.lookback, self.config.vol_window) + 1)
+
+    def on_signal(self, bar: Bar) -> None:
+        from nautilus_trader.model.enums import PositionSide
+        c = self.config
+        self.closes.append(float(bar.close))
+        if len(self.closes) <= max(c.lookback, c.vol_window):
+            return
+        px = list(self.closes)
+        ret = px[-1] / px[-1 - c.lookback] - 1
+        direction = 1 if ret > 0 else -1 if ret < 0 else 0
+        positions = self.cache.positions_open(instrument_id=c.instrument_id)
+        if positions:
+            held = 1 if positions[0].side == PositionSide.LONG else -1
+            if direction != held:
+                self.flatten("trend reversal")
+            return
+        if direction == 0 or not self.is_flat():
+            return
+        lr = self._np.diff(self._np.log(px[-c.vol_window - 1:]))
+        vol = float(lr.std(ddof=1))
+        if vol <= 0:
+            return
+        _bracket(self, direction > 0, px[-1], c.vol_stop * vol * px[-1], c.reward_risk, bar)
+
+
 # -- registry -----------------------------------------------------------------
 
 @dataclass(frozen=True)
@@ -243,6 +349,10 @@ FAMILIES: dict[str, Family] = {f.name: f for f in [
     Family("opening_range", "session", OpeningRange, OpeningRangeConfig,
            {"session_open_utc": ["00:00", "13:30"], "range_minutes": [30, 60], "reward_risk": [1.0, 2.0],
             "signal_minutes": [5]}),
+    Family("funding_crowding", "crowding", FundingCrowding, FundingCrowdingConfig,
+           {"quantile": [0.95, 0.99], "atr_stop": [2.0, 4.0], "max_hold_bars": [24, 72], "signal_minutes": [60]}),
+    Family("vol_managed_trend", "trend_premium", VolManagedTrend, VolTrendConfig,
+           {"lookback": [20, 60, 120], "vol_stop": [2.5, 5.0]}),
 ]}
 
 

@@ -33,7 +33,7 @@ import numpy as np
 import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from hedge_fund.trading.backtest import apply_financing, financing_costs, run_backtest
+from hedge_fund.trading.backtest import apply_financing, financing_costs, funding_costs, run_backtest
 from hedge_fund.trading.data.fence import last_research_day
 from hedge_fund.trading.families import FAMILIES, build
 from hedge_fund.trading.governor import TradeRiskConfig
@@ -65,6 +65,7 @@ class ResearchPlan(BaseModel):
     periods_per_year: int = Field(365, description="365 for 24/7 crypto, 252 for exchange markets")
     min_train_trades: int = Field(20, ge=1)
     risk: TradeRiskConfig = TradeRiskConfig()
+    bar_minutes: int = Field(1, description="execution bars: 1 (1-minute) or 1440 (daily)")
 
     @model_validator(mode="after")
     def _windows(self) -> ResearchPlan:
@@ -79,10 +80,15 @@ class ResearchPlan(BaseModel):
             raise ValueError("cost multipliers must be >= 1")
         if not self.folds():
             raise ValueError("development window too short for one walk-forward fold")
+        if self.bar_minutes not in (1, 1440):
+            raise ValueError("bar_minutes must be 1 or 1440")
         return self
 
     def plan_hash(self) -> str:
-        return hashlib.sha256(json.dumps(self.model_dump(mode="json"), sort_keys=True).encode()).hexdigest()[:16]
+        d = self.model_dump(mode="json")
+        if d.get("bar_minutes") == 1:          # fields added later hash only when set: frozen plans keep their hash
+            d.pop("bar_minutes")
+        return hashlib.sha256(json.dumps(d, sort_keys=True).encode()).hexdigest()[:16]
 
     def folds(self) -> list[tuple[str, str, str, str]]:
         """(train_start, train_end, test_start, test_end), ISO dates, ends inclusive."""
@@ -133,13 +139,20 @@ def run_config(plan: ResearchPlan, spec, bars, family: str, params: dict, *, cos
     inst = spec.instrument(cost_multiplier)
     segs = tuple(int(pd.Timestamp(f[2], tz="UTC").value) for f in plan.folds())
     strategy = build(family, {**params, "segment_starts_ns": segs}, instrument_id=inst.id,
-                     bar_type=bars[0].bar_type, risk=plan.risk, allow_short=spec.asset_class != "crypto")
-    venue = VenueSpec(name=spec.venue, account_type="CASH" if spec.asset_class == "crypto" else "MARGIN",
-                      starting_balances=({spec.quote: plan.starting_cash, spec.base: 0} if spec.asset_class == "crypto"
-                                         else {spec.quote: plan.starting_cash}))
+                     bar_type=bars[0].bar_type, risk=plan.risk, allow_short=spec.margin)
+    venue = VenueSpec(name=spec.venue, account_type="MARGIN" if spec.margin else "CASH",
+                      starting_balances=({spec.quote: plan.starting_cash} if spec.margin
+                                         else {spec.quote: plan.starting_cash, spec.base: 0}))
     res = run_backtest(inst, bars, strategy, venue, market=spec.asset_class)
     pos = res.positions
-    fin = financing_costs(pos, spec, bars[-1].ts_event) * cost_multiplier
+    if spec.perpetual:
+        from hedge_fund.trading.data import binance, funding
+        rates = funding.load(spec.funding_symbol, binance.months(plan.dev_start, plan.dev_end))["rate"]
+        if rates.empty:
+            raise ValueError(f"{spec.instrument_id}: no funding settlements cached; perpetuals need funding")
+        fin = funding_costs(pos, rates, bars[-1].ts_event, cost_multiplier)
+    else:
+        fin = financing_costs(pos, spec, bars[-1].ts_event) * cost_multiplier
     if pos.empty:
         trades = pd.Series(dtype=float)
     else:
