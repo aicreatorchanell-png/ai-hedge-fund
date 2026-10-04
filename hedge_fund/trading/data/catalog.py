@@ -104,6 +104,8 @@ class Catalog:
         return out
 
     def _record(self, key: str, value: dict) -> None:
+        if self.ledger_path.exists():                  # merge: another loader may have written meanwhile
+            self.ledger = {**json.loads(self.ledger_path.read_text()), **self.ledger}
         self.ledger[key] = value
         tmp = self.ledger_path.with_suffix(".tmp")
         tmp.write_text(json.dumps(self.ledger, indent=1, sort_keys=True))

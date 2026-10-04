@@ -1,0 +1,639 @@
+{
+ "plan": {
+  "plan_id": "funding-crowding-v1",
+  "families": [
+   "funding_crowding"
+  ],
+  "instruments": [
+   "BTCUSDT-PERP.BINANCE",
+   "ETHUSDT-PERP.BINANCE",
+   "XRPUSDT-PERP.BINANCE",
+   "LTCUSDT-PERP.BINANCE",
+   "ADAUSDT-PERP.BINANCE",
+   "BNBUSDT-PERP.BINANCE"
+  ],
+  "dev_start": "2020-01-01",
+  "dev_end": "2025-08-31",
+  "reserve_start": "2025-09-01",
+  "walk_forward": {
+   "train_months": 24,
+   "test_months": 6,
+   "step_months": 6
+  },
+  "cost_multipliers": [
+   1.0,
+   2.0
+  ],
+  "starting_cash": 10000.0,
+  "periods_per_year": 365,
+  "min_train_trades": 10,
+  "risk": {
+   "risk_per_trade": 0.005,
+   "max_notional_fraction": 0.9,
+   "max_daily_loss": 0.03,
+   "max_drawdown": 0.2,
+   "max_open_positions": 1,
+   "max_entries_per_day": 20
+  },
+  "bar_minutes": 1
+ },
+ "plan_hash": "393bd1834e34890a",
+ "n_trials": 552,
+ "gates_hash": "2fc90f4ad972f482",
+ "lines": [
+  {
+   "family": "funding_crowding",
+   "instrument": "BTCUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 52.0,
+    "oos_sharpe_annual": 0.5422443977630634,
+    "deflated_sharpe": 0.014238112409335313,
+    "pbo": 0.42857142857142855,
+    "max_drawdown": 0.0381702246106147,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": -0.012727951928590182
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 52.0,
+      "oos_sharpe_annual": 0.3709046818131199,
+      "deflated_sharpe": 0.0066776998184438895,
+      "pbo": 0.42857142857142855,
+      "max_drawdown": 0.0425337590732805,
+      "walk_forward_positive_share": 0.5714285714285714,
+      "bootstrap_sharpe_lower": -0.0216757338165972
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.07539892196661217
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.06804785488783624
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.07577691852505113
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.07146739723031548
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.057614845782227406
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04860799842170423
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.040208387710758534
+    }
+   ]
+  },
+  {
+   "family": "funding_crowding",
+   "instrument": "ETHUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": true,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 169.0,
+    "oos_sharpe_annual": 0.3882716291102566,
+    "deflated_sharpe": 0.008371307294011405,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.052405854033939825,
+    "walk_forward_positive_share": 0.7142857142857143,
+    "bootstrap_sharpe_lower": -0.019364239731478054
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": true,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 169.0,
+      "oos_sharpe_annual": 0.047833463973450736,
+      "deflated_sharpe": 0.0013632348995290778,
+      "pbo": 0.014285714285714285,
+      "max_drawdown": 0.056814338518395235,
+      "walk_forward_positive_share": 0.7142857142857143,
+      "bootstrap_sharpe_lower": -0.03670337349023557
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04127278891146649
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.015316671008068815
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.017554019983726965
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.01957599099369148
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.009819730661622793
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.021269928582305423
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.025600299688632658
+    }
+   ]
+  },
+  {
+   "family": "funding_crowding",
+   "instrument": "XRPUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 47.0,
+    "oos_sharpe_annual": 0.13217970933392303,
+    "deflated_sharpe": 0.002034208153230483,
+    "pbo": 0.7571428571428571,
+    "max_drawdown": 0.03138775034729513,
+    "walk_forward_positive_share": 0.2857142857142857,
+    "bootstrap_sharpe_lower": -0.03883358719088715
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 47.0,
+      "oos_sharpe_annual": -0.011272034295346227,
+      "deflated_sharpe": 0.0009677118396192115,
+      "pbo": 0.7571428571428571,
+      "max_drawdown": 0.035583412000462555,
+      "walk_forward_positive_share": 0.2857142857142857,
+      "bootstrap_sharpe_lower": -0.04493007740678671
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.026716894337911242
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.018822220444707962
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.035395164023989366
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.026999480008638447
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.037679485903847496
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.07409365073342189
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0195096504674658
+    }
+   ]
+  },
+  {
+   "family": "funding_crowding",
+   "instrument": "LTCUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 58.0,
+    "oos_sharpe_annual": 0.3882346142533578,
+    "deflated_sharpe": 0.009153264162801964,
+    "pbo": 0.24285714285714285,
+    "max_drawdown": 0.04290014955768817,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": -0.02885965457017521
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 58.0,
+      "oos_sharpe_annual": 0.19439400644796054,
+      "deflated_sharpe": 0.003313451640443722,
+      "pbo": 0.24285714285714285,
+      "max_drawdown": 0.04670022919354411,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.03824294914144455
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.003312768387914515
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.0012576820201419265
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0021188277089857093
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.019650617437384322
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.014387626783770478
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.029596785022990256
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04267873392618235
+    }
+   ]
+  },
+  {
+   "family": "funding_crowding",
+   "instrument": "ADAUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": true,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 160.0,
+    "oos_sharpe_annual": 0.5120964530265137,
+    "deflated_sharpe": 0.014589517989869205,
+    "pbo": 0.4142857142857143,
+    "max_drawdown": 0.06353822647127627,
+    "walk_forward_positive_share": 0.8571428571428571,
+    "bootstrap_sharpe_lower": -0.021935256810880106
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": true,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 160.0,
+      "oos_sharpe_annual": 0.18873201032532982,
+      "deflated_sharpe": 0.0029795588377641395,
+      "pbo": 0.4142857142857143,
+      "max_drawdown": 0.07569711520092104,
+      "walk_forward_positive_share": 0.7142857142857143,
+      "bootstrap_sharpe_lower": -0.04056810843285253
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.059992504297855354
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.05082600129544366
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.012237647394747078
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.015500147008273717
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.02244179128884415
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.06080987206638431
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.09078969595696959
+    }
+   ]
+  },
+  {
+   "family": "funding_crowding",
+   "instrument": "BNBUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 48.0,
+    "oos_sharpe_annual": -0.38318297697196174,
+    "deflated_sharpe": 0.00010083097108418001,
+    "pbo": 0.8285714285714286,
+    "max_drawdown": 0.033829121959342845,
+    "walk_forward_positive_share": 0.2857142857142857,
+    "bootstrap_sharpe_lower": -0.08402274363158257
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 48.0,
+      "oos_sharpe_annual": -0.5568050111757122,
+      "deflated_sharpe": 2.9260802580896603e-05,
+      "pbo": 0.8285714285714286,
+      "max_drawdown": 0.04114728448335425,
+      "walk_forward_positive_share": 0.2857142857142857,
+      "bootstrap_sharpe_lower": -0.0945699614126459
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04973732518362697
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.05205662798560703
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03965918538329347
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.015387606298886964
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03104299206303891
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0019660913432384083
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0029733296567872975
+    }
+   ]
+  }
+ ],
+ "combinations": {
+  "family:funding_crowding": {
+   "passed": false,
+   "base_passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": true,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 534.0,
+    "oos_sharpe_annual": 0.5852035514702401,
+    "deflated_sharpe": 0.02000190460187113,
+    "pbo": 0.15714285714285714,
+    "max_drawdown": 0.017204905058525233,
+    "walk_forward_positive_share": 0.7142857142857143,
+    "bootstrap_sharpe_lower": -0.011906733137902505
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 534.0,
+      "oos_sharpe_annual": 0.14520556289288938,
+      "deflated_sharpe": 0.002312293010528667,
+      "pbo": 0.15714285714285714,
+      "max_drawdown": 0.02174761415559645,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.035370107251249214
+     }
+    }
+   },
+   "members": 6
+  },
+  "all": {
+   "passed": false,
+   "base_passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": true,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 534.0,
+    "oos_sharpe_annual": 0.5852035514702401,
+    "deflated_sharpe": 0.02000190460187113,
+    "pbo": 0.15714285714285714,
+    "max_drawdown": 0.017204905058525233,
+    "walk_forward_positive_share": 0.7142857142857143,
+    "bootstrap_sharpe_lower": -0.011906733137902505
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 534.0,
+      "oos_sharpe_annual": 0.14520556289288938,
+      "deflated_sharpe": 0.002312293010528667,
+      "pbo": 0.15714285714285714,
+      "max_drawdown": 0.02174761415559645,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.035370107251249214
+     }
+    }
+   },
+   "members": 6
+  }
+ },
+ "any_passed": false,
+ "any_combination_passed": false
+}

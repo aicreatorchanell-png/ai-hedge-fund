@@ -1,0 +1,2048 @@
+{
+ "plan_id": "funding-crowding-v1",
+ "plan_hash": "393bd1834e34890a",
+ "n_trials_cumulative": 552,
+ "gates_hash": "2fc90f4ad972f482",
+ "verdict": "FAIL",
+ "passed_lines": [],
+ "passed_combinations": [],
+ "audit_fail": [],
+ "lines": {
+  "funding_crowding:BTCUSDT-PERP.BINANCE": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.02207875501852663,
+      "sharpe_annual": 1.5708753027522884,
+      "max_drawdown": 0.008119388353470924,
+      "trades": 17,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.773,
+        "bull": 0.138,
+        "sideways": 0.088
+       },
+       "vol": {
+        "high": 0.37,
+        "low": 0.32,
+        "normal": 0.309
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+      "return": -0.0018754075772299261,
+      "sharpe_annual": -0.24159891548252518,
+      "max_drawdown": 0.005118452309492261,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.897,
+        "sideways": 0.103
+       },
+       "vol": {
+        "low": 0.467,
+        "normal": 0.31,
+        "high": 0.223
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.004856357987787052,
+      "sharpe_annual": -1.4200614724846803,
+      "max_drawdown": 0.004856357987787052,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.729,
+        "bear": 0.215,
+        "sideways": 0.055
+       },
+       "vol": {
+        "low": 0.812,
+        "normal": 0.188
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.006622314788309991,
+      "sharpe_annual": 0.6248015240402262,
+      "max_drawdown": 0.008597508589727187,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.582,
+        "bear": 0.272,
+        "sideways": 0.147
+       },
+       "vol": {
+        "low": 0.951,
+        "normal": 0.049
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.014401305387293895,
+      "sharpe_annual": -1.466104836677879,
+      "max_drawdown": 0.02043633985330906,
+      "trades": 11,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.764,
+        "sideways": 0.198,
+        "bear": 0.038
+       },
+       "vol": {
+        "normal": 0.489,
+        "low": 0.352,
+        "high": 0.159
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.0216020267656869,
+      "sharpe_annual": 0.9961778689671678,
+      "max_drawdown": 0.015985236701806294,
+      "trades": 12,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.386,
+        "bear": 0.38,
+        "sideways": 0.234
+       },
+       "vol": {
+        "low": 0.5,
+        "normal": 0.473,
+        "high": 0.027
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.018972120835429873,
+      "sharpe_annual": 1.3831385056094203,
+      "max_drawdown": 0.009916225637703446,
+      "trades": 7,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.53,
+        "bear": 0.381,
+        "sideways": 0.088
+       },
+       "vol": {
+        "low": 0.602,
+        "normal": 0.298,
+        "high": 0.099
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 4,
+     "negative": 3,
+     "worst_fold": {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.014401305387293895,
+      "sharpe_annual": -1.466104836677879,
+      "max_drawdown": 0.02043633985330906,
+      "trades": 11,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.764,
+        "sideways": 0.198,
+        "bear": 0.038
+       },
+       "vol": {
+        "normal": 0.489,
+        "low": 0.352,
+        "high": 0.159
+       }
+      }
+     },
+     "median_return": 0.006622314788309991,
+     "dispersion_std": 0.014498960814959263,
+     "dispersion_iqr": 0.023652956583066875,
+     "total_return": 0.04849318214498011,
+     "total_without_best_fold": 0.025843827588388324,
+     "best_fold_share_of_gains": 0.3187107286651662,
+     "max_fold_drawdown": 0.02043633985330906,
+     "fragile": false
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 540,
+       "sum_return": 0.05463076293104563,
+       "sharpe_annual": 1.0851177500861806,
+       "hit_rate": 0.053703703703703705,
+       "share_of_profit": 0.9987474408864904
+      },
+      "bull": {
+       "days": 570,
+       "sum_return": 6.851407791996778e-05,
+       "sharpe_annual": 0.0024367665097062615,
+       "hit_rate": 0.02631578947368421,
+       "share_of_profit": 0.0012525591135096326
+      },
+      "sideways": {
+       "days": 167,
+       "sum_return": -0.006206544717839435,
+       "sharpe_annual": -1.1362882792842692,
+       "hit_rate": 0.005988023952095809,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "bear",
+     "dominated": true,
+     "losing_regimes": [
+      "sideways"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 160,
+       "sum_return": -0.010108412881677964,
+       "sharpe_annual": -1.1717162124539833,
+       "hit_rate": 0.04375,
+       "share_of_profit": 0.0
+      },
+      "low": {
+       "days": 731,
+       "sum_return": 0.009509123498057104,
+       "sharpe_annual": 0.29363039061780816,
+       "hit_rate": 0.016415868673050615,
+       "share_of_profit": 0.1622685609644048
+      },
+      "normal": {
+       "days": 386,
+       "sum_return": 0.04909202167474702,
+       "sharpe_annual": 1.1966544833110284,
+       "hit_rate": 0.06735751295336788,
+       "share_of_profit": 0.8377314390355952
+      }
+     },
+     "top_regime": "normal",
+     "dominated": true,
+     "losing_regimes": [
+      "high"
+     ]
+    },
+    "total_return_sum": 0.04849273229112616
+   },
+   "stability": {
+    "sharp_peak": 3,
+    "unstable_neighbours": 1,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 4
+   },
+   "concentration": {
+    "trades": 52,
+    "net_pnl": 573.2500593591554,
+    "top_trades": 3,
+    "top_trades_share": 0.8275782581135227,
+    "few_trades": false,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 0.9683478290100771,
+    "share_positive": 1.0,
+    "p10": 0.2786769910719378,
+    "p90": 1.7195027610098061
+   },
+   "oos_return": 0.04849318214497966,
+   "oos_max_drawdown": 0.0381702246106147,
+   "oos_sharpe_annual": 0.5422443977630634
+  },
+  "funding_crowding:ETHUSDT-PERP.BINANCE": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.0139503524755199,
+      "sharpe_annual": -0.3035384903114722,
+      "max_drawdown": 0.052405854033939825,
+      "trades": 95,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.707,
+        "bull": 0.155,
+        "sideways": 0.138
+       },
+       "vol": {
+        "normal": 0.464,
+        "low": 0.392,
+        "high": 0.144
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.0172608591567045,
+      "sharpe_annual": 0.5918071871863341,
+      "max_drawdown": 0.043503617697925434,
+      "trades": 50,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.696,
+        "bull": 0.207,
+        "sideways": 0.098
+       },
+       "vol": {
+        "high": 0.397,
+        "normal": 0.326,
+        "low": 0.277
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.010462498814955978,
+      "sharpe_annual": 1.0759389078453392,
+      "max_drawdown": 0.004709198667208647,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.746,
+        "bear": 0.171,
+        "sideways": 0.083
+       },
+       "vol": {
+        "low": 1.0
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+      "return": 0.0,
+      "sharpe_annual": 0.0,
+      "max_drawdown": -0.0,
+      "trades": 0,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.462,
+        "bull": 0.402,
+        "sideways": 0.136
+       },
+       "vol": {
+        "low": 0.913,
+        "normal": 0.087
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.00980138059660196,
+      "sharpe_annual": 1.4161548310458518,
+      "max_drawdown": -0.0,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.797,
+        "bear": 0.121,
+        "sideways": 0.082
+       },
+       "vol": {
+        "normal": 0.588,
+        "low": 0.412
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.0059022880776484765,
+      "sharpe_annual": 1.0148218262537392,
+      "max_drawdown": 0.0051740156125900105,
+      "trades": 4,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.467,
+        "bull": 0.397,
+        "sideways": 0.136
+       },
+       "vol": {
+        "normal": 0.609,
+        "low": 0.391
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.024564402897766735,
+      "sharpe_annual": 1.5586878329636138,
+      "max_drawdown": 0.011480903343221827,
+      "trades": 15,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.575,
+        "bull": 0.365,
+        "sideways": 0.061
+       },
+       "vol": {
+        "normal": 0.486,
+        "high": 0.464,
+        "low": 0.05
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 5,
+     "negative": 2,
+     "worst_fold": {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ETHUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.0139503524755199,
+      "sharpe_annual": -0.3035384903114722,
+      "max_drawdown": 0.052405854033939825,
+      "trades": 95,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.707,
+        "bull": 0.155,
+        "sideways": 0.138
+       },
+       "vol": {
+        "normal": 0.464,
+        "low": 0.392,
+        "high": 0.144
+       }
+      }
+     },
+     "median_return": 0.00980138059660196,
+     "dispersion_std": 0.012376873597214254,
+     "dispersion_iqr": 0.010910534947006001,
+     "total_return": 0.05482966747165552,
+     "total_without_best_fold": 0.02953964093256589,
+     "best_fold_share_of_gains": 0.3612867542663826,
+     "max_fold_drawdown": 0.052405854033939825,
+     "fragile": false
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 584,
+       "sum_return": 0.057822922977126434,
+       "sharpe_annual": 0.7217077063621816,
+       "hit_rate": 0.1113013698630137,
+       "share_of_profit": 0.8614093313535405
+      },
+      "bull": {
+       "days": 559,
+       "sum_return": 0.009303030820319358,
+       "sharpe_annual": 0.18833352015441635,
+       "hit_rate": 0.04114490161001789,
+       "share_of_profit": 0.13859066864645947
+      },
+      "sideways": {
+       "days": 134,
+       "sum_return": -0.010740809070045487,
+       "sharpe_annual": -0.8582989014957895,
+       "hit_rate": 0.06716417910447761,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "bear",
+     "dominated": true,
+     "losing_regimes": [
+      "sideways"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 183,
+       "sum_return": 0.04866123013178458,
+       "sharpe_annual": 1.7105387822894087,
+       "hit_rate": 0.14207650273224043,
+       "share_of_profit": 0.5984671503499801
+      },
+      "low": {
+       "days": 627,
+       "sum_return": 0.03264854619149027,
+       "sharpe_annual": 0.6778329970298438,
+       "hit_rate": 0.03668261562998405,
+       "share_of_profit": 0.4015328496500199
+      },
+      "normal": {
+       "days": 467,
+       "sum_return": -0.024924631595874547,
+       "sharpe_annual": -0.3981815951890988,
+       "hit_rate": 0.10278372591006424,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "high",
+     "dominated": false,
+     "losing_regimes": [
+      "normal"
+     ]
+    },
+    "total_return_sum": 0.056385144727400305
+   },
+   "stability": {
+    "sharp_peak": 7,
+    "unstable_neighbours": 7,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 3
+   },
+   "concentration": {
+    "trades": 169,
+    "net_pnl": 586.6410346801931,
+    "top_trades": 9,
+    "top_trades_share": 2.308267566654636,
+    "few_trades": false,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 0.5152702725520453,
+    "share_positive": 1.0,
+    "p10": 0.22011417383284343,
+    "p90": 1.0656296854229304
+   },
+   "oos_return": 0.05482966747165463,
+   "oos_max_drawdown": 0.052405854033939825,
+   "oos_sharpe_annual": 0.3882716291102566
+  },
+  "funding_crowding:XRPUSDT-PERP.BINANCE": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+      "return": -0.006490162554046663,
+      "sharpe_annual": -1.0127506119462735,
+      "max_drawdown": 0.006490162554046663,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.74,
+        "bull": 0.16,
+        "sideways": 0.072,
+        "unknown": 0.028
+       },
+       "vol": {
+        "normal": 0.646,
+        "low": 0.326,
+        "unknown": 0.028
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+      "return": 0.004083260971283531,
+      "sharpe_annual": 0.43615724580021475,
+      "max_drawdown": 0.010301242785424436,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.402,
+        "bear": 0.386,
+        "sideways": 0.212
+       },
+       "vol": {
+        "low": 0.554,
+        "normal": 0.31,
+        "high": 0.136
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+      "return": -0.0028618077644854134,
+      "sharpe_annual": -2.0343052199001357,
+      "max_drawdown": 0.0031687362306316302,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.685,
+        "bear": 0.171,
+        "sideways": 0.144
+       },
+       "vol": {
+        "low": 0.801,
+        "normal": 0.199
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.004193214913502552,
+      "sharpe_annual": -0.7118843579994989,
+      "max_drawdown": 0.01157335931065595,
+      "trades": 6,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.592,
+        "bear": 0.234,
+        "sideways": 0.174
+       },
+       "vol": {
+        "low": 0.625,
+        "normal": 0.212,
+        "high": 0.163
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.0031946249676217953,
+      "sharpe_annual": -0.48763832197197615,
+      "max_drawdown": 0.005495507274934308,
+      "trades": 4,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.588,
+        "bull": 0.275,
+        "sideways": 0.137
+       },
+       "vol": {
+        "low": 0.621,
+        "normal": 0.379
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.012569520800468359,
+      "sharpe_annual": -1.9888481438902763,
+      "max_drawdown": 0.012569520800468359,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.592,
+        "bear": 0.304,
+        "sideways": 0.103
+       },
+       "vol": {
+        "normal": 0.391,
+        "low": 0.337,
+        "high": 0.272
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.034033995432827924,
+      "sharpe_annual": 1.7571709965316877,
+      "max_drawdown": 0.016013259266331348,
+      "trades": 22,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.442,
+        "bear": 0.304,
+        "sideways": 0.254
+       },
+       "vol": {
+        "normal": 0.619,
+        "high": 0.243,
+        "low": 0.138
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 2,
+     "negative": 5,
+     "worst_fold": {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"XRPUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.012569520800468359,
+      "sharpe_annual": -1.9888481438902763,
+      "max_drawdown": 0.012569520800468359,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.592,
+        "bear": 0.304,
+        "sideways": 0.103
+       },
+       "vol": {
+        "normal": 0.391,
+        "low": 0.337,
+        "high": 0.272
+       }
+      }
+     },
+     "median_return": -0.0031946249676217953,
+     "dispersion_std": 0.015275234636725605,
+     "dispersion_iqr": 0.0059524153371736666,
+     "total_return": 0.00814743029112086,
+     "total_without_best_fold": -0.025034539730844463,
+     "best_fold_share_of_gains": 0.8928763149164352,
+     "max_fold_drawdown": 0.016013259266331348,
+     "fragile": true
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 497,
+       "sum_return": 0.0051205939113672105,
+       "sharpe_annual": 0.21329956057356078,
+       "hit_rate": 0.04426559356136821,
+       "share_of_profit": 0.1867009796249182
+      },
+      "bull": {
+       "days": 575,
+       "sum_return": -0.018689969019895614,
+       "sharpe_annual": -0.6370089090213091,
+       "hit_rate": 0.043478260869565216,
+       "share_of_profit": 0.0
+      },
+      "sideways": {
+       "days": 200,
+       "sum_return": 0.022306117623057897,
+       "sharpe_annual": 1.8067793746090892,
+       "hit_rate": 0.085,
+       "share_of_profit": 0.8132990203750818
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": 0.0,
+       "sharpe_annual": 0.0,
+       "hit_rate": 0.0,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "sideways",
+     "dominated": true,
+     "losing_regimes": [
+      "bull"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 149,
+       "sum_return": -0.01150485803634227,
+       "sharpe_annual": -0.9626584145225421,
+       "hit_rate": 0.08053691275167785,
+       "share_of_profit": 0.0
+      },
+      "low": {
+       "days": 621,
+       "sum_return": 0.0007963773087861226,
+       "sharpe_annual": 0.08193122171334737,
+       "hit_rate": 0.011272141706924315,
+       "share_of_profit": 0.039343593743224235
+      },
+      "normal": {
+       "days": 502,
+       "sum_return": 0.01944522324208564,
+       "sharpe_annual": 0.5704392599529117,
+       "hit_rate": 0.08964143426294821,
+       "share_of_profit": 0.9606564062567757
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": 0.0,
+       "sharpe_annual": 0.0,
+       "hit_rate": 0.0,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "normal",
+     "dominated": true,
+     "losing_regimes": [
+      "high"
+     ]
+    },
+    "total_return_sum": 0.008736742514529494
+   },
+   "stability": {
+    "sharp_peak": 6,
+    "unstable_neighbours": 5,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 2
+   },
+   "concentration": {
+    "trades": 47,
+    "net_pnl": 98.69971560994087,
+    "top_trades": 3,
+    "top_trades_share": 3.47408374384523,
+    "few_trades": false,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": -0.8231389662385343,
+    "share_positive": 0.2,
+    "p10": -1.7087938550526989,
+    "p90": 0.3402536603117662
+   },
+   "oos_return": 0.008147430291121749,
+   "oos_max_drawdown": 0.03138775034729513,
+   "oos_sharpe_annual": 0.13217970933392303
+  },
+  "funding_crowding:LTCUSDT-PERP.BINANCE": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+      "return": 0.001237153585872619,
+      "sharpe_annual": 0.10207270842033604,
+      "max_drawdown": 0.01710291802141839,
+      "trades": 16,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.928,
+        "sideways": 0.044,
+        "unknown": 0.028
+       },
+       "vol": {
+        "normal": 0.436,
+        "low": 0.348,
+        "high": 0.188,
+        "unknown": 0.028
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+      "return": 0.004214907239819654,
+      "sharpe_annual": 1.2871097392473068,
+      "max_drawdown": 0.0007241035967783249,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.408,
+        "bull": 0.38,
+        "sideways": 0.212
+       },
+       "vol": {
+        "normal": 0.435,
+        "low": 0.429,
+        "high": 0.136
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.025833057730380027,
+      "sharpe_annual": 1.8072882612798304,
+      "max_drawdown": 0.009617732834942494,
+      "trades": 6,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.541,
+        "sideways": 0.304,
+        "bear": 0.155
+       },
+       "vol": {
+        "low": 0.718,
+        "normal": 0.282
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.01824884256586079,
+      "sharpe_annual": -1.8100855967851515,
+      "max_drawdown": 0.01824884256586079,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.446,
+        "bull": 0.402,
+        "sideways": 0.152
+       },
+       "vol": {
+        "low": 0.837,
+        "high": 0.092,
+        "normal": 0.071
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.99, \"signal_minutes\": 60}}",
+      "return": 0.0,
+      "sharpe_annual": 0.0,
+      "max_drawdown": -0.0,
+      "trades": 0,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.467,
+        "bear": 0.396,
+        "sideways": 0.137
+       },
+       "vol": {
+        "low": 0.626,
+        "normal": 0.192,
+        "high": 0.181
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.029380130272706362,
+      "sharpe_annual": 2.025146495712543,
+      "max_drawdown": 0.009407702304985777,
+      "trades": 8,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.582,
+        "bull": 0.386,
+        "sideways": 0.033
+       },
+       "vol": {
+        "low": 0.451,
+        "normal": 0.386,
+        "high": 0.163
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.004939261820265606,
+      "sharpe_annual": -0.17079943908864587,
+      "max_drawdown": 0.042518833566187464,
+      "trades": 22,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.492,
+        "bear": 0.354,
+        "sideways": 0.155
+       },
+       "vol": {
+        "normal": 0.58,
+        "high": 0.232,
+        "low": 0.188
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 4,
+     "negative": 3,
+     "worst_fold": {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"LTCUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.01824884256586079,
+      "sharpe_annual": -1.8100855967851515,
+      "max_drawdown": 0.01824884256586079,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.446,
+        "bull": 0.402,
+        "sideways": 0.152
+       },
+       "vol": {
+        "low": 0.837,
+        "high": 0.092,
+        "normal": 0.071
+       }
+      }
+     },
+     "median_return": 0.001237153585872619,
+     "dispersion_std": 0.016865168395759165,
+     "dispersion_iqr": 0.017493613395232643,
+     "total_return": 0.037210978145054696,
+     "total_without_best_fold": 0.007607343139869993,
+     "best_fold_share_of_gains": 0.4842991801719748,
+     "max_fold_drawdown": 0.042518833566187464,
+     "fragile": false
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 596,
+       "sum_return": 0.014481913798986445,
+       "sharpe_annual": 0.29944691007864105,
+       "hit_rate": 0.08221476510067115,
+       "share_of_profit": 0.36832393398367436
+      },
+      "bull": {
+       "days": 487,
+       "sum_return": -0.0009621983359541231,
+       "sharpe_annual": -0.027609847226390843,
+       "hit_rate": 0.024640657084188913,
+       "share_of_profit": 0.0
+      },
+      "sideways": {
+       "days": 189,
+       "sum_return": 0.02483650258073311,
+       "sharpe_annual": 1.765572028685469,
+       "hit_rate": 0.0582010582010582,
+       "share_of_profit": 0.6316760660163256
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": -0.00046014260671778384,
+       "sharpe_annual": -8.544003745317529,
+       "hit_rate": 0.0,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "sideways",
+     "dominated": false,
+     "losing_regimes": [
+      "bull"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 181,
+       "sum_return": 0.0017737254059061458,
+       "sharpe_annual": 0.15589853679057875,
+       "hit_rate": 0.04419889502762431,
+       "share_of_profit": 0.04624349053085159
+      },
+      "low": {
+       "days": 657,
+       "sum_return": 0.017612609508687926,
+       "sharpe_annual": 0.4374854208321959,
+       "hit_rate": 0.0243531202435312,
+       "share_of_profit": 0.4591852483628987
+      },
+      "normal": {
+       "days": 434,
+       "sum_return": 0.01896988312917136,
+       "sharpe_annual": 0.43964657836687404,
+       "hit_rate": 0.11059907834101383,
+       "share_of_profit": 0.4945712611062497
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": -0.00046014260671778384,
+       "sharpe_annual": -8.544003745317529,
+       "hit_rate": 0.0,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "normal",
+     "dominated": false,
+     "losing_regimes": []
+    },
+    "total_return_sum": 0.03789607543704765
+   },
+   "stability": {
+    "sharp_peak": 3,
+    "unstable_neighbours": 3,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 2
+   },
+   "concentration": {
+    "trades": 58,
+    "net_pnl": 364.7165484233366,
+    "top_trades": 3,
+    "top_trades_share": 1.147498022537445,
+    "few_trades": false,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": -0.05570858694394688,
+    "share_positive": 0.26666666666666666,
+    "p10": -0.3027447959422634,
+    "p90": 0.422598608785113
+   },
+   "oos_return": 0.037210978145054474,
+   "oos_max_drawdown": 0.04290014955768817,
+   "oos_sharpe_annual": 0.3882346142533578
+  },
+  "funding_crowding:ADAUSDT-PERP.BINANCE": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.0005908490709727321,
+      "sharpe_annual": 0.05157931512888891,
+      "max_drawdown": 0.04107792723289094,
+      "trades": 70,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.934,
+        "sideways": 0.066
+       },
+       "vol": {
+        "low": 0.398,
+        "normal": 0.326,
+        "high": 0.276
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.03170861768431499,
+      "sharpe_annual": -1.43798816879272,
+      "max_drawdown": 0.044657034551085384,
+      "trades": 36,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.799,
+        "sideways": 0.201
+       },
+       "vol": {
+        "low": 0.772,
+        "normal": 0.228
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.05867172304284329,
+      "sharpe_annual": 2.969402447214686,
+      "max_drawdown": 0.005832946607042033,
+      "trades": 12,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.541,
+        "bear": 0.265,
+        "sideways": 0.193
+       },
+       "vol": {
+        "low": 0.994,
+        "normal": 0.006
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.007562970740289332,
+      "sharpe_annual": 0.5887057660690934,
+      "max_drawdown": 0.01358050917523801,
+      "trades": 10,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.679,
+        "bull": 0.299,
+        "sideways": 0.022
+       },
+       "vol": {
+        "low": 0.712,
+        "normal": 0.288
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.02066442314504391,
+      "sharpe_annual": 1.9053823594842618,
+      "max_drawdown": 0.0011547903138298121,
+      "trades": 4,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.56,
+        "bear": 0.346,
+        "sideways": 0.093
+       },
+       "vol": {
+        "normal": 0.549,
+        "low": 0.423,
+        "high": 0.027
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.0004994610122606158,
+      "sharpe_annual": 0.12427323844594926,
+      "max_drawdown": 0.0044049020734414635,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.609,
+        "bull": 0.293,
+        "sideways": 0.098
+       },
+       "vol": {
+        "low": 0.397,
+        "normal": 0.348,
+        "high": 0.255
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.011990703398045754,
+      "sharpe_annual": 0.8835915322866511,
+      "max_drawdown": 0.01440956178160624,
+      "trades": 26,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.525,
+        "bull": 0.276,
+        "sideways": 0.199
+       },
+       "vol": {
+        "normal": 0.63,
+        "high": 0.215,
+        "low": 0.155
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 6,
+     "negative": 1,
+     "worst_fold": {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"ADAUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.03170861768431499,
+      "sharpe_annual": -1.43798816879272,
+      "max_drawdown": 0.044657034551085384,
+      "trades": 36,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.799,
+        "sideways": 0.201
+       },
+       "vol": {
+        "low": 0.772,
+        "normal": 0.228
+       }
+      }
+     },
+     "median_return": 0.007562970740289332,
+     "dispersion_std": 0.02711255213074827,
+     "dispersion_iqr": 0.015782408229928158,
+     "total_return": 0.06800297847406633,
+     "total_without_best_fold": 0.008814116055166688,
+     "best_fold_share_of_gains": 0.5868338319080089,
+     "max_fold_drawdown": 0.044657034551085384,
+     "fragile": true
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 759,
+       "sum_return": 0.03537754083726752,
+       "sharpe_annual": 0.37190507114154936,
+       "hit_rate": 0.1080368906455863,
+       "share_of_profit": 0.5177641025954737
+      },
+      "bull": {
+       "days": 359,
+       "sum_return": 0.01455065951887169,
+       "sharpe_annual": 0.9464000786029906,
+       "hit_rate": 0.016713091922005572,
+       "share_of_profit": 0.21295457484214386
+      },
+      "sideways": {
+       "days": 159,
+       "sum_return": 0.018399326909511737,
+       "sharpe_annual": 1.2448479205387228,
+       "hit_rate": 0.0880503144654088,
+       "share_of_profit": 0.2692813225623825
+      }
+     },
+     "top_regime": "bear",
+     "dominated": false,
+     "losing_regimes": []
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 141,
+       "sum_return": -0.01808089001592572,
+       "sharpe_annual": -1.0971538503428024,
+       "hit_rate": 0.15602836879432624,
+       "share_of_profit": 0.0
+      },
+      "low": {
+       "days": 703,
+       "sum_return": 0.07680986390045796,
+       "sharpe_annual": 0.9741950963968691,
+       "hit_rate": 0.07112375533428165,
+       "share_of_profit": 0.888916454170892
+      },
+      "normal": {
+       "days": 433,
+       "sum_return": 0.009598553381118702,
+       "sharpe_annual": 0.2588760135641845,
+       "hit_rate": 0.06928406466512702,
+       "share_of_profit": 0.11108354582910791
+      }
+     },
+     "top_regime": "low",
+     "dominated": true,
+     "losing_regimes": [
+      "high"
+     ]
+    },
+    "total_return_sum": 0.06832752726565094
+   },
+   "stability": {
+    "sharp_peak": 4,
+    "unstable_neighbours": 4,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 2
+   },
+   "concentration": {
+    "trades": 160,
+    "net_pnl": 734.918724852917,
+    "top_trades": 8,
+    "top_trades_share": 1.6420552117740468,
+    "few_trades": false,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 0.5065857998438288,
+    "share_positive": 0.8666666666666667,
+    "p10": -0.06716808584566304,
+    "p90": 1.1711116028143882
+   },
+   "oos_return": 0.06800297847406522,
+   "oos_max_drawdown": 0.06353822647127627,
+   "oos_sharpe_annual": 0.5120964530265137
+  },
+  "funding_crowding:BNBUSDT-PERP.BINANCE": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.008455894333800451,
+      "sharpe_annual": 1.5331373186856034,
+      "max_drawdown": 0.0045619501673132,
+      "trades": 6,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.713,
+        "sideways": 0.149,
+        "bull": 0.138
+       },
+       "vol": {
+        "normal": 0.448,
+        "low": 0.42,
+        "high": 0.133
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.002988327897373133,
+      "sharpe_annual": -0.33912703833638397,
+      "max_drawdown": 0.00878952538797273,
+      "trades": 7,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.446,
+        "bear": 0.375,
+        "sideways": 0.179
+       },
+       "vol": {
+        "low": 0.696,
+        "normal": 0.152,
+        "high": 0.152
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.0202290919050383,
+      "sharpe_annual": -2.505027868101444,
+      "max_drawdown": 0.023052538144445855,
+      "trades": 14,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.641,
+        "bear": 0.293,
+        "sideways": 0.066
+       },
+       "vol": {
+        "low": 0.906,
+        "normal": 0.094
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.015555317523756385,
+      "sharpe_annual": 1.6035005099017063,
+      "max_drawdown": 0.0067121830841130325,
+      "trades": 6,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.696,
+        "bull": 0.283,
+        "sideways": 0.022
+       },
+       "vol": {
+        "low": 0.793,
+        "normal": 0.207
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.014374611125750891,
+      "sharpe_annual": -0.953200685073023,
+      "max_drawdown": 0.02157870404765372,
+      "trades": 13,
+      "regime_mix": {
+       "trend": {
+        "bull": 1.0
+       },
+       "vol": {
+        "low": 0.451,
+        "normal": 0.39,
+        "high": 0.159
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": 0.0,
+      "sharpe_annual": 0.0,
+      "max_drawdown": -0.0,
+      "trades": 0,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.435,
+        "bear": 0.38,
+        "sideways": 0.185
+       },
+       "vol": {
+        "normal": 0.527,
+        "low": 0.473
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 72, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.009203362858218767,
+      "sharpe_annual": -2.2270712553186187,
+      "max_drawdown": 0.009203362858218767,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.475,
+        "bull": 0.431,
+        "sideways": 0.094
+       },
+       "vol": {
+        "low": 0.63,
+        "normal": 0.37
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 2,
+     "negative": 5,
+     "worst_fold": {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_crowding\", \"i\": \"BNBUSDT-PERP.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"max_hold_bars\": 24, \"quantile\": 0.95, \"signal_minutes\": 60}}",
+      "return": -0.0202290919050383,
+      "sharpe_annual": -2.505027868101444,
+      "max_drawdown": 0.023052538144445855,
+      "trades": 14,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.641,
+        "bear": 0.293,
+        "sideways": 0.066
+       },
+       "vol": {
+        "low": 0.906,
+        "normal": 0.094
+       }
+      }
+     },
+     "median_return": -0.002988327897373133,
+     "dispersion_std": 0.012575026829913962,
+     "dispersion_iqr": 0.016016934158885054,
+     "total_return": -0.023028979074687594,
+     "total_without_best_fold": -0.037993298772266426,
+     "best_fold_share_of_gains": 0.6478355868098676,
+     "max_fold_drawdown": 0.023052538144445855,
+     "fragile": false
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 535,
+       "sum_return": 0.006350853165204784,
+       "sharpe_annual": 0.4709045936044952,
+       "hit_rate": 0.018691588785046728,
+       "share_of_profit": 0.4118470577905602
+      },
+      "bull": {
+       "days": 615,
+       "sum_return": -0.03821374424371293,
+       "sharpe_annual": -1.050726115711973,
+       "hit_rate": 0.04390243902439024,
+       "share_of_profit": 0.0
+      },
+      "sideways": {
+       "days": 127,
+       "sum_return": 0.009069563334248354,
+       "sharpe_annual": 1.5293592105539173,
+       "hit_rate": 0.06299212598425197,
+       "share_of_profit": 0.5881529422094398
+      }
+     },
+     "top_regime": "sideways",
+     "dominated": false,
+     "losing_regimes": [
+      "bull"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 81,
+       "sum_return": -0.0029134702264903556,
+       "sharpe_annual": -0.6843032702057795,
+       "hit_rate": 0.06172839506172839,
+       "share_of_profit": 0.0
+      },
+      "low": {
+       "days": 797,
+       "sum_return": -0.0026035650257046905,
+       "sharpe_annual": -0.06723940878028625,
+       "hit_rate": 0.03513174404015056,
+       "share_of_profit": 0.0
+      },
+      "normal": {
+       "days": 399,
+       "sum_return": -0.01727629249206475,
+       "sharpe_annual": -1.0572238406395256,
+       "hit_rate": 0.03007518796992481,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "high",
+     "dominated": false,
+     "losing_regimes": [
+      "high",
+      "low",
+      "normal"
+     ]
+    },
+    "total_return_sum": -0.022793327744259795
+   },
+   "stability": {
+    "sharp_peak": 4,
+    "unstable_neighbours": 3,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 2
+   },
+   "concentration": {
+    "trades": 48,
+    "net_pnl": -246.7042337644895,
+    "top_trades": 3,
+    "top_trades_share": Infinity,
+    "few_trades": false,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 0.27064068058850704,
+    "share_positive": 0.6,
+    "p10": -0.4824228340868007,
+    "p90": 0.5544522679354142
+   },
+   "oos_return": -0.02302897907468815,
+   "oos_max_drawdown": 0.033829121959342845,
+   "oos_sharpe_annual": -0.38318297697196174
+  }
+ },
+ "family_combination": {
+  "folds": {
+   "folds": [
+    {
+     "test_start": "2022-01-01",
+     "test_end": "2022-06-30",
+     "choice": null,
+     "return": 0.0023054667352435665,
+     "sharpe_annual": 0.1894815689076815,
+     "max_drawdown": 0.014844474591540813,
+     "trades": 0
+    },
+    {
+     "test_start": "2022-07-01",
+     "test_end": "2022-12-31",
+     "choice": null,
+     "return": -0.0017614515762477412,
+     "sharpe_annual": -0.1810849475081789,
+     "max_drawdown": 0.011348795873041051,
+     "trades": 0
+    },
+    {
+     "test_start": "2023-01-01",
+     "test_end": "2023-06-30",
+     "choice": null,
+     "return": 0.010947070511443613,
+     "sharpe_annual": 1.9343021610398319,
+     "max_drawdown": 0.0053266640430205126,
+     "trades": 0
+    },
+    {
+     "test_start": "2023-07-01",
+     "test_end": "2023-12-31",
+     "choice": null,
+     "return": 0.00122865713903475,
+     "sharpe_annual": 0.3105046927114029,
+     "max_drawdown": 0.0037273871533768377,
+     "trades": 0
+    },
+    {
+     "test_start": "2024-01-01",
+     "test_end": "2024-06-30",
+     "choice": null,
+     "return": -0.0002785044864563879,
+     "sharpe_annual": -0.03980871544742378,
+     "max_drawdown": 0.005369634082676211,
+     "trades": 0
+    },
+    {
+     "test_start": "2024-07-01",
+     "test_end": "2024-12-31",
+     "choice": null,
+     "return": 0.007477190497450437,
+     "sharpe_annual": 1.5501425201395858,
+     "max_drawdown": 0.003735789039098103,
+     "trades": 0
+    },
+    {
+     "test_start": "2025-01-01",
+     "test_end": "2025-06-30",
+     "choice": null,
+     "return": 0.01264439327652811,
+     "sharpe_annual": 1.3656785987759132,
+     "max_drawdown": 0.010594214143250236,
+     "trades": 0
+    }
+   ],
+   "summary": {
+    "folds": 7,
+    "positive": 5,
+    "negative": 2,
+    "worst_fold": {
+     "test_start": "2022-07-01",
+     "test_end": "2022-12-31",
+     "choice": null,
+     "return": -0.0017614515762477412,
+     "sharpe_annual": -0.1810849475081789,
+     "max_drawdown": 0.011348795873041051,
+     "trades": 0
+    },
+    "median_return": 0.0023054667352435665,
+    "dispersion_std": 0.005688521988729973,
+    "dispersion_iqr": 0.008737054178157844,
+    "total_return": 0.03292155533973862,
+    "total_without_best_fold": 0.020023971097693494,
+    "best_fold_share_of_gains": 0.3654155518430073,
+    "max_fold_drawdown": 0.014844474591540813,
+    "fragile": false
+   }
+  },
+  "regimes_vs_BTCUSDT-PERP.BINANCE": {
+   "trend": {
+    "by_regime": {
+     "bear": {
+      "days": 540,
+      "sum_return": 0.023991298113153516,
+      "sharpe_annual": 0.7694405933993477,
+      "hit_rate": 0.2777777777777778,
+      "share_of_profit": 0.7305329531648153
+     },
+     "bull": {
+      "days": 570,
+      "sum_return": 0.003353971430705963,
+      "sharpe_annual": 0.1954981209163504,
+      "hit_rate": 0.12456140350877193,
+      "share_of_profit": 0.10212814006761492
+     },
+     "sideways": {
+      "days": 167,
+      "sum_return": 0.00549554620472298,
+      "sharpe_annual": 1.0926143331303932,
+      "hit_rate": 0.15568862275449102,
+      "share_of_profit": 0.16733890676756988
+     }
+    },
+    "top_regime": "bear",
+    "dominated": true,
+    "losing_regimes": []
+   },
+   "vol": {
+    "by_regime": {
+     "high": {
+      "days": 160,
+      "sum_return": -0.0013860250322471437,
+      "sharpe_annual": -0.16471853935754996,
+      "hit_rate": 0.2875,
+      "share_of_profit": 0.0
+     },
+     "low": {
+      "days": 731,
+      "sum_return": 0.022174585029695902,
+      "sharpe_annual": 0.8678217710679357,
+      "hit_rate": 0.17373461012311903,
+      "share_of_profit": 0.6478712181381301
+     },
+     "normal": {
+      "days": 386,
+      "sum_return": 0.012052255751133702,
+      "sharpe_annual": 0.575836478251075,
+      "hit_rate": 0.19170984455958548,
+      "share_of_profit": 0.3521287818618699
+     }
+    },
+    "top_regime": "low",
+    "dominated": false,
+    "losing_regimes": [
+     "high"
+    ]
+   },
+   "total_return_sum": 0.03284081574858247
+  },
+  "concentration": {
+   "trades": 534,
+   "net_pnl": 2111.521849161054,
+   "top_trades": 27,
+   "top_trades_share": 1.9351261667273651,
+   "few_trades": false,
+   "dominated_by_few_trades": true,
+   "asset_shares": {
+    "BTCUSDT-PERP.BINANCE": 0.24308528495622397,
+    "ETHUSDT-PERP.BINANCE": 0.2487636952740445,
+    "XRPUSDT-PERP.BINANCE": 0.041853372890989775,
+    "LTCUSDT-PERP.BINANCE": 0.15465715991525308,
+    "ADAUSDT-PERP.BINANCE": 0.31164048696348867,
+    "BNBUSDT-PERP.BINANCE": 0.0
+   },
+   "dominated_by_one_asset": false
+  },
+  "oos_return": 0.03292155533974106,
+  "oos_max_drawdown": 0.017204905058525233,
+  "oos_sharpe_annual": 0.5852035514702401
+ },
+ "diversification": {
+  "return_corr": {
+   "funding_crowding:ADAUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": 1.0,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": 0.189,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": 0.174,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": 0.343,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": 0.199,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": 0.186
+   },
+   "funding_crowding:BNBUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": 0.189,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": 1.0,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": 0.051,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": 0.139,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": 0.001,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": 0.103
+   },
+   "funding_crowding:BTCUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": 0.174,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": 0.051,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": 1.0,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": 0.156,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": 0.058,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": 0.239
+   },
+   "funding_crowding:ETHUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": 0.343,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": 0.139,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": 0.156,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": 1.0,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": 0.136,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": 0.11
+   },
+   "funding_crowding:LTCUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": 0.199,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": 0.001,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": 0.058,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": 0.136,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": 1.0,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": 0.193
+   },
+   "funding_crowding:XRPUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": 0.186,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": 0.103,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": 0.239,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": 0.11,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": 0.193,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": 1.0
+   }
+  },
+  "drawdown_corr": {
+   "funding_crowding:ADAUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": 1.0,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": -0.629,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": -0.176,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": 0.662,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": -0.33,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": -0.355
+   },
+   "funding_crowding:BNBUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": -0.629,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": 1.0,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": 0.257,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": -0.38,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": 0.409,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": 0.503
+   },
+   "funding_crowding:BTCUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": -0.176,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": 0.257,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": 1.0,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": 0.218,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": 0.062,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": 0.172
+   },
+   "funding_crowding:ETHUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": 0.662,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": -0.38,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": 0.218,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": 1.0,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": -0.244,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": -0.292
+   },
+   "funding_crowding:LTCUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": -0.33,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": 0.409,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": 0.062,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": -0.244,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": 1.0,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": 0.21
+   },
+   "funding_crowding:XRPUSDT-PERP.BINANCE": {
+    "funding_crowding:ADAUSDT-PERP.BINANCE": -0.355,
+    "funding_crowding:BNBUSDT-PERP.BINANCE": 0.503,
+    "funding_crowding:BTCUSDT-PERP.BINANCE": 0.172,
+    "funding_crowding:ETHUSDT-PERP.BINANCE": -0.292,
+    "funding_crowding:LTCUSDT-PERP.BINANCE": 0.21,
+    "funding_crowding:XRPUSDT-PERP.BINANCE": 1.0
+   }
+  },
+  "same_source_pairs": [],
+  "by_asset": {
+   "crypto": 0.9999999999999999
+  },
+  "hhi_asset": 0.9999999999999998,
+  "by_family": {
+   "funding_crowding": 0.9999999999999999
+  },
+  "hhi_family": 0.9999999999999998,
+  "effective_independent_sources": 5.227158294097936,
+  "note": "diversification describes overlap between return sources; it is not evidence of profitability"
+ },
+ "hypothesis_predictions": {
+  "BTCUSDT-PERP.BINANCE": {
+   "1d": {
+    "unconditional_mean": 0.0018718810481248795,
+    "after_extreme_positive_mean": 0.004316020439288873,
+    "n_positive_events": 125,
+    "after_extreme_negative_mean": 0.0021443353046874205,
+    "n_negative_events": 118
+   },
+   "3d": {
+    "unconditional_mean": 0.005528532141058175,
+    "after_extreme_positive_mean": 0.011059383658461713,
+    "n_positive_events": 125,
+    "after_extreme_negative_mean": 0.012378799407545134,
+    "n_negative_events": 118
+   }
+  },
+  "ETHUSDT-PERP.BINANCE": {
+   "1d": {
+    "unconditional_mean": 0.002687023554266229,
+    "after_extreme_positive_mean": -0.0001239234600515121,
+    "n_positive_events": 105,
+    "after_extreme_negative_mean": 0.003305726790108871,
+    "n_negative_events": 341
+   },
+   "3d": {
+    "unconditional_mean": 0.007879920426818645,
+    "after_extreme_positive_mean": 0.01655632240804656,
+    "n_positive_events": 105,
+    "after_extreme_negative_mean": 0.0025642542651660993,
+    "n_negative_events": 341
+   }
+  },
+  "XRPUSDT-PERP.BINANCE": {
+   "1d": {
+    "unconditional_mean": 0.0027780944945901267,
+    "after_extreme_positive_mean": 0.01437025329011624,
+    "n_positive_events": 115,
+    "after_extreme_negative_mean": -0.0007785307129515571,
+    "n_negative_events": 399
+   },
+   "3d": {
+    "unconditional_mean": 0.008190242933086785,
+    "after_extreme_positive_mean": 0.05904835394563776,
+    "n_positive_events": 115,
+    "after_extreme_negative_mean": -0.0042227003018046215,
+    "n_negative_events": 399
+   }
+  },
+  "LTCUSDT-PERP.BINANCE": {
+   "1d": {
+    "unconditional_mean": 0.001592659160524351,
+    "after_extreme_positive_mean": 0.0023989794096232996,
+    "n_positive_events": 123,
+    "after_extreme_negative_mean": 0.0026733257248195584,
+    "n_negative_events": 312
+   },
+   "3d": {
+    "unconditional_mean": 0.004428536044502969,
+    "after_extreme_positive_mean": 0.009795104836989303,
+    "n_positive_events": 123,
+    "after_extreme_negative_mean": 0.007053401605728105,
+    "n_negative_events": 312
+   }
+  },
+  "ADAUSDT-PERP.BINANCE": {
+   "1d": {
+    "unconditional_mean": 0.0027824231081071075,
+    "after_extreme_positive_mean": 0.01266683774739579,
+    "n_positive_events": 110,
+    "after_extreme_negative_mean": 0.004248120140204468,
+    "n_negative_events": 311
+   },
+   "3d": {
+    "unconditional_mean": 0.008112360608378161,
+    "after_extreme_positive_mean": 0.017705574013453615,
+    "n_positive_events": 110,
+    "after_extreme_negative_mean": 0.01771083580084468,
+    "n_negative_events": 311
+   }
+  },
+  "BNBUSDT-PERP.BINANCE": {
+   "1d": {
+    "unconditional_mean": 0.0027751410790174216,
+    "after_extreme_positive_mean": 0.0014920014682069942,
+    "n_positive_events": 115,
+    "after_extreme_negative_mean": 0.0029028066038731533,
+    "n_negative_events": 175
+   },
+   "3d": {
+    "unconditional_mean": 0.008208746894685787,
+    "after_extreme_positive_mean": 0.02481311748991387,
+    "n_positive_events": 115,
+    "after_extreme_negative_mean": 0.0047423808822198415,
+    "n_negative_events": 175
+   }
+  }
+ }
+}

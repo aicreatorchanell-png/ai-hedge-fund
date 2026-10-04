@@ -142,3 +142,10 @@ def test_cost_model_fees_and_stress():
     with pytest.raises(ValueError):
         MarketSpec(venue="CME", symbol="ES", asset_class="future", source="x", price_precision=2,
                    commission_bps=1, half_spread_bps=1, slippage_bps=1).instrument()
+
+
+def test_catalog_ledger_merges_writes_from_another_loader(tmp_path):
+    a, b = Catalog(tmp_path), Catalog(tmp_path)             # two loaders, each with its own snapshot
+    a._record("bars:A:2020-01", {"rows": 1})
+    b._record("bars:B:2020-01", {"rows": 2})
+    assert Catalog(tmp_path).has("bars:A:2020-01") and Catalog(tmp_path).has("bars:B:2020-01")
