@@ -170,6 +170,18 @@ UNIVERSES["crypto-perp-early-ex-v1"] = {
              "in 2025, but the rule only sees perpetuals Binance listed early, which is itself a selection"),
 }
 
+UNIVERSES["crypto-carry-6"] = {
+    "instruments": tuple(s.instrument_id for s in CRYPTO.values()) + tuple(f"{s}.BINANCE" for s in FUNDING_CROWDING_SET),
+    "survivorship_free": False,
+    "note": "spot + perpetual of the crypto-binance-6 set (same selection rule and the same caveat)",
+}
+UNIVERSES["crypto-perp-early-12"] = {
+    "instruments": tuple(sorted(f"{s}.BINANCE" for s in PERPS)),
+    "survivorship_free": False,
+    "note": ("every USD-M perpetual with archive data by 2020-02 (all 12 early listings, incl. EOS, delisted "
+             "2025); later listings are excluded, so coins that only became large later are absent"),
+}
+
 FX = {s.symbol: s for s in [
     MarketSpec(venue="DUKASCOPY", symbol=f"{b}{q}", asset_class="fx", source="dukascopy", base=b, quote=q,
                price_precision=pp, size_increment="1000", commission_bps=0.2, half_spread_bps=0.5,

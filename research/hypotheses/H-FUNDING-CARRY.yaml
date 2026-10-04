@@ -1,39 +1,45 @@
 id: H-FUNDING-CARRY
 title: Perpetual funding carry paid by leveraged longs (cash-and-carry basis)
-families: [funding_carry]
-markets: [crypto]
+families:
+- funding_carry
+markets:
+- crypto
 edge_type: carry
-why_edge_exists: >-
-  Perpetual futures keep their price near spot through a periodic funding payment. When
-  leveraged demand to be long exceeds demand to be short, longs pay shorts. A position that
-  is long spot and short the perpetual is close to price-neutral and collects that funding
-  as compensation for supplying the short side and tying up capital and margin.
+why_edge_exists: Perpetual futures keep their price near spot through a periodic funding payment. When
+  leveraged demand to be long exceeds demand to be short, longs pay shorts. A position that is long spot
+  and short the perpetual is close to price-neutral and collects that funding as compensation for supplying
+  the short side and tying up capital and margin.
 counterparty_type: retail_or_sentiment_traders
-counterparty: >-
-  Leveraged directional longs on perpetual swaps, mostly retail and momentum traders who
-  want exposure without holding spot and accept paying funding for leverage and convenience.
-why_they_pay: >-
-  They value leverage, liquidity and convenience above the funding cost, and their demand is
-  pro-cyclical: in rallies the demand for leveraged long exposure rises faster than the
-  supply of capital willing to sit short the perpetual against spot.
-why_it_persists: >-
-  Capturing it needs capital on two venues or legs, margin buffers against liquidation of the
-  short leg in sharp rallies, exchange counterparty risk and operational work, so
-  arbitrage capital is limited and demands a premium; it shrinks but has not disappeared.
+counterparty: Leveraged directional longs on perpetual swaps, mostly retail and momentum traders who want
+  exposure without holding spot and accept paying funding for leverage and convenience.
+why_they_pay: 'They value leverage, liquidity and convenience above the funding cost, and their demand
+  is pro-cyclical: in rallies the demand for leveraged long exposure rises faster than the supply of capital
+  willing to sit short the perpetual against spot.'
+why_it_persists: Capturing it needs capital on two venues or legs, margin buffers against liquidation
+  of the short leg in sharp rallies, exchange counterparty risk and operational work, so arbitrage capital
+  is limited and demands a premium; it shrinks but has not disappeared.
 disappears_when:
-  - Funding rates stay near zero or negative for long periods because arbitrage capital is abundant.
-  - Exchange or regulatory changes cap funding or remove perpetual leverage for retail traders.
+- Funding rates stay near zero or negative for long periods because arbitrage capital is abundant.
+- Exchange or regulatory changes cap funding or remove perpetual leverage for retail traders.
 predictions:
-  - Funding income is larger and more frequent in bull regimes and high open interest than in bear regimes.
-  - Net carry after fees, spread and borrow is positive mainly when the annualised funding exceeds the round-trip cost hurdle.
-signal_sketch: >-
-  Hold long spot and short perpetual only while the trailing average funding rate, net of
-  expected costs, is above a hurdle; exit when it falls below. Risk from basis moves and
-  short-leg liquidation, sized by margin buffer.
+- Funding income is larger and more frequent in bull regimes and high open interest than in bear regimes.
+- Net carry after fees, spread and borrow is positive mainly when the annualised funding exceeds the round-trip
+  cost hurdle.
+references: []
+signal_sketch: Hold long spot and short perpetual only while the trailing average funding rate, net of
+  expected costs, is above a hurdle; exit when it falls below. Risk from basis moves and short-leg liquidation,
+  sized by margin buffer.
 data_required:
-  - "funding rate history: Binance USD-M public archive (data.binance.vision) - available, approved source"
-  - "perpetual and spot 1-minute klines: Binance public archive - available"
-  - "paper execution of two legs: Binance futures testnet (perp) + spot leg - needs a two-leg strategy"
+- 'funding rate history: Binance USD-M public archive (data.binance.vision) - available, approved source'
+- 'perpetual and spot 1-minute klines: Binance public archive - available'
+- 'paper execution of two legs: Binance futures testnet (perp) + spot leg - needs a two-leg strategy'
 feasibility: needs_infrastructure
 drafted_by: ai:claude-opus-5-5
-status: draft
+status: approved
+approval:
+  by: human:owner
+  'on': '2026-10-04'
+  note: "Approved by the owner in the Claude Code session on 2026-10-04: 'TRACK A \u2014 RESEARCH. Continue\
+    \ autonomously researching and validating: 1. Funding/basis carry 2. Cross-sectional momentum 3. Pairs/statistical\
+    \ arbitrage ... Do not ask me for routine approvals.' Recorded by the AI on the owner's instruction;\
+    \ covers research and validation only."

@@ -1,37 +1,41 @@
 id: H-XS-MOMENTUM
 title: Cross-sectional momentum across a survivorship-free crypto universe
-families: [xs_momentum_crypto]
-markets: [crypto]
+families:
+- xs_momentum_crypto
+markets:
+- crypto
 edge_type: behavioral
-why_edge_exists: >-
-  Investors underreact to information that reaches coins at different speeds, then
-  overreact through attention and flow chasing, so relative winners keep outperforming
-  relative losers over weeks. The return is compensation for bearing crash risk of the
-  long-short portfolio and for exploiting slow-moving attention and capital flows.
+why_edge_exists: Investors underreact to information that reaches coins at different speeds, then overreact
+  through attention and flow chasing, so relative winners keep outperforming relative losers over weeks.
+  The return is compensation for bearing crash risk of the long-short portfolio and for exploiting slow-moving
+  attention and capital flows.
 counterparty_type: retail_or_sentiment_traders
-counterparty: >-
-  Investors who rebalance slowly, anchor on past prices or rotate late into prior winners,
+counterparty: Investors who rebalance slowly, anchor on past prices or rotate late into prior winners,
   and holders who sell relative losers too slowly.
-why_they_pay: >-
-  Limited attention and gradual information diffusion make their demand follow past returns
+why_they_pay: Limited attention and gradual information diffusion make their demand follow past returns
   with a lag; they trade at prices that have not fully reflected the information.
-why_it_persists: >-
-  Momentum crashes are severe and correlated with market rebounds, shorting small coins is
-  costly or impossible, and funding and borrow costs limit arbitrage of the losers leg.
+why_it_persists: Momentum crashes are severe and correlated with market rebounds, shorting small coins
+  is costly or impossible, and funding and borrow costs limit arbitrage of the losers leg.
 disappears_when:
-  - The cross-section becomes dominated by a few coins so that dispersion collapses.
-  - Shorting costs or borrow availability make the losers leg untradeable.
+- The cross-section becomes dominated by a few coins so that dispersion collapses.
+- Shorting costs or borrow availability make the losers leg untradeable.
 predictions:
-  - A long-only top-quantile portfolio beats an equal-weight universe after costs in trending regimes.
-  - Performance suffers in sharp market rebounds (momentum crash risk).
-signal_sketch: >-
-  Weekly rebalanced ranking of trailing multi-week returns over the universe of all Binance
-  USDT pairs that were listed at each date, including later-delisted ones; long top quantile,
-  liquidity-filtered.
+- A long-only top-quantile portfolio beats an equal-weight universe after costs in trending regimes.
+- Performance suffers in sharp market rebounds (momentum crash risk).
+references: []
+signal_sketch: Weekly rebalanced ranking of trailing multi-week returns over the universe of all Binance
+  USDT pairs that were listed at each date, including later-delisted ones; long top quantile, liquidity-filtered.
 data_required:
-  - "all Binance spot USDT pair archives including delisted pairs (data.binance.vision keeps them) - available"
-  - "point-in-time listing/delisting dates - derivable from archive coverage"
-  - "a multi-instrument portfolio strategy in the engine - not built yet"
+- all Binance spot USDT pair archives including delisted pairs (data.binance.vision keeps them) - available
+- point-in-time listing/delisting dates - derivable from archive coverage
+- a multi-instrument portfolio strategy in the engine - not built yet
 feasibility: needs_infrastructure
 drafted_by: ai:claude-opus-5-5
-status: draft
+status: approved
+approval:
+  by: human:owner
+  'on': '2026-10-04'
+  note: "Approved by the owner in the Claude Code session on 2026-10-04: 'TRACK A \u2014 RESEARCH. Continue\
+    \ autonomously researching and validating: 1. Funding/basis carry 2. Cross-sectional momentum 3. Pairs/statistical\
+    \ arbitrage ... Do not ask me for routine approvals.' Recorded by the AI on the owner's instruction;\
+    \ covers research and validation only."

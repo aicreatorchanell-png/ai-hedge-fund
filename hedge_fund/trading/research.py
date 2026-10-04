@@ -69,7 +69,8 @@ class ResearchPlan(BaseModel):
 
     @model_validator(mode="after")
     def _windows(self) -> ResearchPlan:
-        unknown = set(self.families) - set(FAMILIES)
+        from hedge_fund.trading.portfolio import PORTFOLIO_FAMILIES
+        unknown = set(self.families) - set(FAMILIES) - set(PORTFOLIO_FAMILIES)
         if unknown:
             raise ValueError(f"unknown families {sorted(unknown)}")
         if not self.dev_start < self.dev_end < self.reserve_start:
@@ -105,6 +106,9 @@ class ResearchPlan(BaseModel):
             start += pd.DateOffset(months=wf.step_months)
 
     def n_configs(self) -> int:
+        from hedge_fund.trading.portfolio import PORTFOLIO_FAMILIES
+        if all(f in PORTFOLIO_FAMILIES for f in self.families):         # multi-leg: configs x lines
+            return sum(len(PORTFOLIO_FAMILIES[f].configs()) * len(PORTFOLIO_FAMILIES[f].lines) for f in self.families)
         return sum(len(FAMILIES[f].configs()) for f in self.families) * len(self.instruments)
 
 

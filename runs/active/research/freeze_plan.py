@@ -19,6 +19,7 @@ from pathlib import Path
 
 from hedge_fund.trading.data.markets import FUNDING_CROWDING_SET, FX, INDICES, VOL_TREND_CRYPTO_SET
 from hedge_fund.trading.families import FAMILIES
+from hedge_fund.trading.portfolio import PORTFOLIO_FAMILIES, plan_instruments
 from hedge_fund.trading.hypothesis import load_hypotheses, require_hypotheses
 from hedge_fund.trading.research import ResearchPlan, WalkForward
 from hedge_fund.validation.gates import load_gates
@@ -72,6 +73,37 @@ PLANS = {
     ),
 }
 
+_DAILY = dict(dev_start="2020-01-01", dev_end="2025-08-31", reserve_start="2025-09-01",
+              walk_forward=WalkForward(train_months=24, test_months=6, step_months=6),
+              cost_multipliers=(1.0, 2.0), periods_per_year=365, min_train_trades=6, bar_minutes=1440)
+_MULTI_LEG = ("Multi-leg daily engine (hedge_fund.trading.portfolio): decisions at the daily close, execution at the "
+              "next open at taker cost per leg, actual funding on perpetual legs (payments x2 under stress), gross "
+              "exposure 0.9 of equity per line, delisted legs closed at their last close. min_train_trades 6. ")
+PLANS["funding-carry-v1"] = dict(
+    plan=ResearchPlan(plan_id="funding-carry-v1", families=("funding_carry",),
+                      instruments=plan_instruments(["funding_carry"]), **_DAILY),
+    rationale=_MULTI_LEG + (
+        "Long spot / short perpetual of the same coin (crypto-v1 coins: spot of the same research set and its "
+        "perpetuals) while trailing funding, annualized, exceeds a hurdle; exit below half the hurdle. "
+        "2 x 2 grid per coin: lookback 3/21 settlements, hurdle 10%/25% a year. Six lines (one per coin)."))
+PLANS["xs-momentum-v1"] = dict(
+    plan=ResearchPlan(plan_id="xs-momentum-v1", families=("xs_momentum_crypto",),
+                      instruments=plan_instruments(["xs_momentum_crypto"]), **_DAILY),
+    rationale=_MULTI_LEG + (
+        "Weekly long top-k / short bottom-k by trailing return across the 12 early USD-M perpetuals (all listed by "
+        "2020-02, incl. EOS, delisted 2025). Deviation from the hypothesis sketch, fixed before running: "
+        "long-short instead of long-only (isolates the cross-sectional effect from market beta) and this "
+        "12-coin universe instead of every Binance pair (data available under the policy). 2 x 2 grid: "
+        "lookback 7/28 days, k 2/3. One line."))
+PLANS["pairs-statarb-v1"] = dict(
+    plan=ResearchPlan(plan_id="pairs-statarb-v1", families=("pairs_statarb",),
+                      instruments=plan_instruments(["pairs_statarb"]), **_DAILY),
+    rationale=_MULTI_LEG + (
+        "Five pairs chosen by economic link before any data was examined for them: BTC/ETH (two majors), "
+        "ETH/ETC and BTC/BCH (hard forks), BTC/LTC (code fork), XRP/XLM (shared origin). Rolling OLS hedge "
+        "ratio, spread z-score; exit at |z| < 0.5, stop at |z| > 4, time stop window/2. 2 x 2 grid: window "
+        "30/90 days, entry |z| 1.5/2.5. Five lines."))
+
 
 def main(plan_id: str) -> int:
     spec = PLANS[plan_id]
@@ -84,7 +116,10 @@ def main(plan_id: str) -> int:
     commit = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
     doc = {
         "plan": plan.model_dump(mode="json"), "plan_hash": plan.plan_hash(), "n_configs": plan.n_configs(),
-        "folds": plan.folds(), "grids": {f: FAMILIES[f].grid for f in plan.families},
+        "folds": plan.folds(),
+        "grids": {f: (PORTFOLIO_FAMILIES.get(f) or FAMILIES[f]).grid for f in plan.families},
+        "lines": {f: {k: list(v) for k, v in PORTFOLIO_FAMILIES[f].lines.items()}
+                  for f in plan.families if f in PORTFOLIO_FAMILIES},
         "hypotheses": {f: {"id": h, "content_hash": hyps[h].content_hash(), "approval": hyps[h].approval.model_dump()}
                        for f, h in links.items()},
         "gates_hash": load_gates().config_hash(), "code_commit_at_freeze": commit,

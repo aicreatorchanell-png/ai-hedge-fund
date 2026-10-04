@@ -142,13 +142,17 @@ def main(path: str) -> int:
     catalog = Catalog()
     closes = {i: daily_closes(catalog, i, plan) for i in plan.instruments}
     lines, oos, assets, trades_all, by_asset_pnl = {}, {}, {}, [], {}
+    from hedge_fund.trading.portfolio import PORTFOLIO_FAMILIES
     for f in plan.families:
-        grid = {k: v for k, v in FAMILIES[f].grid.items() if len(v) > 1}
-        for i in plan.instruments:
+        fam = PORTFOLIO_FAMILIES.get(f) or FAMILIES[f]
+        grid = {k: v for k, v in fam.grid.items() if len(v) > 1}
+        line_ids = list(fam.lines) if f in PORTFOLIO_FAMILIES else list(plan.instruments)
+        for i in line_ids:
             group = [r for r in base if r.family == f and r.instrument == i]
             wf = walk_forward(plan, group)
-            mk = market(i.split(".")[0]).asset_class
-            reg = classify(closes[i], market=mk)
+            leg = fam.lines[i][-1] if f in PORTFOLIO_FAMILIES else i       # regimes of a multi-leg line: its perpetual leg
+            mk = market(leg.split(".")[0]).asset_class
+            reg = classify(closes[leg], market=mk)
             name = f"{f}:{i}"
             tr = oos_trades(plan, wf, group)
             trades_all.extend(tr.tolist())
@@ -164,11 +168,11 @@ def main(path: str) -> int:
             }
             oos[name], assets[name] = wf.oos, mk
     fam_oos = combine(list(oos.values()))
-    proxy = plan.instruments[0]
+    proxy = "BTCUSDT-PERP.BINANCE" if "BTCUSDT-PERP.BINANCE" in closes else plan.instruments[0]
     combo = {
         "folds": fold_report(plan, type("W", (), {"oos": fam_oos, "choices": [{}] * len(plan.folds())})(), {},
                              market="*"),
-        "regimes_vs_" + proxy: performance_by_regime(fam_oos, classify(closes[proxy], market=assets[next(iter(oos))]),
+        "regimes_vs_" + proxy: performance_by_regime(fam_oos, classify(closes[proxy], market=market(proxy.split(".")[0]).asset_class),
                                                      periods_per_year=plan.periods_per_year),
         "concentration": concentration(trades_all, by_asset=by_asset_pnl),
         "oos_return": float((1 + fam_oos).prod() - 1), "oos_max_drawdown": max_drawdown(fam_oos),
