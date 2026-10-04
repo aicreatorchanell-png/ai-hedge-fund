@@ -108,3 +108,7 @@ Editing `configs/holdouts.yaml` is a protected action that requires a human comm
 - **Causal regimes, diagnostics, diversification:** descriptive only.
 - **Health monitor:** versioned thresholds (`configs/health-thresholds.yaml` v1.0.0). HALT blocks new entries and only a human can reset it.
 - **Cumulative trial count:** across every registry. A new phase starts at 504 trials.
+- **Economic hypothesis layer** (`hedge_fund/trading/hypothesis.py`, `research/hypotheses/`):
+  - **Requirement:** every family in a new plan needs a human-approved hypothesis that states the mechanism, the counterparty, why they pay, why the edge persists, when it disappears, and testable predictions.
+  - **Rejected:** justifications made only of indicator vocabulary.
+  - **No re-runs:** `crypto-v1` is a legacy plan and is never re-run. Its families cannot be re-tested on the same instruments and development dates.

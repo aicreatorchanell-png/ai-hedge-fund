@@ -36,6 +36,11 @@ Educational research only: no profitability claims, no real-money trading.
 - Research runs use a frozen `ResearchPlan` (`hedge_fund.trading.research`); every run is a
   registry trial; selection is on training windows only. The trial count is cumulative over
   every registry in `runs/active/research/` and never resets between phases.
+- No strategy family is researched without an approved economic hypothesis
+  (`research/hypotheses/H-*.yaml`, `hedge_fund/trading/hypothesis.py`): why the edge exists,
+  who pays, why they pay, why it persists, when it disappears, testable predictions.
+  AI may draft; only a human approves (`approve_hypothesis`). Families already tested
+  (plan_crypto_v1) cannot be re-tested on the same instruments and development dates.
 - Every plan gets the adversarial audit (`hedge_fund.trading.audit`, PASS/WARNING/FAIL).
   Promotion from VALIDATED on requires a passing audit; any FAIL blocks it.
 - Diagnostics (`regimes.py`, `diagnostics.py`: causal regimes, worst fold, parameter

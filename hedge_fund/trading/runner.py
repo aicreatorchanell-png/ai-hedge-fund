@@ -147,10 +147,13 @@ def _replay(plan: ResearchPlan, wf: WalkForwardResult, stressed: dict[str, Confi
 
 def run_plan(plan: ResearchPlan, out_dir: Path | str, *, catalog_path: str | None = None, workers: int = 1,
              registry_path: Path | str | None = None, code_commit: str = "",
-             prior_registries: list[Path | str] | None = None) -> dict:
+             prior_registries: list[Path | str] | None = None, require_hypothesis: bool = True) -> dict:
     """prior_registries: earlier registries whose trials count toward the deflated Sharpe
     (default: every registry under runs/active/research)."""
     prior = all_registries() if prior_registries is None else list(prior_registries)
+    if require_hypothesis:
+        from hedge_fund.trading.hypothesis import require_hypotheses
+        require_hypotheses(plan)
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     catalog_path = catalog_path or str(Catalog().path)
