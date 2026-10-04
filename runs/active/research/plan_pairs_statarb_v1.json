@@ -1,0 +1,140 @@
+{
+ "plan": {
+  "plan_id": "pairs-statarb-v1",
+  "families": [
+   "pairs_statarb"
+  ],
+  "instruments": [
+   "BCHUSDT-PERP.BINANCE",
+   "BTCUSDT-PERP.BINANCE",
+   "ETCUSDT-PERP.BINANCE",
+   "ETHUSDT-PERP.BINANCE",
+   "LTCUSDT-PERP.BINANCE",
+   "XLMUSDT-PERP.BINANCE",
+   "XRPUSDT-PERP.BINANCE"
+  ],
+  "dev_start": "2020-01-01",
+  "dev_end": "2025-08-31",
+  "reserve_start": "2025-09-01",
+  "walk_forward": {
+   "train_months": 24,
+   "test_months": 6,
+   "step_months": 6
+  },
+  "cost_multipliers": [
+   1.0,
+   2.0
+  ],
+  "starting_cash": 10000.0,
+  "periods_per_year": 365,
+  "min_train_trades": 6,
+  "risk": {
+   "risk_per_trade": 0.005,
+   "max_notional_fraction": 0.9,
+   "max_daily_loss": 0.03,
+   "max_drawdown": 0.2,
+   "max_open_positions": 1,
+   "max_entries_per_day": 20
+  },
+  "bar_minutes": 1440
+ },
+ "plan_hash": "f4b9fa9e0e21417d",
+ "n_configs": 20,
+ "folds": [
+  [
+   "2020-01-01",
+   "2021-12-31",
+   "2022-01-01",
+   "2022-06-30"
+  ],
+  [
+   "2020-07-01",
+   "2022-06-30",
+   "2022-07-01",
+   "2022-12-31"
+  ],
+  [
+   "2021-01-01",
+   "2022-12-31",
+   "2023-01-01",
+   "2023-06-30"
+  ],
+  [
+   "2021-07-01",
+   "2023-06-30",
+   "2023-07-01",
+   "2023-12-31"
+  ],
+  [
+   "2022-01-01",
+   "2023-12-31",
+   "2024-01-01",
+   "2024-06-30"
+  ],
+  [
+   "2022-07-01",
+   "2024-06-30",
+   "2024-07-01",
+   "2024-12-31"
+  ],
+  [
+   "2023-01-01",
+   "2024-12-31",
+   "2025-01-01",
+   "2025-06-30"
+  ]
+ ],
+ "grids": {
+  "pairs_statarb": {
+   "window": [
+    30,
+    90
+   ],
+   "z_entry": [
+    1.5,
+    2.5
+   ]
+  }
+ },
+ "lines": {
+  "pairs_statarb": {
+   "BTC/ETH": [
+    "BTCUSDT-PERP.BINANCE",
+    "ETHUSDT-PERP.BINANCE"
+   ],
+   "ETH/ETC": [
+    "ETHUSDT-PERP.BINANCE",
+    "ETCUSDT-PERP.BINANCE"
+   ],
+   "BTC/BCH": [
+    "BTCUSDT-PERP.BINANCE",
+    "BCHUSDT-PERP.BINANCE"
+   ],
+   "BTC/LTC": [
+    "BTCUSDT-PERP.BINANCE",
+    "LTCUSDT-PERP.BINANCE"
+   ],
+   "XRP/XLM": [
+    "XRPUSDT-PERP.BINANCE",
+    "XLMUSDT-PERP.BINANCE"
+   ]
+  }
+ },
+ "hypotheses": {
+  "pairs_statarb": {
+   "id": "H-PAIRS-STATARB",
+   "content_hash": "0af561234e41acb5",
+   "approval": {
+    "by": "human:owner",
+    "on": "2026-10-04",
+    "note": "Approved by the owner in the Claude Code session on 2026-10-04: 'TRACK A \u2014 RESEARCH. Continue autonomously researching and validating: 1. Funding/basis carry 2. Cross-sectional momentum 3. Pairs/statistical arbitrage ... Do not ask me for routine approvals.' Recorded by the AI on the owner's instruction; covers research and validation only."
+   }
+  }
+ },
+ "gates_hash": "2fc90f4ad972f482",
+ "code_commit_at_freeze": "efdfb45ffbe82c7b0aa3417989474b449529c359",
+ "rationale": "Multi-leg daily engine (hedge_fund.trading.portfolio): decisions at the daily close, execution at the next open at taker cost per leg, actual funding on perpetual legs (payments x2 under stress), gross exposure 0.9 of equity per line, delisted legs closed at their last close. min_train_trades 6. Five pairs chosen by economic link before any data was examined for them: BTC/ETH (two majors), ETH/ETC and BTC/BCH (hard forks), BTC/LTC (code fork), XRP/XLM (shared origin). Rolling OLS hedge ratio, spread z-score; exit at |z| < 0.5, stop at |z| > 4, time stop window/2. 2 x 2 grid: window 30/90 days, entry |z| 1.5/2.5. Five lines.",
+ "decision_rule": "PASS if and only if (a) at least one instrument line, or the equal-weight family combination, passes every gate in configs/validation-gates.yaml (hash recorded here) both at cost x1.0 and at cost x2.0, with the deflated Sharpe computed on the cumulative trial count of every registry under runs/active/research, and (b) the adversarial audit of this plan reports no FAIL. Otherwise FAIL. Regime, worst-fold, parameter-stability, concentration and CPCV diagnostics are reported but cannot turn a FAIL into a PASS. The sealed holdout (from reserve_start) is not read.",
+ "frozen_on": "2026-10-04",
+ "status": "frozen, not run"
+}

@@ -1,0 +1,149 @@
+{
+ "plan": {
+  "plan_id": "funding-carry-v1",
+  "families": [
+   "funding_carry"
+  ],
+  "instruments": [
+   "ADAUSDT-PERP.BINANCE",
+   "ADAUSDT.BINANCE",
+   "BNBUSDT-PERP.BINANCE",
+   "BNBUSDT.BINANCE",
+   "BTCUSDT-PERP.BINANCE",
+   "BTCUSDT.BINANCE",
+   "ETHUSDT-PERP.BINANCE",
+   "ETHUSDT.BINANCE",
+   "LTCUSDT-PERP.BINANCE",
+   "LTCUSDT.BINANCE",
+   "XRPUSDT-PERP.BINANCE",
+   "XRPUSDT.BINANCE"
+  ],
+  "dev_start": "2020-01-01",
+  "dev_end": "2025-08-31",
+  "reserve_start": "2025-09-01",
+  "walk_forward": {
+   "train_months": 24,
+   "test_months": 6,
+   "step_months": 6
+  },
+  "cost_multipliers": [
+   1.0,
+   2.0
+  ],
+  "starting_cash": 10000.0,
+  "periods_per_year": 365,
+  "min_train_trades": 6,
+  "risk": {
+   "risk_per_trade": 0.005,
+   "max_notional_fraction": 0.9,
+   "max_daily_loss": 0.03,
+   "max_drawdown": 0.2,
+   "max_open_positions": 1,
+   "max_entries_per_day": 20
+  },
+  "bar_minutes": 1440
+ },
+ "plan_hash": "ea0a0651480d3465",
+ "n_configs": 24,
+ "folds": [
+  [
+   "2020-01-01",
+   "2021-12-31",
+   "2022-01-01",
+   "2022-06-30"
+  ],
+  [
+   "2020-07-01",
+   "2022-06-30",
+   "2022-07-01",
+   "2022-12-31"
+  ],
+  [
+   "2021-01-01",
+   "2022-12-31",
+   "2023-01-01",
+   "2023-06-30"
+  ],
+  [
+   "2021-07-01",
+   "2023-06-30",
+   "2023-07-01",
+   "2023-12-31"
+  ],
+  [
+   "2022-01-01",
+   "2023-12-31",
+   "2024-01-01",
+   "2024-06-30"
+  ],
+  [
+   "2022-07-01",
+   "2024-06-30",
+   "2024-07-01",
+   "2024-12-31"
+  ],
+  [
+   "2023-01-01",
+   "2024-12-31",
+   "2025-01-01",
+   "2025-06-30"
+  ]
+ ],
+ "grids": {
+  "funding_carry": {
+   "lookback": [
+    3,
+    21
+   ],
+   "entry_apr": [
+    0.1,
+    0.25
+   ]
+  }
+ },
+ "lines": {
+  "funding_carry": {
+   "BTCUSDT": [
+    "BTCUSDT.BINANCE",
+    "BTCUSDT-PERP.BINANCE"
+   ],
+   "ETHUSDT": [
+    "ETHUSDT.BINANCE",
+    "ETHUSDT-PERP.BINANCE"
+   ],
+   "XRPUSDT": [
+    "XRPUSDT.BINANCE",
+    "XRPUSDT-PERP.BINANCE"
+   ],
+   "LTCUSDT": [
+    "LTCUSDT.BINANCE",
+    "LTCUSDT-PERP.BINANCE"
+   ],
+   "ADAUSDT": [
+    "ADAUSDT.BINANCE",
+    "ADAUSDT-PERP.BINANCE"
+   ],
+   "BNBUSDT": [
+    "BNBUSDT.BINANCE",
+    "BNBUSDT-PERP.BINANCE"
+   ]
+  }
+ },
+ "hypotheses": {
+  "funding_carry": {
+   "id": "H-FUNDING-CARRY",
+   "content_hash": "fc6a7b2b27c0d1c9",
+   "approval": {
+    "by": "human:owner",
+    "on": "2026-10-04",
+    "note": "Approved by the owner in the Claude Code session on 2026-10-04: 'TRACK A \u2014 RESEARCH. Continue autonomously researching and validating: 1. Funding/basis carry 2. Cross-sectional momentum 3. Pairs/statistical arbitrage ... Do not ask me for routine approvals.' Recorded by the AI on the owner's instruction; covers research and validation only."
+   }
+  }
+ },
+ "gates_hash": "2fc90f4ad972f482",
+ "code_commit_at_freeze": "efdfb45ffbe82c7b0aa3417989474b449529c359",
+ "rationale": "Multi-leg daily engine (hedge_fund.trading.portfolio): decisions at the daily close, execution at the next open at taker cost per leg, actual funding on perpetual legs (payments x2 under stress), gross exposure 0.9 of equity per line, delisted legs closed at their last close. min_train_trades 6. Long spot / short perpetual of the same coin (crypto-v1 coins: spot of the same research set and its perpetuals) while trailing funding, annualized, exceeds a hurdle; exit below half the hurdle. 2 x 2 grid per coin: lookback 3/21 settlements, hurdle 10%/25% a year. Six lines (one per coin).",
+ "decision_rule": "PASS if and only if (a) at least one instrument line, or the equal-weight family combination, passes every gate in configs/validation-gates.yaml (hash recorded here) both at cost x1.0 and at cost x2.0, with the deflated Sharpe computed on the cumulative trial count of every registry under runs/active/research, and (b) the adversarial audit of this plan reports no FAIL. Otherwise FAIL. Regime, worst-fold, parameter-stability, concentration and CPCV diagnostics are reported but cannot turn a FAIL into a PASS. The sealed holdout (from reserve_start) is not read.",
+ "frozen_on": "2026-10-04",
+ "status": "frozen, not run"
+}
