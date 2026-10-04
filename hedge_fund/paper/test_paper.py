@@ -303,3 +303,72 @@ def test_no_ai_component_in_the_paper_order_path():
     src = "".join(p.read_text() for p in Path(__file__).parent.glob("*.py") if not p.name.startswith("test_"))
     for banned in ("anthropic", "openai", "langchain", "hedge_fund.llm", "hedge_fund.agents"):
         assert banned not in src
+
+
+def test_experimental_deployment_runs_unvalidated_but_is_labelled_and_never_validated(tmp_path):
+    import yaml
+
+    from hedge_fund.paper.deployment import DeploymentRejected, load_deployment
+    from hedge_fund.trading.hypothesis import EconomicHypothesis
+    from hedge_fund.trading.test_hypothesis import GOOD
+    h = EconomicHypothesis(**{**GOOD, "id": "H-XX", "families": ("ema_trend",)}).approve("human:owner")
+    entry = {"family": "ema_trend", "params": {}, "instrument": "BTCUSDT.BINANCE", "hypothesis_id": "H-XX",
+             "validation_summary": "runs/active/research/crypto-v1/summary.json", "approved_by": "human:owner",
+             "expectations": EXP.model_dump(), "status": "experimental_unvalidated"}
+    p = tmp_path / "d.yaml"
+    p.write_text(yaml.safe_dump({"health_thresholds_version": "1.0.0", "strategies": [entry]}))
+    d = load_deployment(p, hypotheses={"H-XX": h})
+    assert not d.validated and d.strategies[0].label == "EXPERIMENTAL / UNVALIDATED"
+    p.write_text(yaml.safe_dump({"health_thresholds_version": "1.0.0",
+                                 "strategies": [{**entry, "validation_summary": "runs/active/research/none.json"}]}))
+    with pytest.raises(DeploymentRejected, match="not found"):          # the plan must actually have been run
+        load_deployment(p, hypotheses={"H-XX": h})
+    with pytest.raises(DeploymentRejected, match="hypothesis"):         # still needs an approved hypothesis
+        p.write_text(yaml.safe_dump({"health_thresholds_version": "1.0.0", "strategies": [entry]}))
+        load_deployment(p, hypotheses={})
+
+
+def test_repository_experimental_deployment_is_paper_only_and_unvalidated():
+    from hedge_fund.paper.config import futures_sandbox_config
+    from hedge_fund.paper.deployment import ROOT, load_deployment
+    d = load_deployment(ROOT / "runs/active/paper/deployment_experimental.yaml")
+    assert not d.validated and all(s.status == "experimental_unvalidated" for s in d.strategies)
+    assert "UNVALIDATED" in (ROOT / "runs/active/paper/deployment_experimental.yaml").read_text().splitlines()[0]
+    cfg = futures_sandbox_config(instruments=tuple(s.instrument for s in d.strategies))
+    assert cfg.sandbox and cfg.account_type == "MARGIN"
+    from hedge_fund.paper.config import build_node_config
+    build_node_config(cfg)                                              # passes assert_paper
+
+
+def test_kraken_funding_feed_drops_sealed_holdout_settlements():
+    from hedge_fund.paper.funding_feed import parse
+    import pandas as pd
+    payload = {"rates": [{"timestamp": "2025-10-01T08:00:00Z", "relativeFundingRate": 1e-6},   # crypto final holdout
+                         {"timestamp": "2026-09-02T01:00:00Z", "relativeFundingRate": 2e-6},   # forward holdout, past
+                         {"timestamp": "2026-10-04T18:00:00Z", "relativeFundingRate": -1e-6},  # observed live
+                         {"timestamp": "2026-10-04T19:00:00Z", "relativeFundingRate": 3e-6}]}
+    got = parse(payload, observe_from_ns=pd.Timestamp("2026-10-04T17:30:00Z").value)
+    assert [r for _, r in got] == [-1e-6, 3e-6]                          # only what real time reached after start
+
+
+def test_live_funding_strategy_skips_decisions_when_the_feed_is_stale(monkeypatch):
+    from hedge_fund.paper import funding_feed
+    from hedge_fund.trading.backtest import run_backtest
+    from hedge_fund.trading.families import build
+    from hedge_fund.trading.governor import TradeRiskConfig
+    from hedge_fund.trading.synthetic import synthetic_bars
+    from hedge_fund.trading.test_trading import BT, INST, MARGIN
+    bars = synthetic_bars(INST, BT, 600, price=30_000, seed=4)
+    monkeypatch.setattr(funding_feed, "fetch", lambda sym, start, **kw: ((bars[0].ts_event - 10 * 3600 * 10**9, 1e-4),))
+    events = []
+
+    class J:
+        def event(self, kind, **f):
+            events.append(kind)
+
+    s = build("funding_crowding", {"signal_minutes": 60, "funding_source": "kraken_futures", "funding_symbol": "X",
+                                   "max_funding_age_secs": 3600}, instrument_id=INST.id, bar_type=BT,
+              risk=TradeRiskConfig(), allow_short=True)
+    s.journal = J()
+    r = run_backtest(INST, bars, s, MARGIN)
+    assert not r.brackets and "signal_skipped" in events

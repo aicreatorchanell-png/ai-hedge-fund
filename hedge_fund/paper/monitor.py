@@ -67,6 +67,7 @@ class PaperMonitor(Actor):
             last_signal = next((e for e in reversed(events) if e.get("strategy") == str(s.id)
                                 and e["kind"] in ("entry", "refused")), None)
             strategies.append({"strategy": str(s.id), "instrument": str(s.config.instrument_id),
+                               "label": getattr(s, "deployment_label", "PLUMBING CHECK (sandbox wiring only)"),
                                "health": state, "connection": conn, "data_age_secs": age,
                                "kill_switch": None if g is None else g.killed,
                                "equity": getattr(s, "_last_equity", None), "drawdown": dd,
@@ -91,7 +92,9 @@ class PaperMonitor(Actor):
         fees = max(venue_fees, modeled)
         if [e for e in rejects if e["wall"] > hour_ago] and worst == "HEALTHY":
             worst = "WARNING"
-        return {"ts": now, "wall": time.time(), "node_health": worst, "strategies": strategies,
+        labels = sorted({x["label"] for x in strategies})
+        return {"ts": now, "wall": time.time(), "node_health": worst, "real_money": "DISABLED",
+                "labels": labels, "strategies": strategies,
                 "positions": positions, "realized_pnl": realized,
                 "realized_pnl_net": realized - (fees if venue_fees == 0 else 0.0), "venue_fees": venue_fees,
                 "modeled_fees": modeled,

@@ -34,12 +34,16 @@ def render(snap: dict) -> Group:
                  f"realized {_f(snap.get('realized_pnl'))} (net of fees {_f(snap.get('realized_pnl_net'))})", f"unrealized {_f(snap.get('unrealized_pnl'))}",
                  f"fees {_f(snap.get('fees'))}", f"avg slippage {_f(snap.get('avg_slippage_bps'), '{:.2f} bp')}",
                  f"rejected/denied {snap.get('rejected_orders', 0)}")
+    banner = Table.grid()
+    labels = snap.get("labels", [])
+    banner.add_row(f"[bold red]PAPER / SIMULATION ONLY — REAL MONEY {snap.get('real_money', 'DISABLED')}[/]"
+                   + ("  [bold yellow]" + " | ".join(labels) + "[/]" if labels else ""))
     st = Table(title="Strategies", expand=True)
-    for c in ("strategy", "market", "health", "connection", "data age", "equity", "drawdown", "last signal"):
+    for c in ("strategy", "label", "market", "health", "connection", "data age", "equity", "drawdown", "last signal"):
         st.add_column(c)
     for s in snap.get("strategies", []):
         sig = s.get("last_signal") or {}
-        st.add_row(s["strategy"], s["instrument"], f"[{COLORS.get(s['health'], 'white')}]{s['health']}[/]",
+        st.add_row(s["strategy"], s.get("label", ""), s["instrument"], f"[{COLORS.get(s['health'], 'white')}]{s['health']}[/]",
                    s["connection"], _f(s.get("data_age_secs"), "{:.0f}s"), _f(s.get("equity")),
                    _f(s.get("drawdown"), "{:.1%}"), f"{sig.get('kind', '—')} {sig.get('side', sig.get('reason', ''))}")
     pt = Table(title="Open positions", expand=True)
@@ -54,7 +58,7 @@ def render(snap: dict) -> Group:
     for e in snap.get("recent_events", [])[-10:]:
         detail = {k: v for k, v in e.items() if k not in ("kind", "strategy", "wall", "ts", "instrument")}
         ev.add_row(e["kind"], e.get("strategy", ""), json.dumps(detail, default=str)[:90])
-    return Group(head, st, pt, ev)
+    return Group(banner, head, st, pt, ev)
 
 
 def main(argv: list[str]) -> int:

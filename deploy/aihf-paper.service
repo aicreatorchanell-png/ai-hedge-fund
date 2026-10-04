@@ -1,0 +1,18 @@
+# systemd alternative to Docker: /etc/systemd/system/aihf-paper.service
+[Unit]
+Description=ai-hedge-fund PAPER forward test (simulation only, real money disabled)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=aihf
+WorkingDirectory=/opt/ai-hedge-fund
+EnvironmentFile=-/opt/ai-hedge-fund/deploy/paper.env
+ExecStart=/usr/bin/env poetry run python -m hedge_fund.paper.supervisor --mode sandbox_kraken_futures --plumbing-check --deployment runs/active/paper/deployment_experimental.yaml
+Restart=always
+RestartSec=10
+KillSignal=SIGTERM
+TimeoutStopSec=60
+
+[Install]
+WantedBy=multi-user.target

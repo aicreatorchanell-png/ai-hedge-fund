@@ -54,6 +54,13 @@ Educational research only: no profitability claims, no real-money trading.
   Binance futures TESTNET or Kraken DEMO; credentials only from `AIHF_PAPER_*` env vars.
   Only strategies from an approved `Deployment` (approved hypothesis + PASSED validation)
   may run there; the plumbing check is sandbox-only and proves wiring, not edge.
+  Exception (owner instruction 2026-10-04): an `experimental_unvalidated` deployment may
+  forward-test the autonomous loop in paper; it is labelled EXPERIMENTAL / UNVALIDATED, needs a
+  human approval and an approved hypothesis whose plan was run, and is never validation evidence.
+- Live paper data falls in sealed holdouts (forward mode from 2026-09-01): a paper strategy observes
+  only data arriving after its committed, frozen manifest starts; never backfill sealed history.
+  AI agents monitor paper runs for operational health only (alive, heartbeat, health state,
+  crashes); forward P&L is for human review.
 - AI output (Claude, Kimi, ...) is a proposal or critique only. Promotion needs the
   Python validation gates to PASS, then paper trading, then explicit human approval.
 - AI must never change risk limits, validation thresholds, the locked holdout, or the

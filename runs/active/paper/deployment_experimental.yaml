@@ -1,0 +1,165 @@
+# EXPERIMENTAL / UNVALIDATED — PAPER / SIMULATION ONLY — REAL MONEY DISABLED
+health_thresholds_version: 1.0.0
+strategies:
+- family: funding_crowding
+  instrument: PF_XBTUSD.KRAKEN
+  params:
+    atr_stop: 2.0
+    max_hold_bars: 72
+    quantile: 0.95
+    signal_minutes: 60
+    funding_source: kraken_futures
+    funding_symbol: PF_XBTUSD
+    funding_seed_symbol: BTCUSDT
+  hypothesis_id: H-FUNDING-CROWDING
+  validation_summary: runs/active/research/funding-crowding-v1/summary.json
+  approved_by: human:owner
+  expectations:
+    sharpe_annual: 0.542244
+    max_drawdown: 0.03817
+    win_rate: 0.442308
+    avg_win: 0.007887
+    avg_loss: 0.004278
+    trades_per_day: 0.04072
+    slippage_bps: 3.0
+    cost_per_trade: 0.0016
+    trades_per_year: 14.86296
+  status: experimental_unvalidated
+  note: 'EXPERIMENTAL / UNVALIDATED forward test of the autonomous paper loop, approved by the owner on 2026-10-04
+    (''Deploy the best technically safe existing candidate in PAPER/SIMULATION ONLY ... Clearly label it EXPERIMENTAL
+    / UNVALIDATED''). funding-crowding-v1 verdict: FAIL. Not evidence of profitability.'
+- family: funding_crowding
+  instrument: PF_ETHUSD.KRAKEN
+  params:
+    atr_stop: 2.0
+    max_hold_bars: 24
+    quantile: 0.95
+    signal_minutes: 60
+    funding_source: kraken_futures
+    funding_symbol: PF_ETHUSD
+    funding_seed_symbol: ETHUSDT
+  hypothesis_id: H-FUNDING-CROWDING
+  validation_summary: runs/active/research/funding-crowding-v1/summary.json
+  approved_by: human:owner
+  expectations:
+    sharpe_annual: 0.388272
+    max_drawdown: 0.052406
+    win_rate: 0.452381
+    avg_win: 0.006833
+    avg_loss: 0.004951
+    trades_per_day: 0.131558
+    slippage_bps: 3.0
+    cost_per_trade: 0.0016
+    trades_per_year: 48.018794
+  status: experimental_unvalidated
+  note: 'EXPERIMENTAL / UNVALIDATED forward test of the autonomous paper loop, approved by the owner on 2026-10-04
+    (''Deploy the best technically safe existing candidate in PAPER/SIMULATION ONLY ... Clearly label it EXPERIMENTAL
+    / UNVALIDATED''). funding-crowding-v1 verdict: FAIL. Not evidence of profitability.'
+- family: funding_crowding
+  instrument: PF_XRPUSD.KRAKEN
+  params:
+    atr_stop: 4.0
+    max_hold_bars: 72
+    quantile: 0.95
+    signal_minutes: 60
+    funding_source: kraken_futures
+    funding_symbol: PF_XRPUSD
+    funding_seed_symbol: XRPUSDT
+  hypothesis_id: H-FUNDING-CROWDING
+  validation_summary: runs/active/research/funding-crowding-v1/summary.json
+  approved_by: human:owner
+  expectations:
+    sharpe_annual: 0.13218
+    max_drawdown: 0.031388
+    win_rate: 0.510638
+    avg_win: 0.004262
+    avg_loss: 0.004018
+    trades_per_day: 0.036805
+    slippage_bps: 3.0
+    cost_per_trade: 0.0016
+    trades_per_year: 13.433829
+  status: experimental_unvalidated
+  note: 'EXPERIMENTAL / UNVALIDATED forward test of the autonomous paper loop, approved by the owner on 2026-10-04
+    (''Deploy the best technically safe existing candidate in PAPER/SIMULATION ONLY ... Clearly label it EXPERIMENTAL
+    / UNVALIDATED''). funding-crowding-v1 verdict: FAIL. Not evidence of profitability.'
+- family: funding_crowding
+  instrument: PF_LTCUSD.KRAKEN
+  params:
+    atr_stop: 2.0
+    max_hold_bars: 72
+    quantile: 0.95
+    signal_minutes: 60
+    funding_source: kraken_futures
+    funding_symbol: PF_LTCUSD
+    funding_seed_symbol: LTCUSDT
+  hypothesis_id: H-FUNDING-CROWDING
+  validation_summary: runs/active/research/funding-crowding-v1/summary.json
+  approved_by: human:owner
+  expectations:
+    sharpe_annual: 0.388235
+    max_drawdown: 0.0429
+    win_rate: 0.45614
+    avg_win: 0.006739
+    avg_loss: 0.004606
+    trades_per_day: 0.044636
+    slippage_bps: 3.0
+    cost_per_trade: 0.0016
+    trades_per_year: 16.292091
+  status: experimental_unvalidated
+  note: 'EXPERIMENTAL / UNVALIDATED forward test of the autonomous paper loop, approved by the owner on 2026-10-04
+    (''Deploy the best technically safe existing candidate in PAPER/SIMULATION ONLY ... Clearly label it EXPERIMENTAL
+    / UNVALIDATED''). funding-crowding-v1 verdict: FAIL. Not evidence of profitability.'
+- family: funding_crowding
+  instrument: PF_ADAUSD.KRAKEN
+  params:
+    atr_stop: 4.0
+    max_hold_bars: 24
+    quantile: 0.95
+    signal_minutes: 60
+    funding_source: kraken_futures
+    funding_symbol: PF_ADAUSD
+    funding_seed_symbol: ADAUSDT
+  hypothesis_id: H-FUNDING-CROWDING
+  validation_summary: runs/active/research/funding-crowding-v1/summary.json
+  approved_by: human:owner
+  expectations:
+    sharpe_annual: 0.512096
+    max_drawdown: 0.063538
+    win_rate: 0.5
+    avg_win: 0.005853
+    avg_loss: 0.004685
+    trades_per_day: 0.122161
+    slippage_bps: 3.0
+    cost_per_trade: 0.0016
+    trades_per_year: 44.58888
+  status: experimental_unvalidated
+  note: 'EXPERIMENTAL / UNVALIDATED forward test of the autonomous paper loop, approved by the owner on 2026-10-04
+    (''Deploy the best technically safe existing candidate in PAPER/SIMULATION ONLY ... Clearly label it EXPERIMENTAL
+    / UNVALIDATED''). funding-crowding-v1 verdict: FAIL. Not evidence of profitability.'
+- family: funding_crowding
+  instrument: PF_BNBUSD.KRAKEN
+  params:
+    atr_stop: 4.0
+    max_hold_bars: 72
+    quantile: 0.95
+    signal_minutes: 60
+    funding_source: kraken_futures
+    funding_symbol: PF_BNBUSD
+    funding_seed_symbol: BNBUSDT
+  hypothesis_id: H-FUNDING-CROWDING
+  validation_summary: runs/active/research/funding-crowding-v1/summary.json
+  approved_by: human:owner
+  expectations:
+    sharpe_annual: -0.383183
+    max_drawdown: 0.033829
+    win_rate: 0.4375
+    avg_win: 0.003916
+    avg_loss: 0.003959
+    trades_per_day: 0.037588
+    slippage_bps: 3.0
+    cost_per_trade: 0.0016
+    trades_per_year: 13.719655
+  status: experimental_unvalidated
+  note: 'EXPERIMENTAL / UNVALIDATED forward test of the autonomous paper loop, approved by the owner on 2026-10-04
+    (''Deploy the best technically safe existing candidate in PAPER/SIMULATION ONLY ... Clearly label it EXPERIMENTAL
+    / UNVALIDATED''). funding-crowding-v1 verdict: FAIL. Not evidence of profitability.'

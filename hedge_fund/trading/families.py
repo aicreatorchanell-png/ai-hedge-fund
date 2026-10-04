@@ -226,6 +226,10 @@ class FundingCrowdingConfig(GuardedConfig, frozen=True):
     reward_risk: float = 3.0
     funding_symbol: str = ""                # "" = the instrument symbol without "-PERP"
     funding_series: tuple = ()              # ((calc_time_ns, rate), ...) for tests/probes; () = private cache
+    funding_source: str = "cache"           # "cache" (research) | "kraken_futures" (paper: live public feed)
+    funding_poll_secs: int = 300
+    funding_seed_symbol: str = ""           # live: Binance symbol whose development-window settlements seed the history
+    max_funding_age_secs: int = 3 * 3600    # live: no new decision when the newest settlement is older
 
 
 class FundingCrowding(GuardedStrategy):
@@ -247,6 +251,8 @@ class FundingCrowding(GuardedStrategy):
 
     def _load_funding(self):
         c = self.config
+        if c.funding_source == "kraken_futures":
+            return self._start_live_funding()
         if c.funding_series:
             ts, rate = zip(*c.funding_series)
             return list(ts), list(rate)
@@ -256,8 +262,64 @@ class FundingCrowding(GuardedStrategy):
         df = funding.load(sym, binance.months("2019-09", last_research_day("crypto")))
         return list(df.index.as_unit("ns").asi8), list(df["rate"].astype(float))
 
+    # -- live funding (paper): a daemon thread polls the public feed; merged on the event loop
+
+    def _start_live_funding(self):
+        import threading
+
+        from hedge_fund.paper import funding_feed
+        sym = self.config.funding_symbol or str(self.config.instrument_id.symbol)
+        self._feed_lock, self._feed_pending, self._feed_stop = threading.Lock(), [], threading.Event()
+        start = self.clock.timestamp_ns()                         # forward holdout: observe from now on only
+        seeded = ()
+        if self.config.funding_seed_symbol:
+            try:
+                seeded = funding_feed.seed(self.config.funding_seed_symbol)
+            except Exception as exc:                              # noqa: BLE001
+                self._journal("funding_seed_error", error=type(exc).__name__, message=str(exc)[:200])
+        try:
+            first = funding_feed.fetch(sym, start)
+        except Exception as exc:                                  # noqa: BLE001 - journaled, retried by the poller
+            self._journal("funding_feed_error", error=type(exc).__name__, message=str(exc)[:200])
+            first = ()
+        self._journal("funding_feed_start", seed_settlements=len(seeded), live_settlements=len(first))
+        first = tuple(sorted(set(seeded) | set(first)))
+
+        def poll():
+            while not self._feed_stop.wait(self.config.funding_poll_secs):
+                try:
+                    got = funding_feed.fetch(sym, start)
+                    with self._feed_lock:
+                        self._feed_pending.append(got)
+                except Exception as exc:                          # noqa: BLE001
+                    self._journal("funding_feed_error", error=type(exc).__name__, message=str(exc)[:200])
+
+        threading.Thread(target=poll, daemon=True, name=f"funding-{sym}").start()
+        return [t for t, _ in first], [r for _, r in first]
+
+    def _merge_live_funding(self) -> None:
+        with self._feed_lock:
+            batches, self._feed_pending = self._feed_pending, []
+        last = self.f_ts[-1] if self.f_ts else -1
+        for batch in batches:
+            for t, r in batch:
+                if t > last:
+                    self.f_ts.append(t)
+                    self.f_rate.append(r)
+                    last = t
+
+    def on_stop(self) -> None:
+        if getattr(self, "_feed_stop", None) is not None:
+            self._feed_stop.set()
+        super().on_stop()
+
     def on_signal(self, bar: Bar) -> None:
         c = self.config
+        if c.funding_source == "kraken_futures":
+            self._merge_live_funding()
+            if not self.f_ts or self.clock.timestamp_ns() - self.f_ts[-1] > c.max_funding_age_secs * 1_000_000_000:
+                self._journal("signal_skipped", reason="stale or missing funding feed")
+                return
         latest = None
         while self.f_next < len(self.f_ts) and self.f_ts[self.f_next] <= bar.ts_event:
             r = self.f_rate[self.f_next]
@@ -270,6 +332,8 @@ class FundingCrowding(GuardedStrategy):
         if latest is None or not self.atr.initialized or not self.is_flat():
             return
         r, hi, lo = latest
+        self._journal("signal_eval", funding=r, upper=hi, lower=lo,
+                      decision="short" if r > 0 and r > hi else "long" if r < 0 and r < lo else "none")
         dist = c.atr_stop * self.atr.value
         if r > 0 and r > hi:                  # strictly beyond: funding often sits exactly at the 0.01% default
             _bracket(self, False, float(bar.close), dist, c.reward_risk, bar)

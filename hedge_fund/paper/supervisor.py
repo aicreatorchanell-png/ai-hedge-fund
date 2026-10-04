@@ -45,7 +45,7 @@ def build_strategies(cfg: PaperConfig, journal: Journal, store: StateStore, *, p
                   modeled_taker_fee=cfg.modeled_taker_fee, modeled_maker_fee=cfg.modeled_maker_fee)
     out = []
     if plumbing:
-        if cfg.mode != "sandbox_kraken":
+        if not cfg.sandbox:
             raise PermissionError("the plumbing check runs only in the sandbox")
         from hedge_fund.paper.plumbing import PlumbingCheck, PlumbingConfig
         iid = cfg.instruments[0]
@@ -59,6 +59,7 @@ def build_strategies(cfg: PaperConfig, journal: Journal, store: StateStore, *, p
                    bar_type=BarType.from_str(cfg.bar_type_str(s.instrument)), risk=risk, kill_dir=cfg.state_dir)
         st.health = HealthMonitor(load_thresholds(), s.expectations)
         st.journal, st.state_store = journal, store
+        st.deployment_label = s.label
         out.append(st)
     return out
 
@@ -73,7 +74,9 @@ def run_supervised(cfg: PaperConfig, *, plumbing: bool = False, deployment=None,
     state = Path(cfg.state_dir)
     journal, store = Journal(state), StateStore(state)
     started, attempt = time.monotonic(), 0
-    journal.event("supervisor_start", mode=cfg.mode, instruments=list(cfg.instruments), plumbing=plumbing)
+    journal.event("supervisor_start", mode=cfg.mode, instruments=list(cfg.instruments), plumbing=plumbing,
+                  real_money=False,
+                  labels=sorted({s.label for s in deployment.strategies}) if deployment else [])
     while not _stop.is_set():
         if (state / KILL_SWITCH).exists():
             journal.event("supervisor_stop", reason="KILL_SWITCH file present")
@@ -91,7 +94,7 @@ def run_supervised(cfg: PaperConfig, *, plumbing: bool = False, deployment=None,
                                                               stale_after_secs=cfg.max_data_age_secs),
                                            strategies=strategies, state_dir=state))
         node.build()
-        if attempt and cfg.mode == "sandbox_kraken":
+        if attempt and cfg.sandbox:
             journal.event("sandbox_account_reset", attempt=attempt)
         timers = []
         if max_runtime_secs is not None:
@@ -131,6 +134,7 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--mode", default="sandbox_kraken")
     ap.add_argument("--max-runtime-secs", type=float)
     a = ap.parse_args(argv)
+    from hedge_fund.paper.config import futures_sandbox_config
     if not a.plumbing_check and not a.deployment:
         ap.error("nothing to run: --plumbing-check (sandbox) or --deployment <approved manifest>")
     deployment = None
@@ -139,8 +143,12 @@ def main(argv: list[str]) -> int:
         deployment = load_deployment(a.deployment)
     signal.signal(signal.SIGTERM, lambda *_: _stop.set())
     signal.signal(signal.SIGINT, lambda *_: _stop.set())
-    return run_supervised(PaperConfig(mode=a.mode), plumbing=a.plumbing_check, deployment=deployment,
-                          max_runtime_secs=a.max_runtime_secs)
+    if a.mode == "sandbox_kraken_futures":
+        insts = tuple(sorted({s.instrument for s in deployment.strategies})) if deployment else ("PF_XBTUSD.KRAKEN",)
+        cfg = futures_sandbox_config(instruments=insts)
+    else:
+        cfg = PaperConfig(mode=a.mode)
+    return run_supervised(cfg, plumbing=a.plumbing_check, deployment=deployment, max_runtime_secs=a.max_runtime_secs)
 
 
 if __name__ == "__main__":

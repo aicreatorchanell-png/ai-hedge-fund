@@ -14,15 +14,25 @@
 `load_deployment` refuses a strategy unless: the approval is by a human, its hypothesis
 is approved, its (family, instrument) line PASSED in the referenced validation summary
 including cost stress, and the health thresholds version matches the versioned file.
-No strategy passes today; the only runnable strategy is the sandbox plumbing check.
+
+EXPERIMENTAL forward tests (owner instruction of 2026-10-04): a strategy may carry
+`status: experimental_unvalidated` to forward-test the complete autonomous loop on paper
+before any strategy has passed validation. It still needs a human approval and an
+approved hypothesis whose plan was actually run (its summary exists), but no PASSED line.
+It is labelled EXPERIMENTAL / UNVALIDATED in the journal, snapshot and dashboard, it is
+never evidence of validation, and it can never be promoted: `Deployment.validated` is
+False whenever any strategy is experimental. All hard risk limits, HALT and the kill
+switch apply unchanged; paper modes only (the guard refuses live venues regardless).
 """
 
 from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Literal
 
 import yaml
+
 from pydantic import BaseModel, ConfigDict, field_validator
 
 from hedge_fund.trading.health import BacktestExpectations
@@ -44,6 +54,12 @@ class DeployedStrategy(BaseModel):
     validation_summary: str
     approved_by: str
     expectations: BacktestExpectations
+    status: Literal["validated", "experimental_unvalidated"] = "validated"
+    note: str = ""
+
+    @property
+    def label(self) -> str:
+        return "VALIDATED" if self.status == "validated" else "EXPERIMENTAL / UNVALIDATED"
 
     @field_validator("approved_by")
     @classmethod
@@ -58,6 +74,10 @@ class Deployment(BaseModel):
 
     health_thresholds_version: str
     strategies: tuple[DeployedStrategy, ...] = ()
+
+    @property
+    def validated(self) -> bool:
+        return bool(self.strategies) and all(s.status == "validated" for s in self.strategies)
 
 
 def load_deployment(path: Path | str, *, hypotheses=None, thresholds=None) -> Deployment:
@@ -79,6 +99,8 @@ def load_deployment(path: Path | str, *, hypotheses=None, thresholds=None) -> De
         lines = json.loads(summary.read_text()).get("lines", [])
         line = next((x for x in lines if x["family"] == s.family and x["instrument"].split(".")[0]
                      == s.instrument.split(".")[0].replace("/", "")), None)
+        if s.status == "experimental_unvalidated":
+            continue                                    # forward test only; never counts as validation
         if line is None or not line.get("passed"):
             raise DeploymentRejected(f"{s.family} on {s.instrument}: no PASSED validation line (gates + cost stress)")
     return d

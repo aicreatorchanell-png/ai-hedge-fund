@@ -5,6 +5,8 @@ Modes (all paper):
     sandbox_kraken           live public Kraken spot data, simulated fills (Nautilus sandbox
                              execution client). No credentials. Positions live in memory: a
                              restart starts the simulated account fresh (journaled).
+    sandbox_kraken_futures   live public Kraken Futures perpetual data (PF_*), simulated fills on
+                             a simulated MARGIN account (shorts possible). No credentials.
     binance_futures_testnet  Binance USD-M futures TESTNET data and order routing. Needs
                              AIHF_PAPER_BINANCE_TESTNET_API_KEY / _API_SECRET.
     kraken_futures_demo      Kraken futures DEMO data and order routing. Needs
@@ -26,10 +28,22 @@ from hedge_fund.paths import CACHE_DIR
 from hedge_fund.paper.guard import assert_paper, paper_credential
 
 
+SANDBOX_MODES = frozenset({"sandbox_kraken", "sandbox_kraken_futures"})
+
+
+def futures_sandbox_config(**kw) -> "PaperConfig":
+    """Kraken Futures perpetuals on live public data with simulated fills (MARGIN, USD)."""
+    base = dict(mode="sandbox_kraken_futures", starting_balances=("10000 USD",), account_type="MARGIN",
+                modeled_taker_fee=0.0005, modeled_maker_fee=0.0002,      # Kraken Futures base tier
+                state_dir=str(CACHE_DIR / "paper" / "futures"))
+    return PaperConfig(**{**base, **kw})
+
+
 class PaperConfig(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
 
-    mode: Literal["sandbox_kraken", "binance_futures_testnet", "kraken_futures_demo"] = "sandbox_kraken"
+    mode: Literal["sandbox_kraken", "sandbox_kraken_futures", "binance_futures_testnet",
+                  "kraken_futures_demo"] = "sandbox_kraken"
     trader_id: str = "AIHF-PAPER-001"
     instruments: tuple[str, ...] = ("BTC/USD.KRAKEN",)
     state_dir: str = str(CACHE_DIR / "paper")
@@ -46,6 +60,10 @@ class PaperConfig(BaseModel):
     modeled_taker_fee: float = Field(0.0040, ge=0)
     modeled_maker_fee: float = Field(0.0025, ge=0)
 
+    @property
+    def sandbox(self) -> bool:
+        return self.mode in SANDBOX_MODES
+
     def bar_type_str(self, instrument: str) -> str:
         """1-minute execution bars aggregated inside Nautilus from trade ticks (venue-agnostic)."""
         return f"{instrument}-1-MINUTE-LAST-INTERNAL"
@@ -59,11 +77,12 @@ def build_node_config(cfg: PaperConfig):
     proxy = os.environ.get("HTTPS_PROXY") or None
     ids = frozenset(InstrumentId.from_str(i) for i in cfg.instruments)
     provider = InstrumentProviderConfig(load_ids=ids)
-    if cfg.mode == "sandbox_kraken":
+    if cfg.sandbox:
         from nautilus_trader.adapters.kraken.config import KrakenDataClientConfig
         from nautilus_trader.adapters.sandbox.config import SandboxExecutionClientConfig
         from nautilus_trader.core.nautilus_pyo3.kraken import KrakenProductType
-        data = {"KRAKEN": KrakenDataClientConfig(product_types=(KrakenProductType.SPOT,), proxy_url=proxy,
+        product = KrakenProductType.FUTURES if cfg.mode == "sandbox_kraken_futures" else KrakenProductType.SPOT
+        data = {"KRAKEN": KrakenDataClientConfig(product_types=(product,), proxy_url=proxy,
                                                  instrument_provider=provider)}
         execs = {"KRAKEN": SandboxExecutionClientConfig(venue="KRAKEN", starting_balances=list(cfg.starting_balances),
                                                        account_type=cfg.account_type, oms_type="NETTING",
@@ -110,7 +129,7 @@ def _exec_engine(cfg: PaperConfig):
     the node's own cache is the source of truth and the venue checks are off."""
     from nautilus_trader.config import LiveExecEngineConfig
 
-    if cfg.mode == "sandbox_kraken":
+    if cfg.sandbox:
         return LiveExecEngineConfig(reconciliation=False, inflight_check_interval_ms=2_000,
                                     inflight_check_threshold_ms=5_000, graceful_shutdown_on_exception=True)
     return LiveExecEngineConfig(reconciliation=True, reconciliation_lookback_mins=cfg.reconciliation_lookback_mins,
@@ -121,7 +140,7 @@ def _exec_engine(cfg: PaperConfig):
 
 def client_factories(cfg: PaperConfig) -> tuple[dict, dict]:
     """(data factories, exec factories) for TradingNode.add_*_client_factory."""
-    if cfg.mode == "sandbox_kraken":
+    if cfg.sandbox:
         from nautilus_trader.adapters.kraken.factories import KrakenLiveDataClientFactory
         from nautilus_trader.adapters.sandbox.factory import SandboxLiveExecClientFactory
         return {"KRAKEN": KrakenLiveDataClientFactory}, {"KRAKEN": SandboxLiveExecClientFactory}
