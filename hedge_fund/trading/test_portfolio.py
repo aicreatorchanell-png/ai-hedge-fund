@@ -108,3 +108,14 @@ def test_declared_universes_cover_portfolio_plans():
     for f in PORTFOLIO_FAMILIES:
         inst = set(plan_instruments([f]))
         assert any(inst <= set(u["instruments"]) for u in UNIVERSES.values()), f
+
+
+def test_drawdown_kill_switch_flattens_and_resets_at_segment_start():
+    d = _data()
+    d.close[SPOT] = np.r_[np.full(100, 100.0), np.full(100, 60.0), np.full(100, 60.0)]
+    d.open[SPOT] = d.close[SPOT].shift(1).fillna(100.0)
+    tg = pd.DataFrame(0.9, index=d.close.index, columns=[SPOT])
+    r, _, stats = simulate(d, tg, groups=[(SPOT,)], max_drawdown=0.2, segment_starts=(d.close.index[200],))
+    assert stats["kill_switch_events"] == 1
+    assert r.iloc[101:200].abs().max() < 1e-12                           # flat after the kill until the segment start
+    assert r.iloc[200] < 0                                                # re-entered (entry cost) in the next segment

@@ -78,8 +78,13 @@ def load_daily(instruments, start: str, end: str, *, catalog=None) -> DailyData:
 # -- engine -----------------------------------------------------------------------
 
 def simulate(data: DailyData, targets: pd.DataFrame, *, groups: list[tuple[str, ...]], cost_multiplier: float = 1.0,
-             starting_cash: float = 10_000.0) -> tuple[pd.Series, pd.Series, dict]:
-    """-> (daily returns, closed-episode P&L indexed by exit day, stats)."""
+             starting_cash: float = 10_000.0, max_drawdown: float | None = None,
+             segment_starts: tuple = ()) -> tuple[pd.Series, pd.Series, dict]:
+    """-> (daily returns, closed-episode P&L indexed by exit day, stats).
+
+    max_drawdown: the governor's kill switch (as in the Nautilus runs): when equity closes
+    this far below its peak, every leg is closed at that close and targets are ignored
+    until the next walk-forward segment start, where peak and switch reset."""
     if cost_multiplier < 1.0:
         raise ValueError("costs may be stressed up, never down")
     inst = list(targets.columns)
@@ -99,9 +104,14 @@ def simulate(data: DailyData, targets: pd.DataFrame, *, groups: list[tuple[str, 
     prev_close = {i: np.nan for i in inst}
     executed = pd.Series(0.0, index=inst)
     eq, pnl_inst = [], []
-    trades_n = 0
+    trades_n, kills = 0, 0
+    peak, killed = 1.0, False
+    seg = sorted(pd.Timestamp(x) for x in segment_starts)
     for k, t in enumerate(days):
         day_pnl = {i: 0.0 for i in inst}
+        while seg and t >= seg[0]:
+            seg.pop(0)
+            peak, killed = E, False
         o, c = op.loc[t], cl.loc[t]
         for i in inst:                                            # gap (and delisting exits)
             if q[i] == 0.0:
@@ -119,6 +129,8 @@ def simulate(data: DailyData, targets: pd.DataFrame, *, groups: list[tuple[str, 
             q[i] *= (o[i] / prev_close[i]) if not np.isnan(prev_close[i]) else 1.0
         pre = dict(q)
         want = tg.iloc[k - 1] if k > 0 else pd.Series(0.0, index=inst)   # decided at the previous close
+        if killed:
+            want = pd.Series(0.0, index=inst)
         if not np.allclose(want.to_numpy(), executed.to_numpy()):
             for i in inst:
                 if np.isnan(o[i]):
@@ -149,8 +161,20 @@ def simulate(data: DailyData, targets: pd.DataFrame, *, groups: list[tuple[str, 
                 q[i] *= c[i] / o[i]
             if not np.isnan(c[i]):
                 prev_close[i] = c[i]
+        peak = max(peak, E)
+        if max_drawdown is not None and not killed and (E <= 0 or E / peak - 1 <= -max_drawdown):
+            for i in inst:                                        # kill switch: flatten at this close
+                if q[i] != 0.0:
+                    cost = abs(q[i]) * fee[i]
+                    day_pnl[i] -= cost
+                    E -= cost
+                    q[i] = 0.0
+                    trades_n += 1
+            executed[:] = 0.0
+            killed, kills = True, kills + 1
         if E <= 0:
-            raise RuntimeError("equity exhausted")
+            E = 1e-9                                              # ruined: nothing left to trade
+            killed = True
         eq.append(E)
         pnl_inst.append(day_pnl)
     equity = pd.Series(eq, index=days)
@@ -158,7 +182,7 @@ def simulate(data: DailyData, targets: pd.DataFrame, *, groups: list[tuple[str, 
     pnl = pd.DataFrame(pnl_inst, index=days)[inst] * starting_cash
     held = tg.shift(1).fillna(0.0)                                # target in force during day t
     trades = _episodes(pnl, held, groups)
-    return returns, trades, {"leg_trades": trades_n, "final_equity": E}
+    return returns, trades, {"leg_trades": trades_n, "final_equity": E, "kill_switch_events": kills}
 
 
 def _episodes(pnl: pd.DataFrame, held: pd.DataFrame, groups: list[tuple[str, ...]]) -> pd.Series:
@@ -321,7 +345,8 @@ def run_line(plan, data: DailyData, family: str, line: str, params: dict, cost_m
     inst = fam.lines[line]
     tg = fam.targets(data, inst, params)
     rets, trades, stats = simulate(data, tg, groups=fam.groups(line), cost_multiplier=cost_multiplier,
-                                   starting_cash=plan.starting_cash)
+                                   starting_cash=plan.starting_cash, max_drawdown=plan.risk.max_drawdown,
+                                   segment_starts=tuple(pd.Timestamp(f[2], tz="UTC") for f in plan.folds()))
     return ConfigRun(config_key(family, params, line, cost_multiplier), family, params, line, cost_multiplier,
                      rets, trades, {"ambiguous_exits": 0, "ambiguous_share": 0.0, **stats})
 

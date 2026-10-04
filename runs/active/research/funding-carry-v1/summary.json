@@ -1,0 +1,645 @@
+{
+ "plan": {
+  "plan_id": "funding-carry-v1",
+  "families": [
+   "funding_carry"
+  ],
+  "instruments": [
+   "ADAUSDT-PERP.BINANCE",
+   "ADAUSDT.BINANCE",
+   "BNBUSDT-PERP.BINANCE",
+   "BNBUSDT.BINANCE",
+   "BTCUSDT-PERP.BINANCE",
+   "BTCUSDT.BINANCE",
+   "ETHUSDT-PERP.BINANCE",
+   "ETHUSDT.BINANCE",
+   "LTCUSDT-PERP.BINANCE",
+   "LTCUSDT.BINANCE",
+   "XRPUSDT-PERP.BINANCE",
+   "XRPUSDT.BINANCE"
+  ],
+  "dev_start": "2020-01-01",
+  "dev_end": "2025-08-31",
+  "reserve_start": "2025-09-01",
+  "walk_forward": {
+   "train_months": 24,
+   "test_months": 6,
+   "step_months": 6
+  },
+  "cost_multipliers": [
+   1.0,
+   2.0
+  ],
+  "starting_cash": 10000.0,
+  "periods_per_year": 365,
+  "min_train_trades": 6,
+  "risk": {
+   "risk_per_trade": 0.005,
+   "max_notional_fraction": 0.9,
+   "max_daily_loss": 0.03,
+   "max_drawdown": 0.2,
+   "max_open_positions": 1,
+   "max_entries_per_day": 20
+  },
+  "bar_minutes": 1440
+ },
+ "plan_hash": "ea0a0651480d3465",
+ "n_trials": 648,
+ "gates_hash": "2fc90f4ad972f482",
+ "lines": [
+  {
+   "family": "funding_carry",
+   "instrument": "BTCUSDT",
+   "passed": false,
+   "checks": {
+    "min_trades": false,
+    "oos_sharpe": true,
+    "deflated_sharpe": true,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": true
+   },
+   "values": {
+    "n_trades": 22.0,
+    "oos_sharpe_annual": 3.738267536618946,
+    "deflated_sharpe": 0.9998830761645914,
+    "pbo": 0.0,
+    "max_drawdown": 0.017675463158448812,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": 0.0709439290596529
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": false,
+      "oos_sharpe": true,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 22.0,
+      "oos_sharpe_annual": 1.0084423021407503,
+      "deflated_sharpe": 0.12522581469121657,
+      "pbo": 0.0,
+      "max_drawdown": 0.04730429691985116,
+      "walk_forward_positive_share": 0.5714285714285714,
+      "bootstrap_sharpe_lower": -0.055972608043972735
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.49511106776366864
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.45437731994358954
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+     "train_sharpe": 0.29645526030641695
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+     "train_sharpe": -0.09800516984954602
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.10558616137815438
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+     "train_sharpe": 0.12060021964450678
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.38260768264891215
+    }
+   ]
+  },
+  {
+   "family": "funding_carry",
+   "instrument": "ETHUSDT",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 36.0,
+    "oos_sharpe_annual": 2.203806353326144,
+    "deflated_sharpe": 0.8330539606187752,
+    "pbo": 0.0,
+    "max_drawdown": 0.037595355523412644,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": -0.016399710178727572
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 36.0,
+      "oos_sharpe_annual": -0.63796476519248,
+      "deflated_sharpe": 3.2532229857809084e-06,
+      "pbo": 0.0,
+      "max_drawdown": 0.08893931545482259,
+      "walk_forward_positive_share": 0.5714285714285714,
+      "bootstrap_sharpe_lower": -0.13592840906046777
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+     "train_sharpe": 0.4586672757032462
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.45071562230530526
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+     "train_sharpe": 0.3257565865169782
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.23294351497993246
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.12506386909086323
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+     "train_sharpe": 0.17172053695369247
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.39686750732195
+    }
+   ]
+  },
+  {
+   "family": "funding_carry",
+   "instrument": "XRPUSDT",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 34.0,
+    "oos_sharpe_annual": 1.6070921800849114,
+    "deflated_sharpe": 0.44978012757897556,
+    "pbo": 0.8571428571428571,
+    "max_drawdown": 0.02824999259829164,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": -0.011677470445642428
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 34.0,
+      "oos_sharpe_annual": -0.6277383349101816,
+      "deflated_sharpe": 2.3520849553590984e-06,
+      "pbo": 0.8571428571428571,
+      "max_drawdown": 0.07597795201344026,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.11557654858810042
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+     "train_sharpe": 0.3536340213123536
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+     "train_sharpe": 0.3641819642547729
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.3253447738513447
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.20004706602435812
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.1015853056085918
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+     "train_sharpe": 0.012488164449005069
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.3077132911744361
+    }
+   ]
+  },
+  {
+   "family": "funding_carry",
+   "instrument": "LTCUSDT",
+   "passed": false,
+   "checks": {
+    "min_trades": false,
+    "oos_sharpe": true,
+    "deflated_sharpe": true,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": true,
+    "bootstrap": true
+   },
+   "values": {
+    "n_trades": 22.0,
+    "oos_sharpe_annual": 3.265169227711731,
+    "deflated_sharpe": 0.9977434422806774,
+    "pbo": 0.0,
+    "max_drawdown": 0.021458180649167824,
+    "walk_forward_positive_share": 0.7142857142857143,
+    "bootstrap_sharpe_lower": 0.04964458920841718
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": false,
+      "oos_sharpe": true,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 22.0,
+      "oos_sharpe_annual": 0.5486694877888251,
+      "deflated_sharpe": 0.02214421049926101,
+      "pbo": 0.0,
+      "max_drawdown": 0.04766188443981445,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.07845541935563047
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.43613099081690704
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.4117051106570625
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.3455672311927675
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.16930544918591184
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.11468348687837628
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.3294254732193586
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+     "train_sharpe": 0.17766698368276504
+    }
+   ]
+  },
+  {
+   "family": "funding_carry",
+   "instrument": "ADAUSDT",
+   "passed": false,
+   "checks": {
+    "min_trades": false,
+    "oos_sharpe": true,
+    "deflated_sharpe": true,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": true,
+    "bootstrap": true
+   },
+   "values": {
+    "n_trades": 13.0,
+    "oos_sharpe_annual": 4.6558460108218185,
+    "deflated_sharpe": 0.9999999999693048,
+    "pbo": 0.0,
+    "max_drawdown": 0.004730514399134522,
+    "walk_forward_positive_share": 1.0,
+    "bootstrap_sharpe_lower": 0.1453179559250552
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": false,
+      "oos_sharpe": true,
+      "deflated_sharpe": true,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": true
+     },
+     "values": {
+      "n_trades": 13.0,
+      "oos_sharpe_annual": 2.8801873594937346,
+      "deflated_sharpe": 0.9780686097163136,
+      "pbo": 0.0,
+      "max_drawdown": 0.01975300614008968,
+      "walk_forward_positive_share": 0.5714285714285714,
+      "bootstrap_sharpe_lower": 0.039111851375077715
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.3473928464055611
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.3307344615480806
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.301509975466812
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.2327790647718013
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.1212165281423088
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.27778295200203945
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.32777599867619495
+    }
+   ]
+  },
+  {
+   "family": "funding_carry",
+   "instrument": "BNBUSDT",
+   "passed": false,
+   "checks": {
+    "min_trades": false,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 17.0,
+    "oos_sharpe_annual": -0.7770060957507078,
+    "deflated_sharpe": 1.2510675660573353e-06,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.016737081505375118,
+    "walk_forward_positive_share": 0.14285714285714285,
+    "bootstrap_sharpe_lower": -0.09112094123334527
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": false,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 17.0,
+      "oos_sharpe_annual": -1.9797959856111582,
+      "deflated_sharpe": 4.088113551949312e-19,
+      "pbo": 0.014285714285714285,
+      "max_drawdown": 0.055350424455866465,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.14712098334037066
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.25, \"lookback\": 21}}",
+     "train_sharpe": 0.23782610330789503
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+     "train_sharpe": 0.24402118556792643
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.25, \"lookback\": 21}}",
+     "train_sharpe": 0.20557421074514495
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.25, \"lookback\": 3}}",
+     "train_sharpe": -0.06490517342831727
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+     "train_sharpe": -0.07621020670411936
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.25, \"lookback\": 3}}",
+     "train_sharpe": -0.07277688696919676
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.25, \"lookback\": 3}}",
+     "train_sharpe": -0.05105792271573368
+    }
+   ]
+  }
+ ],
+ "combinations": {
+  "family:funding_carry": {
+   "passed": false,
+   "base_passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": true,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": true
+   },
+   "values": {
+    "n_trades": 144.0,
+    "oos_sharpe_annual": 3.893053868950755,
+    "deflated_sharpe": 0.9999999279802338,
+    "pbo": 0.0,
+    "max_drawdown": 0.012471348025371198,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": 0.07489158849216661
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 144.0,
+      "oos_sharpe_annual": 0.34889769423555644,
+      "deflated_sharpe": 0.006603680939539878,
+      "pbo": 0.0,
+      "max_drawdown": 0.04071029634930612,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.13343580252315673
+     }
+    }
+   },
+   "members": 6
+  },
+  "all": {
+   "passed": false,
+   "base_passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": true,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": true
+   },
+   "values": {
+    "n_trades": 144.0,
+    "oos_sharpe_annual": 3.893053868950755,
+    "deflated_sharpe": 0.9999999279802338,
+    "pbo": 0.0,
+    "max_drawdown": 0.012471348025371198,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": 0.07489158849216661
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 144.0,
+      "oos_sharpe_annual": 0.34889769423555644,
+      "deflated_sharpe": 0.006603680939539878,
+      "pbo": 0.0,
+      "max_drawdown": 0.04071029634930612,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.13343580252315673
+     }
+    }
+   },
+   "members": 6
+  }
+ },
+ "any_passed": false,
+ "any_combination_passed": false
+}
