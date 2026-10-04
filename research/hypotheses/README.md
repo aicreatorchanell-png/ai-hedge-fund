@@ -17,14 +17,21 @@ Every new strategy family needs an approved `H-<ID>.yaml` here before any resear
 - **No indicator-only reasons:** justifications built from indicator vocabulary alone are rejected.
 - **No re-testing:** the six families of `plan_crypto_v1` were tested without such hypotheses and failed. They cannot be re-tested on the same instruments and development dates.
 
-## Current drafts (2026-10-04) — none approved
+## Status (2026-10-04)
 
-All drafted by AI (`status: draft`). None may be researched until a human approves it.
+All drafted by AI. The owner approved H-FUNDING-CROWDING and H-VOL-SCALED-TREND for research and
+validation; both were pre-registered, run and **failed** their gates on development data (the sealed
+holdout was not read). A failed candidate is not iterated on the same data. The others remain drafts.
+
+| Tested | Plan | Verdict | Result |
+|---|---|---|---|
+| H-FUNDING-CROWDING | funding-crowding-v1 (48 configs) | FAIL | `runs/active/research/funding-crowding-v1/RESULT.md` |
+| H-VOL-SCALED-TREND | vol-trend-v1 (72 configs) | FAIL | `runs/active/research/vol-trend-v1/RESULT.md` |
 
 | Id | Edge | Feasibility |
 |---|---|---|
-| H-FUNDING-CROWDING | crowded perpetual positioning (extreme funding) | ready (funding archive cached to the fence via `trading.data.funding`) |
-| H-VOL-SCALED-TREND | time-series trend, risk premium | needs_data (daily cross-asset) |
+| H-FUNDING-CROWDING | crowded perpetual positioning (extreme funding) | tested: FAIL |
+| H-VOL-SCALED-TREND | time-series trend, risk premium | tested: FAIL |
 | H-FUNDING-CARRY | delta-neutral funding carry | needs_infrastructure (two legs) |
 | H-XS-MOMENTUM | cross-sectional crypto momentum | needs_infrastructure (portfolio, survivorship-free universe) |
 | H-PAIRS-STATARB | cointegrated pairs reversion | needs_infrastructure |

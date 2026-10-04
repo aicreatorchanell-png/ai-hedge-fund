@@ -1,0 +1,106 @@
+{
+ "subject": "plan vol-trend-v1 (5886badfa1d43e65)",
+ "passed": false,
+ "counts": {
+  "PASS": 16,
+  "WARNING": 1,
+  "FAIL": 2
+ },
+ "checks": [
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "vol_managed_trend {\"lookback\": 20, \"vol_stop\": 2.5}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "vol_managed_trend {\"lookback\": 20, \"vol_stop\": 2.5}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "vol_managed_trend {\"lookback\": 20, \"vol_stop\": 2.5}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "vol_managed_trend {\"lookback\": 20, \"vol_stop\": 2.5}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "vol_managed_trend {\"lookback\": 120, \"vol_stop\": 5.0}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "vol_managed_trend {\"lookback\": 120, \"vol_stop\": 5.0}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "vol_managed_trend {\"lookback\": 120, \"vol_stop\": 5.0}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "vol_managed_trend {\"lookback\": 120, \"vol_stop\": 5.0}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "future_fitting",
+   "status": "PASS",
+   "detail": "selection uses training windows only (test-window perturbations never change the choice)"
+  },
+  {
+   "name": "fees",
+   "status": "PASS",
+   "detail": "every instrument charges commission; taker fee includes spread and slippage"
+  },
+  {
+   "name": "spread_slippage",
+   "status": "PASS",
+   "detail": "half-spread + slippage > 0 for all"
+  },
+  {
+   "name": "financing",
+   "status": "PASS",
+   "detail": "margin instruments carry swap/borrow costs, perpetuals their actual funding settlements; spot crypto is cash-only and long-only"
+  },
+  {
+   "name": "cost_stress",
+   "status": "PASS",
+   "detail": "cost multipliers [1.0, 2.0] (needs >= 2.0)"
+  },
+  {
+   "name": "fills",
+   "status": "PASS",
+   "detail": "next-bar fills, adverse slippage; worst ambiguous-exit share 0.0%"
+  },
+  {
+   "name": "train_test_holdout",
+   "status": "FAIL",
+   "detail": "the reserve start 2025-09-01 is readable for fx: no sealed holdout; the reserve start 2025-09-01 is readable for index: no sealed holdout"
+  },
+  {
+   "name": "survivorship",
+   "status": "FAIL",
+   "detail": "instruments ['AUDUSD.DUKASCOPY', 'BCHUSDT-PERP.BINANCE', 'DEUIDXEUR.DUKASCOPY', 'EOSUSDT-PERP.BINANCE', 'ETCUSDT-PERP.BINANCE', 'EURUSD.DUKASCOPY', 'GBPUSD.DUKASCOPY', 'LINKUSDT-PERP.BINANCE', 'TRXUSDT-PERP.BINANCE', 'USA500IDXUSD.DUKASCOPY', 'USDJPY.DUKASCOPY', 'XLMUSDT-PERP.BINANCE'] are not a declared universe"
+  },
+  {
+   "name": "bar_close_convention",
+   "status": "PASS",
+   "detail": "close-stamped bars aligned to 1440-minute closes (sampled 2020-07-19)"
+  },
+  {
+   "name": "timezone",
+   "status": "PASS",
+   "detail": "daily bars close at 00:00 UTC"
+  },
+  {
+   "name": "liquidity",
+   "status": "WARNING",
+   "detail": "max position / median daily traded value: 10.00% (AUDUSD.DUKASCOPY); entries capped at 10% of median bar volume"
+  }
+ ]
+}

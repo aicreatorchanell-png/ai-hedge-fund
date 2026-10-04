@@ -1,0 +1,1143 @@
+{
+ "plan": {
+  "plan_id": "vol-trend-v1",
+  "families": [
+   "vol_managed_trend"
+  ],
+  "instruments": [
+   "BCHUSDT-PERP.BINANCE",
+   "EOSUSDT-PERP.BINANCE",
+   "TRXUSDT-PERP.BINANCE",
+   "ETCUSDT-PERP.BINANCE",
+   "LINKUSDT-PERP.BINANCE",
+   "XLMUSDT-PERP.BINANCE",
+   "EURUSD.DUKASCOPY",
+   "GBPUSD.DUKASCOPY",
+   "USDJPY.DUKASCOPY",
+   "AUDUSD.DUKASCOPY",
+   "USA500IDXUSD.DUKASCOPY",
+   "DEUIDXEUR.DUKASCOPY"
+  ],
+  "dev_start": "2020-01-01",
+  "dev_end": "2025-08-31",
+  "reserve_start": "2025-09-01",
+  "walk_forward": {
+   "train_months": 24,
+   "test_months": 6,
+   "step_months": 6
+  },
+  "cost_multipliers": [
+   1.0,
+   2.0
+  ],
+  "starting_cash": 10000.0,
+  "periods_per_year": 365,
+  "min_train_trades": 6,
+  "risk": {
+   "risk_per_trade": 0.005,
+   "max_notional_fraction": 0.9,
+   "max_daily_loss": 0.03,
+   "max_drawdown": 0.2,
+   "max_open_positions": 1,
+   "max_entries_per_day": 20
+  },
+  "bar_minutes": 1440
+ },
+ "plan_hash": "5886badfa1d43e65",
+ "n_trials": 624,
+ "gates_hash": "2fc90f4ad972f482",
+ "lines": [
+  {
+   "family": "vol_managed_trend",
+   "instrument": "BCHUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 37.0,
+    "oos_sharpe_annual": 0.332622609381533,
+    "deflated_sharpe": 0.005608111792829714,
+    "pbo": 0.7285714285714285,
+    "max_drawdown": 0.049838449329122736,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": -0.03438342981399363
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 37.0,
+      "oos_sharpe_annual": 0.20290277186266747,
+      "deflated_sharpe": 0.002865926042086571,
+      "pbo": 0.7285714285714285,
+      "max_drawdown": 0.05386850580290725,
+      "walk_forward_positive_share": 0.5714285714285714,
+      "bootstrap_sharpe_lower": -0.04148053872513001
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"BCHUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.015225043263329015
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"BCHUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.030111400766979168
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"BCHUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.04666409732336375
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"BCHUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.0025701609905316985
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"BCHUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.017645372063636637
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"BCHUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.026588658510815568
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"BCHUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.03968681156941269
+    }
+   ]
+  },
+  {
+   "family": "vol_managed_trend",
+   "instrument": "EOSUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 57.0,
+    "oos_sharpe_annual": -0.4746033236213559,
+    "deflated_sharpe": 2.621093555128499e-05,
+    "pbo": 0.9571428571428572,
+    "max_drawdown": 0.13925666630063238,
+    "walk_forward_positive_share": 0.42857142857142855,
+    "bootstrap_sharpe_lower": -0.07663214152237148
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 57.0,
+      "oos_sharpe_annual": -0.5887211725371494,
+      "deflated_sharpe": 8.442863111181652e-06,
+      "pbo": 0.9571428571428572,
+      "max_drawdown": 0.14908091853195138,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.08406655156659665
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EOSUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": -0.0040158260237256
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EOSUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.0042832733377990975
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EOSUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 60, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.022240083052193587
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EOSUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.013388130758471131
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EOSUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.03968922629732809
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EOSUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 20, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.003775066262291706
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EOSUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.005190846864804008
+    }
+   ]
+  },
+  {
+   "family": "vol_managed_trend",
+   "instrument": "TRXUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 68.0,
+    "oos_sharpe_annual": 0.1514853444425771,
+    "deflated_sharpe": 0.002230374746723956,
+    "pbo": 0.5857142857142857,
+    "max_drawdown": 0.05576034086631865,
+    "walk_forward_positive_share": 0.42857142857142855,
+    "bootstrap_sharpe_lower": -0.051780346405801356
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 68.0,
+      "oos_sharpe_annual": -0.07245464846855887,
+      "deflated_sharpe": 0.0005764553608983722,
+      "pbo": 0.5857142857142857,
+      "max_drawdown": 0.06511408623739157,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.06583594594387895
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"TRXUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 20, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.06227876074957031
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"TRXUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 20, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.05559837589923255
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"TRXUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 20, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.023297248424809614
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"TRXUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 20, \"vol_stop\": 2.5}}",
+     "train_sharpe": -0.01719520396373634
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"TRXUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.016527860000496764
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"TRXUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.011589070184454897
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"TRXUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 60, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.053053006970764295
+    }
+   ]
+  },
+  {
+   "family": "vol_managed_trend",
+   "instrument": "ETCUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 68.0,
+    "oos_sharpe_annual": -0.8340599540766804,
+    "deflated_sharpe": 9.693645153917656e-07,
+    "pbo": 0.7428571428571429,
+    "max_drawdown": 0.09446411260133092,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.09289681977655702
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 68.0,
+      "oos_sharpe_annual": -0.981351337236632,
+      "deflated_sharpe": 2.1750737455273045e-07,
+      "pbo": 0.7428571428571429,
+      "max_drawdown": 0.10463067997384201,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.10129412433240254
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"ETCUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.08645592641104737
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"ETCUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.08057741314073075
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"ETCUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 20, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.06733425256979321
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"ETCUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 20, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.0017661801346250511
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"ETCUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 20, \"vol_stop\": 5.0}}",
+     "train_sharpe": -0.009393547606633752
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"ETCUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 20, \"vol_stop\": 5.0}}",
+     "train_sharpe": -0.013151768975331496
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"ETCUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 60, \"vol_stop\": 5.0}}",
+     "train_sharpe": -0.008254290264666146
+    }
+   ]
+  },
+  {
+   "family": "vol_managed_trend",
+   "instrument": "LINKUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 62.0,
+    "oos_sharpe_annual": -0.14573428811206277,
+    "deflated_sharpe": 0.0003535941300784931,
+    "pbo": 0.44285714285714284,
+    "max_drawdown": 0.04384660979451371,
+    "walk_forward_positive_share": 0.2857142857142857,
+    "bootstrap_sharpe_lower": -0.06111613522154416
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 62.0,
+      "oos_sharpe_annual": -0.23459752150030813,
+      "deflated_sharpe": 0.00019201860808195327,
+      "pbo": 0.44285714285714284,
+      "max_drawdown": 0.04806756786040656,
+      "walk_forward_positive_share": 0.2857142857142857,
+      "bootstrap_sharpe_lower": -0.0660256496610221
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"LINKUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 20, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.0614675138844555
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"LINKUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 60, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.05661212864723681
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"LINKUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 60, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.04015042225096376
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"LINKUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 60, \"vol_stop\": 5.0}}",
+     "train_sharpe": -0.0027717455119205424
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"LINKUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.0336699480479752
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"LINKUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.01850178073303859
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"LINKUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.03878446205068164
+    }
+   ]
+  },
+  {
+   "family": "vol_managed_trend",
+   "instrument": "XLMUSDT-PERP.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 49.0,
+    "oos_sharpe_annual": 0.7265091957555859,
+    "deflated_sharpe": 0.01810984680740952,
+    "pbo": 0.2714285714285714,
+    "max_drawdown": 0.036563467579250886,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": -0.03214293589389797
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": true,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 49.0,
+      "oos_sharpe_annual": 0.606875551092961,
+      "deflated_sharpe": 0.011015461994633203,
+      "pbo": 0.2714285714285714,
+      "max_drawdown": 0.045051187049697905,
+      "walk_forward_positive_share": 0.5714285714285714,
+      "bootstrap_sharpe_lower": -0.0406167323018171
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"XLMUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 20, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.04502099320949925
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"XLMUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.04910121929362206
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"XLMUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.05886277047355461
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"XLMUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": -0.0017250110078565531
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"XLMUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.03861070563961879
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"XLMUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.016358212996365334
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"XLMUSDT-PERP.BINANCE\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.04083308360465876
+    }
+   ]
+  },
+  {
+   "family": "vol_managed_trend",
+   "instrument": "EURUSD.DUKASCOPY",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 36.0,
+    "oos_sharpe_annual": -0.04805395672316243,
+    "deflated_sharpe": 0.0006621962359905304,
+    "pbo": 0.5714285714285714,
+    "max_drawdown": 0.04265691284391726,
+    "walk_forward_positive_share": 0.42857142857142855,
+    "bootstrap_sharpe_lower": -0.0546707738464774
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 36.0,
+      "oos_sharpe_annual": -0.49680552123094524,
+      "deflated_sharpe": 1.56907928939993e-05,
+      "pbo": 0.5714285714285714,
+      "max_drawdown": 0.05551166080260095,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.07721797344240516
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EURUSD.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.0006172823385519288
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EURUSD.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.06371705012478407
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EURUSD.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.03840949573552043
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EURUSD.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.0373866649733302
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EURUSD.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.013721835606146697
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EURUSD.DUKASCOPY\", \"p\": {\"lookback\": 20, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.007845635659340607
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"EURUSD.DUKASCOPY\", \"p\": {\"lookback\": 20, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.01675740207853337
+    }
+   ]
+  },
+  {
+   "family": "vol_managed_trend",
+   "instrument": "GBPUSD.DUKASCOPY",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 36.0,
+    "oos_sharpe_annual": 0.06906833293061182,
+    "deflated_sharpe": 0.0013940252432126416,
+    "pbo": 0.17142857142857143,
+    "max_drawdown": 0.043737835321574936,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": -0.05298516096143981
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 36.0,
+      "oos_sharpe_annual": -0.23346558887529312,
+      "deflated_sharpe": 0.0001759119038040852,
+      "pbo": 0.17142857142857143,
+      "max_drawdown": 0.058742868790334746,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.06821262102760395
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"GBPUSD.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.02190999923814531
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"GBPUSD.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.037108675165025785
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"GBPUSD.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.036686387837268804
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"GBPUSD.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.029913964197372293
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"GBPUSD.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.01969872040118412
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"GBPUSD.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": -0.00267786149691851
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"GBPUSD.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 5.0}}",
+     "train_sharpe": -0.017527046265466726
+    }
+   ]
+  },
+  {
+   "family": "vol_managed_trend",
+   "instrument": "USDJPY.DUKASCOPY",
+   "passed": false,
+   "checks": {
+    "min_trades": false,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 20.0,
+    "oos_sharpe_annual": 0.4472115279841739,
+    "deflated_sharpe": 0.010874798674674946,
+    "pbo": 0.4142857142857143,
+    "max_drawdown": 0.04570713117704206,
+    "walk_forward_positive_share": 0.42857142857142855,
+    "bootstrap_sharpe_lower": -0.0377864663739363
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": false,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 20.0,
+      "oos_sharpe_annual": 0.10681244528334485,
+      "deflated_sharpe": 0.0018030440539648146,
+      "pbo": 0.4142857142857143,
+      "max_drawdown": 0.06080257987645532,
+      "walk_forward_positive_share": 0.2857142857142857,
+      "bootstrap_sharpe_lower": -0.05132219703456844
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USDJPY.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": -0.0019258463519703107
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USDJPY.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.06783886839067996
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USDJPY.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.05425401996266699
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USDJPY.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.046527611350254044
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USDJPY.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.06090658916034659
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USDJPY.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.02185667566730749
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USDJPY.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.0127971088867631
+    }
+   ]
+  },
+  {
+   "family": "vol_managed_trend",
+   "instrument": "AUDUSD.DUKASCOPY",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 60.0,
+    "oos_sharpe_annual": -0.8742275595200814,
+    "deflated_sharpe": 9.76950787191313e-07,
+    "pbo": 0.5571428571428572,
+    "max_drawdown": 0.09161753701109732,
+    "walk_forward_positive_share": 0.2857142857142857,
+    "bootstrap_sharpe_lower": -0.09778502895790048
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 60.0,
+      "oos_sharpe_annual": -1.18644669159033,
+      "deflated_sharpe": 3.5009734725431245e-08,
+      "pbo": 0.5571428571428572,
+      "max_drawdown": 0.11714085782896333,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.11369930093511764
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"AUDUSD.DUKASCOPY\", \"p\": {\"lookback\": 20, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.014275263750791137
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"AUDUSD.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.015353236278521254
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"AUDUSD.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": -0.004130021348215498
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"AUDUSD.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 5.0}}",
+     "train_sharpe": -0.02728307617719452
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"AUDUSD.DUKASCOPY\", \"p\": {\"lookback\": 20, \"vol_stop\": 2.5}}",
+     "train_sharpe": -0.008199796253855677
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"AUDUSD.DUKASCOPY\", \"p\": {\"lookback\": 20, \"vol_stop\": 2.5}}",
+     "train_sharpe": -0.023903780740982518
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"AUDUSD.DUKASCOPY\", \"p\": {\"lookback\": 20, \"vol_stop\": 2.5}}",
+     "train_sharpe": -0.03582172483487223
+    }
+   ]
+  },
+  {
+   "family": "vol_managed_trend",
+   "instrument": "USA500IDXUSD.DUKASCOPY",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 34.0,
+    "oos_sharpe_annual": 0.263725746990487,
+    "deflated_sharpe": 0.003976691966306806,
+    "pbo": 0.9,
+    "max_drawdown": 0.040906215147597735,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": -0.0463588605877727
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 34.0,
+      "oos_sharpe_annual": -0.035127056158301036,
+      "deflated_sharpe": 0.0007321187298358728,
+      "pbo": 0.9,
+      "max_drawdown": 0.04642608806104531,
+      "walk_forward_positive_share": 0.2857142857142857,
+      "bootstrap_sharpe_lower": -0.06355560711865924
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USA500IDXUSD.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.033838448031891115
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USA500IDXUSD.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.02507994384418841
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USA500IDXUSD.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.0043142901277453865
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USA500IDXUSD.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": -0.009889198374004574
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USA500IDXUSD.DUKASCOPY\", \"p\": {\"lookback\": 20, \"vol_stop\": 2.5}}",
+     "train_sharpe": -0.005212366664988777
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USA500IDXUSD.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.030009221475059692
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"USA500IDXUSD.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.040790113563863514
+    }
+   ]
+  },
+  {
+   "family": "vol_managed_trend",
+   "instrument": "DEUIDXEUR.DUKASCOPY",
+   "passed": false,
+   "checks": {
+    "min_trades": false,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 29.0,
+    "oos_sharpe_annual": -0.32266126316061633,
+    "deflated_sharpe": 0.00010318272784634084,
+    "pbo": 0.5571428571428572,
+    "max_drawdown": 0.07304702570464383,
+    "walk_forward_positive_share": 0.42857142857142855,
+    "bootstrap_sharpe_lower": -0.0718323706739175
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": false,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 28.0,
+      "oos_sharpe_annual": -0.42857416737464804,
+      "deflated_sharpe": 4.2273904557964813e-05,
+      "pbo": 0.5571428571428572,
+      "max_drawdown": 0.07611776715832397,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.07366887583886064
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"DEUIDXEUR.DUKASCOPY\", \"p\": {\"lookback\": 20, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.0017678902050990554
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"DEUIDXEUR.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.010658691929334206
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"DEUIDXEUR.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": -0.017885674546916558
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"DEUIDXEUR.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": -0.014203651480051163
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"DEUIDXEUR.DUKASCOPY\", \"p\": {\"lookback\": 20, \"vol_stop\": 5.0}}",
+     "train_sharpe": 0.0017721496870202163
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"DEUIDXEUR.DUKASCOPY\", \"p\": {\"lookback\": 60, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.015615961136897179
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"vol_managed_trend\", \"i\": \"DEUIDXEUR.DUKASCOPY\", \"p\": {\"lookback\": 120, \"vol_stop\": 2.5}}",
+     "train_sharpe": 0.03619841804625431
+    }
+   ]
+  }
+ ],
+ "combinations": {
+  "family:vol_managed_trend": {
+   "passed": false,
+   "base_passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 556.0,
+    "oos_sharpe_annual": -0.09862952928474115,
+    "deflated_sharpe": 0.00047621386805988354,
+    "pbo": 0.6857142857142857,
+    "max_drawdown": 0.031693176863241024,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": -0.06610462131764655
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 555.0,
+      "oos_sharpe_annual": -0.6030486284947436,
+      "deflated_sharpe": 1.0196151312849335e-05,
+      "pbo": 0.6857142857142857,
+      "max_drawdown": 0.04290639025506027,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.09542718054695185
+     }
+    }
+   },
+   "members": 12
+  },
+  "all": {
+   "passed": false,
+   "base_passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 556.0,
+    "oos_sharpe_annual": -0.09862952928474115,
+    "deflated_sharpe": 0.00047621386805988354,
+    "pbo": 0.6857142857142857,
+    "max_drawdown": 0.031693176863241024,
+    "walk_forward_positive_share": 0.5714285714285714,
+    "bootstrap_sharpe_lower": -0.06610462131764655
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 555.0,
+      "oos_sharpe_annual": -0.6030486284947436,
+      "deflated_sharpe": 1.0196151312849335e-05,
+      "pbo": 0.6857142857142857,
+      "max_drawdown": 0.04290639025506027,
+      "walk_forward_positive_share": 0.42857142857142855,
+      "bootstrap_sharpe_lower": -0.09542718054695185
+     }
+    }
+   },
+   "members": 12
+  }
+ },
+ "any_passed": false,
+ "any_combination_passed": false
+}
