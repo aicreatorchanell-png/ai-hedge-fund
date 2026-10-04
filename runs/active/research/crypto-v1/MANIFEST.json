@@ -1,0 +1,16 @@
+{
+ "plan": "plan_crypto_v1",
+ "plan_hash": "252051415d0c2228",
+ "status": "complete, frozen; do not modify or rerun",
+ "files": {
+  "plan_crypto_v1.json": "f8d3d5226f7ce9824a5d361bbac2589861bb93a811f2a063d5cede4d62e3a734",
+  "crypto-v1/summary.json": "204f455cdf691120689cdee1b5ea57c3a9ef08d2359da5e36d610811892a3096",
+  "crypto-v1/experiments.jsonl": "a1faee2f1aa9c6dc931a6406fce22f36c5da0c564077237b72f8c9b840203a62",
+  "crypto-v1/RESULT.md": "6ef7812907cc962acc9edfc2b01d49e97faf01db47df8d39221271587610bd04"
+ },
+ "private_run_cache": {
+  "path": "~/.hedge-fund/cache/research/crypto-v1/runs",
+  "files": 642,
+  "tree_sha256": "1f4f79fbee6f8109647dc9ad202540028dc51731a5e7f45649edee372ea309ee"
+ }
+}
