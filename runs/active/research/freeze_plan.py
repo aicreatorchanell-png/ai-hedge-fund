@@ -66,7 +66,9 @@ PLANS = {
             "3 x 2 grid = 6 configs per instrument: lookback 20/60/120 days, volatility stop 2.5/5 x "
             "20-day volatility; risk per trade fixed, so exposure is inversely proportional to volatility. "
             "The hypothesis' prediction concerns the cross-asset portfolio, so the family combination is "
-            "the main candidate."),
+            "the main candidate. Data gap known at freeze: the Dukascopy datafeed refused DEUIDXEUR months "
+            "2025-04..2025-08 (HTTP 429), so that line ends 2025-03-31 (recorded in "
+            "runs/active/data/dukascopy_daily_quality.json); EOS perpetual data ends 2025-05 (delisting)."),
     ),
 }
 
