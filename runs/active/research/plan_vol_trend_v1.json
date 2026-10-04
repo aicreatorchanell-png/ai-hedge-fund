@@ -1,0 +1,122 @@
+{
+ "plan": {
+  "plan_id": "vol-trend-v1",
+  "families": [
+   "vol_managed_trend"
+  ],
+  "instruments": [
+   "BCHUSDT-PERP.BINANCE",
+   "EOSUSDT-PERP.BINANCE",
+   "TRXUSDT-PERP.BINANCE",
+   "ETCUSDT-PERP.BINANCE",
+   "LINKUSDT-PERP.BINANCE",
+   "XLMUSDT-PERP.BINANCE",
+   "EURUSD.DUKASCOPY",
+   "GBPUSD.DUKASCOPY",
+   "USDJPY.DUKASCOPY",
+   "AUDUSD.DUKASCOPY",
+   "USA500IDXUSD.DUKASCOPY",
+   "DEUIDXEUR.DUKASCOPY"
+  ],
+  "dev_start": "2020-01-01",
+  "dev_end": "2025-08-31",
+  "reserve_start": "2025-09-01",
+  "walk_forward": {
+   "train_months": 24,
+   "test_months": 6,
+   "step_months": 6
+  },
+  "cost_multipliers": [
+   1.0,
+   2.0
+  ],
+  "starting_cash": 10000.0,
+  "periods_per_year": 365,
+  "min_train_trades": 6,
+  "risk": {
+   "risk_per_trade": 0.005,
+   "max_notional_fraction": 0.9,
+   "max_daily_loss": 0.03,
+   "max_drawdown": 0.2,
+   "max_open_positions": 1,
+   "max_entries_per_day": 20
+  },
+  "bar_minutes": 1440
+ },
+ "plan_hash": "5886badfa1d43e65",
+ "n_configs": 72,
+ "folds": [
+  [
+   "2020-01-01",
+   "2021-12-31",
+   "2022-01-01",
+   "2022-06-30"
+  ],
+  [
+   "2020-07-01",
+   "2022-06-30",
+   "2022-07-01",
+   "2022-12-31"
+  ],
+  [
+   "2021-01-01",
+   "2022-12-31",
+   "2023-01-01",
+   "2023-06-30"
+  ],
+  [
+   "2021-07-01",
+   "2023-06-30",
+   "2023-07-01",
+   "2023-12-31"
+  ],
+  [
+   "2022-01-01",
+   "2023-12-31",
+   "2024-01-01",
+   "2024-06-30"
+  ],
+  [
+   "2022-07-01",
+   "2024-06-30",
+   "2024-07-01",
+   "2024-12-31"
+  ],
+  [
+   "2023-01-01",
+   "2024-12-31",
+   "2025-01-01",
+   "2025-06-30"
+  ]
+ ],
+ "grids": {
+  "vol_managed_trend": {
+   "lookback": [
+    20,
+    60,
+    120
+   ],
+   "vol_stop": [
+    2.5,
+    5.0
+   ]
+  }
+ },
+ "hypotheses": {
+  "vol_managed_trend": {
+   "id": "H-VOL-SCALED-TREND",
+   "content_hash": "6011c43b90b5ccd7",
+   "approval": {
+    "by": "human:owner",
+    "on": "2026-10-04",
+    "note": "Approved by the owner in the Claude Code session on 2026-10-04: 'H-FUNDING-CROWDING and H-VOL-SCALED-TREND are BOTH explicitly approved for research and validation.' Recorded by the AI on the owner's instruction; approval covers research and validation only, not deployment."
+   }
+  }
+ },
+ "gates_hash": "2fc90f4ad972f482",
+ "code_commit_at_freeze": "a5053bb7af218e71444122bc7dc3b6f66a7fa09b",
+ "rationale": "Daily bars, fills at the next daily open. Cross-asset: six crypto perpetuals chosen by rule (every USD-M perpetual with data in 2020-01, minus the crypto-v1 coins, so no crypto instrument of crypto-v1 is reused), four FX majors and two index CFDs (Dukascopy). All lines share the 2020-01..2025-08 window. Calendar-day returns (weekends flat) annualized with 365. min_train_trades is 6: a multi-week trend rule trades a few times a year per instrument. 3 x 2 grid = 6 configs per instrument: lookback 20/60/120 days, volatility stop 2.5/5 x 20-day volatility; risk per trade fixed, so exposure is inversely proportional to volatility. The hypothesis' prediction concerns the cross-asset portfolio, so the family combination is the main candidate. Data gap known at freeze: the Dukascopy datafeed refused DEUIDXEUR months 2025-04..2025-08 (HTTP 429), so that line ends 2025-03-31 (recorded in runs/active/data/dukascopy_daily_quality.json); EOS perpetual data ends 2025-05 (delisting).",
+ "decision_rule": "PASS if and only if (a) at least one instrument line, or the equal-weight family combination, passes every gate in configs/validation-gates.yaml (hash recorded here) both at cost x1.0 and at cost x2.0, with the deflated Sharpe computed on the cumulative trial count of every registry under runs/active/research, and (b) the adversarial audit of this plan reports no FAIL. Otherwise FAIL. Regime, worst-fold, parameter-stability, concentration and CPCV diagnostics are reported but cannot turn a FAIL into a PASS. The sealed holdout (from reserve_start) is not read.",
+ "frozen_on": "2026-10-04",
+ "status": "frozen, not run"
+}
