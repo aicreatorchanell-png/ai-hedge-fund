@@ -9,6 +9,8 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
+from nautilus_trader.model.data import BarType
+
 from hedge_fund.trading.backtest import funding_costs, run_backtest
 from hedge_fund.trading.families import build
 from hedge_fund.trading.governor import TradeRiskConfig
@@ -127,3 +129,60 @@ def test_daily_bars_from_hours_merge_weekend_hours_into_monday():
 def test_catalog_daily_bar_type():
     from hedge_fund.trading.data.catalog import bar_type
     assert str(bar_type("EURUSD.DUKASCOPY", 1440)) == "EURUSD.DUKASCOPY-1-DAY-LAST-EXTERNAL"
+
+
+def test_index_cfds_are_cfd_instruments_without_a_base_leg():
+    from nautilus_trader.model.instruments import Cfd
+
+    from hedge_fund.trading.data.markets import INDICES
+    for spec in INDICES.values():
+        inst = spec.instrument()
+        assert isinstance(inst, Cfd) and str(inst.quote_currency) == spec.quote and float(inst.taker_fee) > 0
+
+
+def test_non_positive_target_is_refused_not_stranded():
+    from nautilus_trader.model.enums import OrderSide
+
+    from hedge_fund.trading.strategy import GuardedConfig, GuardedStrategy
+
+    class Bad(GuardedStrategy):
+        def on_signal(self, bar):
+            if self.is_flat():
+                self.enter(OrderSide.SELL, float(bar.close) * 1.01, -1.0, bar)
+
+    s = Bad(GuardedConfig(instrument_id=INST.id, bar_type=BT, allow_short=True), TradeRiskConfig())
+    r = run_backtest(INST, BARS[:300], s, MARGIN)
+    assert not r.brackets and r.refusals and r.refusals[0]["reason"] == "non-positive stop or target price"
+    assert r.orders.empty
+
+
+def test_vol_trend_short_target_stays_positive_on_huge_volatility():
+    import numpy as np
+    from nautilus_trader.model.data import Bar
+    rng = np.random.default_rng(1)
+    px = 100 * np.exp(np.cumsum(np.concatenate([np.full(80, -0.004), rng.normal(0, 0.2, 400)])))
+    bars = []
+    for i, c in enumerate(px):
+        o = px[i - 1] if i else c
+        ts = BARS[0].ts_event + i * 60_000_000_000
+        bars.append(Bar(BT, INST.make_price(o), INST.make_price(max(o, c) * 1.001), INST.make_price(min(o, c) * 0.999),
+                        INST.make_price(c), INST.make_qty(1000), ts, ts))
+    s = _vt(lookback=20, vol_stop=5.0)
+    r = run_backtest(INST, bars, s, MARGIN)
+    shorts = [b for b in r.brackets if b["side"] == "SELL"]
+    assert shorts and all(b["take_profit"] > 0 for b in r.brackets)     # longs whose stop would be <= 0 are refused
+
+
+def test_usd_base_fx_starts_with_the_same_usd_capital():
+    from hedge_fund.trading.data.markets import market
+    from hedge_fund.trading.research import ResearchPlan, run_config
+    plan = ResearchPlan(plan_id="t", families=("vol_managed_trend",), instruments=("USDJPY.DUKASCOPY",),
+                        dev_start="2020-01-01", dev_end="2022-12-31", reserve_start="2025-09-01", bar_minutes=1440)
+    spec = market("USDJPY")
+    bt = BarType.from_str("USDJPY.DUKASCOPY-1-DAY-LAST-EXTERNAL")
+    inst = spec.instrument()
+    from nautilus_trader.model.data import Bar
+    bars = [Bar(bt, b.open, b.high, b.low, b.close, inst.make_qty(1e9), b.ts_event, b.ts_init)
+            for b in synthetic_bars(inst, bt, 200, price=110.0, minutes=1440, vol=0.005, seed=2)]
+    r = run_config(plan, spec, bars, "vol_managed_trend", {"lookback": 20, "vol_stop": 2.5})
+    assert len(r.trades) > 0                              # 10k USD worth of JPY sizes above the 1000-unit minimum

@@ -209,8 +209,6 @@ def _fmt(x, pct=False):
 
 
 def render(plan, doc, summary, result, audit) -> str:
-    gate_names = ["min_trades", "oos_sharpe", "deflated_sharpe", "pbo", "max_drawdown", "walk_forward",
-                  "bootstrap_sharpe_lower"]
     L = [f"# {plan.plan_id}: {result['verdict']}", "",
          f"Plan hash `{result['plan_hash']}`. Hypothesis: {', '.join(v['id'] for v in doc['hypotheses'].values())}. "
          f"Development window {plan.dev_start} to {plan.dev_end}; the sealed holdout from {plan.reserve_start} "

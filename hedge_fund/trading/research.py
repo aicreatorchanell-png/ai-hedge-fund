@@ -120,6 +120,8 @@ class ConfigRun:
     audit: dict = field(default_factory=dict)
 
     def trades_in(self, start: str, end: str) -> int:
+        if self.trades.empty:                 # no trades: the index may not be a DatetimeIndex
+            return 0
         t = self.trades.index
         return int(((t >= pd.Timestamp(start, tz="UTC")) & (t < pd.Timestamp(end, tz="UTC") + pd.Timedelta(days=1))).sum())
 
@@ -140,8 +142,11 @@ def run_config(plan: ResearchPlan, spec, bars, family: str, params: dict, *, cos
     segs = tuple(int(pd.Timestamp(f[2], tz="UTC").value) for f in plan.folds())
     strategy = build(family, {**params, "segment_starts_ns": segs}, instrument_id=inst.id,
                      bar_type=bars[0].bar_type, risk=plan.risk, allow_short=spec.margin)
+    cash = plan.starting_cash
+    if spec.margin and spec.base == "USD" and spec.quote != "USD":   # e.g. USDJPY: same USD capital, in the quote
+        cash = round(plan.starting_cash * float(bars[0].open), 2)
     venue = VenueSpec(name=spec.venue, account_type="MARGIN" if spec.margin else "CASH",
-                      starting_balances=({spec.quote: plan.starting_cash} if spec.margin
+                      starting_balances=({spec.quote: cash} if spec.margin
                                          else {spec.quote: plan.starting_cash, spec.base: 0}))
     res = run_backtest(inst, bars, strategy, venue, market=spec.asset_class)
     pos = res.positions

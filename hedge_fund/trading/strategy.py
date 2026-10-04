@@ -211,6 +211,8 @@ class GuardedStrategy(Strategy):
 
     def enter(self, side: OrderSide, stop: float, take_profit: float, bar: Bar) -> bool:
         ref = float(bar.close)
+        if stop <= 0 or take_profit <= 0:            # the venue would deny it and strand the bracket
+            return self._refuse(bar, "non-positive stop or target price", stop=stop, take_profit=take_profit)
         if side == OrderSide.BUY and not stop < ref < take_profit:
             raise ValueError(f"long bracket needs stop < {ref} < take_profit, got {stop}, {take_profit}")
         if side == OrderSide.SELL:

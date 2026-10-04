@@ -69,7 +69,16 @@ class MarketSpec(BaseModel):
         iid = InstrumentId(Symbol(self.symbol), Venue(self.venue))
         pp = self.price_precision
         tick = Price(10.0 ** -pp, pp)
-        if self.asset_class in ("crypto", "fx", "index"):
+        if self.asset_class == "index":               # a CFD on the index: P&L in the quote currency, no base leg
+            from nautilus_trader.model.enums import AssetClass
+            from nautilus_trader.model.instruments import Cfd
+            size = Quantity.from_str(self.size_increment)
+            return Cfd(instrument_id=iid, raw_symbol=Symbol(self.symbol), asset_class=AssetClass.INDEX,
+                       quote_currency=Currency.from_str(self.quote), price_precision=pp,
+                       size_precision=size.precision, price_increment=tick, size_increment=size,
+                       ts_event=0, ts_init=0, min_quantity=size, margin_init=Decimal(0), margin_maint=Decimal(0),
+                       maker_fee=maker, taker_fee=taker)
+        if self.asset_class in ("crypto", "fx"):
             quote = Currency.from_str(self.quote)
             size = Quantity.from_str(self.size_increment)
             base = Currency.from_str(self.base) if self.base else USD

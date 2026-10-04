@@ -317,7 +317,11 @@ class VolManagedTrend(GuardedStrategy):
         vol = float(lr.std(ddof=1))
         if vol <= 0:
             return
-        _bracket(self, direction > 0, px[-1], c.vol_stop * vol * px[-1], c.reward_risk, bar)
+        dist = c.vol_stop * vol * px[-1]
+        if direction > 0:
+            self.enter(OrderSide.BUY, px[-1] - dist, px[-1] + c.reward_risk * dist, bar)
+        elif c.allow_short:                          # "far" target, floored so the price stays positive
+            self.enter(OrderSide.SELL, px[-1] + dist, max(px[-1] - c.reward_risk * dist, 0.05 * px[-1]), bar)
 
 
 # -- registry -----------------------------------------------------------------
