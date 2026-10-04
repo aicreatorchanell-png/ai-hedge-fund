@@ -1,0 +1,3734 @@
+{
+ "plan": {
+  "plan_id": "crypto-v1",
+  "families": [
+   "donchian_breakout",
+   "ema_trend",
+   "tsmom",
+   "volatility_breakout",
+   "bollinger_reversion",
+   "opening_range"
+  ],
+  "instruments": [
+   "BTCUSDT.BINANCE",
+   "ETHUSDT.BINANCE",
+   "XRPUSDT.BINANCE",
+   "LTCUSDT.BINANCE",
+   "ADAUSDT.BINANCE",
+   "BNBUSDT.BINANCE"
+  ],
+  "dev_start": "2018-07-01",
+  "dev_end": "2025-08-31",
+  "reserve_start": "2025-09-01",
+  "walk_forward": {
+   "train_months": 24,
+   "test_months": 6,
+   "step_months": 6
+  },
+  "cost_multipliers": [
+   1.0,
+   2.0
+  ],
+  "starting_cash": 10000.0,
+  "periods_per_year": 365,
+  "min_train_trades": 20,
+  "risk": {
+   "risk_per_trade": 0.005,
+   "max_notional_fraction": 0.9,
+   "max_daily_loss": 0.03,
+   "max_drawdown": 0.2,
+   "max_open_positions": 1,
+   "max_entries_per_day": 20
+  }
+ },
+ "plan_hash": "252051415d0c2228",
+ "n_trials": 504,
+ "gates_hash": "2fc90f4ad972f482",
+ "lines": [
+  {
+   "family": "donchian_breakout",
+   "instrument": "BTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": true,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 481.0,
+    "oos_sharpe_annual": 0.030063021301930816,
+    "deflated_sharpe": 0.001404426781847312,
+    "pbo": 0.4142857142857143,
+    "max_drawdown": 0.543873808597882,
+    "walk_forward_positive_share": 0.6,
+    "bootstrap_sharpe_lower": -0.04992367103410843
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": true,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 281.0,
+      "oos_sharpe_annual": 0.3659637923994593,
+      "deflated_sharpe": 0.012941532231385047,
+      "pbo": 0.4142857142857143,
+      "max_drawdown": 0.42645847171676765,
+      "walk_forward_positive_share": 0.7,
+      "bootstrap_sharpe_lower": -0.028059517143412257
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04393854301048104
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.10617844751885465
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.1023294785401558
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 20, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.09970095755534972
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 20, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.0832284385133368
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 20, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.008746545036431871
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.02727045090092495
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.060699370748302194
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0742799534189106
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.039570594327367994
+    }
+   ]
+  },
+  {
+   "family": "donchian_breakout",
+   "instrument": "ETHUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": true,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 328.0,
+    "oos_sharpe_annual": 0.38368659120617027,
+    "deflated_sharpe": 0.0138378879271125,
+    "pbo": 0.0,
+    "max_drawdown": 0.2587888034162136,
+    "walk_forward_positive_share": 0.8,
+    "bootstrap_sharpe_lower": -0.02307415649243947
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": true,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 328.0,
+      "oos_sharpe_annual": 0.24062943989526428,
+      "deflated_sharpe": 0.005735588998067315,
+      "pbo": 0.0,
+      "max_drawdown": 0.2624030420539307,
+      "walk_forward_positive_share": 0.6,
+      "bootstrap_sharpe_lower": -0.03567823068328293
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04163631659736258
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.10716994654060269
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.12656478373640875
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.11296603652123484
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0734566263096948
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04756272807061228
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.009492805683228252
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.020260869057440834
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.05092964542618902
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 20, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.00887326269299237
+    }
+   ]
+  },
+  {
+   "family": "donchian_breakout",
+   "instrument": "XRPUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 611.0,
+    "oos_sharpe_annual": -0.34589009467008475,
+    "deflated_sharpe": 0.0001056398676812789,
+    "pbo": 0.11428571428571428,
+    "max_drawdown": 0.44146572585267063,
+    "walk_forward_positive_share": 0.2,
+    "bootstrap_sharpe_lower": -0.08161639081918956
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 535.0,
+      "oos_sharpe_annual": -0.38451024893205166,
+      "deflated_sharpe": 7.541198278658695e-05,
+      "pbo": 0.11428571428571428,
+      "max_drawdown": 0.500730287750875,
+      "walk_forward_positive_share": 0.2,
+      "bootstrap_sharpe_lower": -0.10506533979917373
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.03789024093351001
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.004038595440762966
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0162797167110875
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.031496860532224925
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.010966997300302235
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.010822926754192446
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.03659116922507131
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.025793080929943882
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.01045499541551321
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.03075552076139807
+    }
+   ]
+  },
+  {
+   "family": "donchian_breakout",
+   "instrument": "LTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 551.0,
+    "oos_sharpe_annual": -0.6735006980030587,
+    "deflated_sharpe": 5.470670380716896e-06,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.47954891359904417,
+    "walk_forward_positive_share": 0.3,
+    "bootstrap_sharpe_lower": -0.08444531626408655
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 519.0,
+      "oos_sharpe_annual": -1.064289687737294,
+      "deflated_sharpe": 1.1109656300406717e-07,
+      "pbo": 0.014285714285714285,
+      "max_drawdown": 0.5283772921318193,
+      "walk_forward_positive_share": 0.3,
+      "bootstrap_sharpe_lower": -0.10849805281917665
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03484239899499412
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.05462824311368588
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03166255473168276
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04423975777065472
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.02251096950364973
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.02631282467260637
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.00792899353565061
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.006204675048233108
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.0035666969887526386
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.03326754079968846
+    }
+   ]
+  },
+  {
+   "family": "donchian_breakout",
+   "instrument": "ADAUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 283.0,
+    "oos_sharpe_annual": 0.2761646927427976,
+    "deflated_sharpe": 0.006602728468338827,
+    "pbo": 0.0,
+    "max_drawdown": 0.18021462295116308,
+    "walk_forward_positive_share": 0.5,
+    "bootstrap_sharpe_lower": -0.04783246135897001
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 439.0,
+      "oos_sharpe_annual": -0.7751432920274666,
+      "deflated_sharpe": 1.4511774229645774e-06,
+      "pbo": 0.0,
+      "max_drawdown": 0.33620009782529114,
+      "walk_forward_positive_share": 0.3,
+      "bootstrap_sharpe_lower": -0.10045357839832364
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.034587608714051296
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.043235335497713315
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.05153195764818623
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.06698246998035152
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.051448310552722254
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.021403464779120186
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.014538106192869693
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.01932214274339721
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.017356379268529957
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.0013316875070149606
+    }
+   ]
+  },
+  {
+   "family": "donchian_breakout",
+   "instrument": "BNBUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": true,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 294.0,
+    "oos_sharpe_annual": 0.6676526549622057,
+    "deflated_sharpe": 0.05516281965814787,
+    "pbo": 0.18571428571428572,
+    "max_drawdown": 0.19493537787926263,
+    "walk_forward_positive_share": 0.6,
+    "bootstrap_sharpe_lower": -0.011394524998340568
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 294.0,
+      "oos_sharpe_annual": 0.4772437959778219,
+      "deflated_sharpe": 0.0216678839807158,
+      "pbo": 0.18571428571428572,
+      "max_drawdown": 0.21137540042517866,
+      "walk_forward_positive_share": 0.4,
+      "bootstrap_sharpe_lower": -0.023498661553428352
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.05080348193204085
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.06044005719590912
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04498043084833054
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0615593579830394
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03755386054134553
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.016347542204519824
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.03669512459085737
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 20, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.015421742626180691
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"channel\": 20, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04716170585223785
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"donchian_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.020602822456368106
+    }
+   ]
+  },
+  {
+   "family": "ema_trend",
+   "instrument": "BTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": true,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 154.0,
+    "oos_sharpe_annual": 0.6670959331639756,
+    "deflated_sharpe": 0.057767663050918766,
+    "pbo": 0.0,
+    "max_drawdown": 0.14085965240466103,
+    "walk_forward_positive_share": 0.6,
+    "bootstrap_sharpe_lower": -0.012548052291226349
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 154.0,
+      "oos_sharpe_annual": 0.48516036734965906,
+      "deflated_sharpe": 0.023863226149090932,
+      "pbo": 0.0,
+      "max_drawdown": 0.15484411067704473,
+      "walk_forward_positive_share": 0.4,
+      "bootstrap_sharpe_lower": -0.022727106729177608
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.045853837970991004
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.07218982260372295
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.0712511533669282
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.07442229492265941
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.03512337612005588
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": -0.0068663349746253865
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.009258601397371448
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 2.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.04193930626834692
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.013421480771794721
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.04485537728136673
+    }
+   ]
+  },
+  {
+   "family": "ema_trend",
+   "instrument": "ETHUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 247.0,
+    "oos_sharpe_annual": 0.08113350318230335,
+    "deflated_sharpe": 0.00199681224526531,
+    "pbo": 0.04285714285714286,
+    "max_drawdown": 0.1941382254469285,
+    "walk_forward_positive_share": 0.4,
+    "bootstrap_sharpe_lower": -0.038532422888453176
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 247.0,
+      "oos_sharpe_annual": -0.16111892816231524,
+      "deflated_sharpe": 0.0003334734260105245,
+      "pbo": 0.04285714285714286,
+      "max_drawdown": 0.22248623971818282,
+      "walk_forward_positive_share": 0.3,
+      "bootstrap_sharpe_lower": -0.05146069343916016
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.033176568178294126
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.07505113627441214
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.0894568299811811
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.07817939286019317
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.022245049094431202
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 2.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.03751447636374859
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 2.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.007323585235369641
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 2.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.028840380698536873
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.013925090295213813
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.019985737961622504
+    }
+   ]
+  },
+  {
+   "family": "ema_trend",
+   "instrument": "XRPUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 385.0,
+    "oos_sharpe_annual": -0.393633450662449,
+    "deflated_sharpe": 4.9288387377992524e-05,
+    "pbo": 0.0,
+    "max_drawdown": 0.2052349540573406,
+    "walk_forward_positive_share": 0.4,
+    "bootstrap_sharpe_lower": -0.06981543828842185
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 385.0,
+      "oos_sharpe_annual": -0.8972444570999352,
+      "deflated_sharpe": 3.5714755374794397e-07,
+      "pbo": 0.0,
+      "max_drawdown": 0.30406621091391306,
+      "walk_forward_positive_share": 0.2,
+      "bootstrap_sharpe_lower": -0.09765787246478969
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": -0.010699732689608226
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 15, \"slow\": 96}}",
+     "train_sharpe": -0.022335118091233848
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": -0.0035150164962105203
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.0293999618423757
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": -0.0015160622562503932
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.002982303329589674
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": -0.016342971476045444
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": -0.010561295879630518
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": -0.00962773321061947
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.004362756059597159
+    }
+   ]
+  },
+  {
+   "family": "ema_trend",
+   "instrument": "LTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 320.0,
+    "oos_sharpe_annual": -0.7570288769691284,
+    "deflated_sharpe": 1.413689794014284e-06,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.3193689795039595,
+    "walk_forward_positive_share": 0.3,
+    "bootstrap_sharpe_lower": -0.09110145865544893
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 320.0,
+      "oos_sharpe_annual": -1.2164413203621935,
+      "deflated_sharpe": 7.362999803385491e-09,
+      "pbo": 0.014285714285714285,
+      "max_drawdown": 0.3741935569947591,
+      "walk_forward_positive_share": 0.2,
+      "bootstrap_sharpe_lower": -0.11584650117445379
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.0424618590261408
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.0695916513755131
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.04460140258602698
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.06420241299988504
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.022974791997584863
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 2.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.013039265215103277
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 2.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.021845970429785113
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 2.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": -0.007037367480726099
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": -0.003463414777031166
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.005022489935786218
+    }
+   ]
+  },
+  {
+   "family": "ema_trend",
+   "instrument": "ADAUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 280.0,
+    "oos_sharpe_annual": 0.10338200259051991,
+    "deflated_sharpe": 0.002284463249789684,
+    "pbo": 0.0,
+    "max_drawdown": 0.13361077470213512,
+    "walk_forward_positive_share": 0.4,
+    "bootstrap_sharpe_lower": -0.0411922918860145
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 280.0,
+      "oos_sharpe_annual": -0.2675610463382216,
+      "deflated_sharpe": 0.0001494059568816136,
+      "pbo": 0.0,
+      "max_drawdown": 0.2092813179491908,
+      "walk_forward_positive_share": 0.3,
+      "bootstrap_sharpe_lower": -0.061924324483607754
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.060727315154439916
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.08956750982319708
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.07999355049259935
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.08082605409697602
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.03822933695569859
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": -0.0017076797633255618
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.0020213236250249587
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.006874366899386473
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.004817430136379731
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.01892259729311956
+    }
+   ]
+  },
+  {
+   "family": "ema_trend",
+   "instrument": "BNBUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 116.0,
+    "oos_sharpe_annual": 0.40107969693782497,
+    "deflated_sharpe": 0.015027010164717209,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.1782387479513432,
+    "walk_forward_positive_share": 0.5,
+    "bootstrap_sharpe_lower": -0.01825263534749695
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 116.0,
+      "oos_sharpe_annual": 0.32671723486278154,
+      "deflated_sharpe": 0.00978669438287637,
+      "pbo": 0.014285714285714285,
+      "max_drawdown": 0.15593875714471628,
+      "walk_forward_positive_share": 0.4,
+      "bootstrap_sharpe_lower": -0.02401788982435112
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.09201121277017095
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}}",
+     "train_sharpe": 0.08646129987906379
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.051371337284238275
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.07436798033419609
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.07237980500590899
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.01601534590771082
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 2.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.00023656375345719558
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 48}}",
+     "train_sharpe": 0.004533175893523422
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 15, \"slow\": 96}}",
+     "train_sharpe": 0.036335926395985915
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"ema_trend\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"fast\": 12, \"reward_risk\": 4.0, \"signal_minutes\": 15, \"slow\": 96}}",
+     "train_sharpe": 0.057749416158365846
+    }
+   ]
+  },
+  {
+   "family": "tsmom",
+   "instrument": "BTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 614.0,
+    "oos_sharpe_annual": 0.3115955453778959,
+    "deflated_sharpe": 0.00888251381286527,
+    "pbo": 0.0,
+    "max_drawdown": 0.19045777217474424,
+    "walk_forward_positive_share": 0.5,
+    "bootstrap_sharpe_lower": -0.030831334843881786
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 614.0,
+      "oos_sharpe_annual": -0.44742178258301013,
+      "deflated_sharpe": 2.768737392758773e-05,
+      "pbo": 0.0,
+      "max_drawdown": 0.2732795837958587,
+      "walk_forward_positive_share": 0.3,
+      "bootstrap_sharpe_lower": -0.0718129868574209
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.057514949229165835
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.10865220451561589
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.06953697938570393
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.07217002702637534
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0369547395099271
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.032266454017118584
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.017112851074863787
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.01787756333010969
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 24, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.01961493016227225
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 24, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03855874029332145
+    }
+   ]
+  },
+  {
+   "family": "tsmom",
+   "instrument": "ETHUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": true,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 656.0,
+    "oos_sharpe_annual": 0.27060450809036796,
+    "deflated_sharpe": 0.006881308190484381,
+    "pbo": 0.0,
+    "max_drawdown": 0.140281336014344,
+    "walk_forward_positive_share": 0.6,
+    "bootstrap_sharpe_lower": -0.032091894107836284
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 656.0,
+      "oos_sharpe_annual": -0.39076885207465545,
+      "deflated_sharpe": 4.736150731389654e-05,
+      "pbo": 0.0,
+      "max_drawdown": 0.2357863301587073,
+      "walk_forward_positive_share": 0.4,
+      "bootstrap_sharpe_lower": -0.0662225081657632
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.036003901339100114
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.08360289332289114
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.07773963037907942
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.10753275820031959
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.06839167764488065
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.017168874743948907
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.006291321809567345
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.02664170590456529
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0005222740689692093
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.005684228850562497
+    }
+   ]
+  },
+  {
+   "family": "tsmom",
+   "instrument": "XRPUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 615.0,
+    "oos_sharpe_annual": -0.2130751445856317,
+    "deflated_sharpe": 0.0002261751991714787,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.24564161619482194,
+    "walk_forward_positive_share": 0.3,
+    "bootstrap_sharpe_lower": -0.06338025490434829
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 615.0,
+      "oos_sharpe_annual": -0.7786817910362009,
+      "deflated_sharpe": 1.3760113420945842e-06,
+      "pbo": 0.014285714285714285,
+      "max_drawdown": 0.32635353158033664,
+      "walk_forward_positive_share": 0.3,
+      "bootstrap_sharpe_lower": -0.09468295712104562
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.010150716960556796
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.010186243904843411
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.027302272064036095
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.051523268234911795
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03105952812369729
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.004612706365619778
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.02950350831364747
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.039454245660022605
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.05951899887844727
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.010371506023100798
+    }
+   ]
+  },
+  {
+   "family": "tsmom",
+   "instrument": "LTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 585.0,
+    "oos_sharpe_annual": -0.3171705165096607,
+    "deflated_sharpe": 9.061165127892223e-05,
+    "pbo": 0.02857142857142857,
+    "max_drawdown": 0.20157364283202006,
+    "walk_forward_positive_share": 0.5,
+    "bootstrap_sharpe_lower": -0.0630423237507048
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 585.0,
+      "oos_sharpe_annual": -0.8824838592880071,
+      "deflated_sharpe": 3.472209908504439e-07,
+      "pbo": 0.02857142857142857,
+      "max_drawdown": 0.28993689032365255,
+      "walk_forward_positive_share": 0.4,
+      "bootstrap_sharpe_lower": -0.09419374706255121
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0037876417872924153
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04670568680495234
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03245363999221147
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.06411395963925605
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.041963623497907034
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.01942788805903463
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.000844650587074778
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.03873376156221919
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 24, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.038510777760998115
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.02395539621985631
+    }
+   ]
+  },
+  {
+   "family": "tsmom",
+   "instrument": "ADAUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 549.0,
+    "oos_sharpe_annual": -0.11709515713820509,
+    "deflated_sharpe": 0.0004728734172460551,
+    "pbo": 0.0,
+    "max_drawdown": 0.21146159776382034,
+    "walk_forward_positive_share": 0.4,
+    "bootstrap_sharpe_lower": -0.06822636250142468
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 549.0,
+      "oos_sharpe_annual": -0.5974675512384527,
+      "deflated_sharpe": 7.6039784084783585e-06,
+      "pbo": 0.0,
+      "max_drawdown": 0.27428380664810004,
+      "walk_forward_positive_share": 0.3,
+      "bootstrap_sharpe_lower": -0.09498369279832734
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.057348121877609064
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.06299948421371157
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.06586430013964754
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0756984672517362
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03813737604195483
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.008258300255794793
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.02723937293616023
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.020793845265905504
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.037626867083035795
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.005244241044772596
+    }
+   ]
+  },
+  {
+   "family": "tsmom",
+   "instrument": "BNBUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 612.0,
+    "oos_sharpe_annual": -0.17863908259414787,
+    "deflated_sharpe": 0.0002860502450378899,
+    "pbo": 0.0,
+    "max_drawdown": 0.1918350743917948,
+    "walk_forward_positive_share": 0.3,
+    "bootstrap_sharpe_lower": -0.060374050157419853
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 612.0,
+      "oos_sharpe_annual": -0.9131119092152917,
+      "deflated_sharpe": 2.4653467062486597e-07,
+      "pbo": 0.0,
+      "max_drawdown": 0.31723411865945295,
+      "walk_forward_positive_share": 0.1,
+      "bootstrap_sharpe_lower": -0.10092034451729813
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.05537108784602902
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 24, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.055822264444555375
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.05180250376170269
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.06346582307779039
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03036693843216513
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.01688078812050405
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.045789797670922054
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.05706192321000937
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 24, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.01764145106425426
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"tsmom\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 4.0, \"lookback\": 72, \"max_hold_bars\": 72, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.00790922623289414
+    }
+   ]
+  },
+  {
+   "family": "volatility_breakout",
+   "instrument": "BTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 189.0,
+    "oos_sharpe_annual": 0.10120443261148365,
+    "deflated_sharpe": 0.002353390680025142,
+    "pbo": 0.35714285714285715,
+    "max_drawdown": 0.5064657278247037,
+    "walk_forward_positive_share": 0.4,
+    "bootstrap_sharpe_lower": -0.04234186314516352
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": true,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 154.0,
+      "oos_sharpe_annual": 0.4145029625497965,
+      "deflated_sharpe": 0.01631055680503615,
+      "pbo": 0.35714285714285715,
+      "max_drawdown": 0.5445738336830768,
+      "walk_forward_positive_share": 0.6,
+      "bootstrap_sharpe_lower": -0.026268857914866408
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.07692613592737604
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.10943735395814827
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.09108641010467611
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.08661806376645859
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.07002789369094044
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.0310063598381439
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0334548532105767
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.06264971458133087
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.07489303251059605
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.01490206659772187
+    }
+   ]
+  },
+  {
+   "family": "volatility_breakout",
+   "instrument": "ETHUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": true,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": true,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 187.0,
+    "oos_sharpe_annual": 0.535618384051436,
+    "deflated_sharpe": 0.03135074005802495,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.31674513577353003,
+    "walk_forward_positive_share": 0.7,
+    "bootstrap_sharpe_lower": -0.012945758339470594
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": true,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 225.0,
+      "oos_sharpe_annual": 0.21413533231119386,
+      "deflated_sharpe": 0.004808143219802696,
+      "pbo": 0.014285714285714285,
+      "max_drawdown": 0.2464871942242628,
+      "walk_forward_positive_share": 0.4,
+      "bootstrap_sharpe_lower": -0.0335574005753617
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.04540511868044369
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.08242163790477908
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.08563073004755459
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.09203809870363194
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.07378527460456939
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.02011019671166633
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03267072679244345
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03710650782850982
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 1.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0557720878473821
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.040065848697843603
+    }
+   ]
+  },
+  {
+   "family": "volatility_breakout",
+   "instrument": "XRPUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 492.0,
+    "oos_sharpe_annual": -0.6436066721305508,
+    "deflated_sharpe": 0.00018208030668720614,
+    "pbo": 0.3142857142857143,
+    "max_drawdown": 0.491605139803278,
+    "walk_forward_positive_share": 0.3,
+    "bootstrap_sharpe_lower": -0.15211685862007746
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 452.0,
+      "oos_sharpe_annual": -1.3064926408628585,
+      "deflated_sharpe": 5.8396715701709846e-05,
+      "pbo": 0.3142857142857143,
+      "max_drawdown": 0.6439423620672908,
+      "walk_forward_positive_share": 0.3,
+      "bootstrap_sharpe_lower": -0.19089901470756132
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03920951912915336
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.014062655708090437
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 1.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.034903478442357735
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03021856473944973
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0009563429558125934
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.007817971488687809
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.006940910596898358
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.016673917192786908
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.014479918825488403
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.06435297865994244
+    }
+   ]
+  },
+  {
+   "family": "volatility_breakout",
+   "instrument": "LTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": false,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 637.0,
+    "oos_sharpe_annual": -1.6208502266673768,
+    "deflated_sharpe": 1.92583756457769e-11,
+    "pbo": 0.5857142857142857,
+    "max_drawdown": 0.6503414328855504,
+    "walk_forward_positive_share": 0.2,
+    "bootstrap_sharpe_lower": -0.15073184566568462
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": false,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 560.0,
+      "oos_sharpe_annual": -2.1046974400031053,
+      "deflated_sharpe": 2.278004030708998e-14,
+      "pbo": 0.5857142857142857,
+      "max_drawdown": 0.6873159655720427,
+      "walk_forward_positive_share": 0.1,
+      "bootstrap_sharpe_lower": -0.18154262858314704
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.04548615616638776
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.001088397999555757
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.004050021486457531
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 1.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.03293247211725965
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 1.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.0032779037822575053
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.027641291884676938
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0015710263476646006
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 1.5, \"reward_risk\": 1.5, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.00911581619616376
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": -1.006531419503441e-05
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 1.5, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.006753835403168024
+    }
+   ]
+  },
+  {
+   "family": "volatility_breakout",
+   "instrument": "ADAUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 285.0,
+    "oos_sharpe_annual": 0.3314130843215811,
+    "deflated_sharpe": 0.009163261705569728,
+    "pbo": 0.0,
+    "max_drawdown": 0.35263110987917423,
+    "walk_forward_positive_share": 0.5,
+    "bootstrap_sharpe_lower": -0.043963541034949045
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 284.0,
+      "oos_sharpe_annual": -0.04292245250432006,
+      "deflated_sharpe": 0.0008388020474141234,
+      "pbo": 0.0,
+      "max_drawdown": 0.41585843312736637,
+      "walk_forward_positive_share": 0.4,
+      "bootstrap_sharpe_lower": -0.05889196110499022
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.01523704980895672
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.032906597792152686
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": 0.0516436753023023
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.06615452023239328
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.049884805989812715
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.0413444400399915
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.02659641909462394
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.043793820023835243
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.048214085400873415
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.053278689475404345
+    }
+   ]
+  },
+  {
+   "family": "volatility_breakout",
+   "instrument": "BNBUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 264.0,
+    "oos_sharpe_annual": 0.46204749101971093,
+    "deflated_sharpe": 0.009590576952803806,
+    "pbo": 0.0,
+    "max_drawdown": 0.5912417611445783,
+    "walk_forward_positive_share": 0.4,
+    "bootstrap_sharpe_lower": -0.05331436822989588
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 245.0,
+      "oos_sharpe_annual": 0.404983545424447,
+      "deflated_sharpe": 0.006701235798854205,
+      "pbo": 0.0,
+      "max_drawdown": 0.5922010042519084,
+      "walk_forward_positive_share": 0.4,
+      "bootstrap_sharpe_lower": -0.05728300830519258
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.010206077643392316
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.027347843052444178
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.08105915482911356
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.07674274765182487
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.06872386492572188
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.06685433173530127
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.0007316814345740611
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}}",
+     "train_sharpe": -0.006161327548206481
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.03880523830268947
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"volatility_breakout\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.0, \"range_mult\": 1.5, \"reward_risk\": 3.0, \"signal_minutes\": 15}}",
+     "train_sharpe": 0.005033691448604879
+    }
+   ]
+  },
+  {
+   "family": "bollinger_reversion",
+   "instrument": "BTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1489.0,
+    "oos_sharpe_annual": -4.319628333789244,
+    "deflated_sharpe": 2.6505484558702466e-85,
+    "pbo": 0.14285714285714285,
+    "max_drawdown": 0.8680078841703299,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.2683749500700817
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1141.0,
+      "oos_sharpe_annual": -4.715974544206981,
+      "deflated_sharpe": 7.383894105013918e-144,
+      "pbo": 0.14285714285714285,
+      "max_drawdown": 0.8891925835368859,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.2864091881901993
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.0997851911767808
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.07850310174626762
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.12277479317546765
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.13996130748608554
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.17777792779238835
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.18556141060037223
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.20014648384711067
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.21908713696618393
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.22126025314636827
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.2190071905137015
+    }
+   ]
+  },
+  {
+   "family": "bollinger_reversion",
+   "instrument": "ETHUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1588.0,
+    "oos_sharpe_annual": -4.291498305640398,
+    "deflated_sharpe": 2.68898592517285e-71,
+    "pbo": 0.12857142857142856,
+    "max_drawdown": 0.8621054256844257,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.26446701762158786
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1246.0,
+      "oos_sharpe_annual": -4.95494538875311,
+      "deflated_sharpe": 8.86544535420213e-130,
+      "pbo": 0.12857142857142856,
+      "max_drawdown": 0.8869290026653838,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.2999431867486071
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.10524094198898801
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.09304908918752673
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.11634575452897826
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.1483854943945046
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.1966123790925314
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.18681927867922973
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 50, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.2059117262434858
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.2109882949536205
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.21457473607255323
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.22184610240398325
+    }
+   ]
+  },
+  {
+   "family": "bollinger_reversion",
+   "instrument": "XRPUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1811.0,
+    "oos_sharpe_annual": -4.250632879324055,
+    "deflated_sharpe": 7.723373400468064e-69,
+    "pbo": 0.4857142857142857,
+    "max_drawdown": 0.8823349286410423,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.26249108164369633
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1207.0,
+      "oos_sharpe_annual": -4.760974711913827,
+      "deflated_sharpe": 1.929167301141966e-130,
+      "pbo": 0.4857142857142857,
+      "max_drawdown": 0.8868598911208572,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.2902430574348544
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.0966162989008727
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.10461752161658311
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.5, \"period\": 20, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.10851510473640227
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.1166063133545497
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.16947745790533514
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.18520325622252648
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.19594917741032272
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.22265588348930776
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.220405318654093
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.22161349800078237
+    }
+   ]
+  },
+  {
+   "family": "bollinger_reversion",
+   "instrument": "LTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1940.0,
+    "oos_sharpe_annual": -3.5926794747195725,
+    "deflated_sharpe": 4.876073078059165e-46,
+    "pbo": 0.22857142857142856,
+    "max_drawdown": 0.7918512541820719,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.22690433270409557
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1593.0,
+      "oos_sharpe_annual": -5.147377029033507,
+      "deflated_sharpe": 1.4416818209654718e-105,
+      "pbo": 0.22857142857142856,
+      "max_drawdown": 0.8704088772664247,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.30687638246215637
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.10011239112506305
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.05831354176103831
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.07300038320229776
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.10659022845647707
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.1508658339792556
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.1395388334467349
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.1623561005719511
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.18344400981024606
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.18869677585259653
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.21470699951281014
+    }
+   ]
+  },
+  {
+   "family": "bollinger_reversion",
+   "instrument": "ADAUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1852.0,
+    "oos_sharpe_annual": -4.311502331786661,
+    "deflated_sharpe": 3.880035845166259e-62,
+    "pbo": 0.32857142857142857,
+    "max_drawdown": 0.8684843920909774,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.26253670000037976
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1358.0,
+      "oos_sharpe_annual": -5.432424347008031,
+      "deflated_sharpe": 1.026035637299801e-128,
+      "pbo": 0.32857142857142857,
+      "max_drawdown": 0.8885759332640366,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.32524469806879
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.10233861853368383
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.08480126989528439
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.1135449160719601
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.15986430064402707
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.18554066721572351
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.18725977493388804
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.2009213758519584
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.19768100224721905
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.1832536202118536
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.1756160168883392
+    }
+   ]
+  },
+  {
+   "family": "bollinger_reversion",
+   "instrument": "BNBUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1540.0,
+    "oos_sharpe_annual": -4.175767330433536,
+    "deflated_sharpe": 6.65882764738777e-79,
+    "pbo": 0.22857142857142856,
+    "max_drawdown": 0.8493942454934721,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.25919968961345713
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1194.0,
+      "oos_sharpe_annual": -4.731552848711676,
+      "deflated_sharpe": 4.868618442450885e-134,
+      "pbo": 0.22857142857142856,
+      "max_drawdown": 0.875019605358337,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.2863375086838119
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.10447597672691518
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.0829167982314478
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.08216367391906723
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.09981586256495102
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.15476863782331485
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.18508414141899496
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 50, \"signal_minutes\": 15}}",
+     "train_sharpe": -0.21143609180958028
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 50, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.22152123297813625
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.22750035907376684
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"bollinger_reversion\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}}",
+     "train_sharpe": -0.2195930462525327
+    }
+   ]
+  },
+  {
+   "family": "opening_range",
+   "instrument": "BTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1176.0,
+    "oos_sharpe_annual": -4.763758092076911,
+    "deflated_sharpe": 1.4090139696613733e-37,
+    "pbo": 0.0,
+    "max_drawdown": 0.765062610938559,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.2909043383315532
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1090.0,
+      "oos_sharpe_annual": -7.989786006848608,
+      "deflated_sharpe": 9.017746984438328e-86,
+      "pbo": 0.0,
+      "max_drawdown": 0.8727612707307867,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.4634185938158675
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 30, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.16312115140818967
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.0292074014561507
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 1.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.06672009317841576
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.10374650649664968
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.13286634731089034
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.15174630053434174
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.17202059812870138
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.19583199585928354
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.2160230953488925
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.23110534735247537
+    }
+   ]
+  },
+  {
+   "family": "opening_range",
+   "instrument": "ETHUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1194.0,
+    "oos_sharpe_annual": -3.6576110698721043,
+    "deflated_sharpe": 3.005597053236885e-26,
+    "pbo": 0.0,
+    "max_drawdown": 0.7098500641028822,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.23553175835081785
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1172.0,
+      "oos_sharpe_annual": -6.718189627253065,
+      "deflated_sharpe": 1.0908972412319465e-61,
+      "pbo": 0.0,
+      "max_drawdown": 0.8580810226246878,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.40081784665847703
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"range_minutes\": 30, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.13489757239267075
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"range_minutes\": 30, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.0547771741084044
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.027982874314162246
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.03330535048617728
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.0734903797496906
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.11308717341998276
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.15589276877596608
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.19034467633683
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.2029776724493356
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ETHUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.20885030362623336
+    }
+   ]
+  },
+  {
+   "family": "opening_range",
+   "instrument": "XRPUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1273.0,
+    "oos_sharpe_annual": -3.5579608718744127,
+    "deflated_sharpe": 2.6125108466238057e-25,
+    "pbo": 0.02857142857142857,
+    "max_drawdown": 0.7153966150158195,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.2345988655675071
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1236.0,
+      "oos_sharpe_annual": -6.603597453109246,
+      "deflated_sharpe": 8.706720697197637e-59,
+      "pbo": 0.02857142857142857,
+      "max_drawdown": 0.8600422252976415,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.4005565028912462
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.12032240089796029
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"range_minutes\": 30, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.14209754525723653
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.05223660889621045
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"range_minutes\": 30, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.07754562700565389
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.08930371202088794
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.05757447916811353
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.11419524573495003
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.14775965335490387
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.1754347718752102
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"XRPUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.21948045970817004
+    }
+   ]
+  },
+  {
+   "family": "opening_range",
+   "instrument": "LTCUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1160.0,
+    "oos_sharpe_annual": -4.110515289884314,
+    "deflated_sharpe": 4.02571066380278e-31,
+    "pbo": 0.04285714285714286,
+    "max_drawdown": 0.7179400728521648,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.25881551482724846
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1130.0,
+      "oos_sharpe_annual": -7.002242727986914,
+      "deflated_sharpe": 1.1498665863955021e-69,
+      "pbo": 0.04285714285714286,
+      "max_drawdown": 0.8424572082877515,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.4128564041541504
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.12453360330723985
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.09024876897120307
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.08345604104122095
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.132990576443493
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.16263704893306433
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.15527488114447574
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.15745538796849956
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.16735445779384595
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.20492519132098047
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"LTCUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.24134471650958864
+    }
+   ]
+  },
+  {
+   "family": "opening_range",
+   "instrument": "ADAUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1177.0,
+    "oos_sharpe_annual": -2.215170404473886,
+    "deflated_sharpe": 5.7081859299579104e-15,
+    "pbo": 0.07142857142857142,
+    "max_drawdown": 0.5259293633327107,
+    "walk_forward_positive_share": 0.1,
+    "bootstrap_sharpe_lower": -0.15891819604035196
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1142.0,
+      "oos_sharpe_annual": -4.928192066410249,
+      "deflated_sharpe": 3.785703172279361e-40,
+      "pbo": 0.07142857142857142,
+      "max_drawdown": 0.7460161862614074,
+      "walk_forward_positive_share": 0.1,
+      "bootstrap_sharpe_lower": -0.3076793741609758
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"range_minutes\": 30, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.07328554210769953
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.09830857082842083
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.05906742525670662
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.027192542616475066
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.02456810318491771
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.03392663616009972
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.09575965805736385
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.11784091889940256
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.17078832696044974
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"ADAUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.15606643586190247
+    }
+   ]
+  },
+  {
+   "family": "opening_range",
+   "instrument": "BNBUSDT.BINANCE",
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1174.0,
+    "oos_sharpe_annual": -3.5724567151050315,
+    "deflated_sharpe": 3.780245725347423e-26,
+    "pbo": 0.0,
+    "max_drawdown": 0.6535990550281996,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.2337631778041761
+   },
+   "cost_stress": {
+    "2.0": {
+     "passed": false,
+     "checks": {
+      "min_trades": true,
+      "oos_sharpe": false,
+      "deflated_sharpe": false,
+      "pbo": true,
+      "max_drawdown": false,
+      "walk_forward": false,
+      "bootstrap": false
+     },
+     "values": {
+      "n_trades": 1127.0,
+      "oos_sharpe_annual": -7.11179544448715,
+      "deflated_sharpe": 4.059788050955e-71,
+      "pbo": 0.0,
+      "max_drawdown": 0.8349387612164825,
+      "walk_forward_positive_share": 0.0,
+      "bootstrap_sharpe_lower": -0.4237011979305599
+     }
+    }
+   },
+   "choices": [
+    {
+     "fold": "2020-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.10250505919842004
+    },
+    {
+     "fold": "2021-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.06460121889650325
+    },
+    {
+     "fold": "2021-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 1.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.059583258163879264
+    },
+    {
+     "fold": "2022-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.08429099799543015
+    },
+    {
+     "fold": "2022-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.08587762928441942
+    },
+    {
+     "fold": "2023-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.08569045153599184
+    },
+    {
+     "fold": "2023-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.1807823069395218
+    },
+    {
+     "fold": "2024-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.20626746215836358
+    },
+    {
+     "fold": "2024-07-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.23052807425055413
+    },
+    {
+     "fold": "2025-01-01",
+     "choice": "{\"c\": 1.0, \"f\": \"opening_range\", \"i\": \"BNBUSDT.BINANCE\", \"p\": {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}}",
+     "train_sharpe": -0.24452706502016153
+    }
+   ]
+  }
+ ],
+ "combinations": {
+  "family:donchian_breakout": {
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 2548.0,
+    "oos_sharpe_annual": 0.07289462734093716,
+    "deflated_sharpe": 0.0019085074203555859,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.21874223652408142,
+    "walk_forward_positive_share": 0.5,
+    "bootstrap_sharpe_lower": -0.04830238280690054
+   },
+   "members": 6
+  },
+  "family:ema_trend": {
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 1502.0,
+    "oos_sharpe_annual": 0.16627100158850097,
+    "deflated_sharpe": 0.0036074891375013655,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.116427062253179,
+    "walk_forward_positive_share": 0.5,
+    "bootstrap_sharpe_lower": -0.035346707521834775
+   },
+   "members": 6
+  },
+  "family:tsmom": {
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": true,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 3631.0,
+    "oos_sharpe_annual": -0.04264810503252736,
+    "deflated_sharpe": 0.0008189715575125799,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.14839291016532374,
+    "walk_forward_positive_share": 0.4,
+    "bootstrap_sharpe_lower": -0.05542442928647484
+   },
+   "members": 6
+  },
+  "family:volatility_breakout": {
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 2054.0,
+    "oos_sharpe_annual": 0.11594827378722235,
+    "deflated_sharpe": 0.002489930499833597,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.25173655446684196,
+    "walk_forward_positive_share": 0.4,
+    "bootstrap_sharpe_lower": -0.04880578936364147
+   },
+   "members": 6
+  },
+  "family:bollinger_reversion": {
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 10220.0,
+    "oos_sharpe_annual": -5.907183592513982,
+    "deflated_sharpe": 1.270888901875354e-139,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.8546523049839758,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.3518166835897198
+   },
+   "members": 6
+  },
+  "family:opening_range": {
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 7154.0,
+    "oos_sharpe_annual": -6.6313468776217785,
+    "deflated_sharpe": 3.0368306392087042e-58,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.6842031572618918,
+    "walk_forward_positive_share": 0.0,
+    "bootstrap_sharpe_lower": -0.39365871773675765
+   },
+   "members": 6
+  },
+  "all": {
+   "passed": false,
+   "checks": {
+    "min_trades": true,
+    "oos_sharpe": false,
+    "deflated_sharpe": false,
+    "pbo": true,
+    "max_drawdown": false,
+    "walk_forward": false,
+    "bootstrap": false
+   },
+   "values": {
+    "n_trades": 27109.0,
+    "oos_sharpe_annual": -1.7615212956532602,
+    "deflated_sharpe": 2.241156312723189e-12,
+    "pbo": 0.014285714285714285,
+    "max_drawdown": 0.41108032338055345,
+    "walk_forward_positive_share": 0.1,
+    "bootstrap_sharpe_lower": -0.1462616395556219
+   },
+   "members": 36
+  }
+ },
+ "any_passed": false
+}
