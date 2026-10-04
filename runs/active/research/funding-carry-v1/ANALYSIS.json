@@ -1,0 +1,1947 @@
+{
+ "plan_id": "funding-carry-v1",
+ "plan_hash": "ea0a0651480d3465",
+ "n_trials_cumulative": 670,
+ "gates_hash": "2fc90f4ad972f482",
+ "verdict": "FAIL",
+ "passed_lines": [],
+ "passed_combinations": [],
+ "audit_fail": [],
+ "lines": {
+  "funding_carry:BTCUSDT": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": -0.0022158810114749627,
+      "sharpe_annual": -1.3957497495107676,
+      "max_drawdown": 0.0038617350012415397,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.773,
+        "bull": 0.138,
+        "sideways": 0.088
+       },
+       "vol": {
+        "high": 0.37,
+        "low": 0.32,
+        "normal": 0.309
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.0,
+      "sharpe_annual": 0.0,
+      "max_drawdown": -0.0,
+      "trades": 0,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.897,
+        "sideways": 0.103
+       },
+       "vol": {
+        "low": 0.467,
+        "normal": 0.31,
+        "high": 0.223
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.009705735571356344,
+      "sharpe_annual": -2.970536043093146,
+      "max_drawdown": 0.01565789168049536,
+      "trades": 11,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.729,
+        "bear": 0.215,
+        "sideways": 0.055
+       },
+       "vol": {
+        "low": 0.812,
+        "normal": 0.188
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": 0.011947013993517164,
+      "sharpe_annual": 5.038810687763307,
+      "max_drawdown": 0.0038683299798392135,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.582,
+        "bear": 0.272,
+        "sideways": 0.147
+       },
+       "vol": {
+        "low": 0.951,
+        "normal": 0.049
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.05171349548269055,
+      "sharpe_annual": 12.360774926746908,
+      "max_drawdown": 0.0026310549547879925,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.764,
+        "sideways": 0.198,
+        "bear": 0.038
+       },
+       "vol": {
+        "normal": 0.489,
+        "low": 0.352,
+        "high": 0.159
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": 0.014823739564317595,
+      "sharpe_annual": 6.186525518592665,
+      "max_drawdown": 0.003939694416288386,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.386,
+        "bear": 0.38,
+        "sideways": 0.234
+       },
+       "vol": {
+        "low": 0.5,
+        "normal": 0.473,
+        "high": 0.027
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.004011143567862918,
+      "sharpe_annual": 3.4158929001279046,
+      "max_drawdown": 0.001433534484406973,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.53,
+        "bear": 0.381,
+        "sideways": 0.088
+       },
+       "vol": {
+        "low": 0.602,
+        "normal": 0.298,
+        "high": 0.099
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 4,
+     "negative": 3,
+     "worst_fold": {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.009705735571356344,
+      "sharpe_annual": -2.970536043093146,
+      "max_drawdown": 0.01565789168049536,
+      "trades": 11,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.729,
+        "bear": 0.215,
+        "sideways": 0.055
+       },
+       "vol": {
+        "low": 0.812,
+        "normal": 0.188
+       }
+      }
+     },
+     "median_return": 0.004011143567862918,
+     "dispersion_std": 0.02016778853206223,
+     "dispersion_iqr": 0.01449331728465486,
+     "total_return": 0.07148284503159696,
+     "total_without_best_fold": 0.01879727666690556,
+     "best_fold_share_of_gains": 0.6268652569262669,
+     "max_fold_drawdown": 0.01565789168049536,
+     "fragile": true
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 540,
+       "sum_return": -0.002877757667950731,
+       "sharpe_annual": -0.7734348066501681,
+       "hit_rate": 0.07777777777777778,
+       "share_of_profit": 0.0
+      },
+      "bull": {
+       "days": 570,
+       "sum_return": 0.07057600942260212,
+       "sharpe_annual": 6.459197305347006,
+       "hit_rate": 0.5824561403508772,
+       "share_of_profit": 0.9806046683430034
+      },
+      "sideways": {
+       "days": 167,
+       "sum_return": 0.0013959194300917632,
+       "sharpe_annual": 0.784168730398928,
+       "hit_rate": 0.3592814371257485,
+       "share_of_profit": 0.019395331656996636
+      }
+     },
+     "top_regime": "bull",
+     "dominated": true,
+     "losing_regimes": [
+      "bear"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 160,
+       "sum_return": 0.011680071625151944,
+       "sharpe_annual": 5.420635723757138,
+       "hit_rate": 0.1875,
+       "share_of_profit": 0.16904568684848845
+      },
+      "low": {
+       "days": 731,
+       "sum_return": 0.03211771186438617,
+       "sharpe_annual": 3.2243982827977633,
+       "hit_rate": 0.39808481532147744,
+       "share_of_profit": 0.464839671909664
+      },
+      "normal": {
+       "days": 386,
+       "sum_return": 0.025296387695205036,
+       "sharpe_annual": 4.017896780874955,
+       "hit_rate": 0.2927461139896373,
+       "share_of_profit": 0.3661146412418475
+      }
+     },
+     "top_regime": "low",
+     "dominated": false,
+     "losing_regimes": []
+    },
+    "total_return_sum": 0.06909417118474315
+   },
+   "stability": {
+    "sharp_peak": 1,
+    "unstable_neighbours": 1,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 2
+   },
+   "concentration": {
+    "trades": 22,
+    "net_pnl": 1655.429545754168,
+    "top_trades": 2,
+    "top_trades_share": 0.9157116623094046,
+    "few_trades": true,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 6.77757645014446,
+    "share_positive": 1.0,
+    "p10": 4.291806932673625,
+    "p90": 9.21987745235912
+   },
+   "oos_return": 0.0714828450315983,
+   "oos_max_drawdown": 0.017675463158448812,
+   "oos_sharpe_annual": 3.738267536618946
+  },
+  "funding_carry:ETHUSDT": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.026393200572209063,
+      "sharpe_annual": -7.802648312036768,
+      "max_drawdown": 0.026774658729318612,
+      "trades": 17,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.707,
+        "bull": 0.155,
+        "sideways": 0.138
+       },
+       "vol": {
+        "normal": 0.464,
+        "low": 0.392,
+        "high": 0.144
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.0,
+      "sharpe_annual": 0.0,
+      "max_drawdown": -0.0,
+      "trades": 0,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.696,
+        "bull": 0.207,
+        "sideways": 0.098
+       },
+       "vol": {
+        "high": 0.397,
+        "normal": 0.326,
+        "low": 0.277
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.008172693032705403,
+      "sharpe_annual": -2.4907609485688993,
+      "max_drawdown": 0.013278611176022026,
+      "trades": 11,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.746,
+        "bear": 0.171,
+        "sideways": 0.083
+       },
+       "vol": {
+        "low": 1.0
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.013091155350497319,
+      "sharpe_annual": 6.063155279446457,
+      "max_drawdown": 0.0029699674334136006,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.462,
+        "bull": 0.402,
+        "sideways": 0.136
+       },
+       "vol": {
+        "low": 0.913,
+        "normal": 0.087
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.055267551924133906,
+      "sharpe_annual": 12.874406318740625,
+      "max_drawdown": 0.0023249277671375523,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.797,
+        "bear": 0.121,
+        "sideways": 0.082
+       },
+       "vol": {
+        "normal": 0.588,
+        "low": 0.412
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": 0.011391470107733337,
+      "sharpe_annual": 3.9668796707687095,
+      "max_drawdown": 0.0062402623856856465,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.467,
+        "bull": 0.397,
+        "sideways": 0.136
+       },
+       "vol": {
+        "normal": 0.609,
+        "low": 0.391
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.0033227008154850246,
+      "sharpe_annual": 3.378027196472704,
+      "max_drawdown": 0.0012633722105659384,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.575,
+        "bull": 0.365,
+        "sideways": 0.061
+       },
+       "vol": {
+        "normal": 0.486,
+        "high": 0.464,
+        "low": 0.05
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 4,
+     "negative": 3,
+     "worst_fold": {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ETHUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.026393200572209063,
+      "sharpe_annual": -7.802648312036768,
+      "max_drawdown": 0.026774658729318612,
+      "trades": 17,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.707,
+        "bull": 0.155,
+        "sideways": 0.138
+       },
+       "vol": {
+        "normal": 0.464,
+        "low": 0.392,
+        "high": 0.144
+       }
+      }
+     },
+     "median_return": 0.0033227008154850246,
+     "dispersion_std": 0.02514606667757058,
+     "dispersion_iqr": 0.01632765924546803,
+     "total_return": 0.047588428505380476,
+     "total_without_best_fold": -0.007276944510187566,
+     "best_fold_share_of_gains": 0.6652899613337889,
+     "max_fold_drawdown": 0.026774658729318612,
+     "fragile": true
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 584,
+       "sum_return": -0.024527060355607144,
+       "sharpe_annual": -3.3393908406430217,
+       "hit_rate": 0.11301369863013698,
+       "share_of_profit": 0.0
+      },
+      "bull": {
+       "days": 559,
+       "sum_return": 0.07159583016984483,
+       "sharpe_annual": 6.607952941766726,
+       "hit_rate": 0.5313059033989267,
+       "share_of_profit": 1.0
+      },
+      "sideways": {
+       "days": 134,
+       "sum_return": -0.0005134089799838648,
+       "sharpe_annual": -0.2849506347487053,
+       "hit_rate": 0.3880597014925373,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "bull",
+     "dominated": true,
+     "losing_regimes": [
+      "bear",
+      "sideways"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 183,
+       "sum_return": -0.003529741909635953,
+       "sharpe_annual": -2.8583365300825276,
+       "hit_rate": 0.0,
+       "share_of_profit": 0.0
+      },
+      "low": {
+       "days": 627,
+       "sum_return": 0.026431097210807497,
+       "sharpe_annual": 2.2225786688563023,
+       "hit_rate": 0.3620414673046252,
+       "share_of_profit": 0.5277237294682801
+      },
+      "normal": {
+       "days": 467,
+       "sum_return": 0.02365400553308228,
+       "sharpe_annual": 3.2406974441785867,
+       "hit_rate": 0.4025695931477516,
+       "share_of_profit": 0.47227627053172
+      }
+     },
+     "top_regime": "low",
+     "dominated": false,
+     "losing_regimes": [
+      "high"
+     ]
+    },
+    "total_return_sum": 0.04655536083425382
+   },
+   "stability": {
+    "sharp_peak": 2,
+    "unstable_neighbours": 2,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 2
+   },
+   "concentration": {
+    "trades": 36,
+    "net_pnl": 1277.4085692212352,
+    "top_trades": 2,
+    "top_trades_share": 1.3805982324885833,
+    "few_trades": false,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 7.363392767812579,
+    "share_positive": 1.0,
+    "p10": 3.549351231774197,
+    "p90": 8.8203261821385
+   },
+   "oos_return": 0.04758842850537892,
+   "oos_max_drawdown": 0.037595355523412644,
+   "oos_sharpe_annual": 2.203806353326144
+  },
+  "funding_carry:XRPUSDT": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.008702957530413946,
+      "sharpe_annual": -1.4387601953410407,
+      "max_drawdown": 0.010778128293937983,
+      "trades": 11,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.74,
+        "bull": 0.16,
+        "sideways": 0.072,
+        "unknown": 0.028
+       },
+       "vol": {
+        "normal": 0.646,
+        "low": 0.326,
+        "unknown": 0.028
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.015037521967448009,
+      "sharpe_annual": -5.1661880506855296,
+      "max_drawdown": 0.015037521967448009,
+      "trades": 7,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.402,
+        "bear": 0.386,
+        "sideways": 0.212
+       },
+       "vol": {
+        "low": 0.554,
+        "normal": 0.31,
+        "high": 0.136
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": -0.0014408560980225804,
+      "sharpe_annual": -0.6305952340218044,
+      "max_drawdown": 0.004060068388102467,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.685,
+        "bear": 0.171,
+        "sideways": 0.144
+       },
+       "vol": {
+        "low": 0.801,
+        "normal": 0.199
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.018525672698745055,
+      "sharpe_annual": 6.8349706347743355,
+      "max_drawdown": 0.002213308572685646,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.592,
+        "bear": 0.234,
+        "sideways": 0.174
+       },
+       "vol": {
+        "low": 0.625,
+        "normal": 0.212,
+        "high": 0.163
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.040393437678992505,
+      "sharpe_annual": 11.551668008133117,
+      "max_drawdown": 0.0020261757448417628,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.588,
+        "bull": 0.275,
+        "sideways": 0.137
+       },
+       "vol": {
+        "low": 0.621,
+        "normal": 0.379
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": 0.010841580347101365,
+      "sharpe_annual": 1.5153356774658027,
+      "max_drawdown": 0.014085733553098723,
+      "trades": 9,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.592,
+        "bear": 0.304,
+        "sideways": 0.103
+       },
+       "vol": {
+        "normal": 0.391,
+        "low": 0.337,
+        "high": 0.272
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.009072985230571762,
+      "sharpe_annual": 1.7227166540335082,
+      "max_drawdown": 0.007424034032370352,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.442,
+        "bear": 0.304,
+        "sideways": 0.254
+       },
+       "vol": {
+        "normal": 0.619,
+        "high": 0.243,
+        "low": 0.138
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 4,
+     "negative": 3,
+     "worst_fold": {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"XRPUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.015037521967448009,
+      "sharpe_annual": -5.1661880506855296,
+      "max_drawdown": 0.015037521967448009,
+      "trades": 7,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.402,
+        "bear": 0.386,
+        "sideways": 0.212
+       },
+       "vol": {
+        "low": 0.554,
+        "normal": 0.31,
+        "high": 0.136
+       }
+      }
+     },
+     "median_return": 0.009072985230571762,
+     "dispersion_std": 0.018562547782902915,
+     "dispersion_iqr": 0.019755533337141473,
+     "total_return": 0.053834838469374535,
+     "total_without_best_fold": 0.012919536305773471,
+     "best_fold_share_of_gains": 0.5123881030467174,
+     "max_fold_drawdown": 0.015037521967448009,
+     "fragile": true
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 497,
+       "sum_return": 0.0101221749104915,
+       "sharpe_annual": 1.123401409940904,
+       "hit_rate": 0.2937625754527163,
+       "share_of_profit": 0.21796123026858782
+      },
+      "bull": {
+       "days": 575,
+       "sum_return": 0.03437751609183837,
+       "sharpe_annual": 2.0068598758323386,
+       "hit_rate": 0.3339130434782609,
+       "share_of_profit": 0.7402525412981065
+      },
+      "sideways": {
+       "days": 200,
+       "sum_return": 0.0019405630649563799,
+       "sharpe_annual": 0.7285527877381031,
+       "hit_rate": 0.185,
+       "share_of_profit": 0.041786228433305754
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": 0.006149400106910563,
+       "sharpe_annual": 7.446936385850509,
+       "hit_rate": 0.2,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "bull",
+     "dominated": true,
+     "losing_regimes": []
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 149,
+       "sum_return": 0.008377799460654423,
+       "sharpe_annual": 1.2167616042196912,
+       "hit_rate": 0.3221476510067114,
+       "share_of_profit": 0.18039951823941394
+      },
+      "low": {
+       "days": 621,
+       "sum_return": 0.021871978080735932,
+       "sharpe_annual": 1.983355863815595,
+       "hit_rate": 0.33011272141706927,
+       "share_of_profit": 0.47097025027137257
+      },
+      "normal": {
+       "days": 502,
+       "sum_return": 0.01619047652589589,
+       "sharpe_annual": 1.6239080426004262,
+       "hit_rate": 0.24302788844621515,
+       "share_of_profit": 0.34863023148921346
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": 0.006149400106910563,
+       "sharpe_annual": 7.446936385850509,
+       "hit_rate": 0.2,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "low",
+     "dominated": false,
+     "losing_regimes": []
+    },
+    "total_return_sum": 0.05258965417419681
+   },
+   "stability": {
+    "sharp_peak": 2,
+    "unstable_neighbours": 1,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 2
+   },
+   "concentration": {
+    "trades": 34,
+    "net_pnl": 1678.767530824607,
+    "top_trades": 2,
+    "top_trades_share": 1.1883321969425478,
+    "few_trades": false,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 4.095479228112169,
+    "share_positive": 0.8,
+    "p10": -2.2914426426850047,
+    "p90": 5.032533025342993
+   },
+   "oos_return": 0.05383483846937498,
+   "oos_max_drawdown": 0.02824999259829164,
+   "oos_sharpe_annual": 1.6070921800849114
+  },
+  "funding_carry:LTCUSDT": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.0013419106193099939,
+      "sharpe_annual": 0.5782176852544575,
+      "max_drawdown": 0.002321512861158115,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.928,
+        "sideways": 0.044,
+        "unknown": 0.028
+       },
+       "vol": {
+        "normal": 0.436,
+        "low": 0.348,
+        "high": 0.188,
+        "unknown": 0.028
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": -0.0021214773272644205,
+      "sharpe_annual": -1.2158360476627672,
+      "max_drawdown": 0.00370730909004946,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.408,
+        "bull": 0.38,
+        "sideways": 0.212
+       },
+       "vol": {
+        "normal": 0.435,
+        "low": 0.429,
+        "high": 0.136
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.006162362936284138,
+      "sharpe_annual": 2.397918328600235,
+      "max_drawdown": 0.003718146167661307,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.541,
+        "sideways": 0.304,
+        "bear": 0.155
+       },
+       "vol": {
+        "low": 0.718,
+        "normal": 0.282
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.014108864156465062,
+      "sharpe_annual": 6.856115574376275,
+      "max_drawdown": 0.002577064022048159,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.446,
+        "bull": 0.402,
+        "sideways": 0.152
+       },
+       "vol": {
+        "low": 0.837,
+        "high": 0.092,
+        "normal": 0.071
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.05180599500706129,
+      "sharpe_annual": 14.925382060992138,
+      "max_drawdown": 0.0003133131904888842,
+      "trades": 0,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.467,
+        "bear": 0.396,
+        "sideways": 0.137
+       },
+       "vol": {
+        "low": 0.626,
+        "normal": 0.192,
+        "high": 0.181
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.01834780022640281,
+      "sharpe_annual": 6.933130605554987,
+      "max_drawdown": 0.0022754801207826025,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.582,
+        "bull": 0.386,
+        "sideways": 0.033
+       },
+       "vol": {
+        "low": 0.451,
+        "normal": 0.386,
+        "high": 0.163
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.021204985497593754,
+      "sharpe_annual": -5.7110558825561615,
+      "max_drawdown": 0.02145818064916727,
+      "trades": 12,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.492,
+        "bear": 0.354,
+        "sideways": 0.155
+       },
+       "vol": {
+        "normal": 0.58,
+        "high": 0.232,
+        "low": 0.188
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 5,
+     "negative": 2,
+     "worst_fold": {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"LTCUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.021204985497593754,
+      "sharpe_annual": -5.7110558825561615,
+      "max_drawdown": 0.02145818064916727,
+      "trades": 12,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.492,
+        "bear": 0.354,
+        "sideways": 0.155
+       },
+       "vol": {
+        "normal": 0.58,
+        "high": 0.232,
+        "low": 0.188
+       }
+      }
+     },
+     "median_return": 0.006162362936284138,
+     "dispersion_std": 0.02252529543509163,
+     "dispersion_iqr": 0.01661811554541115,
+     "total_return": 0.06889792949319529,
+     "total_without_best_fold": 0.01625008277882989,
+     "best_fold_share_of_gains": 0.5645388087429652,
+     "max_fold_drawdown": 0.02145818064916727,
+     "fragile": true
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 596,
+       "sum_return": 0.007239232545874996,
+       "sharpe_annual": 1.0800026350302114,
+       "hit_rate": 0.22483221476510068,
+       "share_of_profit": 0.11176168779560344
+      },
+      "bull": {
+       "days": 487,
+       "sum_return": 0.05560700051073597,
+       "sharpe_annual": 6.322213623124183,
+       "hit_rate": 0.5503080082135524,
+       "share_of_profit": 0.8584794300981622
+      },
+      "sideways": {
+       "days": 189,
+       "sum_return": 0.0019275967652376824,
+       "sharpe_annual": 0.5493825718748131,
+       "hit_rate": 0.3333333333333333,
+       "share_of_profit": 0.029758882106234376
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": 0.0019156209322556128,
+       "sharpe_annual": 5.7625640993143845,
+       "hit_rate": 0.2,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "bull",
+     "dominated": true,
+     "losing_regimes": []
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 181,
+       "sum_return": 0.018968951807224133,
+       "sharpe_annual": 5.414731292931523,
+       "hit_rate": 0.4198895027624309,
+       "share_of_profit": 0.26436672402532635
+      },
+      "low": {
+       "days": 657,
+       "sum_return": 0.052783466645435984,
+       "sharpe_annual": 6.3206853855331575,
+       "hit_rate": 0.4550989345509893,
+       "share_of_profit": 0.7356332759746737
+      },
+      "normal": {
+       "days": 434,
+       "sum_return": -0.006978588630811466,
+       "sharpe_annual": -0.9445674590008055,
+       "hit_rate": 0.2073732718894009,
+       "share_of_profit": 0.0
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": 0.0019156209322556128,
+       "sharpe_annual": 5.7625640993143845,
+       "hit_rate": 0.2,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "low",
+     "dominated": true,
+     "losing_regimes": [
+      "normal"
+     ]
+    },
+    "total_return_sum": 0.06668945075410426
+   },
+   "stability": {
+    "sharp_peak": 3,
+    "unstable_neighbours": 2,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 2
+   },
+   "concentration": {
+    "trades": 22,
+    "net_pnl": 972.7144683926706,
+    "top_trades": 2,
+    "top_trades_share": 1.3882752893509986,
+    "few_trades": true,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 6.973784475073616,
+    "share_positive": 1.0,
+    "p10": 2.789989343275779,
+    "p90": 8.345400737057263
+   },
+   "oos_return": 0.06889792949319307,
+   "oos_max_drawdown": 0.021458180649167824,
+   "oos_sharpe_annual": 3.265169227711731
+  },
+  "funding_carry:ADAUSDT": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.00012921924686359887,
+      "sharpe_annual": 0.05583347379863042,
+      "max_drawdown": 0.003028950791156615,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.934,
+        "sideways": 0.066
+       },
+       "vol": {
+        "low": 0.398,
+        "normal": 0.326,
+        "high": 0.276
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.00044875369471042426,
+      "sharpe_annual": 0.37919676625019355,
+      "max_drawdown": 0.0013239520639397595,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.799,
+        "sideways": 0.201
+       },
+       "vol": {
+        "low": 0.772,
+        "normal": 0.228
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.004004521065055222,
+      "sharpe_annual": 1.6397333962997218,
+      "max_drawdown": 0.0027232905999738932,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.541,
+        "bear": 0.265,
+        "sideways": 0.193
+       },
+       "vol": {
+        "low": 0.994,
+        "normal": 0.006
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.02009242413187362,
+      "sharpe_annual": 5.2866566815821665,
+      "max_drawdown": 0.0034678543767349135,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.679,
+        "bull": 0.299,
+        "sideways": 0.022
+       },
+       "vol": {
+        "low": 0.712,
+        "normal": 0.288
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.07164487457445645,
+      "sharpe_annual": 9.990347714073781,
+      "max_drawdown": 0.0027064446483721083,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.56,
+        "bear": 0.346,
+        "sideways": 0.093
+       },
+       "vol": {
+        "normal": 0.549,
+        "low": 0.423,
+        "high": 0.027
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.030237171417306197,
+      "sharpe_annual": 6.32751426483814,
+      "max_drawdown": 0.003398736176790762,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.609,
+        "bull": 0.293,
+        "sideways": 0.098
+       },
+       "vol": {
+        "low": 0.397,
+        "normal": 0.348,
+        "high": 0.255
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.007802579141411581,
+      "sharpe_annual": 3.061295027800657,
+      "max_drawdown": 0.0035058096544096085,
+      "trades": 1,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.525,
+        "bull": 0.276,
+        "sideways": 0.199
+       },
+       "vol": {
+        "normal": 0.63,
+        "high": 0.215,
+        "low": 0.155
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 7,
+     "negative": 0,
+     "worst_fold": {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"ADAUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.00012921924686359887,
+      "sharpe_annual": 0.05583347379863042,
+      "max_drawdown": 0.003028950791156615,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.934,
+        "sideways": 0.066
+       },
+       "vol": {
+        "low": 0.398,
+        "normal": 0.326,
+        "high": 0.276
+       }
+      }
+     },
+     "median_return": 0.007802579141411581,
+     "dispersion_std": 0.025655369509005353,
+     "dispersion_iqr": 0.022938160394707086,
+     "total_return": 0.14022281272387493,
+     "total_without_best_fold": 0.06399315647979953,
+     "best_fold_share_of_gains": 0.5332324956597195,
+     "max_fold_drawdown": 0.0035058096544096085,
+     "fragile": true
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 759,
+       "sum_return": -0.00021498226292049338,
+       "sharpe_annual": -0.026040847451007425,
+       "hit_rate": 0.14097496706192358,
+       "share_of_profit": 0.0
+      },
+      "bull": {
+       "days": 359,
+       "sum_return": 0.11535658175073626,
+       "sharpe_annual": 10.728171555837774,
+       "hit_rate": 0.6740947075208914,
+       "share_of_profit": 0.8768430653969228
+      },
+      "sideways": {
+       "days": 159,
+       "sum_return": 0.01620240104000692,
+       "sharpe_annual": 3.3894501673419084,
+       "hit_rate": 0.24528301886792453,
+       "share_of_profit": 0.12315693460307722
+      }
+     },
+     "top_regime": "bull",
+     "dominated": true,
+     "losing_regimes": [
+      "bear"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 141,
+       "sum_return": 0.035877400318205854,
+       "sharpe_annual": 9.350808562239855,
+       "hit_rate": 0.36879432624113473,
+       "share_of_profit": 0.2731559886559563
+      },
+      "low": {
+       "days": 703,
+       "sum_return": 0.03597890417781158,
+       "sharpe_annual": 2.7300434626765395,
+       "hit_rate": 0.28733997155049784,
+       "share_of_profit": 0.273928797914071
+      },
+      "normal": {
+       "days": 433,
+       "sum_return": 0.05948769603180526,
+       "sharpe_annual": 5.6336546327986845,
+       "hit_rate": 0.3094688221709007,
+       "share_of_profit": 0.4529152134299727
+      }
+     },
+     "top_regime": "normal",
+     "dominated": false,
+     "losing_regimes": []
+    },
+    "total_return_sum": 0.1313440005278227
+   },
+   "stability": {
+    "sharp_peak": 3,
+    "unstable_neighbours": 2,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 1
+   },
+   "concentration": {
+    "trades": 13,
+    "net_pnl": 3979.8066516162053,
+    "top_trades": 1,
+    "top_trades_share": 0.6634140322437059,
+    "few_trades": true,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 6.023531368245844,
+    "share_positive": 1.0,
+    "p10": 3.4603485910863085,
+    "p90": 6.830791930289806
+   },
+   "oos_return": 0.14022281272387627,
+   "oos_max_drawdown": 0.004730514399134522,
+   "oos_sharpe_annual": 4.6558460108218185
+  },
+  "funding_carry:BNBUSDT": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.25, \"lookback\": 21}}",
+      "return": 0.0,
+      "sharpe_annual": 0.0,
+      "max_drawdown": -0.0,
+      "trades": 0,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.713,
+        "sideways": 0.149,
+        "bull": 0.138
+       },
+       "vol": {
+        "normal": 0.448,
+        "low": 0.42,
+        "high": 0.133
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 21}}",
+      "return": 0.0,
+      "sharpe_annual": 0.0,
+      "max_drawdown": -0.0,
+      "trades": 0,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.446,
+        "bear": 0.375,
+        "sideways": 0.179
+       },
+       "vol": {
+        "low": 0.696,
+        "normal": 0.152,
+        "high": 0.152
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.25, \"lookback\": 21}}",
+      "return": 0.0,
+      "sharpe_annual": 0.0,
+      "max_drawdown": -0.0,
+      "trades": 0,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.641,
+        "bear": 0.293,
+        "sideways": 0.066
+       },
+       "vol": {
+        "low": 0.906,
+        "normal": 0.094
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.25, \"lookback\": 3}}",
+      "return": -0.0064060903800007285,
+      "sharpe_annual": -2.045374128582567,
+      "max_drawdown": 0.00845343840971402,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.696,
+        "bull": 0.283,
+        "sideways": 0.022
+       },
+       "vol": {
+        "low": 0.793,
+        "normal": 0.207
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.008326010043928522,
+      "sharpe_annual": -1.884935690201491,
+      "max_drawdown": 0.010729132002882724,
+      "trades": 10,
+      "regime_mix": {
+       "trend": {
+        "bull": 1.0
+       },
+       "vol": {
+        "low": 0.451,
+        "normal": 0.39,
+        "high": 0.159
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.25, \"lookback\": 3}}",
+      "return": 0.002813394066632169,
+      "sharpe_annual": 1.3573464885617432,
+      "max_drawdown": 0.002100903014056521,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.435,
+        "bear": 0.38,
+        "sideways": 0.185
+       },
+       "vol": {
+        "normal": 0.527,
+        "low": 0.473
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.25, \"lookback\": 3}}",
+      "return": 0.0,
+      "sharpe_annual": 0.0,
+      "max_drawdown": -0.0,
+      "trades": 0,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.475,
+        "bull": 0.431,
+        "sideways": 0.094
+       },
+       "vol": {
+        "low": 0.63,
+        "normal": 0.37
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 1,
+     "negative": 6,
+     "worst_fold": {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"funding_carry\", \"i\": \"BNBUSDT\", \"p\": {\"entry_apr\": 0.1, \"lookback\": 3}}",
+      "return": -0.008326010043928522,
+      "sharpe_annual": -1.884935690201491,
+      "max_drawdown": 0.010729132002882724,
+      "trades": 10,
+      "regime_mix": {
+       "trend": {
+        "bull": 1.0
+       },
+       "vol": {
+        "low": 0.451,
+        "normal": 0.39,
+        "high": 0.159
+       }
+      }
+     },
+     "median_return": 0.0,
+     "dispersion_std": 0.004041080131557266,
+     "dispersion_iqr": 0.0032030451900003643,
+     "total_return": -0.011906666329887017,
+     "total_without_best_fold": -0.014678763251083082,
+     "best_fold_share_of_gains": 1.0,
+     "max_fold_drawdown": 0.010729132002882724,
+     "fragile": false
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 535,
+       "sum_return": -0.0005191847058040322,
+       "sharpe_annual": -0.31586263092713274,
+       "hit_rate": 0.003738317757009346,
+       "share_of_profit": 0.0
+      },
+      "bull": {
+       "days": 615,
+       "sum_return": -0.009061069360793539,
+       "sharpe_annual": -0.8799169285089954,
+       "hit_rate": 0.0910569105691057,
+       "share_of_profit": 0.0
+      },
+      "sideways": {
+       "days": 127,
+       "sum_return": -0.0023640549143786327,
+       "sharpe_annual": -2.4070735824096388,
+       "hit_rate": 0.0,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "bear",
+     "dominated": false,
+     "losing_regimes": [
+      "bear",
+      "bull",
+      "sideways"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 81,
+       "sum_return": -0.0010512888825362499,
+       "sharpe_annual": -0.5506447256670147,
+       "hit_rate": 0.1728395061728395,
+       "share_of_profit": 0.0
+      },
+      "low": {
+       "days": 797,
+       "sum_return": -0.006467485463468869,
+       "sharpe_annual": -0.8448508398817486,
+       "hit_rate": 0.03513174404015056,
+       "share_of_profit": 0.0
+      },
+      "normal": {
+       "days": 399,
+       "sum_return": -0.0044255346349710845,
+       "sharpe_annual": -0.8547866515646961,
+       "hit_rate": 0.040100250626566414,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "high",
+     "dominated": false,
+     "losing_regimes": [
+      "high",
+      "low",
+      "normal"
+     ]
+    },
+    "total_return_sum": -0.011944308980976204
+   },
+   "stability": {
+    "sharp_peak": 0,
+    "unstable_neighbours": 0,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 4
+   },
+   "concentration": {
+    "trades": 17,
+    "net_pnl": -138.17802650360184,
+    "top_trades": 1,
+    "top_trades_share": Infinity,
+    "few_trades": true,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 1.5520591308786837,
+    "share_positive": 0.8666666666666667,
+    "p10": -0.03280538882119588,
+    "p90": 4.352252626240772
+   },
+   "oos_return": -0.01190666632988735,
+   "oos_max_drawdown": 0.016737081505375118,
+   "oos_sharpe_annual": -0.7770060957507078
+  }
+ },
+ "family_combination": {
+  "folds": {
+   "folds": [
+    {
+     "test_start": "2022-01-01",
+     "test_end": "2022-06-30",
+     "choice": null,
+     "return": -0.006012880224341544,
+     "sharpe_annual": -4.089114289167301,
+     "max_drawdown": 0.006733812231708769,
+     "trades": 0
+    },
+    {
+     "test_start": "2022-07-01",
+     "test_end": "2022-12-31",
+     "choice": null,
+     "return": -0.0027986855755962603,
+     "sharpe_annual": -4.56716753298931,
+     "max_drawdown": 0.0027986855755962603,
+     "trades": 0
+    },
+    {
+     "test_start": "2023-01-01",
+     "test_end": "2023-06-30",
+     "choice": null,
+     "return": -0.0015371069985793406,
+     "sharpe_annual": -1.3007224875348073,
+     "max_drawdown": 0.005019196392221814,
+     "trades": 0
+    },
+    {
+     "test_start": "2023-07-01",
+     "test_end": "2023-12-31",
+     "choice": null,
+     "return": 0.01186048021501862,
+     "sharpe_annual": 6.88136552962592,
+     "max_drawdown": 0.0017640127986384702,
+     "trades": 0
+    },
+    {
+     "test_start": "2024-01-01",
+     "test_end": "2024-06-30",
+     "choice": null,
+     "return": 0.04345426255963947,
+     "sharpe_annual": 12.330291959789088,
+     "max_drawdown": 0.0011746678182321668,
+     "trades": 0
+    },
+    {
+     "test_start": "2024-07-01",
+     "test_end": "2024-12-31",
+     "choice": null,
+     "return": 0.01471772809672145,
+     "sharpe_annual": 5.588029982992961,
+     "max_drawdown": 0.002634867019624676,
+     "trades": 0
+    },
+    {
+     "test_start": "2025-01-01",
+     "test_end": "2025-06-30",
+     "choice": null,
+     "return": 0.0004547613174303855,
+     "sharpe_annual": 0.27940864509958985,
+     "max_drawdown": 0.005282253621132216,
+     "trades": 0
+    }
+   ],
+   "summary": {
+    "folds": 7,
+    "positive": 4,
+    "negative": 3,
+    "worst_fold": {
+     "test_start": "2022-01-01",
+     "test_end": "2022-06-30",
+     "choice": null,
+     "return": -0.006012880224341544,
+     "sharpe_annual": -4.089114289167301,
+     "max_drawdown": 0.006733812231708769,
+     "trades": 0
+    },
+    "median_return": 0.0004547613174303855,
+    "dispersion_std": 0.017201979345387367,
+    "dispersion_iqr": 0.015457000442957836,
+    "total_return": 0.06079700164223212,
+    "total_without_best_fold": 0.016620507198897405,
+    "best_fold_share_of_gains": 0.6164841661429,
+    "max_fold_drawdown": 0.006733812231708769,
+    "fragile": true
+   }
+  },
+  "regimes_vs_BTCUSDT-PERP.BINANCE": {
+   "trend": {
+    "by_regime": {
+     "bear": {
+      "days": 540,
+      "sum_return": -0.009606648449278424,
+      "sharpe_annual": -4.201263109598932,
+      "hit_rate": 0.19814814814814816,
+      "share_of_profit": 0.0
+     },
+     "bull": {
+      "days": 570,
+      "sum_return": 0.06845073494061318,
+      "sharpe_annual": 7.570586721494479,
+      "hit_rate": 0.631578947368421,
+      "share_of_profit": 0.9969322644629692
+     },
+     "sideways": {
+      "days": 167,
+      "sum_return": 0.00021063492435598614,
+      "sharpe_annual": 0.15019333275542535,
+      "hit_rate": 0.437125748502994,
+      "share_of_profit": 0.0030677355370308666
+     }
+    },
+    "top_regime": "bull",
+    "dominated": true,
+    "losing_regimes": [
+     "bear"
+    ]
+   },
+   "vol": {
+    "by_regime": {
+     "high": {
+      "days": 160,
+      "sum_return": 0.007403627676952499,
+      "sharpe_annual": 4.370118754338484,
+      "hit_rate": 0.25,
+      "share_of_profit": 0.12536893747813643
+     },
+     "low": {
+      "days": 731,
+      "sum_return": 0.0249150514563017,
+      "sharpe_annual": 3.297796228090832,
+      "hit_rate": 0.48153214774281805,
+      "share_of_profit": 0.4218977053658881
+     },
+     "normal": {
+      "days": 386,
+      "sum_return": 0.026736042282436555,
+      "sharpe_annual": 4.706272630806788,
+      "hit_rate": 0.38341968911917096,
+      "share_of_profit": 0.4527333571559755
+     }
+    },
+    "top_regime": "normal",
+    "dominated": false,
+    "losing_regimes": []
+   },
+   "total_return_sum": 0.05905472141569075
+  },
+  "concentration": {
+   "trades": 144,
+   "net_pnl": 9425.948739305286,
+   "top_trades": 8,
+   "top_trades_share": 1.0604176048754639,
+   "few_trades": false,
+   "dominated_by_few_trades": true,
+   "asset_shares": {
+    "BTCUSDT": 0.17308736974003916,
+    "ETHUSDT": 0.13356248829614906,
+    "XRPUSDT": 0.17552752822412274,
+    "LTCUSDT": 0.10170447257872617,
+    "ADAUSDT": 0.4161181411609628,
+    "BNBUSDT": 0.0
+   },
+   "dominated_by_one_asset": false
+  },
+  "oos_return": 0.06079700164222879,
+  "oos_max_drawdown": 0.012471348025371198,
+  "oos_sharpe_annual": 3.893053868950755
+ },
+ "diversification": {
+  "return_corr": {
+   "funding_carry:ADAUSDT": {
+    "funding_carry:ADAUSDT": 1.0,
+    "funding_carry:BNBUSDT": 0.108,
+    "funding_carry:BTCUSDT": 0.507,
+    "funding_carry:ETHUSDT": 0.521,
+    "funding_carry:LTCUSDT": 0.469,
+    "funding_carry:XRPUSDT": 0.366
+   },
+   "funding_carry:BNBUSDT": {
+    "funding_carry:ADAUSDT": 0.108,
+    "funding_carry:BNBUSDT": 1.0,
+    "funding_carry:BTCUSDT": 0.036,
+    "funding_carry:ETHUSDT": 0.02,
+    "funding_carry:LTCUSDT": 0.018,
+    "funding_carry:XRPUSDT": 0.082
+   },
+   "funding_carry:BTCUSDT": {
+    "funding_carry:ADAUSDT": 0.507,
+    "funding_carry:BNBUSDT": 0.036,
+    "funding_carry:BTCUSDT": 1.0,
+    "funding_carry:ETHUSDT": 0.524,
+    "funding_carry:LTCUSDT": 0.419,
+    "funding_carry:XRPUSDT": 0.273
+   },
+   "funding_carry:ETHUSDT": {
+    "funding_carry:ADAUSDT": 0.521,
+    "funding_carry:BNBUSDT": 0.02,
+    "funding_carry:BTCUSDT": 0.524,
+    "funding_carry:ETHUSDT": 1.0,
+    "funding_carry:LTCUSDT": 0.411,
+    "funding_carry:XRPUSDT": 0.32
+   },
+   "funding_carry:LTCUSDT": {
+    "funding_carry:ADAUSDT": 0.469,
+    "funding_carry:BNBUSDT": 0.018,
+    "funding_carry:BTCUSDT": 0.419,
+    "funding_carry:ETHUSDT": 0.411,
+    "funding_carry:LTCUSDT": 1.0,
+    "funding_carry:XRPUSDT": 0.403
+   },
+   "funding_carry:XRPUSDT": {
+    "funding_carry:ADAUSDT": 0.366,
+    "funding_carry:BNBUSDT": 0.082,
+    "funding_carry:BTCUSDT": 0.273,
+    "funding_carry:ETHUSDT": 0.32,
+    "funding_carry:LTCUSDT": 0.403,
+    "funding_carry:XRPUSDT": 1.0
+   }
+  },
+  "drawdown_corr": {
+   "funding_carry:ADAUSDT": {
+    "funding_carry:ADAUSDT": 1.0,
+    "funding_carry:BNBUSDT": 0.007,
+    "funding_carry:BTCUSDT": 0.177,
+    "funding_carry:ETHUSDT": 0.08,
+    "funding_carry:LTCUSDT": 0.545,
+    "funding_carry:XRPUSDT": 0.097
+   },
+   "funding_carry:BNBUSDT": {
+    "funding_carry:ADAUSDT": 0.007,
+    "funding_carry:BNBUSDT": 1.0,
+    "funding_carry:BTCUSDT": -0.483,
+    "funding_carry:ETHUSDT": -0.825,
+    "funding_carry:LTCUSDT": 0.193,
+    "funding_carry:XRPUSDT": -0.687
+   },
+   "funding_carry:BTCUSDT": {
+    "funding_carry:ADAUSDT": 0.177,
+    "funding_carry:BNBUSDT": -0.483,
+    "funding_carry:BTCUSDT": 1.0,
+    "funding_carry:ETHUSDT": 0.79,
+    "funding_carry:LTCUSDT": -0.132,
+    "funding_carry:XRPUSDT": 0.78
+   },
+   "funding_carry:ETHUSDT": {
+    "funding_carry:ADAUSDT": 0.08,
+    "funding_carry:BNBUSDT": -0.825,
+    "funding_carry:BTCUSDT": 0.79,
+    "funding_carry:ETHUSDT": 1.0,
+    "funding_carry:LTCUSDT": -0.204,
+    "funding_carry:XRPUSDT": 0.891
+   },
+   "funding_carry:LTCUSDT": {
+    "funding_carry:ADAUSDT": 0.545,
+    "funding_carry:BNBUSDT": 0.193,
+    "funding_carry:BTCUSDT": -0.132,
+    "funding_carry:ETHUSDT": -0.204,
+    "funding_carry:LTCUSDT": 1.0,
+    "funding_carry:XRPUSDT": -0.047
+   },
+   "funding_carry:XRPUSDT": {
+    "funding_carry:ADAUSDT": 0.097,
+    "funding_carry:BNBUSDT": -0.687,
+    "funding_carry:BTCUSDT": 0.78,
+    "funding_carry:ETHUSDT": 0.891,
+    "funding_carry:LTCUSDT": -0.047,
+    "funding_carry:XRPUSDT": 1.0
+   }
+  },
+  "same_source_pairs": [],
+  "by_asset": {
+   "crypto": 0.9999999999999999
+  },
+  "hhi_asset": 0.9999999999999998,
+  "by_family": {
+   "funding_carry": 0.9999999999999999
+  },
+  "hhi_family": 0.9999999999999998,
+  "effective_independent_sources": 3.7041897370773094,
+  "note": "diversification describes overlap between return sources; it is not evidence of profitability"
+ },
+ "hypothesis_predictions": null
+}

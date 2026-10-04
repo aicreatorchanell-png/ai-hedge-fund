@@ -1,0 +1,1670 @@
+{
+ "plan_id": "pairs-statarb-v1",
+ "plan_hash": "f4b9fa9e0e21417d",
+ "n_trials_cumulative": 672,
+ "gates_hash": "2fc90f4ad972f482",
+ "verdict": "FAIL",
+ "passed_lines": [],
+ "passed_combinations": [],
+ "audit_fail": [],
+ "lines": {
+  "pairs_statarb:BTC/ETH": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/ETH\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": 0.08702429376300591,
+      "sharpe_annual": 2.361453977911561,
+      "max_drawdown": 0.025008627748716483,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.707,
+        "bull": 0.155,
+        "sideways": 0.138
+       },
+       "vol": {
+        "normal": 0.464,
+        "low": 0.392,
+        "high": 0.144
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/ETH\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": -0.08017414795204059,
+      "sharpe_annual": -1.4079000462863596,
+      "max_drawdown": 0.10643251659340314,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.696,
+        "bull": 0.207,
+        "sideways": 0.098
+       },
+       "vol": {
+        "high": 0.397,
+        "normal": 0.326,
+        "low": 0.277
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/ETH\", \"p\": {\"window\": 90, \"z_entry\": 1.5}}",
+      "return": 0.02653770819768475,
+      "sharpe_annual": 0.5615250277470569,
+      "max_drawdown": 0.04786140593363397,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.746,
+        "bear": 0.171,
+        "sideways": 0.083
+       },
+       "vol": {
+        "low": 1.0
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/ETH\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": -0.05871688010849485,
+      "sharpe_annual": -1.0582275261422631,
+      "max_drawdown": 0.08709715220840208,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.462,
+        "bull": 0.402,
+        "sideways": 0.136
+       },
+       "vol": {
+        "low": 0.913,
+        "normal": 0.087
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/ETH\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": 0.09565103954065579,
+      "sharpe_annual": 2.9907661165268675,
+      "max_drawdown": 0.01306069705196189,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.797,
+        "bear": 0.121,
+        "sideways": 0.082
+       },
+       "vol": {
+        "normal": 0.588,
+        "low": 0.412
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/ETH\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": -0.07038306622161816,
+      "sharpe_annual": -0.801189402923393,
+      "max_drawdown": 0.15284679699961945,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.467,
+        "bull": 0.397,
+        "sideways": 0.136
+       },
+       "vol": {
+        "normal": 0.609,
+        "low": 0.391
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/ETH\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": -0.10436521218658734,
+      "sharpe_annual": -1.5794278519103917,
+      "max_drawdown": 0.14163569855777514,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.575,
+        "bull": 0.365,
+        "sideways": 0.061
+       },
+       "vol": {
+        "normal": 0.486,
+        "high": 0.464,
+        "low": 0.05
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 3,
+     "negative": 4,
+     "worst_fold": {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/ETH\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": -0.10436521218658734,
+      "sharpe_annual": -1.5794278519103917,
+      "max_drawdown": 0.14163569855777514,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.575,
+        "bull": 0.365,
+        "sideways": 0.061
+       },
+       "vol": {
+        "normal": 0.486,
+        "high": 0.464,
+        "low": 0.05
+       }
+      }
+     },
+     "median_return": -0.05871688010849485,
+     "dispersion_std": 0.0832568351428132,
+     "dispersion_iqr": 0.1320596080671747,
+     "total_return": -0.11865230221354373,
+     "total_without_best_fold": -0.19559452236183228,
+     "best_fold_share_of_gains": 0.45719444091175454,
+     "max_fold_drawdown": 0.15284679699961945,
+     "fragile": false
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 584,
+       "sum_return": -0.15765272687451237,
+       "sharpe_annual": -0.9842930924058346,
+       "hit_rate": 0.1660958904109589,
+       "share_of_profit": 0.0
+      },
+      "bull": {
+       "days": 559,
+       "sum_return": 0.09368748752124612,
+       "sharpe_annual": 0.5464740407274723,
+       "hit_rate": 0.1771019677996422,
+       "share_of_profit": 1.0
+      },
+      "sideways": {
+       "days": 134,
+       "sum_return": -0.03999221321861168,
+       "sharpe_annual": -0.6748032435536584,
+       "hit_rate": 0.23880597014925373,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "bull",
+     "dominated": false,
+     "losing_regimes": [
+      "bear",
+      "sideways"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 183,
+       "sum_return": -0.13657049977023494,
+       "sharpe_annual": -1.9813482448113389,
+       "hit_rate": 0.22950819672131148,
+       "share_of_profit": 0.0
+      },
+      "low": {
+       "days": 627,
+       "sum_return": 0.0006522787427651888,
+       "sharpe_annual": 0.004170879151053243,
+       "hit_rate": 0.17862838915470494,
+       "share_of_profit": 0.02000054575697697
+      },
+      "normal": {
+       "days": 467,
+       "sum_return": 0.031960768455591815,
+       "sharpe_annual": 0.1948392462407363,
+       "hit_rate": 0.15845824411134904,
+       "share_of_profit": 0.979999454243023
+      }
+     },
+     "top_regime": "normal",
+     "dominated": false,
+     "losing_regimes": [
+      "high"
+     ]
+    },
+    "total_return_sum": -0.10395745257187794
+   },
+   "stability": {
+    "sharp_peak": 7,
+    "unstable_neighbours": 7,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 2
+   },
+   "concentration": {
+    "trades": 19,
+    "net_pnl": -1078.4170150214318,
+    "top_trades": 1,
+    "top_trades_share": Infinity,
+    "few_trades": true,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 0.2887479764230726,
+    "share_positive": 0.6,
+    "p10": -0.6924246116480354,
+    "p90": 0.4539286860469207
+   },
+   "oos_return": -0.11865230221354506,
+   "oos_max_drawdown": 0.2255991316481316,
+   "oos_sharpe_annual": -0.2627131159407767
+  },
+  "pairs_statarb:ETH/ETC": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"ETH/ETC\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": -0.3251161132879329,
+      "sharpe_annual": -2.3883145199685356,
+      "max_drawdown": 0.38331266104876904,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.685,
+        "bull": 0.227,
+        "sideways": 0.088
+       },
+       "vol": {
+        "normal": 0.586,
+        "high": 0.315,
+        "low": 0.099
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"ETH/ETC\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": 0.12299280140296132,
+      "sharpe_annual": 0.9660189323114157,
+      "max_drawdown": 0.09836265541650024,
+      "trades": 4,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.587,
+        "bull": 0.353,
+        "sideways": 0.06
+       },
+       "vol": {
+        "high": 0.408,
+        "normal": 0.342,
+        "low": 0.25
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"ETH/ETC\", \"p\": {\"window\": 30, \"z_entry\": 1.5}}",
+      "return": 0.14470555286192588,
+      "sharpe_annual": 1.8351066553523654,
+      "max_drawdown": 0.09343216740806493,
+      "trades": 10,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.646,
+        "bull": 0.276,
+        "sideways": 0.077
+       },
+       "vol": {
+        "low": 0.696,
+        "normal": 0.304
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"ETH/ETC\", \"p\": {\"window\": 30, \"z_entry\": 1.5}}",
+      "return": 0.03228387631082086,
+      "sharpe_annual": 0.7872223781653482,
+      "max_drawdown": 0.05557831598591456,
+      "trades": 10,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.418,
+        "bull": 0.353,
+        "sideways": 0.228
+       },
+       "vol": {
+        "low": 0.853,
+        "normal": 0.147
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"ETH/ETC\", \"p\": {\"window\": 30, \"z_entry\": 1.5}}",
+      "return": -0.06740605600897687,
+      "sharpe_annual": -0.8283982820281177,
+      "max_drawdown": 0.14351037815909107,
+      "trades": 10,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.67,
+        "bear": 0.275,
+        "sideways": 0.055
+       },
+       "vol": {
+        "normal": 0.681,
+        "low": 0.236,
+        "high": 0.082
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"ETH/ETC\", \"p\": {\"window\": 30, \"z_entry\": 1.5}}",
+      "return": -0.018757718505200915,
+      "sharpe_annual": -0.15578080586032778,
+      "max_drawdown": 0.14762614366826865,
+      "trades": 12,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.641,
+        "bull": 0.277,
+        "sideways": 0.082
+       },
+       "vol": {
+        "low": 0.685,
+        "normal": 0.185,
+        "high": 0.13
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"ETH/ETC\", \"p\": {\"window\": 90, \"z_entry\": 1.5}}",
+      "return": -0.1118724955027175,
+      "sharpe_annual": -1.4182127636207638,
+      "max_drawdown": 0.14657349990716806,
+      "trades": 6,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.586,
+        "bull": 0.304,
+        "sideways": 0.11
+       },
+       "vol": {
+        "normal": 0.812,
+        "low": 0.177,
+        "high": 0.011
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 3,
+     "negative": 4,
+     "worst_fold": {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"ETH/ETC\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": -0.3251161132879329,
+      "sharpe_annual": -2.3883145199685356,
+      "max_drawdown": 0.38331266104876904,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.685,
+        "bull": 0.227,
+        "sideways": 0.088
+       },
+       "vol": {
+        "normal": 0.586,
+        "high": 0.315,
+        "low": 0.099
+       }
+      }
+     },
+     "median_return": -0.018757718505200915,
+     "dispersion_std": 0.15974227028905313,
+     "dispersion_iqr": 0.16727761461273827,
+     "total_return": -0.27214791642923186,
+     "total_without_best_fold": -0.36415781180493545,
+     "best_fold_share_of_gains": 0.48238041494729733,
+     "max_fold_drawdown": 0.38331266104876904,
+     "fragile": false
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 700,
+       "sum_return": -0.15315921089852902,
+       "sharpe_annual": -0.34337360930517824,
+       "hit_rate": 0.2642857142857143,
+       "share_of_profit": 0.0
+      },
+      "bull": {
+       "days": 449,
+       "sum_return": -0.08192937958657942,
+       "sharpe_annual": -0.4406419228005206,
+       "hit_rate": 0.24053452115812918,
+       "share_of_profit": 0.0
+      },
+      "sideways": {
+       "days": 128,
+       "sum_return": -0.012640184795299825,
+       "sharpe_annual": -0.2362115740269943,
+       "hit_rate": 0.265625,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "bear",
+     "dominated": false,
+     "losing_regimes": [
+      "bear",
+      "bull",
+      "sideways"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 173,
+       "sum_return": -0.017025939890957686,
+       "sharpe_annual": -0.1909478230401686,
+       "hit_rate": 0.24277456647398843,
+       "share_of_profit": 0.0
+      },
+      "low": {
+       "days": 548,
+       "sum_return": 0.046281021794792876,
+       "sharpe_annual": 0.1897192503172361,
+       "hit_rate": 0.27007299270072993,
+       "share_of_profit": 1.0
+      },
+      "normal": {
+       "days": 556,
+       "sum_return": -0.27698385718424345,
+       "sharpe_annual": -0.7764111825539565,
+       "hit_rate": 0.24640287769784172,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "low",
+     "dominated": false,
+     "losing_regimes": [
+      "high",
+      "normal"
+     ]
+    },
+    "total_return_sum": -0.24772877528040826
+   },
+   "stability": {
+    "sharp_peak": 4,
+    "unstable_neighbours": 4,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 4
+   },
+   "concentration": {
+    "trades": 57,
+    "net_pnl": -692.5013391444479,
+    "top_trades": 3,
+    "top_trades_share": Infinity,
+    "few_trades": false,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": -0.8513165996838831,
+    "share_positive": 0.26666666666666666,
+    "p10": -1.343517557755826,
+    "p90": 0.6334835280445634
+   },
+   "oos_return": -0.27214791642923153,
+   "oos_max_drawdown": 0.39154732407908743,
+   "oos_sharpe_annual": -0.3541630001291236
+  },
+  "pairs_statarb:BTC/BCH": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/BCH\", \"p\": {\"window\": 90, \"z_entry\": 1.5}}",
+      "return": 0.15507108776667033,
+      "sharpe_annual": 2.0350052838042387,
+      "max_drawdown": 0.05134696808961847,
+      "trades": 6,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.79,
+        "sideways": 0.116,
+        "bull": 0.094
+       },
+       "vol": {
+        "normal": 0.541,
+        "low": 0.309,
+        "high": 0.149
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/BCH\", \"p\": {\"window\": 30, \"z_entry\": 1.5}}",
+      "return": 0.14672502355896078,
+      "sharpe_annual": 1.78212474817514,
+      "max_drawdown": 0.07148039078030899,
+      "trades": 12,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.777,
+        "sideways": 0.125,
+        "bull": 0.098
+       },
+       "vol": {
+        "normal": 0.571,
+        "low": 0.326,
+        "high": 0.103
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/BCH\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": -0.18988452479425932,
+      "sharpe_annual": -3.0534639437982056,
+      "max_drawdown": 0.1987936870801459,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.508,
+        "bull": 0.381,
+        "sideways": 0.11
+       },
+       "vol": {
+        "low": 0.95,
+        "high": 0.039,
+        "normal": 0.011
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/BCH\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": -0.06045807296735106,
+      "sharpe_annual": -0.6025334029641061,
+      "max_drawdown": 0.156961468667841,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.701,
+        "bear": 0.168,
+        "sideways": 0.13
+       },
+       "vol": {
+        "low": 0.587,
+        "normal": 0.272,
+        "high": 0.141
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/BCH\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": 0.10039019498003432,
+      "sharpe_annual": 1.3988316907901972,
+      "max_drawdown": 0.06155004754826987,
+      "trades": 4,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.791,
+        "sideways": 0.11,
+        "bear": 0.099
+       },
+       "vol": {
+        "high": 0.346,
+        "low": 0.341,
+        "normal": 0.313
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/BCH\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": 0.13324096688972276,
+      "sharpe_annual": 3.140157992615067,
+      "max_drawdown": 0.03191042053627868,
+      "trades": 4,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.636,
+        "bull": 0.337,
+        "sideways": 0.027
+       },
+       "vol": {
+        "normal": 0.783,
+        "low": 0.217
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/BCH\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": -0.05104669593343403,
+      "sharpe_annual": -0.8223077929251771,
+      "max_drawdown": 0.10176623951164598,
+      "trades": 4,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.47,
+        "bull": 0.448,
+        "sideways": 0.083
+       },
+       "vol": {
+        "normal": 0.707,
+        "low": 0.16,
+        "high": 0.133
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 4,
+     "negative": 3,
+     "worst_fold": {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/BCH\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": -0.18988452479425932,
+      "sharpe_annual": -3.0534639437982056,
+      "max_drawdown": 0.1987936870801459,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.508,
+        "bull": 0.381,
+        "sideways": 0.11
+       },
+       "vol": {
+        "low": 0.95,
+        "high": 0.039,
+        "normal": 0.011
+       }
+      }
+     },
+     "median_return": 0.10039019498003432,
+     "dispersion_std": 0.13410125073559911,
+     "dispersion_iqr": 0.1957353796747343,
+     "total_return": 0.1930122875716327,
+     "total_without_best_fold": 0.032847501947539604,
+     "best_fold_share_of_gains": 0.28962119699509925,
+     "max_fold_drawdown": 0.1987936870801459,
+     "fragile": false
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 629,
+       "sum_return": 0.2926103629246227,
+       "sharpe_annual": 1.279540164776474,
+       "hit_rate": 0.1971383147853736,
+       "share_of_profit": 0.7905664296592737
+      },
+      "bull": {
+       "days": 520,
+       "sum_return": 0.07751712029109503,
+       "sharpe_annual": 0.35643083281554916,
+       "hit_rate": 0.14423076923076922,
+       "share_of_profit": 0.20943357034072635
+      },
+      "sideways": {
+       "days": 128,
+       "sum_return": -0.1587500237354036,
+       "sharpe_annual": -3.373180747294269,
+       "hit_rate": 0.1171875,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "bear",
+     "dominated": true,
+     "losing_regimes": [
+      "sideways"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 166,
+       "sum_return": -0.05971666133564524,
+       "sharpe_annual": -0.8948379158295355,
+       "hit_rate": 0.12650602409638553,
+       "share_of_profit": 0.0
+      },
+      "low": {
+       "days": 527,
+       "sum_return": -0.0658937352115253,
+       "sharpe_annual": -0.30382988620558044,
+       "hit_rate": 0.15370018975332067,
+       "share_of_profit": 0.0
+      },
+      "normal": {
+       "days": 584,
+       "sum_return": 0.3369878560274847,
+       "sharpe_annual": 1.6030261315009504,
+       "hit_rate": 0.1917808219178082,
+       "share_of_profit": 1.0
+      }
+     },
+     "top_regime": "normal",
+     "dominated": true,
+     "losing_regimes": [
+      "high",
+      "low"
+     ]
+    },
+    "total_return_sum": 0.21137745948031417
+   },
+   "stability": {
+    "sharp_peak": 3,
+    "unstable_neighbours": 3,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 4
+   },
+   "concentration": {
+    "trades": 37,
+    "net_pnl": 2500.810991112838,
+    "top_trades": 2,
+    "top_trades_share": 0.6512889766643625,
+    "few_trades": false,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": -0.01576068468396673,
+    "share_positive": 0.4666666666666667,
+    "p10": -0.7709925209901882,
+    "p90": 0.6377056649706081
+   },
+   "oos_return": 0.19301228757163003,
+   "oos_max_drawdown": 0.3225770789611492,
+   "oos_sharpe_annual": 0.42693110120134026
+  },
+  "pairs_statarb:BTC/LTC": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/LTC\", \"p\": {\"window\": 90, \"z_entry\": 1.5}}",
+      "return": 0.03707472084212027,
+      "sharpe_annual": 1.1876003569836688,
+      "max_drawdown": 0.02746443796983722,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.928,
+        "sideways": 0.044,
+        "unknown": 0.028
+       },
+       "vol": {
+        "normal": 0.436,
+        "low": 0.348,
+        "high": 0.188,
+        "unknown": 0.028
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/LTC\", \"p\": {\"window\": 90, \"z_entry\": 1.5}}",
+      "return": 0.010610532850431342,
+      "sharpe_annual": 0.20585621568930765,
+      "max_drawdown": 0.20923231904417205,
+      "trades": 4,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.408,
+        "bull": 0.38,
+        "sideways": 0.212
+       },
+       "vol": {
+        "normal": 0.435,
+        "low": 0.429,
+        "high": 0.136
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/LTC\", \"p\": {\"window\": 90, \"z_entry\": 1.5}}",
+      "return": -0.2440949492700445,
+      "sharpe_annual": -1.2998989699426555,
+      "max_drawdown": 0.3126910186864784,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.541,
+        "sideways": 0.304,
+        "bear": 0.155
+       },
+       "vol": {
+        "low": 0.718,
+        "normal": 0.282
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/LTC\", \"p\": {\"window\": 90, \"z_entry\": 2.5}}",
+      "return": -0.2365733836805748,
+      "sharpe_annual": -2.799300013507939,
+      "max_drawdown": 0.28996190327951776,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.446,
+        "bull": 0.402,
+        "sideways": 0.152
+       },
+       "vol": {
+        "low": 0.837,
+        "high": 0.092,
+        "normal": 0.071
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/LTC\", \"p\": {\"window\": 30, \"z_entry\": 1.5}}",
+      "return": 0.05855091769018461,
+      "sharpe_annual": 0.6297279266699259,
+      "max_drawdown": 0.08382639396744751,
+      "trades": 9,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.467,
+        "bear": 0.396,
+        "sideways": 0.137
+       },
+       "vol": {
+        "low": 0.626,
+        "normal": 0.192,
+        "high": 0.181
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/LTC\", \"p\": {\"window\": 30, \"z_entry\": 1.5}}",
+      "return": 0.1385728364254215,
+      "sharpe_annual": 1.224934708301508,
+      "max_drawdown": 0.13115094415868433,
+      "trades": 12,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.582,
+        "bull": 0.386,
+        "sideways": 0.033
+       },
+       "vol": {
+        "low": 0.451,
+        "normal": 0.386,
+        "high": 0.163
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/LTC\", \"p\": {\"window\": 30, \"z_entry\": 1.5}}",
+      "return": 0.04866701064951995,
+      "sharpe_annual": 0.507449892889381,
+      "max_drawdown": 0.13908850760652425,
+      "trades": 11,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.492,
+        "bear": 0.354,
+        "sideways": 0.155
+       },
+       "vol": {
+        "normal": 0.58,
+        "high": 0.232,
+        "low": 0.188
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 5,
+     "negative": 2,
+     "worst_fold": {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"BTC/LTC\", \"p\": {\"window\": 90, \"z_entry\": 1.5}}",
+      "return": -0.2440949492700445,
+      "sharpe_annual": -1.2998989699426555,
+      "max_drawdown": 0.3126910186864784,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.541,
+        "sideways": 0.304,
+        "bear": 0.155
+       },
+       "vol": {
+        "low": 0.718,
+        "normal": 0.282
+       }
+      }
+     },
+     "median_return": 0.03707472084212027,
+     "dispersion_std": 0.151123401861016,
+     "dispersion_iqr": 0.166590389584924,
+     "total_return": -0.23556847256120683,
+     "total_without_best_fold": -0.32860551123040527,
+     "best_fold_share_of_gains": 0.4721777171220727,
+     "max_fold_drawdown": 0.3126910186864784,
+     "fragile": false
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 596,
+       "sum_return": -0.09700461270350458,
+       "sharpe_annual": -0.3867640849087237,
+       "hit_rate": 0.18959731543624161,
+       "share_of_profit": 0.0
+      },
+      "bull": {
+       "days": 487,
+       "sum_return": -0.14110102272580016,
+       "sharpe_annual": -0.33745823995217133,
+       "hit_rate": 0.2936344969199179,
+       "share_of_profit": 0.0
+      },
+      "sideways": {
+       "days": 189,
+       "sum_return": 0.0672355461924592,
+       "sharpe_annual": 0.5668812544459524,
+       "hit_rate": 0.24867724867724866,
+       "share_of_profit": 1.0
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": 0.0008079257569125753,
+       "sharpe_annual": 4.877836755124441,
+       "hit_rate": 0.2,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "sideways",
+     "dominated": false,
+     "losing_regimes": [
+      "bear",
+      "bull"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 181,
+       "sum_return": -0.05550020516199983,
+       "sharpe_annual": -0.4141856372608364,
+       "hit_rate": 0.23204419889502761,
+       "share_of_profit": 0.0
+      },
+      "low": {
+       "days": 657,
+       "sum_return": -0.5287422768850338,
+       "sharpe_annual": -1.214390942920684,
+       "hit_rate": 0.2191780821917808,
+       "share_of_profit": 0.0
+      },
+      "normal": {
+       "days": 434,
+       "sum_return": 0.4133723928101881,
+       "sharpe_annual": 1.6245484292780423,
+       "hit_rate": 0.2695852534562212,
+       "share_of_profit": 1.0
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": 0.0008079257569125753,
+       "sharpe_annual": 4.877836755124441,
+       "hit_rate": 0.2,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "normal",
+     "dominated": false,
+     "losing_regimes": [
+      "high",
+      "low"
+     ]
+    },
+    "total_return_sum": -0.17006216347993297
+   },
+   "stability": {
+    "sharp_peak": 2,
+    "unstable_neighbours": 2,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 3
+   },
+   "concentration": {
+    "trades": 46,
+    "net_pnl": -1957.9514667703534,
+    "top_trades": 3,
+    "top_trades_share": Infinity,
+    "few_trades": false,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": -0.981384258696274,
+    "share_positive": 0.06666666666666667,
+    "p10": -1.2971434213937194,
+    "p90": -0.42789646002460247
+   },
+   "oos_return": -0.2355684725612056,
+   "oos_max_drawdown": 0.5180970525919535,
+   "oos_sharpe_annual": -0.20512538240088798
+  },
+  "pairs_statarb:XRP/XLM": {
+   "folds": {
+    "folds": [
+     {
+      "test_start": "2022-01-01",
+      "test_end": "2022-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"XRP/XLM\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": 0.003721964000423128,
+      "sharpe_annual": 0.12229149259005936,
+      "max_drawdown": 0.05586185003792965,
+      "trades": 3,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.895,
+        "sideways": 0.077,
+        "unknown": 0.028
+       },
+       "vol": {
+        "low": 0.613,
+        "normal": 0.309,
+        "high": 0.05,
+        "unknown": 0.028
+       }
+      }
+     },
+     {
+      "test_start": "2022-07-01",
+      "test_end": "2022-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"XRP/XLM\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": -0.07430449593653554,
+      "sharpe_annual": -0.8026631076991988,
+      "max_drawdown": 0.1592700008429795,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.663,
+        "sideways": 0.337
+       },
+       "vol": {
+        "low": 0.641,
+        "normal": 0.359
+       }
+      }
+     },
+     {
+      "test_start": "2023-01-01",
+      "test_end": "2023-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"XRP/XLM\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": 0.08205738950337471,
+      "sharpe_annual": 1.0741971416246847,
+      "max_drawdown": 0.10620623907594684,
+      "trades": 5,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.536,
+        "bear": 0.315,
+        "sideways": 0.149
+       },
+       "vol": {
+        "low": 0.989,
+        "normal": 0.011
+       }
+      }
+     },
+     {
+      "test_start": "2023-07-01",
+      "test_end": "2023-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"XRP/XLM\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": 0.13016335505671606,
+      "sharpe_annual": 2.0938897803243837,
+      "max_drawdown": 0.0489428611352235,
+      "trades": 4,
+      "regime_mix": {
+       "trend": {
+        "bull": 0.505,
+        "bear": 0.288,
+        "sideways": 0.207
+       },
+       "vol": {
+        "low": 0.696,
+        "high": 0.163,
+        "normal": 0.141
+       }
+      }
+     },
+     {
+      "test_start": "2024-01-01",
+      "test_end": "2024-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"XRP/XLM\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": 0.0219065668900702,
+      "sharpe_annual": 1.2982173571394717,
+      "max_drawdown": 0.015839552339099727,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.522,
+        "bull": 0.352,
+        "sideways": 0.126
+       },
+       "vol": {
+        "low": 0.654,
+        "normal": 0.28,
+        "high": 0.066
+       }
+      }
+     },
+     {
+      "test_start": "2024-07-01",
+      "test_end": "2024-12-31",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"XRP/XLM\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": 1.1453154764578004,
+      "sharpe_annual": 2.3465861673232182,
+      "max_drawdown": 0.08843973939355643,
+      "trades": 6,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.457,
+        "sideways": 0.277,
+        "bull": 0.266
+       },
+       "vol": {
+        "low": 0.571,
+        "high": 0.245,
+        "normal": 0.185
+       }
+      }
+     },
+     {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"XRP/XLM\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": -0.08962035343052077,
+      "sharpe_annual": -1.4675118325184933,
+      "max_drawdown": 0.1243062429510352,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.519,
+        "bull": 0.343,
+        "sideways": 0.138
+       },
+       "vol": {
+        "normal": 0.47,
+        "high": 0.392,
+        "low": 0.138
+       }
+      }
+     }
+    ],
+    "summary": {
+     "folds": 7,
+     "positive": 5,
+     "negative": 2,
+     "worst_fold": {
+      "test_start": "2025-01-01",
+      "test_end": "2025-06-30",
+      "choice": "{\"c\": 1.0, \"f\": \"pairs_statarb\", \"i\": \"XRP/XLM\", \"p\": {\"window\": 30, \"z_entry\": 2.5}}",
+      "return": -0.08962035343052077,
+      "sharpe_annual": -1.4675118325184933,
+      "max_drawdown": 0.1243062429510352,
+      "trades": 2,
+      "regime_mix": {
+       "trend": {
+        "bear": 0.519,
+        "bull": 0.343,
+        "sideways": 0.138
+       },
+       "vol": {
+        "normal": 0.47,
+        "high": 0.392,
+        "low": 0.138
+       }
+      }
+     },
+     "median_return": 0.0219065668900702,
+     "dispersion_std": 0.43533635762722084,
+     "dispersion_iqr": 0.1414016382481016,
+     "total_return": 1.2677647179001643,
+     "total_without_best_fold": 0.05707749875768564,
+     "best_fold_share_of_gains": 0.8280398086183024,
+     "max_fold_drawdown": 0.1592700008429795,
+     "fragile": true
+    }
+   },
+   "regimes": {
+    "trend": {
+     "by_regime": {
+      "bear": {
+       "days": 667,
+       "sum_return": -0.006725684664494858,
+       "sharpe_annual": -0.03261918273508135,
+       "hit_rate": 0.11544227886056972,
+       "share_of_profit": 0.0
+      },
+      "bull": {
+       "days": 365,
+       "sum_return": 0.8762435853354605,
+       "sharpe_annual": 1.6153988522801561,
+       "hit_rate": 0.1589041095890411,
+       "share_of_profit": 0.9113065090805671
+      },
+      "sideways": {
+       "days": 240,
+       "sum_return": 0.08528096936076113,
+       "sharpe_annual": 1.105349450311164,
+       "hit_rate": 0.09583333333333334,
+       "share_of_profit": 0.08869349091943293
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": 0.0,
+       "sharpe_annual": 0.0,
+       "hit_rate": 0.0,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "bull",
+     "dominated": true,
+     "losing_regimes": [
+      "bear"
+     ]
+    },
+    "vol": {
+     "by_regime": {
+      "high": {
+       "days": 167,
+       "sum_return": 0.6930624921639287,
+       "sharpe_annual": 1.9612839167930334,
+       "hit_rate": 0.19760479041916168,
+       "share_of_profit": 0.7258727611825714
+      },
+      "low": {
+       "days": 785,
+       "sum_return": 0.04731568260969066,
+       "sharpe_annual": 0.1967674992264071,
+       "hit_rate": 0.1070063694267516,
+       "share_of_profit": 0.04955565417470426
+      },
+      "normal": {
+       "days": 320,
+       "sum_return": 0.21442069525810747,
+       "sharpe_annual": 1.4008119737001197,
+       "hit_rate": 0.128125,
+       "share_of_profit": 0.2245715846427243
+      },
+      "unknown": {
+       "days": 5,
+       "sum_return": 0.0,
+       "sharpe_annual": 0.0,
+       "hit_rate": 0.0,
+       "share_of_profit": 0.0
+      }
+     },
+     "top_regime": "high",
+     "dominated": true,
+     "losing_regimes": []
+    },
+    "total_return_sum": 0.9547988700317268
+   },
+   "stability": {
+    "sharp_peak": 4,
+    "unstable_neighbours": 2,
+    "isolated": 0,
+    "folds": 7,
+    "distinct_choices": 1
+   },
+   "concentration": {
+    "trades": 27,
+    "net_pnl": 10508.647235935652,
+    "top_trades": 2,
+    "top_trades_share": 1.1029084941020026,
+    "few_trades": true,
+    "dominated_by_few_trades": true
+   },
+   "cpcv": {
+    "paths": 15,
+    "median_test_sharpe": 0.4150349237949315,
+    "share_positive": 0.6666666666666666,
+    "p10": -0.8154281048518076,
+    "p90": 1.2422676830654766
+   },
+   "oos_return": 1.267764717900158,
+   "oos_max_drawdown": 0.20175237061301032,
+   "oos_sharpe_annual": 0.8921924435033847
+  }
+ },
+ "family_combination": {
+  "folds": {
+   "folds": [
+    {
+     "test_start": "2022-01-01",
+     "test_end": "2022-06-30",
+     "choice": null,
+     "return": -0.0188285352395694,
+     "sharpe_annual": -0.5443324586375197,
+     "max_drawdown": 0.0525507755665533,
+     "trades": 0
+    },
+    {
+     "test_start": "2022-07-01",
+     "test_end": "2022-12-31",
+     "choice": null,
+     "return": 0.0278787137477865,
+     "sharpe_annual": 0.5732901589747706,
+     "max_drawdown": 0.06383297809587996,
+     "trades": 0
+    },
+    {
+     "test_start": "2023-01-01",
+     "test_end": "2023-06-30",
+     "choice": null,
+     "return": -0.040342483890011605,
+     "sharpe_annual": -0.8230485306058227,
+     "max_drawdown": 0.08109560460881571,
+     "trades": 0
+    },
+    {
+     "test_start": "2023-07-01",
+     "test_end": "2023-12-31",
+     "choice": null,
+     "return": -0.0432117420320528,
+     "sharpe_annual": -1.106080394464419,
+     "max_drawdown": 0.115621769455438,
+     "trades": 0
+    },
+    {
+     "test_start": "2024-01-01",
+     "test_end": "2024-06-30",
+     "choice": null,
+     "return": 0.0432540037944531,
+     "sharpe_annual": 1.0799583435828015,
+     "max_drawdown": 0.04469694010070935,
+     "trades": 0
+    },
+    {
+     "test_start": "2024-07-01",
+     "test_end": "2024-12-31",
+     "choice": null,
+     "return": 0.229040223283413,
+     "sharpe_annual": 2.5319008965573446,
+     "max_drawdown": 0.042202589848970073,
+     "trades": 0
+    },
+    {
+     "test_start": "2025-01-01",
+     "test_end": "2025-06-30",
+     "choice": null,
+     "return": -0.058940329657266255,
+     "sharpe_annual": -1.350888759854876,
+     "max_drawdown": 0.0740458217031007,
+     "trades": 0
+    }
+   ],
+   "summary": {
+    "folds": 7,
+    "positive": 3,
+    "negative": 4,
+    "worst_fold": {
+     "test_start": "2025-01-01",
+     "test_end": "2025-06-30",
+     "choice": null,
+     "return": -0.058940329657266255,
+     "sharpe_annual": -1.350888759854876,
+     "max_drawdown": 0.0740458217031007,
+     "trades": 0
+    },
+    "median_return": -0.0188285352395694,
+    "dispersion_std": 0.09973015197964996,
+    "dispersion_iqr": 0.077343471732152,
+    "total_return": 0.11735764803819437,
+    "total_without_best_fold": -0.0908697478971483,
+    "best_fold_share_of_gains": 0.763027548897037,
+    "max_fold_drawdown": 0.115621769455438,
+    "fragile": true
+   }
+  },
+  "regimes_vs_BTCUSDT-PERP.BINANCE": {
+   "trend": {
+    "by_regime": {
+     "bear": {
+      "days": 540,
+      "sum_return": 0.018412875100863195,
+      "sharpe_annual": 0.1464422210145801,
+      "hit_rate": 0.43703703703703706,
+      "share_of_profit": 0.1136928075688378
+     },
+     "bull": {
+      "days": 570,
+      "sum_return": 0.14353998273242335,
+      "sharpe_annual": 0.7511292368847222,
+      "hit_rate": 0.44912280701754387,
+      "share_of_profit": 0.8863071924311622
+     },
+     "sideways": {
+      "days": 167,
+      "sum_return": -0.033067270197322224,
+      "sharpe_annual": -0.9915247612018085,
+      "hit_rate": 0.40718562874251496,
+      "share_of_profit": 0.0
+     }
+    },
+    "top_regime": "bull",
+    "dominated": true,
+    "losing_regimes": [
+     "sideways"
+    ]
+   },
+   "vol": {
+    "by_regime": {
+     "high": {
+      "days": 160,
+      "sum_return": -0.04464665997449993,
+      "sharpe_annual": -1.3392254029249504,
+      "hit_rate": 0.4,
+      "share_of_profit": 0.0
+     },
+     "low": {
+      "days": 731,
+      "sum_return": 0.05656594154965766,
+      "sharpe_annual": 0.32614172831711724,
+      "hit_rate": 0.43365253077975374,
+      "share_of_profit": 0.3259678954693988
+     },
+     "normal": {
+      "days": 386,
+      "sum_return": 0.11696630606080667,
+      "sharpe_annual": 0.8263046539222818,
+      "hit_rate": 0.4637305699481865,
+      "share_of_profit": 0.6740321045306013
+     }
+    },
+    "top_regime": "normal",
+    "dominated": false,
+    "losing_regimes": [
+     "high"
+    ]
+   },
+   "total_return_sum": 0.1288855876359644
+  },
+  "concentration": {
+   "trades": 186,
+   "net_pnl": 9280.588406112256,
+   "top_trades": 10,
+   "top_trades_share": 1.914029120192177,
+   "few_trades": false,
+   "dominated_by_few_trades": true,
+   "asset_shares": {
+    "BTC/ETH": 0.0,
+    "ETH/ETC": 0.0,
+    "BTC/BCH": 0.19223021800502813,
+    "BTC/LTC": 0.0,
+    "XRP/XLM": 0.8077697819949718
+   },
+   "dominated_by_one_asset": true
+  },
+  "oos_return": 0.11735764803819437,
+  "oos_max_drawdown": 0.14225954536116014,
+  "oos_sharpe_annual": 0.36074263528875405
+ },
+ "diversification": {
+  "return_corr": {
+   "pairs_statarb:BTC/BCH": {
+    "pairs_statarb:BTC/BCH": 1.0,
+    "pairs_statarb:BTC/ETH": 0.056,
+    "pairs_statarb:BTC/LTC": 0.187,
+    "pairs_statarb:ETH/ETC": 0.15,
+    "pairs_statarb:XRP/XLM": 0.002
+   },
+   "pairs_statarb:BTC/ETH": {
+    "pairs_statarb:BTC/BCH": 0.056,
+    "pairs_statarb:BTC/ETH": 1.0,
+    "pairs_statarb:BTC/LTC": 0.174,
+    "pairs_statarb:ETH/ETC": -0.016,
+    "pairs_statarb:XRP/XLM": 0.094
+   },
+   "pairs_statarb:BTC/LTC": {
+    "pairs_statarb:BTC/BCH": 0.187,
+    "pairs_statarb:BTC/ETH": 0.174,
+    "pairs_statarb:BTC/LTC": 1.0,
+    "pairs_statarb:ETH/ETC": 0.044,
+    "pairs_statarb:XRP/XLM": 0.048
+   },
+   "pairs_statarb:ETH/ETC": {
+    "pairs_statarb:BTC/BCH": 0.15,
+    "pairs_statarb:BTC/ETH": -0.016,
+    "pairs_statarb:BTC/LTC": 0.044,
+    "pairs_statarb:ETH/ETC": 1.0,
+    "pairs_statarb:XRP/XLM": -0.09
+   },
+   "pairs_statarb:XRP/XLM": {
+    "pairs_statarb:BTC/BCH": 0.002,
+    "pairs_statarb:BTC/ETH": 0.094,
+    "pairs_statarb:BTC/LTC": 0.048,
+    "pairs_statarb:ETH/ETC": -0.09,
+    "pairs_statarb:XRP/XLM": 1.0
+   }
+  },
+  "drawdown_corr": {
+   "pairs_statarb:BTC/BCH": {
+    "pairs_statarb:BTC/BCH": 1.0,
+    "pairs_statarb:BTC/ETH": 0.339,
+    "pairs_statarb:BTC/LTC": 0.847,
+    "pairs_statarb:ETH/ETC": -0.336,
+    "pairs_statarb:XRP/XLM": -0.227
+   },
+   "pairs_statarb:BTC/ETH": {
+    "pairs_statarb:BTC/BCH": 0.339,
+    "pairs_statarb:BTC/ETH": 1.0,
+    "pairs_statarb:BTC/LTC": 0.419,
+    "pairs_statarb:ETH/ETC": 0.336,
+    "pairs_statarb:XRP/XLM": 0.694
+   },
+   "pairs_statarb:BTC/LTC": {
+    "pairs_statarb:BTC/BCH": 0.847,
+    "pairs_statarb:BTC/ETH": 0.419,
+    "pairs_statarb:BTC/LTC": 1.0,
+    "pairs_statarb:ETH/ETC": -0.277,
+    "pairs_statarb:XRP/XLM": -0.049
+   },
+   "pairs_statarb:ETH/ETC": {
+    "pairs_statarb:BTC/BCH": -0.336,
+    "pairs_statarb:BTC/ETH": 0.336,
+    "pairs_statarb:BTC/LTC": -0.277,
+    "pairs_statarb:ETH/ETC": 1.0,
+    "pairs_statarb:XRP/XLM": 0.418
+   },
+   "pairs_statarb:XRP/XLM": {
+    "pairs_statarb:BTC/BCH": -0.227,
+    "pairs_statarb:BTC/ETH": 0.694,
+    "pairs_statarb:BTC/LTC": -0.049,
+    "pairs_statarb:ETH/ETC": 0.418,
+    "pairs_statarb:XRP/XLM": 1.0
+   }
+  },
+  "same_source_pairs": [],
+  "by_asset": {
+   "crypto": 1.0
+  },
+  "hhi_asset": 1.0,
+  "by_family": {
+   "pairs_statarb": 1.0
+  },
+  "hhi_family": 1.0,
+  "effective_independent_sources": 4.784146475625801,
+  "note": "diversification describes overlap between return sources; it is not evidence of profitability"
+ },
+ "hypothesis_predictions": null
+}

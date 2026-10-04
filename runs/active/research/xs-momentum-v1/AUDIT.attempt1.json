@@ -1,0 +1,76 @@
+{
+ "subject": "plan xs-momentum-v1 (e8c4f0d55272fa0f)",
+ "passed": true,
+ "counts": {
+  "PASS": 12,
+  "WARNING": 1,
+  "FAIL": 0
+ },
+ "checks": [
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "xs_momentum_crypto PERP12 {\"k\": 2, \"lookback\": 7, \"rebalance_days\": 7}: targets up to T unchanged when prices and funding after T are mirrored/scrambled (4 cuts)"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "xs_momentum_crypto PERP12 {\"k\": 3, \"lookback\": 28, \"rebalance_days\": 7}: targets up to T unchanged when prices and funding after T are mirrored/scrambled (4 cuts)"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "targets decided at a close are executed at the next open (decision-day move not captured)"
+  },
+  {
+   "name": "fees",
+   "status": "PASS",
+   "detail": "every instrument charges commission; taker fee includes spread and slippage"
+  },
+  {
+   "name": "spread_slippage",
+   "status": "PASS",
+   "detail": "half-spread + slippage > 0 for all"
+  },
+  {
+   "name": "financing",
+   "status": "PASS",
+   "detail": "margin instruments carry swap/borrow costs, perpetuals their actual funding settlements; spot crypto is cash-only and long-only"
+  },
+  {
+   "name": "cost_stress",
+   "status": "PASS",
+   "detail": "cost multipliers [1.0, 2.0] (needs >= 2.0)"
+  },
+  {
+   "name": "fills",
+   "status": "PASS",
+   "detail": "daily next-open execution at taker cost; no stop/target orders, so no intrabar ambiguity; weights drift between rebalances (traded only when the target changes)"
+  },
+  {
+   "name": "train_test_holdout",
+   "status": "PASS",
+   "detail": "7 ordered folds, disjoint tests, holdout from 2025-09-01 sealed for ['crypto']"
+  },
+  {
+   "name": "survivorship",
+   "status": "WARNING",
+   "detail": "universe crypto-perp-early-12: every USD-M perpetual with archive data by 2020-02 (all 12 early listings, incl. EOS, delisted 2025); later listings are excluded, so coins that only became large later are absent"
+  },
+  {
+   "name": "bar_close_convention",
+   "status": "PASS",
+   "detail": "close-stamped bars aligned to 1440-minute closes (sampled 2020-07-19)"
+  },
+  {
+   "name": "timezone",
+   "status": "PASS",
+   "detail": "daily bars close at 00:00 UTC"
+  },
+  {
+   "name": "liquidity",
+   "status": "PASS",
+   "detail": "max position / median daily traded value: 0.04% (TRXUSDT-PERP.BINANCE); entries capped at 10% of median bar volume"
+  }
+ ]
+}

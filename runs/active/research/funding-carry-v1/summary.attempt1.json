@@ -44,7 +44,7 @@
   "bar_minutes": 1440
  },
  "plan_hash": "ea0a0651480d3465",
- "n_trials": 670,
+ "n_trials": 648,
  "gates_hash": "2fc90f4ad972f482",
  "lines": [
   {
@@ -63,7 +63,7 @@
    "values": {
     "n_trades": 22.0,
     "oos_sharpe_annual": 3.738267536618946,
-    "deflated_sharpe": 0.999878714534488,
+    "deflated_sharpe": 0.9998830761645914,
     "pbo": 0.0,
     "max_drawdown": 0.017675463158448812,
     "walk_forward_positive_share": 0.5714285714285714,
@@ -84,7 +84,7 @@
      "values": {
       "n_trades": 22.0,
       "oos_sharpe_annual": 1.0084423021407503,
-      "deflated_sharpe": 0.12336767638930402,
+      "deflated_sharpe": 0.12522581469121657,
       "pbo": 0.0,
       "max_drawdown": 0.04730429691985116,
       "walk_forward_positive_share": 0.5714285714285714,
@@ -146,7 +146,7 @@
    "values": {
     "n_trades": 36.0,
     "oos_sharpe_annual": 2.203806353326144,
-    "deflated_sharpe": 0.8306499974304953,
+    "deflated_sharpe": 0.8330539606187752,
     "pbo": 0.0,
     "max_drawdown": 0.037595355523412644,
     "walk_forward_positive_share": 0.5714285714285714,
@@ -167,7 +167,7 @@
      "values": {
       "n_trades": 36.0,
       "oos_sharpe_annual": -0.63796476519248,
-      "deflated_sharpe": 3.099869038915794e-06,
+      "deflated_sharpe": 3.2532229857809084e-06,
       "pbo": 0.0,
       "max_drawdown": 0.08893931545482259,
       "walk_forward_positive_share": 0.5714285714285714,
@@ -229,7 +229,7 @@
    "values": {
     "n_trades": 34.0,
     "oos_sharpe_annual": 1.6070921800849114,
-    "deflated_sharpe": 0.4458561145614516,
+    "deflated_sharpe": 0.44978012757897556,
     "pbo": 0.8571428571428571,
     "max_drawdown": 0.02824999259829164,
     "walk_forward_positive_share": 0.5714285714285714,
@@ -250,7 +250,7 @@
      "values": {
       "n_trades": 34.0,
       "oos_sharpe_annual": -0.6277383349101816,
-      "deflated_sharpe": 2.237544938929846e-06,
+      "deflated_sharpe": 2.3520849553590984e-06,
       "pbo": 0.8571428571428571,
       "max_drawdown": 0.07597795201344026,
       "walk_forward_positive_share": 0.42857142857142855,
@@ -312,7 +312,7 @@
    "values": {
     "n_trades": 22.0,
     "oos_sharpe_annual": 3.265169227711731,
-    "deflated_sharpe": 0.997676319756746,
+    "deflated_sharpe": 0.9977434422806774,
     "pbo": 0.0,
     "max_drawdown": 0.021458180649167824,
     "walk_forward_positive_share": 0.7142857142857143,
@@ -333,7 +333,7 @@
      "values": {
       "n_trades": 22.0,
       "oos_sharpe_annual": 0.5486694877888251,
-      "deflated_sharpe": 0.021653854389287058,
+      "deflated_sharpe": 0.02214421049926101,
       "pbo": 0.0,
       "max_drawdown": 0.04766188443981445,
       "walk_forward_positive_share": 0.42857142857142855,
@@ -395,7 +395,7 @@
    "values": {
     "n_trades": 13.0,
     "oos_sharpe_annual": 4.6558460108218185,
-    "deflated_sharpe": 0.9999999999668516,
+    "deflated_sharpe": 0.9999999999693048,
     "pbo": 0.0,
     "max_drawdown": 0.004730514399134522,
     "walk_forward_positive_share": 1.0,
@@ -416,7 +416,7 @@
      "values": {
       "n_trades": 13.0,
       "oos_sharpe_annual": 2.8801873594937346,
-      "deflated_sharpe": 0.9776056678167577,
+      "deflated_sharpe": 0.9780686097163136,
       "pbo": 0.0,
       "max_drawdown": 0.01975300614008968,
       "walk_forward_positive_share": 0.5714285714285714,
@@ -478,7 +478,7 @@
    "values": {
     "n_trades": 17.0,
     "oos_sharpe_annual": -0.7770060957507078,
-    "deflated_sharpe": 1.1906690861301872e-06,
+    "deflated_sharpe": 1.2510675660573353e-06,
     "pbo": 0.014285714285714285,
     "max_drawdown": 0.016737081505375118,
     "walk_forward_positive_share": 0.14285714285714285,
@@ -499,7 +499,7 @@
      "values": {
       "n_trades": 17.0,
       "oos_sharpe_annual": -1.9797959856111582,
-      "deflated_sharpe": 3.647095879460875e-19,
+      "deflated_sharpe": 4.088113551949312e-19,
       "pbo": 0.014285714285714285,
       "max_drawdown": 0.055350424455866465,
       "walk_forward_positive_share": 0.0,
@@ -562,7 +562,7 @@
    "values": {
     "n_trades": 144.0,
     "oos_sharpe_annual": 3.893053868950755,
-    "deflated_sharpe": 0.9999999229465375,
+    "deflated_sharpe": 0.9999999279802338,
     "pbo": 0.0,
     "max_drawdown": 0.012471348025371198,
     "walk_forward_positive_share": 0.5714285714285714,
@@ -583,7 +583,7 @@
      "values": {
       "n_trades": 144.0,
       "oos_sharpe_annual": 0.34889769423555644,
-      "deflated_sharpe": 0.00642423350528333,
+      "deflated_sharpe": 0.006603680939539878,
       "pbo": 0.0,
       "max_drawdown": 0.04071029634930612,
       "walk_forward_positive_share": 0.42857142857142855,
@@ -608,7 +608,7 @@
    "values": {
     "n_trades": 144.0,
     "oos_sharpe_annual": 3.893053868950755,
-    "deflated_sharpe": 0.9999999229465375,
+    "deflated_sharpe": 0.9999999279802338,
     "pbo": 0.0,
     "max_drawdown": 0.012471348025371198,
     "walk_forward_positive_share": 0.5714285714285714,
@@ -629,7 +629,7 @@
      "values": {
       "n_trades": 144.0,
       "oos_sharpe_annual": 0.34889769423555644,
-      "deflated_sharpe": 0.00642423350528333,
+      "deflated_sharpe": 0.006603680939539878,
       "pbo": 0.0,
       "max_drawdown": 0.04071029634930612,
       "walk_forward_positive_share": 0.42857142857142855,
