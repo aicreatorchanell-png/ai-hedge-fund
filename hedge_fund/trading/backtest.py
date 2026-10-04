@@ -140,3 +140,30 @@ def ambiguity_audit(brackets: list[dict], orders: pd.DataFrame, bars, multiplier
 def _bisect(xs: list[int], x: int) -> int:
     import bisect
     return bisect.bisect_right(xs, x)
+
+
+def financing_costs(positions: pd.DataFrame, spec, end_ns: int) -> pd.Series:
+    """Financing charged on each position: notional x daily rate x days held (open positions
+    are charged up to *end_ns*). Returns costs indexed by the time they are booked."""
+    if positions.empty or (spec.financing_long_bps_day == 0 and spec.financing_short_bps_day == 0):
+        return pd.Series(dtype=float)
+    out = {}
+    for p in positions.itertuples():
+        opened = pd.Timestamp(p.ts_opened)
+        opened = opened.tz_localize("UTC") if opened.tzinfo is None else opened
+        closed = pd.Timestamp(p.ts_closed) if pd.notna(p.ts_closed) else pd.Timestamp(end_ns, unit="ns", tz="UTC")
+        closed = closed.tz_localize("UTC") if closed.tzinfo is None else closed
+        days = max((closed - opened).total_seconds() / 86_400, 0.0)
+        qty = float(p.peak_qty) if hasattr(p, "peak_qty") else float(p.quantity)
+        rate = spec.financing_long_bps_day if str(p.entry) == "BUY" else spec.financing_short_bps_day
+        cost = qty * float(p.avg_px_open) * rate / 1e4 * days
+        out[closed] = out.get(closed, 0.0) + cost
+    return pd.Series(out, dtype=float).sort_index()
+
+
+def apply_financing(equity: pd.Series, costs: pd.Series) -> pd.Series:
+    """Equity net of financing: each cost is deducted from the first mark at or after it."""
+    if costs.empty:
+        return equity
+    booked = costs.reindex(equity.index.union(costs.index)).fillna(0.0).cumsum().reindex(equity.index, method="ffill")
+    return equity - booked.fillna(0.0)

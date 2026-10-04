@@ -33,7 +33,7 @@ import numpy as np
 import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from hedge_fund.trading.backtest import run_backtest
+from hedge_fund.trading.backtest import apply_financing, financing_costs, run_backtest
 from hedge_fund.trading.data.fence import last_research_day
 from hedge_fund.trading.families import FAMILIES, build
 from hedge_fund.trading.governor import TradeRiskConfig
@@ -139,14 +139,19 @@ def run_config(plan: ResearchPlan, spec, bars, family: str, params: dict, *, cos
                                          else {spec.quote: plan.starting_cash}))
     res = run_backtest(inst, bars, strategy, venue, market=spec.asset_class)
     pos = res.positions
+    fin = financing_costs(pos, spec, bars[-1].ts_event) * cost_multiplier
     if pos.empty:
         trades = pd.Series(dtype=float)
     else:
         closed = pos[pos["ts_closed"].notna()]
         trades = pd.Series([float(str(x).split()[0]) for x in closed["realized_pnl"]],
                            index=pd.to_datetime(closed["ts_closed"], utc=True), dtype=float).sort_index()
+        if not fin.empty:                                    # financing reduces each closed trade's P&L
+            trades = trades - fin.reindex(trades.index).fillna(0.0).to_numpy()
+    equity = apply_financing(res.equity, fin)
     run = ConfigRun(config_key(family, params, spec.instrument_id, cost_multiplier), family, params,
-                    spec.instrument_id, cost_multiplier, daily_returns(res.equity), trades, res.audit)
+                    spec.instrument_id, cost_multiplier, daily_returns(equity), trades,
+                    {**res.audit, "financing_total": float(fin.sum()) if not fin.empty else 0.0})
     if registry is not None:
         registry.record(family=f"active/{family}", spec={"params": params, "instrument": spec.instrument_id,
                                                          "cost_multiplier": cost_multiplier,

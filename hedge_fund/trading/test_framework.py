@@ -331,3 +331,46 @@ def test_trial_count_is_cumulative_across_phases(tmp_path):
 def test_repository_trial_count_includes_crypto_v1(tmp_path):
     from hedge_fund.trading.runner import all_registries
     assert count_trials(ExperimentRegistry(tmp_path / "x.jsonl"), all_registries()) >= 504
+
+
+# -- liquidity cap and financing ------------------------------------------------
+
+def test_entries_are_capped_by_recent_bar_volume():
+    bars = [bar(i, 100, 100.1, 99.9, 100, volume=20) for i in range(3)] + [bar(3, 100, 100.1, 99.9, 100)] + \
+        flat(3, start=4)
+    r = run_backtest(INST, bars, Scripted({2: (OrderSide.BUY, 99.0, 102.0)}), VENUE)
+    assert r.brackets[0]["quantity"] == pytest.approx(2.0)          # 10% of median volume 20, not 41.7 from risk
+    with pytest.raises(ValueError):
+        from hedge_fund.trading.strategy import GuardedConfig
+        GuardedStrategy(GuardedConfig(instrument_id=INST.id, bar_type=bars[0].bar_type,
+                                      max_volume_participation=0.5), __import__(
+            "hedge_fund.trading.governor", fromlist=["x"]).TradeRiskConfig())
+
+
+def test_financing_is_charged_on_margin_positions_and_reduces_equity():
+    from hedge_fund.trading.backtest import apply_financing, financing_costs
+    eur = FX["EURUSD"]
+    t0 = pd.Timestamp("2024-01-01", tz="UTC")
+    pos = pd.DataFrame({"ts_opened": [t0, t0], "ts_closed": [t0 + pd.Timedelta(days=10), pd.NaT],
+                        "peak_qty": [100_000.0, 50_000.0], "quantity": [0.0, 50_000.0],
+                        "avg_px_open": [1.10, 1.10], "entry": ["BUY", "SELL"]})
+    costs = financing_costs(pos, eur, (t0 + pd.Timedelta(days=20)).value)
+    assert costs.sum() == pytest.approx(100_000 * 1.10 * 1e-4 * 10 + 50_000 * 1.10 * 1e-4 * 20)
+    eq = pd.Series(10_000.0, index=pd.date_range(t0, periods=25, freq="D", tz="UTC"))
+    net = apply_financing(eq, costs)
+    assert net.iloc[5] == 10_000 and net.iloc[-1] == pytest.approx(10_000 - costs.sum())
+    assert financing_costs(pos, CRYPTO["BTCUSDT"], t0.value).empty               # spot crypto: no borrowing
+    for spec in [*FX.values(), *INDICES.values()]:
+        assert spec.financing_long_bps_day > 0 and spec.financing_short_bps_day > 0
+
+
+def test_auditor_fails_margin_markets_without_financing(monkeypatch):
+    from hedge_fund.trading.data import markets
+    r = audit_mod.AuditReport("fin")
+    audit_mod.check_costs(small_plan(instruments=("EURUSD.DUKASCOPY",)), r)
+    assert {c.name: c.status for c in r.checks}["financing"] == "PASS"
+    monkeypatch.setitem(markets.FX, "EURUSD", markets.FX["EURUSD"].model_copy(
+        update={"financing_long_bps_day": 0.0, "financing_short_bps_day": 0.0}))
+    r = audit_mod.AuditReport("fin")
+    audit_mod.check_costs(small_plan(instruments=("EURUSD.DUKASCOPY",)), r)
+    assert {c.name: c.status for c in r.checks}["financing"] == "FAIL" and not r.passed

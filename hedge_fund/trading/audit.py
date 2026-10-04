@@ -270,6 +270,11 @@ def check_costs(plan, report: AuditReport) -> None:
                "every instrument charges commission; taker fee includes spread and slippage")
     report.add("spread_slippage", FAIL if bad_spread else PASS,
                f"no spread/slippage: {bad_spread}" if bad_spread else "half-spread + slippage > 0 for all")
+    unfinanced = [iid for iid in plan.instruments if market(iid.split(".")[0]).asset_class != "crypto"
+                  and market(iid.split(".")[0]).financing_long_bps_day + market(iid.split(".")[0]).financing_short_bps_day <= 0]
+    report.add("financing", FAIL if unfinanced else PASS,
+               f"margin instruments without financing costs: {unfinanced}" if unfinanced else
+               "margin instruments carry swap/borrow costs; spot crypto is cash-only and long-only")
     stress = max(plan.cost_multipliers)
     report.add("cost_stress", PASS if stress >= 2.0 else FAIL,
                f"cost multipliers {list(plan.cost_multipliers)} (needs >= 2.0)")
@@ -331,7 +336,11 @@ def check_survivorship(plan, report: AuditReport) -> None:
     report.add("survivorship", FAIL, f"instruments {sorted(inst)} are not a declared universe")
 
 
-def check_catalog(plan, report: AuditReport, catalog) -> None:
+def check_catalog(plan, report: AuditReport, catalog, *, participation: float | None = None) -> None:
+    """participation: the strategies' volume cap (GuardedConfig.max_volume_participation)."""
+    if participation is None:
+        from hedge_fund.trading.strategy import DEFAULT_VOLUME_PARTICIPATION
+        participation = DEFAULT_VOLUME_PARTICIPATION
     if catalog is None:
         report.add("bar_close_convention", WARNING, "no catalog supplied; not checked")
         report.add("timezone", WARNING, "no catalog supplied; not checked")
@@ -353,13 +362,14 @@ def check_catalog(plan, report: AuditReport, catalog) -> None:
             tz.append(f"{iid}: first close after midnight is {first}")
         value = np.median([float(b.close) * float(b.volume) for b in bars])
         cap = plan.starting_cash * plan.risk.max_notional_fraction
-        liq.append((iid, cap / value if value > 0 else float("inf")))
+        liq.append((iid, min(cap / value, participation) if value > 0 else float("inf")))
     report.add("bar_close_convention", FAIL if conv else PASS,
                "; ".join(conv) if conv else f"close-stamped, minute-aligned bars (sampled {day})")
     report.add("timezone", FAIL if tz else PASS, "; ".join(tz) if tz else "first bar of the day closes 00:01 UTC")
     worst = max(liq, key=lambda x: x[1]) if liq else (None, 0.0)
     status = FAIL if worst[1] > 0.10 else WARNING if worst[1] > 0.01 else PASS
-    report.add("liquidity", status, f"max position / median 1-minute traded value: {worst[1]:.2%} ({worst[0]})")
+    report.add("liquidity", status, f"max position / median 1-minute traded value: {worst[1]:.2%} ({worst[0]}); "
+                                    f"entries capped at {participation:.0%} of median bar volume")
 
 
 def audit_plan(plan, *, catalog=None, run_audits: list[dict] | None = None, probe_params: dict | None = None,

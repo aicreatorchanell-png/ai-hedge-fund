@@ -40,6 +40,10 @@ class MarketSpec(BaseModel):
     slippage_bps: float = Field(ge=0)
     calendar: str = "24/7"
     note: str = ""
+    # Financing of positions held on margin, in bp of notional per calendar day (swap /
+    # borrow / funding). Spot crypto on a cash account borrows nothing and cannot short.
+    financing_long_bps_day: float = Field(0.0, ge=0)
+    financing_short_bps_day: float = Field(0.0, ge=0)
 
     @property
     def instrument_id(self) -> str:
@@ -109,14 +113,16 @@ UNIVERSES = {
 FX = {s.symbol: s for s in [
     MarketSpec(venue="DUKASCOPY", symbol=f"{b}{q}", asset_class="fx", source="dukascopy", base=b, quote=q,
                price_precision=pp, size_increment="1000", commission_bps=0.2, half_spread_bps=0.5,
-               slippage_bps=0.5, calendar="FX", note="ECN-style commission ~0.2 bp per side")
+               slippage_bps=0.5, calendar="FX", note="ECN-style commission ~0.2 bp per side; swap ~3.65%/yr",
+               financing_long_bps_day=1.0, financing_short_bps_day=1.0)
     for b, q, pp in [("EUR", "USD", 5), ("GBP", "USD", 5), ("USD", "JPY", 3), ("AUD", "USD", 5)]
 ]}
 
 INDICES = {s.symbol: s for s in [
     MarketSpec(venue="DUKASCOPY", symbol=sym, asset_class="index", source="dukascopy", base=None, quote=q,
                price_precision=pp, size_increment="0.1", commission_bps=0.0, half_spread_bps=1.0,
-               slippage_bps=1.0, calendar=cal, note="index CFD: costs in the spread")
+               slippage_bps=1.0, calendar=cal, note="index CFD: costs in the spread; long ~5.5%/yr, short ~1.8%/yr",
+               financing_long_bps_day=1.5, financing_short_bps_day=0.5)
     for sym, q, pp, cal in [("USA500IDXUSD", "USD", 2, "XNYS"), ("DEUIDXEUR", "EUR", 2, "XETR")]
 ]}
 

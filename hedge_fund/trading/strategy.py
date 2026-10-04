@@ -15,7 +15,9 @@ The base class:
     - marks equity on every bar and feeds the RiskGovernor; once the kill switch is
       engaged it cancels open orders, closes positions and ignores further signals
     - refuses an entry the governor does not approve (daily loss, caps, kill switch)
-    - sizes it from the stop distance (sizing.size_for_stop) and the venue minimums
+    - sizes it from the stop distance (sizing.size_for_stop) and the venue minimums, capped
+      at `max_volume_participation` of the median volume of the last `volume_lookback`
+      execution bars (no entry without volume history)
     - submits it as a bracket: market entry + stop-market stop-loss + limit take-profit
       (one cancels the other), so every position has its exits at the venue from the start
     - records every bracket and every refusal for the audit
@@ -35,6 +37,9 @@ from hedge_fund.trading.governor import RiskGovernor, TradeRiskConfig
 from hedge_fund.trading.sizing import size_for_stop
 
 
+DEFAULT_VOLUME_PARTICIPATION = 0.10
+
+
 class GuardedConfig(StrategyConfig, frozen=True):
     instrument_id: InstrumentId
     bar_type: BarType
@@ -42,6 +47,8 @@ class GuardedConfig(StrategyConfig, frozen=True):
     allow_short: bool = False
     max_hold_bars: int = 0                  # time stop in signal bars; 0 = exits only by stop/target
     segment_starts_ns: tuple[int, ...] = ()  # research: walk-forward segment starts (risk state resets)
+    max_volume_participation: float = DEFAULT_VOLUME_PARTICIPATION  # an entry may not exceed this share of median recent bar volume
+    volume_lookback: int = 60               # execution bars in that median
     mark_every_minutes: int = 60
 
 
@@ -66,6 +73,10 @@ class GuardedStrategy(Strategy):
         if n < 1:
             raise ValueError("signal_minutes must be >= 1")
         spec = f"{n // 60}-HOUR" if n % 60 == 0 else f"{n}-MINUTE"     # Nautilus wants 1-HOUR, not 60-MINUTE
+        if not 0 < config.max_volume_participation <= 0.25:
+            raise ValueError("max_volume_participation must be in (0, 0.25]")
+        from collections import deque
+        self._volumes = deque(maxlen=max(1, config.volume_lookback))
         self.signal_bar_type = (config.bar_type if n == 1 else
                                 BarType.from_str(f"{config.instrument_id}-{spec}-LAST-INTERNAL@"
                                                  f"{config.bar_type.spec.step}-MINUTE-EXTERNAL"))
@@ -129,6 +140,7 @@ class GuardedStrategy(Strategy):
             self.equity_curve.append((bar.ts_event, equity))
         self.last_exec_ts = bar.ts_event
         self._last_equity = equity
+        self._volumes.append(float(bar.volume))
         if self.health is not None and (not self.health.equity or
                                         bar.ts_event // 86_400_000_000_000 != self.health.equity[-1][0] // 86_400_000_000_000):
             self.health.record_equity(bar.ts_event, equity)
@@ -199,7 +211,12 @@ class GuardedStrategy(Strategy):
             min_quantity=float(inst.min_quantity) if inst.min_quantity is not None else 0.0,
             min_notional=float(inst.min_notional) if inst.min_notional is not None else 0.0,
             multiplier=float(inst.multiplier), fee_rate=float(inst.taker_fee))
-        if qty <= 0:
+        cap = self.volume_cap(float(inst.size_increment))
+        if cap is None:
+            return self._refuse(bar, "no volume history")
+        qty = min(qty, cap)
+        if qty <= 0 or (inst.min_quantity is not None and qty < float(inst.min_quantity)) or \
+                (inst.min_notional is not None and qty * ref * float(inst.multiplier) < float(inst.min_notional)):
             return self._refuse(bar, "size below venue minimum")
         orders = self.order_factory.bracket(
             iid, side, inst.make_qty(qty),
@@ -214,6 +231,17 @@ class GuardedStrategy(Strategy):
         self.governor.record_entry()
         self.submit_order_list(orders)
         return True
+
+    def volume_cap(self, step: float) -> float | None:
+        """Largest entry allowed by liquidity: participation x median volume of recent execution
+        bars, rounded down to the size step. None without volume history."""
+        if not self._volumes:
+            return None
+        from decimal import Decimal
+        med = sorted(self._volumes)[len(self._volumes) // 2]
+        raw = self.config.max_volume_participation * med
+        st = Decimal(str(step))
+        return float((Decimal(str(raw)) / st).to_integral_value(rounding="ROUND_FLOOR") * st)
 
     def on_position_closed(self, event) -> None:
         if self.health is not None:
