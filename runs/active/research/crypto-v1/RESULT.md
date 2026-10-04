@@ -1,7 +1,7 @@
 # plan_crypto_v1 result (2026-10-04): no strategy passed
 
 - **Plan:** `252051415d0c2228`, frozen 2026-10-03 and run exactly as written. Validation gates: `2fc90f4ad972f482`, unchanged.
-- **Scope:** 504 configurations. The registry holds 640 hash-chained records: 504 at normal cost plus 136 double-cost reruns. It counts 504 trials.
+- **Scope:** 504 configurations. The registry holds 642 hash-chained records: 504 at normal cost plus 138 double-cost reruns. It counts 504 trials.
 - **Data:** development window only, 2018-07-01 to 2025-08-31. The out-of-sample test windows run from 2020-07 to 2025-06.
 - **Holdout:** `active-crypto-final` (2025-09-01 to 2026-08-31) was not read.
 - **Result:** none of the 36 strategy-pair lines or 7 combinations passed. Nothing was tuned after seeing results.
