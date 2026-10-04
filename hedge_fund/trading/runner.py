@@ -97,11 +97,24 @@ def _store(res: dict, plan: ResearchPlan, registry: ExperimentRegistry, code_com
     done[run.key] = run
 
 
-def count_trials(registry: ExperimentRegistry) -> int:
-    """Distinct configurations (family, params, instrument) ever run at base cost, across
-    all plans in this registry. Cost-stressed reruns are not new hypotheses."""
-    return len({r["spec_hash"] for r in registry.records()
-                if r["family"].startswith("active/") and r["spec"].get("cost_multiplier") == 1.0})
+RESEARCH_DIR = Path(__file__).resolve().parents[2] / "runs" / "active" / "research"
+
+
+def all_registries(root: Path = RESEARCH_DIR) -> list[Path]:
+    """Every active-research registry in the repository (the cumulative trial record)."""
+    return sorted(root.glob("*/experiments.jsonl"))
+
+
+def count_trials(registry: ExperimentRegistry, prior: list[Path | str] = ()) -> int:
+    """Distinct configurations (family, params, instrument, plan) run at base cost in this
+    registry plus every prior registry. The count never resets between research phases;
+    cost-stressed reruns are not new hypotheses."""
+    seen = set()
+    regs = [registry] + [ExperimentRegistry(p) for p in prior if Path(p).resolve() != registry.path.resolve()]
+    for reg in regs:
+        seen |= {r["spec_hash"] for r in reg.records()
+                 if r["family"].startswith("active/") and r["spec"].get("cost_multiplier") == 1.0}
+    return len(seen)
 
 
 def _to_json(r: ConfigRun) -> dict:
@@ -133,7 +146,11 @@ def _replay(plan: ResearchPlan, wf: WalkForwardResult, stressed: dict[str, Confi
 
 
 def run_plan(plan: ResearchPlan, out_dir: Path | str, *, catalog_path: str | None = None, workers: int = 1,
-             registry_path: Path | str | None = None, code_commit: str = "") -> dict:
+             registry_path: Path | str | None = None, code_commit: str = "",
+             prior_registries: list[Path | str] | None = None) -> dict:
+    """prior_registries: earlier registries whose trials count toward the deflated Sharpe
+    (default: every registry under runs/active/research)."""
+    prior = all_registries() if prior_registries is None else list(prior_registries)
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     catalog_path = catalog_path or str(Catalog().path)
@@ -141,7 +158,7 @@ def run_plan(plan: ResearchPlan, out_dir: Path | str, *, catalog_path: str | Non
     gates = load_gates()
     base = [(None, None, i, f, p, 1.0) for i in plan.instruments for f in plan.families for p in FAMILIES[f].configs()]
     runs = _load_or_run(plan, base, out_dir, catalog_path, workers, registry, code_commit)
-    n_trials = count_trials(registry)
+    n_trials = count_trials(registry, prior)
     lines, wfs_all, by_family = [], [], {}
     for f in plan.families:
         for i in plan.instruments:

@@ -1,0 +1,316 @@
+{
+ "subject": "plan crypto-v1 (252051415d0c2228)",
+ "passed": false,
+ "counts": {
+  "PASS": 58,
+  "WARNING": 2,
+  "FAIL": 1
+ },
+ "checks": [
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "donchian_breakout {\"atr_stop\": 1.5, \"channel\": 20, \"reward_risk\": 1.5, \"signal_minutes\": 15}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "donchian_breakout {\"atr_stop\": 1.5, \"channel\": 20, \"reward_risk\": 1.5, \"signal_minutes\": 15}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "donchian_breakout {\"atr_stop\": 1.5, \"channel\": 20, \"reward_risk\": 1.5, \"signal_minutes\": 15}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "donchian_breakout {\"atr_stop\": 1.5, \"channel\": 20, \"reward_risk\": 1.5, \"signal_minutes\": 15}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "donchian_breakout {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "donchian_breakout {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "donchian_breakout {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "donchian_breakout {\"atr_stop\": 3.0, \"channel\": 55, \"reward_risk\": 3.0, \"signal_minutes\": 60}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "ema_trend {\"fast\": 12, \"reward_risk\": 2.0, \"signal_minutes\": 15, \"slow\": 48}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "ema_trend {\"fast\": 12, \"reward_risk\": 2.0, \"signal_minutes\": 15, \"slow\": 48}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "ema_trend {\"fast\": 12, \"reward_risk\": 2.0, \"signal_minutes\": 15, \"slow\": 48}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "ema_trend {\"fast\": 12, \"reward_risk\": 2.0, \"signal_minutes\": 15, \"slow\": 48}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "ema_trend {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "ema_trend {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "ema_trend {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "ema_trend {\"fast\": 24, \"reward_risk\": 4.0, \"signal_minutes\": 60, \"slow\": 96}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "tsmom {\"atr_stop\": 2.0, \"lookback\": 24, \"max_hold_bars\": 24, \"signal_minutes\": 60}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "tsmom {\"atr_stop\": 2.0, \"lookback\": 24, \"max_hold_bars\": 24, \"signal_minutes\": 60}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "tsmom {\"atr_stop\": 2.0, \"lookback\": 24, \"max_hold_bars\": 24, \"signal_minutes\": 60}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "tsmom {\"atr_stop\": 2.0, \"lookback\": 24, \"max_hold_bars\": 24, \"signal_minutes\": 60}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "tsmom {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "tsmom {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "tsmom {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "tsmom {\"atr_stop\": 4.0, \"lookback\": 168, \"max_hold_bars\": 72, \"signal_minutes\": 60}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "volatility_breakout {\"atr_stop\": 1.0, \"range_mult\": 1.5, \"reward_risk\": 1.5, \"signal_minutes\": 15}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "volatility_breakout {\"atr_stop\": 1.0, \"range_mult\": 1.5, \"reward_risk\": 1.5, \"signal_minutes\": 15}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "volatility_breakout {\"atr_stop\": 1.0, \"range_mult\": 1.5, \"reward_risk\": 1.5, \"signal_minutes\": 15}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "volatility_breakout {\"atr_stop\": 1.0, \"range_mult\": 1.5, \"reward_risk\": 1.5, \"signal_minutes\": 15}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "WARNING",
+   "detail": "volatility_breakout {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}: no trades on the probe data; check not exercised"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "volatility_breakout {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "volatility_breakout {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "volatility_breakout {\"atr_stop\": 2.0, \"range_mult\": 2.5, \"reward_risk\": 3.0, \"signal_minutes\": 60}: at most 0 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "bollinger_reversion {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "bollinger_reversion {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "bollinger_reversion {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "bollinger_reversion {\"atr_stop\": 1.5, \"k\": 2.0, \"period\": 20, \"signal_minutes\": 5}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "bollinger_reversion {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "bollinger_reversion {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "bollinger_reversion {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "bollinger_reversion {\"atr_stop\": 3.0, \"k\": 2.5, \"period\": 50, \"signal_minutes\": 15}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "opening_range {\"range_minutes\": 30, \"reward_risk\": 1.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "opening_range {\"range_minutes\": 30, \"reward_risk\": 1.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "opening_range {\"range_minutes\": 30, \"reward_risk\": 1.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "opening_range {\"range_minutes\": 30, \"reward_risk\": 1.0, \"session_open_utc\": \"00:00\", \"signal_minutes\": 5}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "look_ahead",
+   "status": "PASS",
+   "detail": "opening_range {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}: decisions up to T unchanged when bars after T are mirrored (8 cuts)"
+  },
+  {
+   "name": "indicator_repainting",
+   "status": "PASS",
+   "detail": "opening_range {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}: four prefix runs reproduce the full run's decisions"
+  },
+  {
+   "name": "execution_timing",
+   "status": "PASS",
+   "detail": "opening_range {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}: every entry filled after its decision bar"
+  },
+  {
+   "name": "duplicate_orders",
+   "status": "PASS",
+   "detail": "opening_range {\"range_minutes\": 60, \"reward_risk\": 2.0, \"session_open_utc\": \"13:30\", \"signal_minutes\": 5}: at most 1 open position(s), no duplicate entries"
+  },
+  {
+   "name": "resampling",
+   "status": "PASS",
+   "detail": "5-minute signal bars match their execution bars (got [(5, 100.0, 104.0), (10, 105.0, 109.0), (15, 110.0, 114.0)], expected [(5, 100.0, 104.0), (10, 105.0, 109.0), (15, 110.0, 114.0)])"
+  },
+  {
+   "name": "resampling",
+   "status": "PASS",
+   "detail": "15-minute signal bars match their execution bars (got [(15, 100.0, 114.0), (30, 115.0, 129.0), (45, 130.0, 144.0)], expected [(15, 100.0, 114.0), (30, 115.0, 129.0), (45, 130.0, 144.0)])"
+  },
+  {
+   "name": "resampling",
+   "status": "PASS",
+   "detail": "60-minute signal bars match their execution bars (got [(60, 100.0, 159.0), (120, 160.0, 219.0), (180, 220.0, 279.0)], expected [(60, 100.0, 159.0), (120, 160.0, 219.0), (180, 220.0, 279.0)])"
+  },
+  {
+   "name": "future_fitting",
+   "status": "PASS",
+   "detail": "selection uses training windows only (test-window perturbations never change the choice)"
+  },
+  {
+   "name": "fees",
+   "status": "PASS",
+   "detail": "every instrument charges commission; taker fee includes spread and slippage"
+  },
+  {
+   "name": "spread_slippage",
+   "status": "PASS",
+   "detail": "half-spread + slippage > 0 for all"
+  },
+  {
+   "name": "cost_stress",
+   "status": "PASS",
+   "detail": "cost multipliers [1.0, 2.0] (needs >= 2.0)"
+  },
+  {
+   "name": "fills",
+   "status": "PASS",
+   "detail": "next-bar fills, adverse slippage; worst ambiguous-exit share 0.7%"
+  },
+  {
+   "name": "train_test_holdout",
+   "status": "PASS",
+   "detail": "10 ordered folds, disjoint tests, holdout from 2025-09-01 sealed for ['crypto']"
+  },
+  {
+   "name": "survivorship",
+   "status": "WARNING",
+   "detail": "universe crypto-binance-6: fixed before testing from the January-2018 top-10 by market cap, but only coins that had a Binance USDT pair by 2018-05 and still trade today; top-10 coins without such a pair or later delisted (e.g. BCH's old pair, IOTA, XEM, DASH) are absent"
+  },
+  {
+   "name": "bar_close_convention",
+   "status": "PASS",
+   "detail": "close-stamped, minute-aligned bars (sampled 2019-01-17)"
+  },
+  {
+   "name": "timezone",
+   "status": "PASS",
+   "detail": "first bar of the day closes 00:01 UTC"
+  },
+  {
+   "name": "liquidity",
+   "status": "FAIL",
+   "detail": "max position / median 1-minute traded value: 684.51% (LTCUSDT.BINANCE)"
+  }
+ ]
+}

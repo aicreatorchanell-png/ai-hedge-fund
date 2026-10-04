@@ -47,6 +47,7 @@ ORDER = [Stage.CANDIDATE, Stage.BACKTESTED, Stage.VALIDATED, Stage.STRESS_TESTED
 PROTECTED_ACTIONS = frozenset({
     "change_risk_limits", "change_validation_gates", "change_locked_holdout", "promote_to_live",
     "increase_leverage", "disable_kill_switch", "open_locked_holdout", "approve_preregistration",
+    "reset_strategy_halt", "change_health_thresholds",
 })
 
 AI_ALLOWED_ACTIONS = frozenset({"propose_candidate", "propose_hypothesis", "propose_features",
@@ -93,6 +94,14 @@ _REQUIRED_EVIDENCE = {
     Stage.PAPER: "paper",
 }
 
+# From VALIDATED on, every promotion also needs the adversarial backtest audit
+# (hedge_fund.trading.audit) with no FAIL check.
+AUDITED_STAGES = frozenset({Stage.VALIDATED, Stage.STRESS_TESTED, Stage.HOLDOUT_PASSED, Stage.PAPER})
+
+
+def _passed(result) -> bool:
+    return (result.get("passed") if isinstance(result, dict) else getattr(result, "passed", None)) is True
+
 
 class ResearchPipeline:
     def __init__(self, registry: ExperimentRegistry) -> None:
@@ -134,8 +143,9 @@ class ResearchPipeline:
             if kind != "system":
                 raise GovernanceViolation(f"only the system advances candidates on evidence, not {actor}")
             key = _REQUIRED_EVIDENCE[target]
-            result = (evidence or {}).get(key)
-            passed = getattr(result, "passed", None) if not isinstance(result, dict) else result.get("passed")
+            passed = _passed((evidence or {}).get(key))
+            if target in AUDITED_STAGES and not _passed((evidence or {}).get("audit")):
+                passed = False
             if passed is not True:
                 c.stage = Stage.REJECTED
                 self._log(c, Stage.REJECTED.value, actor, {"failed_at": target.value})

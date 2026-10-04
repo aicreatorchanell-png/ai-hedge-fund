@@ -94,3 +94,17 @@ Editing `configs/holdouts.yaml` is a protected action that requires a human comm
     evaluation_mode: one_shot
     reason: Final out-of-sample year for the active-trading crypto plan (crypto-v1).
 ```
+
+## Research framework additions (2026-10-04)
+
+- **Adversarial audit** (`hedge_fund/trading/audit.py`, `research/audit_plan.py`):
+  - Rates every check PASS, WARNING or FAIL.
+  - Any FAIL blocks promotion in `research/pipeline.py`.
+  - It caught a planted strategy that reads future bars in both its look-ahead and repainting checks.
+- **Methodology audit of `plan_crypto_v1`** (`research/crypto-v1/AUDIT.json`; the results themselves are unchanged):
+  - **58 PASS.**
+  - **2 WARNING:** survivorship, and one probe that did not trade.
+  - **1 FAIL, liquidity:** the largest position was about 6.8 times LTC's median 1-minute traded value on a sampled 2019 day.
+- **Causal regimes, diagnostics, diversification:** descriptive only.
+- **Health monitor:** versioned thresholds (`configs/health-thresholds.yaml` v1.0.0). HALT blocks new entries and only a human can reset it.
+- **Cumulative trial count:** across every registry. A new phase starts at 504 trials.

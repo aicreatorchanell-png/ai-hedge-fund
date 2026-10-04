@@ -46,9 +46,11 @@ class GuardedConfig(StrategyConfig, frozen=True):
 
 
 class GuardedStrategy(Strategy):
-    def __init__(self, config: GuardedConfig, risk: TradeRiskConfig, *, kill_dir: Path | str | None = None) -> None:
+    def __init__(self, config: GuardedConfig, risk: TradeRiskConfig, *, kill_dir: Path | str | None = None,
+                 health=None) -> None:
         super().__init__(config)
         self.risk = risk
+        self.health = health                     # HealthMonitor (paper/live); HALT blocks new entries
         self.kill_dir = kill_dir
         self.governor: RiskGovernor | None = None
         self.instrument = None
@@ -127,6 +129,9 @@ class GuardedStrategy(Strategy):
             self.equity_curve.append((bar.ts_event, equity))
         self.last_exec_ts = bar.ts_event
         self._last_equity = equity
+        if self.health is not None and (not self.health.equity or
+                                        bar.ts_event // 86_400_000_000_000 != self.health.equity[-1][0] // 86_400_000_000_000):
+            self.health.record_equity(bar.ts_event, equity)
         if self.governor.killed and not self._flattened:
             self.cancel_all_orders(self.config.instrument_id)
             self.close_all_positions(self.config.instrument_id)
@@ -177,6 +182,8 @@ class GuardedStrategy(Strategy):
                 return self._refuse(bar, "cash account cannot short")
             if not take_profit < ref < stop:
                 raise ValueError(f"short bracket needs take_profit < {ref} < stop, got {take_profit}, {stop}")
+        if self.health is not None and not self.health.allows_entries():
+            return self._refuse(bar, "health HALT")
         equity = self.equity(ref)
         iid = self.config.instrument_id
         ok, why = self.governor.can_enter(equity, len(self.cache.positions_open(instrument_id=iid)))
@@ -207,6 +214,11 @@ class GuardedStrategy(Strategy):
         self.governor.record_entry()
         self.submit_order_list(orders)
         return True
+
+    def on_position_closed(self, event) -> None:
+        if self.health is not None:
+            pnl = float(event.realized_pnl) if event.realized_pnl is not None else 0.0
+            self.health.record_trade(event.ts_event, pnl)
 
     def _refuse(self, bar: Bar, reason: str) -> bool:
         self.refusals.append({"ts": bar.ts_event, "reason": reason})

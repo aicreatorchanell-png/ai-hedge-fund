@@ -1,0 +1,24 @@
+# Strategy health thresholds for PAPER and LIVE monitoring (hedge_fund/trading/health.py).
+# Human-owned and versioned. Changing a value is the protected action
+# "change_health_thresholds": a reviewed commit by a person, with a new version, made
+# BEFORE a deployment. The version and hash are recorded with every deployment.
+version: "1.0.0"
+min_trades: 20              # rolling statistics below this many trades are not judged
+window_trades: 50           # rolling window for win rate, payoff, Sharpe, slippage, costs
+sharpe_warning_ratio: 0.5   # rolling Sharpe below 0.5 x expected -> WARNING
+sharpe_degraded: 0.0        # rolling Sharpe below 0 -> DEGRADED
+drawdown_warning_mult: 1.0  # drawdown above 1.0 x expected max drawdown -> WARNING
+drawdown_degraded_mult: 1.5
+drawdown_halt_mult: 2.0     # -> HALT
+drawdown_halt_cap: 0.25     # absolute drawdown -> HALT, whatever the expectation
+loss_streak_warning: 6
+loss_streak_halt: 10
+win_rate_drop: 0.15         # absolute drop vs expected -> WARNING
+payoff_ratio_drop: 0.5      # avg win / avg loss below 0.5 x expected -> WARNING
+trade_rate_low: 0.25        # trades per day outside [0.25, 4] x expected -> WARNING
+trade_rate_high: 4.0
+slippage_warning_mult: 2.0  # actual slippage vs expected -> WARNING
+slippage_halt_mult: 4.0     # -> HALT
+cost_warning_mult: 1.5      # actual vs expected costs per trade -> WARNING
+inactivity_mult: 3.0        # days without a trade > 3 x expected gap -> DEGRADED
+abnormal_loss_mult: 5.0     # one loss > 5 x expected average loss -> DEGRADED

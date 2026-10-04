@@ -128,7 +128,7 @@ def test_run_plan_end_to_end_on_a_synthetic_catalog(tmp_path, monkeypatch):
                      dev_end="2020-07-31", reserve_start="2020-09-01", min_train_trades=1,
                      walk_forward=WalkForward(train_months=6, test_months=1, step_months=1))
     out = tmp_path / "out"
-    s1 = runner.run_plan(p, out, catalog_path=str(cat.path))
+    s1 = runner.run_plan(p, out, catalog_path=str(cat.path), prior_registries=[])
     assert s1["n_trials"] == 2 and s1["plan_hash"] == p.plan_hash()          # stressed reruns are not new trials
     assert len(ExperimentRegistry(out / "experiments.jsonl").records()) == 3    # but every run is recorded
     (line,) = s1["lines"]
@@ -136,6 +136,6 @@ def test_run_plan_end_to_end_on_a_synthetic_catalog(tmp_path, monkeypatch):
     assert set(s1["combinations"]) == {"family:ema_trend", "all"}
     reg = ExperimentRegistry(out / "experiments.jsonl")
     n = len(reg.records())
-    s2 = runner.run_plan(p, out, catalog_path=str(cat.path))                  # cached: no rerun, no new trials
+    s2 = runner.run_plan(p, out, catalog_path=str(cat.path), prior_registries=[])                  # cached: no rerun, no new trials
     assert len(reg.records()) == n and s2["lines"][0]["values"] == line["values"]
     reg.verify()

@@ -21,7 +21,7 @@ def pipe(tmp_path):
 def walk(pipe, c, upto):
     for stage, key in [(Stage.BACKTESTED, "backtest"), (Stage.VALIDATED, "gates"), (Stage.STRESS_TESTED, "stress"),
                        (Stage.HOLDOUT_PASSED, "holdout"), (Stage.PAPER, "paper")]:
-        pipe.advance(c, stage, actor="system", evidence={key: OK})
+        pipe.advance(c, stage, actor="system", evidence={key: OK, "audit": OK})
         if stage is upto:
             return c
     return c
@@ -47,7 +47,7 @@ def test_unknown_or_invalid_strategies_cannot_be_proposed(pipe):
 def test_stages_advance_in_order_on_passing_evidence(pipe):
     c = pipe.propose(SPEC, family="tsmom", actor="ai:kimi-k3")
     with pytest.raises(GovernanceViolation, match="skips"):
-        pipe.advance(c, Stage.VALIDATED, actor="system", evidence={"gates": OK})
+        pipe.advance(c, Stage.VALIDATED, actor="system", evidence={"gates": OK, "audit": OK})
     walk(pipe, c, Stage.PAPER)
     assert c.stage is Stage.PAPER
 
@@ -59,7 +59,7 @@ def test_failing_evidence_rejects_for_good(pipe):
         pipe.advance(c, Stage.VALIDATED, actor="system", evidence={"gates": {"passed": False}})
     assert c.stage is Stage.REJECTED
     with pytest.raises(GovernanceViolation):
-        pipe.advance(c, Stage.VALIDATED, actor="system", evidence={"gates": OK})
+        pipe.advance(c, Stage.VALIDATED, actor="system", evidence={"gates": OK, "audit": OK})
 
 
 def test_missing_evidence_fails_closed(pipe):
@@ -100,3 +100,24 @@ def test_actor_names_are_strict():
         authorize("claude", "propose_candidate")
     with pytest.raises(GovernanceViolation):
         authorize("ai", "propose_candidate")
+
+
+def test_audit_fail_blocks_promotion_even_when_gates_pass(pipe):
+    c = pipe.propose(SPEC, family="tsmom", actor="ai:kimi-k3")
+    pipe.advance(c, Stage.BACKTESTED, actor="system", evidence={"backtest": OK})
+    with pytest.raises(GovernanceViolation):
+        pipe.advance(c, Stage.VALIDATED, actor="system", evidence={"gates": OK, "audit": {"passed": False}})
+    assert c.stage is Stage.REJECTED
+    d = pipe.propose(SPEC, family="tsmom", actor="ai:kimi-k3")
+    pipe.advance(d, Stage.BACKTESTED, actor="system", evidence={"backtest": OK})
+    with pytest.raises(GovernanceViolation):                       # missing audit = not promotable
+        pipe.advance(d, Stage.VALIDATED, actor="system", evidence={"gates": OK})
+
+
+def test_halt_reset_and_health_thresholds_are_human_only():
+    for action in ("reset_strategy_halt", "change_health_thresholds"):
+        assert action in PROTECTED_ACTIONS
+        for actor in ("ai:claude-opus-5-5", "ai:kimi-k3", "system"):
+            with pytest.raises(GovernanceViolation):
+                authorize(actor, action)
+        authorize("human:owner", action)

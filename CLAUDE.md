@@ -34,7 +34,17 @@ Educational research only: no profitability claims, no real-money trading.
   Paper trading (IBKR paper, crypto testnet) is approved for preparation only; real-money
   and live trading stay disabled.
 - Research runs use a frozen `ResearchPlan` (`hedge_fund.trading.research`); every run is a
-  registry trial; selection is on training windows only.
+  registry trial; selection is on training windows only. The trial count is cumulative over
+  every registry in `runs/active/research/` and never resets between phases.
+- Every plan gets the adversarial audit (`hedge_fund.trading.audit`, PASS/WARNING/FAIL).
+  Promotion from VALIDATED on requires a passing audit; any FAIL blocks it.
+- Diagnostics (`regimes.py`, `diagnostics.py`: causal regimes, worst fold, parameter
+  neighbourhood, concentration, diversification) describe results; they never create
+  trading rules or choose parameters.
+- Paper/live health monitor (`hedge_fund.trading.health`): thresholds in
+  `configs/health-thresholds.yaml` are versioned and fixed before deployment; HALT blocks
+  new entries and only a human can reset it (protected actions `reset_strategy_halt`,
+  `change_health_thresholds`). Backtests refuse instruments without trading costs.
 - AI output (Claude, Kimi, ...) is a proposal or critique only. Promotion needs the
   Python validation gates to PASS, then paper trading, then explicit human approval.
 - AI must never change risk limits, validation thresholds, the locked holdout, or the

@@ -29,6 +29,10 @@ from hedge_fund.trading.venue import VenueSpec, add_venue
 from hedge_fund.validation.holdout_guard import market_data_fence
 
 
+class CostsDisabled(ValueError):
+    """A backtest without trading costs is refused."""
+
+
 class BacktestAborted(RuntimeError):
     """The engine stopped before the last bar (e.g. a negative account balance)."""
 
@@ -72,7 +76,10 @@ def check_bars(bars) -> None:
 
 def run_backtest(instrument, bars, strategy: GuardedStrategy, venue: VenueSpec, *,
                  market: str = "*") -> BacktestResult:
-    """market: the asset class for scoped holdouts ("*" = every holdout applies)."""
+    """market: the asset class for scoped holdouts ("*" = every holdout applies).
+    Refuses an instrument without trading costs (taker fee must be positive)."""
+    if not float(instrument.taker_fee) > 0:
+        raise CostsDisabled(f"{instrument.id}: taker fee {instrument.taker_fee}; costs cannot be disabled")
     check_bars(bars)
     market_data_fence(_day(bars[0].ts_event), _day(bars[-1].ts_event), market)
     engine = BacktestEngine(BacktestEngineConfig(trader_id=TraderId("AIHF-001"),

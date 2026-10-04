@@ -95,6 +95,17 @@ CRYPTO = {s.symbol: s for s in [
     _crypto("BNBUSDT", "BNB", 4, "0.001", 2.0, 3.0),
 ]}
 
+# Universe declarations read by the backtest auditor (survivorship check).
+UNIVERSES = {
+    "crypto-binance-6": {
+        "instruments": tuple(s.instrument_id for s in CRYPTO.values()),
+        "survivorship_free": False,
+        "note": ("fixed before testing from the January-2018 top-10 by market cap, but only coins that "
+                 "had a Binance USDT pair by 2018-05 and still trade today; top-10 coins without such a "
+                 "pair or later delisted (e.g. BCH's old pair, IOTA, XEM, DASH) are absent"),
+    },
+}
+
 FX = {s.symbol: s for s in [
     MarketSpec(venue="DUKASCOPY", symbol=f"{b}{q}", asset_class="fx", source="dukascopy", base=b, quote=q,
                price_precision=pp, size_increment="1000", commission_bps=0.2, half_spread_bps=0.5,
