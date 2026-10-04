@@ -1,0 +1,28 @@
+id: H-CROSS-EXCHANGE
+title: Cross-exchange price dislocations from fragmented liquidity
+families: [cross_exchange]
+markets: [crypto]
+edge_type: structural_flow
+why_edge_exists: >-
+  Crypto liquidity is fragmented across venues; local demand shocks, withdrawals and
+  liquidation flows push one venue's price away from others, and capital that can move
+  between venues is compensated for restoring the link.
+counterparty_type: liquidity_demanders
+counterparty: Traders confined to one venue (regional, fiat rails, account limits) demanding immediacy there.
+why_they_pay: Capital and transfer constraints keep them on one venue where they accept a local price concession.
+why_it_persists: >-
+  Transfers between venues take time and fees, require inventory on both venues and carry
+  counterparty risk, which limits the arbitrage capital available.
+disappears_when:
+  - Inventory on both venues and fees make dislocations smaller than costs.
+  - Venues become tightly linked by institutional market makers.
+predictions:
+  - Dislocations net of fees are rare and short-lived on major pairs.
+  - They cluster around volatility spikes and regional events.
+signal_sketch: Synchronised top-of-book across venues; inventory-held on both; no transfers inside the trade.
+data_required:
+  - "synchronised tick data from several venues - not in the free archives (minute bars are too coarse)"
+  - "paper execution on two venues at once - needs two testnet accounts"
+feasibility: blocked
+drafted_by: ai:claude-opus-5-5
+status: draft

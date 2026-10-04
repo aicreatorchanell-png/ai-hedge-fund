@@ -127,4 +127,5 @@ def test_hypothesis_files_load_and_must_match_their_name(tmp_path):
     (tmp_path / "H-OTHER.yaml").write_text((tmp_path / "H-LIQ-PREMIUM.yaml").read_text())
     with pytest.raises(HypothesisRejected):
         load_hypotheses(tmp_path)
-    assert load_hypotheses() == {}                                         # nothing approved or drafted yet
+    repo = load_hypotheses()                                               # the AI drafts in research/hypotheses
+    assert repo and all(h.status == "draft" and h.approval is None for h in repo.values())  # none approved by AI

@@ -1,0 +1,30 @@
+id: H-OB-IMBALANCE
+title: Short-horizon price pressure from order-book imbalance
+families: [orderbook_imbalance]
+markets: [crypto]
+edge_type: information
+why_edge_exists: >-
+  An imbalance between resting bid and ask depth reflects demand and supply pressure that is
+  not yet in the trade price; prices tend to move toward the thin side over seconds to
+  minutes as aggressive flow consumes it.
+counterparty_type: market_makers
+counterparty: Liquidity providers whose quotes on the thin side are picked off before they can reprice.
+why_they_pay: >-
+  Updating quotes takes time; when demand pressure arrives faster than they reprice,
+  their stale quotes are filled at prices that move against them.
+why_it_persists: >-
+  The signal decays within seconds, so exploiting it needs low latency and low fees; it is
+  competed away for most participants but persists where costs are low.
+disappears_when:
+  - Taker fees and latency exceed the expected short-horizon move.
+  - Spoofing makes displayed depth uninformative.
+predictions:
+  - Signed imbalance predicts the next one-minute return out of sample before costs.
+  - After taker fees the edge is negative for retail fee tiers.
+signal_sketch: Top-of-book and depth imbalance with a decay horizon of seconds; needs queue-aware fills.
+data_required:
+  - "historical L2 order books - paid, OFF; live L2 is available from Kraken/Binance testnet streams"
+  - "forward collection of L2 from public streams for later study - feasible, slow"
+feasibility: blocked
+drafted_by: ai:claude-opus-5-5
+status: draft

@@ -50,6 +50,10 @@ Educational research only: no profitability claims, no real-money trading.
   `configs/health-thresholds.yaml` are versioned and fixed before deployment; HALT blocks
   new entries and only a human can reset it (protected actions `reset_strategy_halt`,
   `change_health_thresholds`). Backtests refuse instruments without trading costs.
+- Paper/testnet runs only through `hedge_fund.paper` (`assert_paper` guard): Kraken sandbox,
+  Binance futures TESTNET or Kraken DEMO; credentials only from `AIHF_PAPER_*` env vars.
+  Only strategies from an approved `Deployment` (approved hypothesis + PASSED validation)
+  may run there; the plumbing check is sandbox-only and proves wiring, not edge.
 - AI output (Claude, Kimi, ...) is a proposal or critique only. Promotion needs the
   Python validation gates to PASS, then paper trading, then explicit human approval.
 - AI must never change risk limits, validation thresholds, the locked holdout, or the

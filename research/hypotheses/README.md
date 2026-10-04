@@ -17,4 +17,17 @@ Every new strategy family needs an approved `H-<ID>.yaml` here before any resear
 - **No indicator-only reasons:** justifications built from indicator vocabulary alone are rejected.
 - **No re-testing:** the six families of `plan_crypto_v1` were tested without such hypotheses and failed. They cannot be re-tested on the same instruments and development dates.
 
-There are no hypotheses yet: none has been written or approved.
+## Current drafts (2026-10-04) — none approved
+
+All drafted by AI (`status: draft`). None may be researched until a human approves it.
+
+| Id | Edge | Feasibility |
+|---|---|---|
+| H-FUNDING-CROWDING | crowded perpetual positioning (extreme funding) | needs_data (Binance public funding archive) |
+| H-VOL-SCALED-TREND | time-series trend, risk premium | needs_data (daily cross-asset) |
+| H-FUNDING-CARRY | delta-neutral funding carry | needs_infrastructure (two legs) |
+| H-XS-MOMENTUM | cross-sectional crypto momentum | needs_infrastructure (portfolio, survivorship-free universe) |
+| H-PAIRS-STATARB | cointegrated pairs reversion | needs_infrastructure |
+| H-MARKET-MAKING | spread capture vs inventory risk | blocked (L2 data is paid) |
+| H-OB-IMBALANCE | order-book imbalance | blocked (L2 data is paid) |
+| H-CROSS-EXCHANGE | cross-venue dislocations | blocked (multi-venue L2 + accounts) |

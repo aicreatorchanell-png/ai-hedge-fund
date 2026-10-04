@@ -1,0 +1,34 @@
+id: H-VOL-SCALED-TREND
+title: Daily volatility-managed trend following across asset classes (risk premium for crisis risk)
+families: [vol_managed_trend]
+markets: [crypto, fx, index]
+edge_type: risk_premium
+why_edge_exists: >-
+  Investors underreact to slow-moving macro information and hedging demand creates
+  persistent price trends at multi-week horizons; trend followers provide liquidity to
+  hedgers and are compensated with a premium that historically paid off in crises, while
+  volatility scaling keeps risk constant.
+counterparty_type: hedgers
+counterparty: >-
+  Hedgers and constrained investors (mandates, rebalancers) who trade against trends for
+  reasons other than expected return.
+why_they_pay: Their trades are motivated by hedging and rebalancing needs, so they accept prices that continue to drift after their trades.
+why_it_persists: >-
+  Trend following has long, painful flat or losing periods and crash risk at turning points,
+  which limits capital allocated to it; the premium is compensation for that tracking risk.
+disappears_when:
+  - Markets stop trending at multi-week horizons for years (crowded trend capital).
+  - Costs of the instruments make daily rebalancing uneconomic.
+predictions:
+  - Returns are positive in strongly trending regimes and around crises, flat or negative in choppy regimes.
+  - Combined across several asset classes, the drawdowns are smaller than in any single market.
+signal_sketch: >-
+  Daily bars only, multi-week lookbacks, position size inversely proportional to trailing
+  volatility, across crypto, FX and index CFDs. Not the failed 15/60-minute crypto families:
+  different horizon, cross-asset portfolio, volatility targeting.
+data_required:
+  - "daily crypto bars: available (aggregated from Binance archive); must use instruments or dates not in crypto-v1"
+  - "FX and index daily bars: Dukascopy (approved, but rate-limited from this environment)"
+feasibility: needs_data
+drafted_by: ai:claude-opus-5-5
+status: draft

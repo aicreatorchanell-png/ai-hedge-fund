@@ -1,0 +1,36 @@
+id: H-PAIRS-STATARB
+title: Mean reversion of cointegrated crypto pairs (liquidity provision across related assets)
+families: [pairs_statarb]
+markets: [crypto]
+edge_type: liquidity_provision
+why_edge_exists: >-
+  Closely related assets share common drivers; temporary divergences in their prices are
+  caused by uneven order flow and liquidity demand in one leg. Supplying liquidity to the
+  temporarily mispriced leg and hedging with the other is compensated when the relative
+  price converges.
+counterparty_type: liquidity_demanders
+counterparty: >-
+  Traders who demand immediacy in one asset (rotations, large orders, liquidations) and push
+  its price away from its usual relation to a closely related asset.
+why_they_pay: >-
+  Their demand for immediate execution is concentrated in one leg, and they accept a price
+  concession relative to the related asset rather than wait.
+why_it_persists: >-
+  Convergence can take long and relations break (regime changes, idiosyncratic news), so
+  the trade carries divergence risk and needs capital in two legs and shorting capacity.
+disappears_when:
+  - The pair's cointegration breaks down out of sample (structural change).
+  - Shorting one leg becomes unavailable or too expensive.
+predictions:
+  - Spread z-score extremes revert faster within the estimated half-life than random entries.
+  - Returns weaken when the rolling cointegration test loses significance.
+signal_sketch: >-
+  Rolling Engle-Granger hedge ratio and half-life estimated on past data only; enter at
+  spread z-score extremes, exit at mean or time stop; pairs pre-selected by economic link
+  (e.g. major coin pairs), not by searching all pairs.
+data_required:
+  - "1-minute klines for both legs: Binance public archive - available"
+  - "shorting one leg: perpetual futures (testnet) or margin - needs a two-leg strategy"
+feasibility: needs_infrastructure
+drafted_by: ai:claude-opus-5-5
+status: draft

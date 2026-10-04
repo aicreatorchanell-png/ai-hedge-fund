@@ -21,6 +21,17 @@ The base class:
     - submits it as a bracket: market entry + stop-market stop-loss + limit take-profit
       (one cancels the other), so every position has its exits at the venue from the start
     - records every bracket and every refusal for the audit
+
+Paper/testnet additions (off by default, required by hedge_fund.paper):
+
+    max_data_age_secs            no entry when the last execution bar is older than this
+                                 (stale or disconnected market data)
+    max_total_exposure_fraction  no entry that would lift gross exposure across all open
+                                 positions on the venue above this fraction of equity
+    journal                      receives signal / order / fill / reject / position events
+    state_store                  persists governor and health state (kill switch, HALT,
+                                 peak equity, day start) and restores it after a restart,
+                                 so a latched halt survives a process restart
 """
 
 from __future__ import annotations
@@ -29,7 +40,7 @@ from pathlib import Path
 
 from nautilus_trader.config import StrategyConfig
 from nautilus_trader.model.data import Bar, BarType
-from nautilus_trader.model.enums import AccountType, OrderSide, OrderType
+from nautilus_trader.model.enums import AccountType, OrderSide, OrderType, PriceType
 from nautilus_trader.model.identifiers import InstrumentId
 from nautilus_trader.trading.strategy import Strategy
 
@@ -50,13 +61,20 @@ class GuardedConfig(StrategyConfig, frozen=True):
     max_volume_participation: float = DEFAULT_VOLUME_PARTICIPATION  # an entry may not exceed this share of median recent bar volume
     volume_lookback: int = 60               # execution bars in that median
     mark_every_minutes: int = 60
-
+    max_data_age_secs: int = 0              # 0 = off (backtests); paper requires > 0
+    max_total_exposure_fraction: float = 0.0  # 0 = off; paper requires a cap
+    max_order_notional: float = 0.0         # 0 = off; paper sets it below the risk engine's per-order limit
+    protect_on_fill: bool = False           # live/paper: SL/TP sized to the actual (partially filled) position
+    modeled_taker_fee: float = 0.0          # paper: fee charged in the journal when the venue reports none
+    modeled_maker_fee: float = 0.0
 
 class GuardedStrategy(Strategy):
     def __init__(self, config: GuardedConfig, risk: TradeRiskConfig, *, kill_dir: Path | str | None = None,
-                 health=None) -> None:
+                 health=None, journal=None, state_store=None) -> None:
         super().__init__(config)
         self.risk = risk
+        self.journal = journal
+        self.state_store = state_store
         self.health = health                     # HealthMonitor (paper/live); HALT blocks new entries
         self.kill_dir = kill_dir
         self.governor: RiskGovernor | None = None
@@ -77,9 +95,10 @@ class GuardedStrategy(Strategy):
             raise ValueError("max_volume_participation must be in (0, 0.25]")
         from collections import deque
         self._volumes = deque(maxlen=max(1, config.volume_lookback))
+        src = "INTERNAL" if config.bar_type.is_internally_aggregated() else "EXTERNAL"
         self.signal_bar_type = (config.bar_type if n == 1 else
                                 BarType.from_str(f"{config.instrument_id}-{spec}-LAST-INTERNAL@"
-                                                 f"{config.bar_type.spec.step}-MINUTE-EXTERNAL"))
+                                                 f"{config.bar_type.spec.step}-MINUTE-{src}"))
 
     # -- lifecycle --------------------------------------------------------
 
@@ -94,11 +113,12 @@ class GuardedStrategy(Strategy):
 
     def on_stop(self) -> None:
         self.cancel_all_orders(self.config.instrument_id)
+        self.save_state("stop")
         if self.last_exec_ts is not None and self.equity_curve[-1][0] != self.last_exec_ts:
             self.equity_curve.append((self.last_exec_ts, self._last_equity))
 
     def on_bar(self, bar: Bar) -> None:
-        if bar.bar_type.is_internally_aggregated():
+        if bar.bar_type.spec != self.config.bar_type.spec:          # a signal bar (n-minute aggregate)
             if self.governor is not None and not self.governor.killed:
                 self._signal(bar)
             return
@@ -129,6 +149,7 @@ class GuardedStrategy(Strategy):
         if self.governor is None:
             self.governor = RiskGovernor(self.risk, equity, kill_dir=self.kill_dir)
             self._segments = sorted(self.config.segment_starts_ns)
+            self.restore_state()
         if self._segments and bar.ts_event >= self._segments[0]:
             while self._segments and bar.ts_event >= self._segments[0]:
                 self._segments.pop(0)
@@ -148,6 +169,11 @@ class GuardedStrategy(Strategy):
             self.cancel_all_orders(self.config.instrument_id)
             self.close_all_positions(self.config.instrument_id)
             self._flattened = True
+            self._journal("kill_switch", reason=self.governor.killed)
+            self.save_state("kill")
+        if self.state_store is not None and len(self.equity_curve) != getattr(self, "_saved_marks", -1):
+            self._saved_marks = len(self.equity_curve)
+            self.save_state("mark")
 
     # -- subclass hooks ---------------------------------------------------
 
@@ -196,6 +222,9 @@ class GuardedStrategy(Strategy):
                 raise ValueError(f"short bracket needs take_profit < {ref} < stop, got {take_profit}, {stop}")
         if self.health is not None and not self.health.allows_entries():
             return self._refuse(bar, "health HALT")
+        age = self.data_age_secs()
+        if self.config.max_data_age_secs and age is not None and age > self.config.max_data_age_secs:
+            return self._refuse(bar, "stale data", data_age_secs=age)
         equity = self.equity(ref)
         iid = self.config.instrument_id
         ok, why = self.governor.can_enter(equity, len(self.cache.positions_open(instrument_id=iid)))
@@ -214,10 +243,34 @@ class GuardedStrategy(Strategy):
         cap = self.volume_cap(float(inst.size_increment))
         if cap is None:
             return self._refuse(bar, "no volume history")
-        qty = min(qty, cap)
+        risk_qty, qty = qty, min(qty, cap)
+        if self.config.max_order_notional:
+            from decimal import Decimal
+            st = Decimal(str(float(inst.size_increment)))
+            lim = Decimal(str(self.config.max_order_notional / (ref * float(inst.multiplier))))
+            qty = min(qty, float((lim / st).to_integral_value(rounding="ROUND_FLOOR") * st))
         if qty <= 0 or (inst.min_quantity is not None and qty < float(inst.min_quantity)) or \
                 (inst.min_notional is not None and qty * ref * float(inst.multiplier) < float(inst.min_notional)):
-            return self._refuse(bar, "size below venue minimum")
+            return self._refuse(bar, "size below venue minimum", risk_qty=risk_qty, volume_cap=cap,
+                                min_quantity=None if inst.min_quantity is None else float(inst.min_quantity),
+                                min_notional=None if inst.min_notional is None else float(inst.min_notional),
+                                equity=equity)
+        if self.config.max_total_exposure_fraction:
+            gross = self.gross_exposure()
+            if gross + qty * ref * float(inst.multiplier) > self.config.max_total_exposure_fraction * equity:
+                return self._refuse(bar, "portfolio exposure cap")
+        if self.config.protect_on_fill:
+            entry = self.order_factory.market(iid, side, inst.make_qty(qty))
+            self._protect = {"side": side, "stop": float(inst.make_price(stop)),
+                             "take_profit": float(inst.make_price(take_profit))}
+            self.brackets.append({
+                "ts": bar.ts_event, "side": side.name, "quantity": qty, "reference": ref,
+                "stop": self._protect["stop"], "take_profit": self._protect["take_profit"],
+                "entry_id": entry.client_order_id.value, "sl_id": None, "tp_id": None})
+            self.governor.record_entry()
+            self._journal("entry", **{("decision_ts" if k == "ts" else k): v for k, v in self.brackets[-1].items()})
+            self.submit_order(entry)
+            return True
         orders = self.order_factory.bracket(
             iid, side, inst.make_qty(qty),
             sl_trigger_price=inst.make_price(stop), tp_price=inst.make_price(take_profit))
@@ -229,8 +282,60 @@ class GuardedStrategy(Strategy):
             "stop": float(inst.make_price(stop)), "take_profit": float(inst.make_price(take_profit)),
             "entry_id": entry.client_order_id.value, "sl_id": sl.client_order_id.value, "tp_id": tp.client_order_id.value})
         self.governor.record_entry()
+        self._journal("entry", **{("decision_ts" if k == "ts" else k): v for k, v in self.brackets[-1].items()})
         self.submit_order_list(orders)
         return True
+
+    # -- live/paper position protection --------------------------------------
+
+    def sync_protection(self) -> None:
+        """Keep exactly one reduce-only stop-loss and one reduce-only take-profit, each sized to
+        the current position. Called whenever the position opens or changes (partial fills)."""
+        protect = getattr(self, "_protect", None)
+        iid = self.config.instrument_id
+        positions = self.cache.positions_open(instrument_id=iid, strategy_id=self.id)
+        working = [o for o in self.cache.orders_open(instrument_id=iid, strategy_id=self.id) if o.is_reduce_only]
+        if not positions or protect is None:
+            for o in working:
+                self.cancel_order(o)
+            return
+        qty = sum(float(p.quantity) for p in positions)
+        if working and all(abs(float(o.quantity) - qty) < 1e-12 for o in working) and len(working) == 2:
+            return
+        for o in working:
+            self.cancel_order(o)
+        inst = self.instrument
+        exit_side = OrderSide.SELL if protect["side"] == OrderSide.BUY else OrderSide.BUY
+        q = inst.make_qty(qty)
+        sl = self.order_factory.stop_market(iid, exit_side, q, trigger_price=inst.make_price(protect["stop"]),
+                                            reduce_only=True)
+        tp = self.order_factory.limit(iid, exit_side, q, price=inst.make_price(protect["take_profit"]),
+                                      reduce_only=True)
+        self.submit_order(sl)
+        self.submit_order(tp)
+        if self.brackets:
+            self.brackets[-1]["sl_id"], self.brackets[-1]["tp_id"] = sl.client_order_id.value, tp.client_order_id.value
+        self._journal("protection", quantity=qty, stop=protect["stop"], take_profit=protect["take_profit"])
+
+    def on_position_changed(self, event) -> None:
+        if self.config.protect_on_fill:
+            self.sync_protection()
+
+    def data_age_secs(self) -> float | None:
+        """Seconds since the last execution bar closed (None before the first bar)."""
+        if self.last_exec_ts is None:
+            return None
+        return (self.clock.timestamp_ns() - self.last_exec_ts) / 1e9
+
+    def gross_exposure(self) -> float:
+        """Sum of |quantity| x mark x multiplier over every open position on this venue."""
+        total = 0.0
+        for p in self.cache.positions_open(venue=self.config.instrument_id.venue):
+            inst = self.cache.instrument(p.instrument_id)
+            px = self.cache.price(p.instrument_id, PriceType.LAST)
+            mark = float(px) if px is not None else float(p.avg_px_open)
+            total += abs(float(p.signed_qty)) * mark * (float(inst.multiplier) if inst is not None else 1.0)
+        return total
 
     def volume_cap(self, step: float) -> float | None:
         """Largest entry allowed by liquidity: participation x median volume of recent execution
@@ -244,10 +349,101 @@ class GuardedStrategy(Strategy):
         return float((Decimal(str(raw)) / st).to_integral_value(rounding="ROUND_FLOOR") * st)
 
     def on_position_closed(self, event) -> None:
+        if self.config.protect_on_fill:
+            self._protect = None
+            self.sync_protection()                       # cancel the leftover stop or target
+        pnl = float(event.realized_pnl) if event.realized_pnl is not None else 0.0
         if self.health is not None:
-            pnl = float(event.realized_pnl) if event.realized_pnl is not None else 0.0
             self.health.record_trade(event.ts_event, pnl)
+        self._journal("position_closed", position_id=str(event.position_id), realized_pnl=pnl)
+        self.save_state("position_closed")
 
-    def _refuse(self, bar: Bar, reason: str) -> bool:
+    def on_position_opened(self, event) -> None:
+        if self.config.protect_on_fill:
+            self.sync_protection()
+        self._journal("position_opened", position_id=str(event.position_id), side=str(event.entry),
+                      quantity=float(event.quantity), avg_px=float(event.avg_px_open))
+
+    def on_order_filled(self, event) -> None:
+        ref = next((b["reference"] for b in reversed(self.brackets) if b["entry_id"] == event.client_order_id.value),
+                   None)
+        px = float(event.last_px)
+        slip = None if ref is None else (px / ref - 1) * 1e4 * (1 if event.order_side == OrderSide.BUY else -1)
+        maker = str(getattr(event.liquidity_side, "name", event.liquidity_side)) == "MAKER"
+        rate = self.config.modeled_maker_fee if maker else self.config.modeled_taker_fee
+        self._journal("fill", order_id=event.client_order_id.value, side=event.order_side.name,
+                      qty=float(event.last_qty), price=px, commission=float(event.commission),
+                      modeled_fee=float(event.last_qty) * px * rate, liquidity="MAKER" if maker else "TAKER",
+                      slippage_bps=slip)
+
+    def on_order_rejected(self, event) -> None:
+        self._journal("order_rejected", order_id=event.client_order_id.value, reason=str(event.reason))
+        order = self.cache.order(event.client_order_id)
+        if self.config.protect_on_fill and order is not None and order.is_reduce_only and \
+                self.cache.positions_open(instrument_id=self.config.instrument_id, strategy_id=self.id):
+            # a position must never stay unprotected: if a stop or target is refused
+            # (e.g. the price already gapped through it), exit at market now
+            self._protect = None
+            self.flatten("protection rejected")
+            self._journal("protection_rejected_flatten", order_id=event.client_order_id.value)
+
+    def on_order_denied(self, event) -> None:
+        self._journal("order_denied", order_id=event.client_order_id.value, reason=str(event.reason))
+
+    def _refuse(self, bar: Bar, reason: str, **detail) -> bool:
         self.refusals.append({"ts": bar.ts_event, "reason": reason})
+        self._journal("refused", reason=reason, **detail)
         return False
+
+    # -- journal and persisted state ----------------------------------------
+
+    def _journal(self, kind: str, **fields) -> None:
+        """Monitoring must never break trading or risk logic: a journal failure is logged only."""
+        if self.journal is None:
+            return
+        try:
+            base = {"ts": self.clock.timestamp_ns(), "strategy": str(self.id), "instrument": str(self.config.instrument_id)}
+            self.journal.event(kind, **{**base, **fields})
+        except Exception as exc:                                       # noqa: BLE001
+            self.log.error(f"journal write failed ({kind}): {exc!r}")
+
+    def state(self) -> dict:
+        g, h = self.governor, self.health
+        return {
+            "governor": None if g is None else {"peak": g.peak, "day": g.day, "day_start": g.day_start,
+                                                "entries_today": g.entries_today, "killed": g.killed,
+                                                "events": g.events[-50:]},
+            "health": None if h is None else {"latched": h.latched,
+                                              "trades": [vars(t) for t in h.trades[-500:]],
+                                              "equity": h.equity[-400:]},
+            "risk_config_hash": self.risk.config_hash(),
+        }
+
+    def save_state(self, reason: str) -> None:
+        if self.state_store is not None and self.governor is not None:
+            self.state_store.save(str(self.id), {**self.state(), "saved_reason": reason,
+                                                 "saved_at": self.clock.timestamp_ns()})
+
+    def restore_state(self) -> None:
+        """Restore latches and risk state after a restart. A kill switch or HALT that was
+        engaged before the restart stays engaged; limits come from the frozen config."""
+        if self.state_store is None:
+            return
+        st = self.state_store.load(str(self.id))
+        if not st:
+            return
+        g = st.get("governor") or {}
+        if g:
+            self.governor.peak = max(self.governor.peak, g.get("peak") or 0.0)
+            self.governor.day, self.governor.day_start = g.get("day"), g.get("day_start") or self.governor.day_start
+            self.governor.entries_today = g.get("entries_today", 0)
+            self.governor.killed = g.get("killed")
+            self.governor.events = list(g.get("events", []))
+        h = st.get("health") or {}
+        if self.health is not None and h:
+            from hedge_fund.trading.health import TradeRecord
+            self.health.trades = [TradeRecord(**t) for t in h.get("trades", [])]
+            self.health.equity = [tuple(x) for x in h.get("equity", [])]
+            self.health.latched = h.get("latched")
+        self._journal("state_restored", killed=self.governor.killed,
+                      health_latched=None if self.health is None else self.health.latched)

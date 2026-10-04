@@ -86,6 +86,9 @@ class EconomicHypothesis(BaseModel):
     disappears_when: tuple[str, ...] = Field(min_length=1)
     predictions: tuple[str, ...] = Field(min_length=1)
     references: tuple[str, ...] = ()
+    signal_sketch: str = ""                   # how the edge would be measured; parameters come later
+    data_required: tuple[str, ...] = ()       # and whether each is available under the data policy
+    feasibility: Literal["ready", "needs_data", "needs_infrastructure", "blocked"] = "needs_data"
     drafted_by: str
     status: Literal["draft", "approved", "rejected", "retired"] = "draft"
     approval: Approval | None = None

@@ -1,0 +1,32 @@
+id: H-MARKET-MAKING
+title: Spread capture from providing liquidity with inventory control
+families: [market_making]
+markets: [crypto]
+edge_type: liquidity_provision
+why_edge_exists: >-
+  Traders who need immediacy cross the spread; a market maker who quotes both sides earns
+  the spread as compensation for inventory risk and the risk of trading with better-informed
+  flow, provided quotes are skewed to manage inventory.
+counterparty_type: liquidity_demanders
+counterparty: Market-order flow that values immediate execution over price (retail, hedgers, liquidations).
+why_they_pay: >-
+  Immediacy has value to them: waiting risks price moves, so they pay the half-spread and
+  accept the market maker's price concession.
+why_it_persists: >-
+  Quoting requires capital, low latency, inventory risk tolerance and protection from adverse
+  selection; competition compresses but does not remove the spread on less liquid pairs.
+disappears_when:
+  - Competition from faster market makers leaves no queue priority at the best quotes.
+  - Adverse selection from informed flow exceeds the captured spread.
+predictions:
+  - Spread capture is positive on pairs with wider spreads and negative on the most competitive pairs.
+  - Profits fall sharply in high-volatility regimes because of adverse selection.
+signal_sketch: >-
+  Avellaneda-Stoikov style quotes with inventory skew (idea from Hummingbot), simulated with
+  queue-position modelling (idea from hftbacktest).
+data_required:
+  - "historical order-book (L2) and trade data with queue positions - paid (Tardis/Databento), OFF"
+  - "realistic fill simulation needs L2; bar data cannot validate this"
+feasibility: blocked
+drafted_by: ai:claude-opus-5-5
+status: draft
