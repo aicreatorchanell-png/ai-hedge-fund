@@ -28,9 +28,9 @@ holdout was not read). A failed candidate is not iterated on the same data. The 
 |---|---|---|---|
 | H-FUNDING-CROWDING | funding-crowding-v1 (48 configs) | FAIL | `runs/active/research/funding-crowding-v1/RESULT.md` |
 | H-VOL-SCALED-TREND | vol-trend-v1 (72 configs) | FAIL | `runs/active/research/vol-trend-v1/RESULT.md` |
-| H-FUNDING-CARRY | funding-carry-v1 (24 configs) | tested: FAIL | `runs/active/research/funding-carry-v1/RESULT.md` |
-| H-XS-MOMENTUM | xs-momentum-v1 (4 configs) | tested: FAIL | `runs/active/research/xs-momentum-v1/RESULT.md` |
-| H-PAIRS-STATARB | pairs-statarb-v1 (20 configs) | tested: FAIL | `runs/active/research/pairs-statarb-v1/RESULT.md` |
+| H-FUNDING-CARRY | funding-carry-v1 (24 configs) | FAIL | `runs/active/research/funding-carry-v1/RESULT.md` |
+| H-XS-MOMENTUM | xs-momentum-v1 (4 configs) | FAIL | `runs/active/research/xs-momentum-v1/RESULT.md` |
+| H-PAIRS-STATARB | pairs-statarb-v1 (20 configs) | FAIL | `runs/active/research/pairs-statarb-v1/RESULT.md` |
 
 | Id | Edge | Feasibility |
 |---|---|---|
