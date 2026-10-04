@@ -23,7 +23,7 @@ All drafted by AI (`status: draft`). None may be researched until a human approv
 
 | Id | Edge | Feasibility |
 |---|---|---|
-| H-FUNDING-CROWDING | crowded perpetual positioning (extreme funding) | needs_data (Binance public funding archive) |
+| H-FUNDING-CROWDING | crowded perpetual positioning (extreme funding) | ready (funding archive cached to the fence via `trading.data.funding`) |
 | H-VOL-SCALED-TREND | time-series trend, risk premium | needs_data (daily cross-asset) |
 | H-FUNDING-CARRY | delta-neutral funding carry | needs_infrastructure (two legs) |
 | H-XS-MOMENTUM | cross-sectional crypto momentum | needs_infrastructure (portfolio, survivorship-free universe) |

@@ -57,10 +57,16 @@ def download_month(symbol: str, month: str, tf: str = "1m", *, root: Path = RAW_
     if not month_allowed(month):
         raise PermissionError(f"{month} reaches into a sealed holdout window")
     dest = archive_path(symbol, month, tf, root)
+    return fetch_verified(f"{BASE}/{symbol}/{tf}/{dest.name}", dest, session=session, retries=retries)
+
+
+def fetch_verified(url: str, dest: Path, *, session=None, retries: int = 4) -> Path | None:
+    """Fetch *url* and its .CHECKSUM into *dest*, verify sha256, write atomically.
+    None if the archive does not exist (404). Idempotent for verified files.
+    Callers must apply the holdout fence before calling."""
     sums = dest.with_suffix(".zip.CHECKSUM")
     if dest.exists() and sums.exists() and _verify(dest, sums):
         return dest
-    url = f"{BASE}/{symbol}/{tf}/{dest.name}"
     s = session or requests.Session()
     for attempt in range(retries):
         try:

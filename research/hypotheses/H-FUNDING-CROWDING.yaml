@@ -34,6 +34,6 @@ data_required:
   - "funding rate history: Binance USD-M public archive - available"
   - "perpetual 1-minute klines: Binance USD-M public archive - available"
   - "paper venue: Binance futures testnet (reachable from this environment)"
-feasibility: needs_data
+feasibility: ready
 drafted_by: ai:claude-opus-5-5
 status: draft
