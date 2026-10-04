@@ -1,0 +1,122 @@
+{
+ "plan": {
+  "plan_id": "funding-crowding-v1",
+  "families": [
+   "funding_crowding"
+  ],
+  "instruments": [
+   "BTCUSDT-PERP.BINANCE",
+   "ETHUSDT-PERP.BINANCE",
+   "XRPUSDT-PERP.BINANCE",
+   "LTCUSDT-PERP.BINANCE",
+   "ADAUSDT-PERP.BINANCE",
+   "BNBUSDT-PERP.BINANCE"
+  ],
+  "dev_start": "2020-01-01",
+  "dev_end": "2025-08-31",
+  "reserve_start": "2025-09-01",
+  "walk_forward": {
+   "train_months": 24,
+   "test_months": 6,
+   "step_months": 6
+  },
+  "cost_multipliers": [
+   1.0,
+   2.0
+  ],
+  "starting_cash": 10000.0,
+  "periods_per_year": 365,
+  "min_train_trades": 10,
+  "risk": {
+   "risk_per_trade": 0.005,
+   "max_notional_fraction": 0.9,
+   "max_daily_loss": 0.03,
+   "max_drawdown": 0.2,
+   "max_open_positions": 1,
+   "max_entries_per_day": 20
+  },
+  "bar_minutes": 1
+ },
+ "plan_hash": "393bd1834e34890a",
+ "n_configs": 48,
+ "folds": [
+  [
+   "2020-01-01",
+   "2021-12-31",
+   "2022-01-01",
+   "2022-06-30"
+  ],
+  [
+   "2020-07-01",
+   "2022-06-30",
+   "2022-07-01",
+   "2022-12-31"
+  ],
+  [
+   "2021-01-01",
+   "2022-12-31",
+   "2023-01-01",
+   "2023-06-30"
+  ],
+  [
+   "2021-07-01",
+   "2023-06-30",
+   "2023-07-01",
+   "2023-12-31"
+  ],
+  [
+   "2022-01-01",
+   "2023-12-31",
+   "2024-01-01",
+   "2024-06-30"
+  ],
+  [
+   "2022-07-01",
+   "2024-06-30",
+   "2024-07-01",
+   "2024-12-31"
+  ],
+  [
+   "2023-01-01",
+   "2024-12-31",
+   "2025-01-01",
+   "2025-06-30"
+  ]
+ ],
+ "grids": {
+  "funding_crowding": {
+   "quantile": [
+    0.95,
+    0.99
+   ],
+   "atr_stop": [
+    2.0,
+    4.0
+   ],
+   "max_hold_bars": [
+    24,
+    72
+   ],
+   "signal_minutes": [
+    60
+   ]
+  }
+ },
+ "hypotheses": {
+  "funding_crowding": {
+   "id": "H-FUNDING-CROWDING",
+   "content_hash": "7f801419233340dd",
+   "approval": {
+    "by": "human:owner",
+    "on": "2026-10-04",
+    "note": "Approved by the owner in the Claude Code session on 2026-10-04: 'H-FUNDING-CROWDING and H-VOL-SCALED-TREND are BOTH explicitly approved for research and validation.' Recorded by the AI on the owner's instruction; approval covers research and validation only, not deployment."
+   }
+  }
+ },
+ "gates_hash": "2fc90f4ad972f482",
+ "code_commit_at_freeze": "705990880aa674686380f4154eada5304d0cc81c",
+ "rationale": "Perpetual futures (shorts allowed, actual funding paid/received) on the perpetuals of the crypto-v1 universe (same selection rule). Development data starts 2020-01 (first month of funding and perpetual data for most of the set). min_train_trades is 10, not 20: the family trades only after rare funding extremes (fixed before any run). 2 x 2 x 2 grid = 8 configs per instrument: extreme quantile 0.95/0.99, ATR stop 2/4, time stop 24/72 hourly bars (the hypothesis predicts reversal within one to three days).",
+ "decision_rule": "PASS if and only if (a) at least one instrument line, or the equal-weight family combination, passes every gate in configs/validation-gates.yaml (hash recorded here) both at cost x1.0 and at cost x2.0, with the deflated Sharpe computed on the cumulative trial count of every registry under runs/active/research, and (b) the adversarial audit of this plan reports no FAIL. Otherwise FAIL. Regime, worst-fold, parameter-stability, concentration and CPCV diagnostics are reported but cannot turn a FAIL into a PASS. The sealed holdout (from reserve_start) is not read.",
+ "frozen_on": "2026-10-04",
+ "status": "frozen, not run"
+}
